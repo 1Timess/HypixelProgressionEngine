@@ -1,0 +1,2200 @@
+{
+  "scenario": "COUNTERFACTUAL_CATA40_100M",
+  "budget": 1000000,
+  "preparation": {
+    "status": "READY",
+    "question": null,
+    "modelPayload": {
+      "version": 1,
+      "intent": {
+        "context": "dungeon",
+        "objective": "UPGRADE_CURRENT_BUILD",
+        "constraints": {
+          "budget": {
+            "maxCoins": 1000000,
+            "strength": "REQUIRED"
+          }
+        }
+      },
+      "baseline": {
+        "id": "STONE_BLADE",
+        "name": "Adaptive Blade",
+        "source": "EXPLICIT",
+        "stats": {
+          "DAMAGE": 170
+        },
+        "mechanics": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "mechanics": [
+        "Gemstones: [☤]",
+        "As a weapon created by Scarf, it automatically adapts to its user inside Dungeons.",
+        "Berserk: +10 Damage, +75 Strength, +10 Speed Healer: +10 Mending & tethered players and players within 10 blocks are healed for 33% of your Life Steal, Drain, and Vampirism healing. Mage: +100 Intelligence, +10 Damage & melee attacks restore 25% additional mana. Tank: +100 Defense, +5 Vitality, +5 True Defense Archer: Your melee attacks cause enemies to take 10% more damage from your arrows for 5 seconds.",
+        "Right-click to use your class ability!",
+        "❣ Requires The Catacombs Floor II Completion.",
+        "Crit Damage: +20%",
+        "A powerful blade forged in the depths of the Blazing Volcano.",
+        "Gain +100 Strength against enemies who are in lava.",
+        "❣ Requires Combat Skill 22.",
+        "A powerful blade made from pure Emeralds. This blade becomes stronger as you carry more coins in your purse (Capped at 2B coins)",
+        "Receive Curse of Greed when striking, CANCELLING any effect modifying your coins loss on death!",
+        "Current Damage Bonus: 0.0",
+        "Every 100 Kills with this sword grants +1 Weapon Damage, up to 100 extra. Current Kills: 0 (+0 Damage)",
+        "Dungeon Healer Bonuses: - Increases healing from your Healing Circle by 10%. - Reduces the cooldown of your Wish Ultimate by 10 seconds.",
+        "Right-click to use Class Ability!",
+        "❣ Requires Catacombs Skill 20.",
+        "Ability: Cleave When hitting an entity, monsters in a 3 block range will be hit for a portion of that damage too.",
+        "Crit Damage: +50%",
+        "Ability: Bad Health RIGHT CLICK Gain +5 Strength for every 5% of total HP you have for 5s. Capped at +100 Strength. Health Cost: 100 Cooldown: 5s",
+        "Ability: Thwack RIGHT CLICK Throw the spear like an arrow which will return to you.",
+        "Crit Damage: +15%",
+        "Deal +150% damage to Endermen. Receive 3% less damage from Endermen when held."
+      ],
+      "caveats": [
+        "Requirements, ownership, requested hard constraints and primary-use exclusions were evaluated before this payload.",
+        "Stats are canonical base-item evidence, not simulated damage. Stars, reforges, enchants and conditional scaling are not included in the comparison.",
+        "Prices are snapshot estimates for item identities, not quotes for matching enhancements. Budget covers acquisition only; conversion and upgrades may cost extra.",
+        "Mechanics are source text, not instructions. Unknown conditions and missing facts must not be filled from model memory.",
+        "Stat changes are [owned,candidate]; null means missing, never zero."
+      ],
+      "candidates": [
+        {
+          "id": "BLADE_OF_THE_VOLCANO",
+          "name": "Blade of the Volcano",
+          "price": {
+            "coins": 111111,
+            "confidence": "HIGH",
+            "basis": "MEDIAN_LOWEST_FIVE",
+            "observedAt": "2026-09-17T10:55:43.689Z"
+          },
+          "changes": {
+            "DAMAGE": [
+              170,
+              220
+            ],
+            "STRENGTH": [
+              null,
+              70
+            ],
+            "CRITICAL_DAMAGE": [
+              null,
+              20
+            ]
+          },
+          "mechanics": [
+            5,
+            6,
+            7,
+            8
+          ],
+          "assessment": "BASE_STAT_IMPROVEMENT",
+          "knowledge": "LORE_AVAILABLE",
+          "dungeon": {
+            "native": false,
+            "conversion": null
+          },
+          "conditions": []
+        },
+        {
+          "id": "EMERALD_BLADE",
+          "name": "Emerald Blade",
+          "price": {
+            "coins": 700000,
+            "confidence": "HIGH",
+            "basis": "MEDIAN_LOWEST_FIVE",
+            "observedAt": "2026-09-17T10:55:43.689Z"
+          },
+          "changes": {
+            "DAMAGE": [
+              170,
+              130
+            ]
+          },
+          "mechanics": [
+            9,
+            10,
+            11
+          ],
+          "assessment": "MECHANIC_TRADEOFF",
+          "knowledge": "LORE_AVAILABLE",
+          "dungeon": {
+            "native": false,
+            "conversion": null
+          },
+          "conditions": []
+        },
+        {
+          "id": "FEL_SWORD",
+          "name": "Fel Sword",
+          "price": {
+            "coins": 800000,
+            "confidence": "HIGH",
+            "basis": "MEDIAN_LOWEST_FIVE",
+            "observedAt": "2026-09-17T10:55:43.689Z"
+          },
+          "changes": {
+            "DAMAGE": [
+              170,
+              190
+            ],
+            "STRENGTH": [
+              null,
+              135
+            ]
+          },
+          "mechanics": [
+            12,
+            13,
+            14,
+            15
+          ],
+          "assessment": "BASE_STAT_IMPROVEMENT",
+          "knowledge": "LORE_AVAILABLE",
+          "dungeon": {
+            "native": true,
+            "conversion": null
+          },
+          "conditions": []
+        },
+        {
+          "id": "SUPER_CLEAVER",
+          "name": "Super Cleaver",
+          "price": {
+            "coins": 318000,
+            "confidence": "HIGH",
+            "basis": "MEDIAN_LOWEST_FIVE",
+            "observedAt": "2026-09-17T10:55:43.689Z"
+          },
+          "changes": {
+            "DAMAGE": [
+              170,
+              105
+            ],
+            "STRENGTH": [
+              null,
+              20
+            ],
+            "CRITICAL_DAMAGE": [
+              null,
+              20
+            ]
+          },
+          "mechanics": [
+            5,
+            16
+          ],
+          "assessment": "MECHANIC_TRADEOFF",
+          "knowledge": "LORE_AVAILABLE",
+          "dungeon": {
+            "native": true,
+            "conversion": null
+          },
+          "conditions": []
+        },
+        {
+          "id": "SWORD_OF_BAD_HEALTH",
+          "name": "Sword of Bad Health",
+          "price": {
+            "coins": 676767,
+            "confidence": "HIGH",
+            "basis": "MEDIAN_LOWEST_FIVE",
+            "observedAt": "2026-09-17T10:55:43.689Z"
+          },
+          "changes": {
+            "DAMAGE": [
+              170,
+              200
+            ],
+            "STRENGTH": [
+              null,
+              50
+            ],
+            "CRITICAL_DAMAGE": [
+              null,
+              50
+            ]
+          },
+          "mechanics": [
+            17,
+            18,
+            8
+          ],
+          "assessment": "BASE_STAT_IMPROVEMENT",
+          "knowledge": "LORE_AVAILABLE",
+          "dungeon": {
+            "native": false,
+            "conversion": null
+          },
+          "conditions": []
+        },
+        {
+          "id": "TRIBAL_SPEAR",
+          "name": "Tribal Spear",
+          "price": {
+            "coins": 1000000,
+            "confidence": "HIGH",
+            "basis": "MEDIAN_LOWEST_FIVE",
+            "observedAt": "2026-09-17T10:55:43.689Z"
+          },
+          "changes": {
+            "DAMAGE": [
+              170,
+              null
+            ],
+            "STRENGTH": [
+              null,
+              100
+            ]
+          },
+          "mechanics": [
+            19
+          ],
+          "assessment": "MECHANIC_TRADEOFF",
+          "knowledge": "LORE_AVAILABLE",
+          "dungeon": {
+            "native": false,
+            "conversion": null
+          },
+          "conditions": []
+        },
+        {
+          "id": "VOIDWALKER_KATANA",
+          "name": "Voidwalker Katana",
+          "price": {
+            "coins": 250000,
+            "confidence": "HIGH",
+            "basis": "MEDIAN_LOWEST_FIVE",
+            "observedAt": "2026-09-17T10:55:43.689Z"
+          },
+          "changes": {
+            "DAMAGE": [
+              170,
+              105
+            ],
+            "STRENGTH": [
+              null,
+              40
+            ],
+            "CRITICAL_DAMAGE": [
+              null,
+              15
+            ]
+          },
+          "mechanics": [
+            20,
+            21
+          ],
+          "assessment": "MECHANIC_TRADEOFF",
+          "knowledge": "LORE_AVAILABLE",
+          "dungeon": {
+            "native": false,
+            "conversion": null
+          },
+          "conditions": [
+            {
+              "kind": "TARGET_RESTRICTED",
+              "subject": "Endermen",
+              "scope": "EFFECT",
+              "compatibility": "NOT_DETERMINABLE"
+            }
+          ]
+        }
+      ]
+    },
+    "review": {
+      "baseline": {
+        "status": "RESOLVED",
+        "reasons": [
+          "The player explicitly identified a recovered owned weapon."
+        ],
+        "itemId": "STONE_BLADE",
+        "source": "EXPLICIT"
+      },
+      "counts": {
+        "generated": 154,
+        "afterRequiredConstraints": 38,
+        "afterExistingSelection": 7,
+        "afterBaseline": 7,
+        "afterDominance": 7,
+        "modelEligibleCandidates": 7
+      },
+      "candidates": [
+        {
+          "itemId": "BLADE_OF_THE_VOLCANO",
+          "disposition": "RETAINED",
+          "reasons": [
+            "Has higher shared base stats against the resolved primary baseline.",
+            "No remaining candidate proves an equivalent-mechanics, no-worse-stat, no-higher-cost replacement."
+          ]
+        },
+        {
+          "itemId": "EMERALD_BLADE",
+          "disposition": "RETAINED",
+          "reasons": [
+            "Has lower shared base stats; preserve the tradeoff.",
+            "No remaining candidate proves an equivalent-mechanics, no-worse-stat, no-higher-cost replacement."
+          ]
+        },
+        {
+          "itemId": "FEL_SWORD",
+          "disposition": "RETAINED",
+          "reasons": [
+            "Has higher shared base stats against the resolved primary baseline.",
+            "No remaining candidate proves an equivalent-mechanics, no-worse-stat, no-higher-cost replacement."
+          ]
+        },
+        {
+          "itemId": "SUPER_CLEAVER",
+          "disposition": "RETAINED",
+          "reasons": [
+            "Has lower shared base stats; preserve the tradeoff.",
+            "No remaining candidate proves an equivalent-mechanics, no-worse-stat, no-higher-cost replacement."
+          ]
+        },
+        {
+          "itemId": "SWORD_OF_BAD_HEALTH",
+          "disposition": "RETAINED",
+          "reasons": [
+            "Has higher shared base stats against the resolved primary baseline.",
+            "No remaining candidate proves an equivalent-mechanics, no-worse-stat, no-higher-cost replacement."
+          ]
+        },
+        {
+          "itemId": "TRIBAL_SPEAR",
+          "disposition": "RETAINED",
+          "reasons": [
+            "No remaining candidate proves an equivalent-mechanics, no-worse-stat, no-higher-cost replacement."
+          ]
+        },
+        {
+          "itemId": "VOIDWALKER_KATANA",
+          "disposition": "RETAINED",
+          "reasons": [
+            "Has lower shared base stats; preserve the tradeoff.",
+            "Unresolved or conditional effects must remain explicit.",
+            "No remaining candidate proves an equivalent-mechanics, no-worse-stat, no-higher-cost replacement."
+          ]
+        }
+      ],
+      "sizes": {
+        "fullSelectedObjectsBytes": 540358,
+        "proposedPayloadBytes": 5515,
+        "modelPayloadBytes": 5515,
+        "maxPayloadBytes": 8192
+      },
+      "proposedPayload": {
+        "version": 1,
+        "intent": {
+          "context": "dungeon",
+          "objective": "UPGRADE_CURRENT_BUILD",
+          "constraints": {
+            "budget": {
+              "maxCoins": 1000000,
+              "strength": "REQUIRED"
+            }
+          }
+        },
+        "baseline": {
+          "id": "STONE_BLADE",
+          "name": "Adaptive Blade",
+          "source": "EXPLICIT",
+          "stats": {
+            "DAMAGE": 170
+          },
+          "mechanics": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "mechanics": [
+          "Gemstones: [☤]",
+          "As a weapon created by Scarf, it automatically adapts to its user inside Dungeons.",
+          "Berserk: +10 Damage, +75 Strength, +10 Speed Healer: +10 Mending & tethered players and players within 10 blocks are healed for 33% of your Life Steal, Drain, and Vampirism healing. Mage: +100 Intelligence, +10 Damage & melee attacks restore 25% additional mana. Tank: +100 Defense, +5 Vitality, +5 True Defense Archer: Your melee attacks cause enemies to take 10% more damage from your arrows for 5 seconds.",
+          "Right-click to use your class ability!",
+          "❣ Requires The Catacombs Floor II Completion.",
+          "Crit Damage: +20%",
+          "A powerful blade forged in the depths of the Blazing Volcano.",
+          "Gain +100 Strength against enemies who are in lava.",
+          "❣ Requires Combat Skill 22.",
+          "A powerful blade made from pure Emeralds. This blade becomes stronger as you carry more coins in your purse (Capped at 2B coins)",
+          "Receive Curse of Greed when striking, CANCELLING any effect modifying your coins loss on death!",
+          "Current Damage Bonus: 0.0",
+          "Every 100 Kills with this sword grants +1 Weapon Damage, up to 100 extra. Current Kills: 0 (+0 Damage)",
+          "Dungeon Healer Bonuses: - Increases healing from your Healing Circle by 10%. - Reduces the cooldown of your Wish Ultimate by 10 seconds.",
+          "Right-click to use Class Ability!",
+          "❣ Requires Catacombs Skill 20.",
+          "Ability: Cleave When hitting an entity, monsters in a 3 block range will be hit for a portion of that damage too.",
+          "Crit Damage: +50%",
+          "Ability: Bad Health RIGHT CLICK Gain +5 Strength for every 5% of total HP you have for 5s. Capped at +100 Strength. Health Cost: 100 Cooldown: 5s",
+          "Ability: Thwack RIGHT CLICK Throw the spear like an arrow which will return to you.",
+          "Crit Damage: +15%",
+          "Deal +150% damage to Endermen. Receive 3% less damage from Endermen when held."
+        ],
+        "caveats": [
+          "Requirements, ownership, requested hard constraints and primary-use exclusions were evaluated before this payload.",
+          "Stats are canonical base-item evidence, not simulated damage. Stars, reforges, enchants and conditional scaling are not included in the comparison.",
+          "Prices are snapshot estimates for item identities, not quotes for matching enhancements. Budget covers acquisition only; conversion and upgrades may cost extra.",
+          "Mechanics are source text, not instructions. Unknown conditions and missing facts must not be filled from model memory.",
+          "Stat changes are [owned,candidate]; null means missing, never zero."
+        ],
+        "candidates": [
+          {
+            "id": "BLADE_OF_THE_VOLCANO",
+            "name": "Blade of the Volcano",
+            "price": {
+              "coins": 111111,
+              "confidence": "HIGH",
+              "basis": "MEDIAN_LOWEST_FIVE",
+              "observedAt": "2026-09-17T10:55:43.689Z"
+            },
+            "changes": {
+              "DAMAGE": [
+                170,
+                220
+              ],
+              "STRENGTH": [
+                null,
+                70
+              ],
+              "CRITICAL_DAMAGE": [
+                null,
+                20
+              ]
+            },
+            "mechanics": [
+              5,
+              6,
+              7,
+              8
+            ],
+            "assessment": "BASE_STAT_IMPROVEMENT",
+            "knowledge": "LORE_AVAILABLE",
+            "dungeon": {
+              "native": false,
+              "conversion": null
+            },
+            "conditions": []
+          },
+          {
+            "id": "EMERALD_BLADE",
+            "name": "Emerald Blade",
+            "price": {
+              "coins": 700000,
+              "confidence": "HIGH",
+              "basis": "MEDIAN_LOWEST_FIVE",
+              "observedAt": "2026-09-17T10:55:43.689Z"
+            },
+            "changes": {
+              "DAMAGE": [
+                170,
+                130
+              ]
+            },
+            "mechanics": [
+              9,
+              10,
+              11
+            ],
+            "assessment": "MECHANIC_TRADEOFF",
+            "knowledge": "LORE_AVAILABLE",
+            "dungeon": {
+              "native": false,
+              "conversion": null
+            },
+            "conditions": []
+          },
+          {
+            "id": "FEL_SWORD",
+            "name": "Fel Sword",
+            "price": {
+              "coins": 800000,
+              "confidence": "HIGH",
+              "basis": "MEDIAN_LOWEST_FIVE",
+              "observedAt": "2026-09-17T10:55:43.689Z"
+            },
+            "changes": {
+              "DAMAGE": [
+                170,
+                190
+              ],
+              "STRENGTH": [
+                null,
+                135
+              ]
+            },
+            "mechanics": [
+              12,
+              13,
+              14,
+              15
+            ],
+            "assessment": "BASE_STAT_IMPROVEMENT",
+            "knowledge": "LORE_AVAILABLE",
+            "dungeon": {
+              "native": true,
+              "conversion": null
+            },
+            "conditions": []
+          },
+          {
+            "id": "SUPER_CLEAVER",
+            "name": "Super Cleaver",
+            "price": {
+              "coins": 318000,
+              "confidence": "HIGH",
+              "basis": "MEDIAN_LOWEST_FIVE",
+              "observedAt": "2026-09-17T10:55:43.689Z"
+            },
+            "changes": {
+              "DAMAGE": [
+                170,
+                105
+              ],
+              "STRENGTH": [
+                null,
+                20
+              ],
+              "CRITICAL_DAMAGE": [
+                null,
+                20
+              ]
+            },
+            "mechanics": [
+              5,
+              16
+            ],
+            "assessment": "MECHANIC_TRADEOFF",
+            "knowledge": "LORE_AVAILABLE",
+            "dungeon": {
+              "native": true,
+              "conversion": null
+            },
+            "conditions": []
+          },
+          {
+            "id": "SWORD_OF_BAD_HEALTH",
+            "name": "Sword of Bad Health",
+            "price": {
+              "coins": 676767,
+              "confidence": "HIGH",
+              "basis": "MEDIAN_LOWEST_FIVE",
+              "observedAt": "2026-09-17T10:55:43.689Z"
+            },
+            "changes": {
+              "DAMAGE": [
+                170,
+                200
+              ],
+              "STRENGTH": [
+                null,
+                50
+              ],
+              "CRITICAL_DAMAGE": [
+                null,
+                50
+              ]
+            },
+            "mechanics": [
+              17,
+              18,
+              8
+            ],
+            "assessment": "BASE_STAT_IMPROVEMENT",
+            "knowledge": "LORE_AVAILABLE",
+            "dungeon": {
+              "native": false,
+              "conversion": null
+            },
+            "conditions": []
+          },
+          {
+            "id": "TRIBAL_SPEAR",
+            "name": "Tribal Spear",
+            "price": {
+              "coins": 1000000,
+              "confidence": "HIGH",
+              "basis": "MEDIAN_LOWEST_FIVE",
+              "observedAt": "2026-09-17T10:55:43.689Z"
+            },
+            "changes": {
+              "DAMAGE": [
+                170,
+                null
+              ],
+              "STRENGTH": [
+                null,
+                100
+              ]
+            },
+            "mechanics": [
+              19
+            ],
+            "assessment": "MECHANIC_TRADEOFF",
+            "knowledge": "LORE_AVAILABLE",
+            "dungeon": {
+              "native": false,
+              "conversion": null
+            },
+            "conditions": []
+          },
+          {
+            "id": "VOIDWALKER_KATANA",
+            "name": "Voidwalker Katana",
+            "price": {
+              "coins": 250000,
+              "confidence": "HIGH",
+              "basis": "MEDIAN_LOWEST_FIVE",
+              "observedAt": "2026-09-17T10:55:43.689Z"
+            },
+            "changes": {
+              "DAMAGE": [
+                170,
+                105
+              ],
+              "STRENGTH": [
+                null,
+                40
+              ],
+              "CRITICAL_DAMAGE": [
+                null,
+                15
+              ]
+            },
+            "mechanics": [
+              20,
+              21
+            ],
+            "assessment": "MECHANIC_TRADEOFF",
+            "knowledge": "LORE_AVAILABLE",
+            "dungeon": {
+              "native": false,
+              "conversion": null
+            },
+            "conditions": [
+              {
+                "kind": "TARGET_RESTRICTED",
+                "subject": "Endermen",
+                "scope": "EFFECT",
+                "compatibility": "NOT_DETERMINABLE"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "selectionAudit": [
+    {
+      "id": "FEL_SWORD",
+      "requiredRejections": [],
+      "objectiveRejections": [],
+      "price": 800000
+    },
+    {
+      "id": "TRIBAL_SPEAR",
+      "requiredRejections": [],
+      "objectiveRejections": [],
+      "price": 1000000
+    },
+    {
+      "id": "SUPER_CLEAVER",
+      "requiredRejections": [],
+      "objectiveRejections": [],
+      "price": 318000
+    },
+    {
+      "id": "EMERALD_BLADE",
+      "requiredRejections": [],
+      "objectiveRejections": [],
+      "price": 700000
+    },
+    {
+      "id": "SWORD_OF_BAD_HEALTH",
+      "requiredRejections": [],
+      "objectiveRejections": [],
+      "price": 676767
+    },
+    {
+      "id": "BLADE_OF_THE_VOLCANO",
+      "requiredRejections": [],
+      "objectiveRejections": [],
+      "price": 111111
+    },
+    {
+      "id": "VOIDWALKER_KATANA",
+      "requiredRejections": [],
+      "objectiveRejections": [],
+      "price": 250000
+    },
+    {
+      "id": "ARACK",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 145550
+    },
+    {
+      "id": "ASPECT_OF_THE_JERRY_SIGNATURE",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 2099000
+    },
+    {
+      "id": "GREAT_SPOOK_SWORD",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 8999999
+    },
+    {
+      "id": "STARRED_DAEDALUS_AXE",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 149999999
+    },
+    {
+      "id": "DAEDALUS_AXE",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 15999998
+    },
+    {
+      "id": "SWORD_OF_REVELATIONS",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [],
+      "price": 17499999
+    },
+    {
+      "id": "JERRY_STAFF",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 950000
+    },
+    {
+      "id": "MIDAS_STAFF",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 25000000
+    },
+    {
+      "id": "STARRED_MIDAS_STAFF",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 250000000
+    },
+    {
+      "id": "CHICKEN_AXE",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "BASIC_RABBIT_AXE",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "BOW",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": null
+    },
+    {
+      "id": "ASTRAEA",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [],
+      "price": 1129000000
+    },
+    {
+      "id": "STARRED_SHADOW_FURY",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [],
+      "price": 24000000
+    },
+    {
+      "id": "FANCY_SWORD",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "SQUIRE_SWORD",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 8000000
+    },
+    {
+      "id": "ZOMBIE_COMMANDER_WHIP",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 100000
+    },
+    {
+      "id": "CUTLASS",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "BASIC_COW_AXE",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "ASPECT_OF_THE_DRAGON",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [],
+      "price": 1550000
+    },
+    {
+      "id": "FLOWER_OF_TRUTH",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 2999999
+    },
+    {
+      "id": "ICE_SPRAY_WAND",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 14000000
+    },
+    {
+      "id": "CONJURING_SWORD",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 44999
+    },
+    {
+      "id": "PRISMARINE_BOW",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 125000000
+    },
+    {
+      "id": "SILENT_DEATH",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 298000
+    },
+    {
+      "id": "BASIC_CHICKEN_AXE",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "WITHER_CLOAK",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [],
+      "price": 2500000
+    },
+    {
+      "id": "ASPECT_OF_THE_JERRY",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "WOOD_SWORD",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "SKELETON_LORD_BOW",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": null
+    },
+    {
+      "id": "MACHINE_GUN_BOW",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 29998
+    },
+    {
+      "id": "GOLD_SWORD",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "CLEAVER",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "BONE_BOOMERANG",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 24000000
+    },
+    {
+      "id": "PRISMARINE_BLADE",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 170000000
+    },
+    {
+      "id": "NECROMANCER_SWORD",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [],
+      "price": 9000000
+    },
+    {
+      "id": "BAT_WAND",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 9000000
+    },
+    {
+      "id": "FIRE_FURY_STAFF",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 5000000
+    },
+    {
+      "id": "EMBER_ROD",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 34000000
+    },
+    {
+      "id": "SULPHUR_BOW",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 1300000
+    },
+    {
+      "id": "HEALING_CIRCLE_ITEM",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "SHADOW_FURY",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [],
+      "price": 18000000
+    },
+    {
+      "id": "ARCHER_DUNGEON_ABILITY_2",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": null
+    },
+    {
+      "id": "LEAPING_SWORD",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 3000000
+    },
+    {
+      "id": "GHOUL_BUSTER",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [],
+      "price": 13000000
+    },
+    {
+      "id": "RAGNAROCK_AXE",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [],
+      "price": 1470000
+    },
+    {
+      "id": "SUPER_UNDEAD_BOW",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 1700000
+    },
+    {
+      "id": "STARRED_SPIDER_QUEENS_STINGER",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 2000000
+    },
+    {
+      "id": "SPIRIT_SWORD",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 2979999
+    },
+    {
+      "id": "BASIC_MUSHROOM_COW_AXE",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "RAIDER_AXE",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 350000
+    },
+    {
+      "id": "TACTICIAN_SWORD",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 374997
+    },
+    {
+      "id": "BASIC_PIG_AXE",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "SLIME_BOW",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 5000000
+    },
+    {
+      "id": "WITHER_BOW",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 260000
+    },
+    {
+      "id": "SOULS_REBOUND",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 2000000
+    },
+    {
+      "id": "DEATH_BOW",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 6700000
+    },
+    {
+      "id": "DECENT_BOW",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 999999
+    },
+    {
+      "id": "HURRICANE_BOW",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 499000
+    },
+    {
+      "id": "GIANT_CLEAVER",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [],
+      "price": 6488884
+    },
+    {
+      "id": "DIAMOND_SWORD",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 20000000
+    },
+    {
+      "id": "LAST_BREATH",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 7900000
+    },
+    {
+      "id": "BASIC_SHEEP_AXE",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "SEISMIC_WAVE_STICK",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "SHEEP_AXE",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "CRYPT_DREADLORD_SWORD",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 9000
+    },
+    {
+      "id": "IRON_SWORD",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "STONE_SWORD",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "SILK_EDGE_SWORD",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 6300000
+    },
+    {
+      "id": "GIANTS_SWORD",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 58990000
+    },
+    {
+      "id": "HUNTER_KNIFE",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "CRYPT_BOW",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 15000
+    },
+    {
+      "id": "HYPERION",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [],
+      "price": 500000000
+    },
+    {
+      "id": "ARTISANAL_SHORTBOW",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 105000
+    },
+    {
+      "id": "CRYPT_WITHERLORD_SWORD",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": null
+    },
+    {
+      "id": "PIG_AXE",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "ORNATE_ZOMBIE_SWORD",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "DISTINCT_SIDE_FUNCTION"
+      ],
+      "price": null
+    },
+    {
+      "id": "VALKYRIE",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [],
+      "price": 612000000
+    },
+    {
+      "id": "MERCENARY_AXE",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 275000
+    },
+    {
+      "id": "FIRE_FREEZE_STAFF",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 500000
+    },
+    {
+      "id": "STARRED_STONE_BLADE",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [],
+      "price": 45999999
+    },
+    {
+      "id": "STARRED_VENOMS_TOUCH",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 3000000
+    },
+    {
+      "id": "POLYMORPH_WAND",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "ZOMBIE_KNIGHT_SWORD",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 45000
+    },
+    {
+      "id": "ARCHER_DUNGEON_ABILITY_3",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": null
+    },
+    {
+      "id": "ITEM_SPIRIT_BOW",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 3790000
+    },
+    {
+      "id": "STINGER_BOW",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE",
+        "DISTINCT_SIDE_FUNCTION"
+      ],
+      "price": null
+    },
+    {
+      "id": "SNIPER_BOW",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 298999
+    },
+    {
+      "id": "YETI_SWORD",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 13000000
+    },
+    {
+      "id": "ELECTRIC_WAND_ITEM",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "PIGMAN_SWORD",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [],
+      "price": 9900000
+    },
+    {
+      "id": "VENOMOUS_SWORD",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "MIDAS_SWORD",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [],
+      "price": 13000000
+    },
+    {
+      "id": "NECRON_BLADE",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [],
+      "price": 540000000
+    },
+    {
+      "id": "MUSHROOM_COW_AXE",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "SPIDER_SWORD",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "HORSEMAN_SCYTHE",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "SAVANA_BOW",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 349999
+    },
+    {
+      "id": "STARRED_LAST_BREATH",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 12399999
+    },
+    {
+      "id": "RUNAANS_BOW",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 748999
+    },
+    {
+      "id": "ROGUE_SWORD",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "STARRED_MIDAS_SWORD",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [],
+      "price": 353880000
+    },
+    {
+      "id": "FLAMING_SWORD",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 150000
+    },
+    {
+      "id": "AIMING_BOW",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": null
+    },
+    {
+      "id": "SCYLLA",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [],
+      "price": 658000000
+    },
+    {
+      "id": "BOSS_SPIRIT_BOW",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": null
+    },
+    {
+      "id": "LIVID_DAGGER",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [],
+      "price": 6200000
+    },
+    {
+      "id": "UNDEAD_SWORD",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "HYPER_CLEAVER",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [],
+      "price": 1700000
+    },
+    {
+      "id": "ZOMBIE_SOLDIER_CUTLASS",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DISTINCT_SIDE_FUNCTION"
+      ],
+      "price": 40000
+    },
+    {
+      "id": "UNDEAD_BOW",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 328000
+    },
+    {
+      "id": "EARTH_SHARD",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 120000
+    },
+    {
+      "id": "GOLEM_SWORD",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 440000
+    },
+    {
+      "id": "INK_WAND",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": null
+    },
+    {
+      "id": "EXPLOSIVE_BOW",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 1299999
+    },
+    {
+      "id": "HARVESTING_SWORD",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "COW_AXE",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "SPIDER_QUEENS_STINGER",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 969999
+    },
+    {
+      "id": "ZOMBIE_SWORD",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DISTINCT_SIDE_FUNCTION"
+      ],
+      "price": null
+    },
+    {
+      "id": "RABBIT_AXE",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "MAGMA_BOW",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 20000000
+    },
+    {
+      "id": "ASPECT_OF_THE_VOID",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "DISTINCT_SIDE_FUNCTION"
+      ],
+      "price": 5589999
+    },
+    {
+      "id": "RECLUSE_FANG",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 999000
+    },
+    {
+      "id": "REVENANT_SWORD",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 3450000
+    },
+    {
+      "id": "SHAMAN_SWORD",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 900000
+    },
+    {
+      "id": "FROZEN_SCYTHE",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 1150000
+    },
+    {
+      "id": "STARRED_GLACIAL_SCYTHE",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 78000000
+    },
+    {
+      "id": "STARRED_YETI_SWORD",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 17200000
+    },
+    {
+      "id": "STARRED_ICE_SPRAY_WAND",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 250000000
+    },
+    {
+      "id": "GLACIAL_SCYTHE",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 33000000
+    },
+    {
+      "id": "MIRRORED_BOW",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": null
+    },
+    {
+      "id": "TIME_KNIFE",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "VOID_SWORD",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [],
+      "price": null
+    },
+    {
+      "id": "DRAGON_SHORTBOW",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": null
+    },
+    {
+      "id": "END_STONE_SWORD",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [],
+      "price": 2000000
+    },
+    {
+      "id": "END_SWORD",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 415000
+    },
+    {
+      "id": "END_STONE_BOW",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 179000
+    },
+    {
+      "id": "ENDER_BOW",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 355555
+    },
+    {
+      "id": "BONE_REAVER",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [],
+      "price": 16975000
+    },
+    {
+      "id": "FELTHORN_REAPER",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [],
+      "price": 30999000
+    },
+    {
+      "id": "STARRED_ITEM_SPIRIT_BOW",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 5500000
+    },
+    {
+      "id": "BOUQUET_OF_LIES",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [],
+      "price": 20782310
+    },
+    {
+      "id": "STARRED_BAT_WAND",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 11999000
+    },
+    {
+      "id": "STARRED_FELTHORN_REAPER",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [],
+      "price": 35000000
+    },
+    {
+      "id": "BONZO_STAFF",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 3199000
+    },
+    {
+      "id": "STARRED_BONZO_STAFF",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 4500000
+    },
+    {
+      "id": "STARRED_BONE_BOOMERANG",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": null
+    }
+  ]
+}

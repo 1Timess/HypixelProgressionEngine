@@ -1,0 +1,994 @@
+{
+  "scenario": "COUNTERFACTUAL_NO_WEAPON_NO_DUNGEONS",
+  "budget": 20000000,
+  "preparation": {
+    "status": "NEEDS_CLARIFICATION",
+    "question": {
+      "text": "Which weapon do you currently use as your primary damage weapon?",
+      "choices": [],
+      "supportedInputs": [
+        "currentWeapon.itemId",
+        "currentWeapon.instanceUuid"
+      ]
+    },
+    "modelPayload": null,
+    "review": {
+      "baseline": {
+        "status": "NEEDS_CLARIFICATION",
+        "reasons": [
+          "Recovered weapons do not establish a primary-damage baseline for this context."
+        ]
+      },
+      "counts": {
+        "generated": 84,
+        "afterRequiredConstraints": 41,
+        "afterExistingSelection": 0,
+        "afterBaseline": 0,
+        "afterDominance": 0,
+        "modelEligibleCandidates": 0
+      },
+      "candidates": [],
+      "sizes": {
+        "fullSelectedObjectsBytes": 2,
+        "proposedPayloadBytes": 0,
+        "modelPayloadBytes": 0,
+        "maxPayloadBytes": 8192
+      },
+      "proposedPayload": null
+    }
+  },
+  "selectionAudit": [
+    {
+      "id": "ARACK",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 145550
+    },
+    {
+      "id": "ASPECT_OF_THE_JERRY_SIGNATURE",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 2099000
+    },
+    {
+      "id": "GREAT_SPOOK_SWORD",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 8999999
+    },
+    {
+      "id": "STARRED_DAEDALUS_AXE",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 149999999
+    },
+    {
+      "id": "DAEDALUS_AXE",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 15999998
+    },
+    {
+      "id": "SWORD_OF_REVELATIONS",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 17499999
+    },
+    {
+      "id": "JERRY_STAFF",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 950000
+    },
+    {
+      "id": "CHICKEN_AXE",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "BASIC_RABBIT_AXE",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "BOW",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": null
+    },
+    {
+      "id": "FANCY_SWORD",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "SQUIRE_SWORD",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 8000000
+    },
+    {
+      "id": "CUTLASS",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "BASIC_COW_AXE",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "PRISMARINE_BOW",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 125000000
+    },
+    {
+      "id": "BASIC_CHICKEN_AXE",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "ASPECT_OF_THE_JERRY",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "WOOD_SWORD",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "GOLD_SWORD",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "CLEAVER",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "ASPECT_OF_THE_END",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DISTINCT_SIDE_FUNCTION"
+      ],
+      "price": 370000
+    },
+    {
+      "id": "PRISMARINE_BLADE",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 170000000
+    },
+    {
+      "id": "FIRE_FURY_STAFF",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 5000000
+    },
+    {
+      "id": "EMBER_ROD",
+      "requiredRejections": [
+        "OVER_BUDGET"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 34000000
+    },
+    {
+      "id": "SULPHUR_BOW",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 1300000
+    },
+    {
+      "id": "HEALING_CIRCLE_ITEM",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "ARCHER_DUNGEON_ABILITY_2",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": null
+    },
+    {
+      "id": "GHOUL_BUSTER",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 13000000
+    },
+    {
+      "id": "RAGNAROCK_AXE",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 1470000
+    },
+    {
+      "id": "BASIC_MUSHROOM_COW_AXE",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "TRIBAL_SPEAR",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 1000000
+    },
+    {
+      "id": "RAIDER_AXE",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 350000
+    },
+    {
+      "id": "TACTICIAN_SWORD",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 374997
+    },
+    {
+      "id": "BASIC_PIG_AXE",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "SLIME_BOW",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 5000000
+    },
+    {
+      "id": "WITHER_BOW",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 260000
+    },
+    {
+      "id": "DECENT_BOW",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 999999
+    },
+    {
+      "id": "HURRICANE_BOW",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 499000
+    },
+    {
+      "id": "DIAMOND_SWORD",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 20000000
+    },
+    {
+      "id": "SUPER_CLEAVER",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 318000
+    },
+    {
+      "id": "BASIC_SHEEP_AXE",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "EMERALD_BLADE",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 700000
+    },
+    {
+      "id": "SEISMIC_WAVE_STICK",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "SHEEP_AXE",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "IRON_SWORD",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "STONE_SWORD",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "HUNTER_KNIFE",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "ARTISANAL_SHORTBOW",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 105000
+    },
+    {
+      "id": "PIG_AXE",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "MERCENARY_AXE",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 275000
+    },
+    {
+      "id": "FIRE_FREEZE_STAFF",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 500000
+    },
+    {
+      "id": "POLYMORPH_WAND",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "ARCHER_DUNGEON_ABILITY_3",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": null
+    },
+    {
+      "id": "SWORD_OF_BAD_HEALTH",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 676767
+    },
+    {
+      "id": "ELECTRIC_WAND_ITEM",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "VENOMOUS_SWORD",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "MUSHROOM_COW_AXE",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "BLADE_OF_THE_VOLCANO",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 111111
+    },
+    {
+      "id": "SPIDER_SWORD",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "HORSEMAN_SCYTHE",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "SAVANA_BOW",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 349999
+    },
+    {
+      "id": "ROGUE_SWORD",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "FLAMING_SWORD",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 150000
+    },
+    {
+      "id": "AIMING_BOW",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": null
+    },
+    {
+      "id": "BOSS_SPIRIT_BOW",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": null
+    },
+    {
+      "id": "UNDEAD_SWORD",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "UNDEAD_BOW",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 328000
+    },
+    {
+      "id": "GOLEM_SWORD",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 440000
+    },
+    {
+      "id": "INK_WAND",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": null
+    },
+    {
+      "id": "EXPLOSIVE_BOW",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 1299999
+    },
+    {
+      "id": "HARVESTING_SWORD",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "COW_AXE",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "RABBIT_AXE",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "MAGMA_BOW",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 20000000
+    },
+    {
+      "id": "ASPECT_OF_THE_VOID",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DISTINCT_SIDE_FUNCTION"
+      ],
+      "price": 5589999
+    },
+    {
+      "id": "VOIDWALKER_KATANA",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 250000
+    },
+    {
+      "id": "RECLUSE_FANG",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 999000
+    },
+    {
+      "id": "SHAMAN_SWORD",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 900000
+    },
+    {
+      "id": "MIRRORED_BOW",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": null
+    },
+    {
+      "id": "TIME_KNIFE",
+      "requiredRejections": [
+        "PRICE_UNKNOWN"
+      ],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": null
+    },
+    {
+      "id": "END_STONE_SWORD",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 2000000
+    },
+    {
+      "id": "END_SWORD",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
+      ],
+      "price": 415000
+    },
+    {
+      "id": "END_STONE_BOW",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 179000
+    },
+    {
+      "id": "ENDER_BOW",
+      "requiredRejections": [],
+      "objectiveRejections": [
+        "NEW_COMBAT_MODE",
+        "NO_REPLACEMENT_COMPARABLE_OWNED_WEAPON",
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
+        "DIFFERENT_PRIMARY_DAMAGE_MODE"
+      ],
+      "price": 355555
+    }
+  ]
+}
