@@ -84,3 +84,28 @@ Exact saved result: data/recommendation-integration/live-result.json. This is a 
 Local follow-up adds bounded failure-stage and usage metadata when available, without retaining raw model prose, headers, or profile data. It does not weaken validation or change the provider request. A mocked regression verifies diagnostic retention and exclusion of rejected text.
 
 Next step: obtain explicit approval for another separately reserved live attempt, after fresh preview/hash verification. Do not overwrite live-result.json or retry automatically. The intended successful live recommendation remains incomplete.
+
+## Successful approved live integration
+
+The user separately approved exactly one additional paid attempt after the first failure. That attempt passed the same freshness and approval-hash gates and returned HTTP 200 / COMPLETE through the production POST handler and gpt-5.6-luna adapter. No automatic retry occurred, and no further model calls were made.
+
+Exact validated result: data/recommendation-integration/live-result-attempt-2.json.
+Approved input hash: 6ca70b9fef4d33e92e6c751d78b9ff90f8a92322fbedf8ded7ec6cb14e8e6963.
+Decision: CONSIDER Shadow Fury as a replacement for Livid Dagger.
+Snapshot acquisition estimate: 16,799,999 coins; observed 2026-09-19T10:00:43.689Z; HIGH confidence, MEDIAN_LOWEST_FIVE.
+Validated reasons:
+- Canonical DAMAGE: 210 to 300.
+- Canonical STRENGTH: 60 to 130.
+- Candidate-specific Shadow Fury teleport/root ability, up to five enemies within 12 blocks, 15-second cooldown, quoted from supplied mechanic evidence.
+
+The renderer also preserved CRITICAL_DAMAGE 50 to 30, unknown candidate ATTACK_SPEED and CRITICAL_CHANCE, all other compact comparisons, and the caveat that canonical base stats are not simulated DPS. This is a qualified recommendation, not an unconditional upgrade claim.
+
+Provider-reported usage for the successful request: 1,431 input tokens and 62 output tokens. At the previously verified standard rates, estimated cost is $0.0003606. The first failed request's usage remains unavailable; this is not a combined total.
+
+Offline verification reconstructed the selected ID and evidence references from the saved result and reproduced the entire recommendation exactly with renderWeaponRecommendation against the approved preview evidence. All factual explanation came from application evidence. No expected winner was added to tests.
+
+Session endpoint achieved: real natural-language request -> live profile/catalog/market -> deterministic shortlist -> exact approved payload -> one successful Luna response -> strict validation -> evidence-only rendering. Prior quality checks: 86 offline tests, TypeScript, targeted lint passed. The unrelated Google Fonts build limitation remains.
+
+Commits preceding this result: 27c8381 (scenario/conversation audit), 03ec978 (production preview/runner), c9e1e47 (first failed call and bounded diagnostics). This result is saved in the following checkpoint commit, "Record first validated live Luna weapon recommendation".
+
+Next development step: address existing documented production limits only when requested; preserve this successful response as an integration observation, never a hidden ranking rule. Any additional paid call requires explicit user authorization.
