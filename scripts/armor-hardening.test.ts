@@ -181,3 +181,18 @@ for(const reason of ["budget","ineligible","unknown requirement","missing lore",
  assert.ok(["NO_OPTIONS","NEEDS_KNOWLEDGE","NEEDS_CLARIFICATION"].includes(p.status));
  assert.equal(f.calls(),0);
 });
+
+test("Hypixel stat key casing cannot split the same Armor comparison into two unknowns",async()=>{
+ const {normalizeHypixelItem}=await import("../src/server/hypixel/resources/item-normalizer");
+ const f=armorFixture();
+ f.catalog.getById("NEW_CHESTPLATE")!.stats=normalizeHypixelItem({id:"SOURCE_CASE",name:"Source case",stats:{defense:30,health:100}}).stats;
+ const p=await f.run();assert.equal(p.status,"READY");
+ assert.deepEqual(p.modelPayload!.candidates[0].replaces[0].changes.DEFENSE,[100,30]);
+ assert.ok(!Object.hasOwn(p.modelPayload!.candidates[0].replaces[0].changes,"defense"));
+});
+test("conflicting source stat aliases fail ingestion rather than select an arbitrary value",async()=>{
+ const {normalizeHypixelItem}=await import("../src/server/hypixel/resources/item-normalizer");
+ assert.throws(()=>normalizeHypixelItem({id:"CONFLICT",name:"Conflict",stats:{defense:30,DEFENSE:100}}));
+ const item=normalizeHypixelItem({id:"SAME",name:"Same",stats:{defense:30,DEFENSE:30,novel_stat:5}});
+ assert.deepEqual(item.stats,{DEFENSE:30,NOVEL_STAT:5});
+});

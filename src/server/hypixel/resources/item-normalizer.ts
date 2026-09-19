@@ -656,6 +656,19 @@ function copyMetadata(
 /* Item                                                                       */
 /* -------------------------------------------------------------------------- */
 
+/** Resource records use mixed key casing. Normalize identity, never infer missing values. */
+function normalizeStats(stats: Record<string, number> = {}): Record<string, number> {
+  const normalized: Record<string, number> = {};
+  for (const [rawKey, value] of Object.entries(stats)) {
+    const key = rawKey.trim().toUpperCase();
+    if (!key || (Object.hasOwn(normalized, key) && normalized[key] !== value)) {
+      throw new Error("Conflicting or empty canonical stat identity.");
+    }
+    normalized[key] = value;
+  }
+  return normalized;
+}
+
 export function normalizeHypixelItem(
   item: HypixelSkyBlockItem,
 ): ItemDefinition {
@@ -681,7 +694,7 @@ export function normalizeHypixelItem(
         }
       : {}),
 
-    stats: item.stats ?? {},
+    stats: normalizeStats(item.stats),
 
     ...(typeof item.npc_sell_price ===
     "number"
