@@ -38,10 +38,6 @@ export async function runWeaponRecommendation(raw: unknown, dependencies: Recomm
   if (answer !== undefined && !noPreference && !capability) return {
     status: "NEEDS_CLARIFICATION", question: "Choose mobility, control, or no preference. Keep your original upgrade request.",
   };
-  if (capability) request.constraints = { ...request.constraints, capabilities: {
-    values: [...new Set([...(request.constraints?.capabilities?.values ?? []), capability])],
-    strength: "REQUIRED",
-  } };
   const { snapshot, catalog } = await dependencies.load(request.username, request.profileId);
   const ownedIds = new Set([...snapshot.equipment.weapons, ...snapshot.inventory.relevantItems].map(item => item.itemId));
   const ownedWeapons = [...ownedIds].flatMap(id => {
@@ -52,13 +48,29 @@ export async function runWeaponRecommendation(raw: unknown, dependencies: Recomm
   if (parsed.status !== "READY" || !parsed.intent) return {
     status: parsed.status, question: parsed.question, unresolved: parsed.unresolved,
   };
+  // Add the answer after parsing so it cannot erase capabilities in the original prose.
+  if (capability) parsed.intent.constraints.capabilities = {
+    values: [...new Set([...(parsed.intent.constraints.capabilities?.values ?? []), capability])],
+    strength: "REQUIRED",
+  };
   const plan = await dependencies.prepare(snapshot, catalog, parsed.intent);
   const broadPool = (plan.review.shortlist?.deferred.length ?? 0) > 0 || plan.question?.supportedInputs.includes("constraints.capabilities");
-  // An explicit uncertain answer skips this branch and keeps the default shortlist.
-  if (request.preferenceMode === "ASK" && answer === undefined && broadPool) return {
+  const optionIds = plan.review.shortlist
+    ? [...plan.review.shortlist.selectedIds, ...plan.review.shortlist.deferred.map(item => item.itemId)]
+    : plan.review.candidates.filter(item => item.disposition === "RETAINED").map(item => item.itemId);
+  const options = [...new Set(optionIds)].flatMap(id => {
+    const item = catalog.getById(id);
+    return item ? [item] : [];
+  });
+  const usefulChoices = (["MOBILITY", "CONTROL"] as const).filter(choice => {
+    const matches = options.filter(item => item.knowledge.capabilities.some(entry => entry.type === choice)).length;
+    return matches > 0 && matches < options.length;
+  }).map(choice => choice.toLowerCase());
+  // Ask only when a supported answer distinguishes candidates. Uncertainty skips this branch.
+  if (request.preferenceMode === "ASK" && answer === undefined && broadPool && usefulChoices.length) return {
     status: "OPTIONAL_PREFERENCE",
-    question: "Would mobility or control help your playstyle? You can say I don't know and I will use your current build.",
-    choices: ["mobility", "control", "I don't know"],
+    question: "Would one of these capabilities help your playstyle? You can say I don't know and I will use your current build.",
+    choices: [...usefulChoices, "I don't know"],
     defaultAvailable: true,
   };
   if (plan.status !== "READY") {
@@ -75,6 +87,9 @@ export async function runWeaponRecommendation(raw: unknown, dependencies: Recomm
   if (request.mode === "preview") return {
     status: "AWAITING_APPROVAL",
     inputHash: hash,
+    parsedIntent: parsed.intent,
+    baseline: prepared.evidence.baseline,
+    providerRequest: prepared.body,
     evidence: prepared.evidence,
     model: prepared.body.model,
     settings: { reasoningEffort: prepared.body.reasoning.effort, maxOutputTokens: prepared.body.max_output_tokens, retries: 0 },

@@ -155,9 +155,10 @@ test("failed paid requests preserve failure status on replay without another cal
 
 test("optional preference can be skipped with I do not know and uses default evidence",async()=>{
  const f=fixture(), original=f.dependencies.prepare;
+ f.catalog.getById("UPGRADE")!.knowledge.capabilities.push({type:"MOBILITY",source:"ABILITY",abilityName:"Fixture",evidence:["Fixture mobility"]});
  f.dependencies.prepare=async(...args)=>{
    const p=await original(...args);
-   p.review.shortlist={policy:"CURRENT_BUILD_KNOWN_GAINS_V1",applied:true,selectedIds:["UPGRADE"],deferred:[{itemId:"OTHER",reason:"Unresolved mechanics."}],explanation:"Default evidence policy."};
+   p.review.shortlist={policy:"CURRENT_BUILD_KNOWN_GAINS_V1",applied:true,selectedIds:["UPGRADE"],deferred:[{itemId:"WEAKER",reason:"Unresolved mechanics."}],explanation:"Default evidence policy."};
    return p;
  };
  assert.equal((await runWeaponRecommendation({...request,preferenceMode:"ASK"},f.dependencies)).status,"OPTIONAL_PREFERENCE");
