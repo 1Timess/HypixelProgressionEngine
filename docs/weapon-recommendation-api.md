@@ -68,3 +68,7 @@ Build checkpoint: TypeScript and targeted ESLint passed. The production build wa
 ## Optional preference/default-policy update
 
 See [weapon-shortlist-handoff.md](weapon-shortlist-handoff.md) for the newer default shortlist and conversation contract. Requests may include preferenceMode DEFAULT (default) or ASK, and preferenceAnswer such as "I don't know", "mobility", or "control" while retaining the original request. DEFAULT and an uncertain answer proceed without another preference question. An irreducibly oversized comparison returns NEEDS_KNOWLEDGE, not a mandatory preference loop. This supersedes the earlier broad-request clarification checkpoint above.
+
+## Real-profile integration checkpoint
+
+See [weapon-integration-handoff.md](weapon-integration-handoff.md) for the September 19 scenario matrix, production-route runner, exact preview and approval command. Preview responses now include parsedIntent, baseline, and providerRequest (the complete proposed body, with no authorization header). Capability answers supplement parsed constraints; optional questions only offer capabilities that distinguish evidenced candidates.

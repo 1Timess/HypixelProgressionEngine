@@ -28,3 +28,49 @@ Execution reserves the output file exclusively before invoking the route. An exi
 ## Remaining gates
 
 First live call requires passing final checks, refreshed market evidence, a READY preview for iTimess/Lemon, and explicit user approval. No permission to charge has been given. Key presence was checked without exposing its value. No permanent live-enable setting was changed.
+
+## Final pre-approval checkpoint
+
+Commits:
+- 27c8381 — scenario matrix, adversarial coverage, preference merging/question fixes, exact preview contract.
+- The following milestone, "Save real-profile production preview and approved execution runner", contains the runner, request/preview artifacts and this checkpoint.
+
+Validation: 85 offline tests passed; npm run typecheck passed; targeted ESLint passed. npm run build failed on the existing Geist and Geist Mono Google Fonts downloads (fonts.googleapis.com connection failure). Turbopack also warned about broad NEU file tracing and the outer workspace lockfile; these were warnings, not the build failure.
+
+Market sync completed through the existing bulk ingestion: snapshot ID 4, 42 pages, 41,147 auctions, 2,513 aggregates; source observation 2026-09-19T10:00:43.689Z. No per-item market requests were introduced.
+
+The real production POST path returned HTTP 200 / AWAITING_APPROVAL:
+- Request: "What should I upgrade my current Berserk weapon to for Dungeons with 20m?"
+- Player/profile: iTimess / Lemon; no synthetic profile mutations.
+- Baseline: inferred Livid Dagger.
+- Finalists: Aspect of the Dragons, Hyper Cleaver, Pigman Sword, Shadow Fury.
+- Evidence: 4,326 bytes.
+- Model: gpt-5.6-luna; reasoning none; max output 768; retries zero.
+- Conservative input bound including instructions/schema/framing: 6,620 tokens.
+- Hash: 6ca70b9fef4d33e92e6c751d78b9ff90f8a92322fbedf8ded7ec6cb14e8e6963.
+- Exact artifacts: data/recommendation-integration/request.json and preview.json. providerRequest in preview.json is the complete proposed OpenAI body.
+
+Official model documentation checked September 19: https://developers.openai.com/api/docs/models/gpt-5.6-luna — $0.20/M input and $1.20/M output. With the conservative input estimate and maximum output, estimated charge is $0.0022456 (about $0.0023, excluding any account-specific adjustments). No tokens have been purchased or sent to OpenAI by this session.
+
+### Exact next step, only after explicit approval
+
+From the inner hypixelprogressionengine application directory, PowerShell:
+
+```powershell
+$env:OPENAI_RECOMMENDATIONS_ENABLED = "true"
+try {
+  node --env-file=.env.local --import tsx scripts/weapon-recommendation-request.ts execute data/recommendation-integration/request.json data/recommendation-integration/live-result.json 6ca70b9fef4d33e92e6c751d78b9ff90f8a92322fbedf8ded7ec6cb14e8e6963
+} finally {
+  Remove-Item Env:OPENAI_RECOMMENDATIONS_ENABLED -ErrorAction SilentlyContinue
+}
+```
+
+The 15-minute freshness gate expires this snapshot at 2026-09-19T10:15:43.689Z. Expired or changed evidence must be refreshed and previewed again; do not reuse approval for changed model input. The runner revalidates the current evidence/hash and never executes a serialized preview directly. It reserves the result file before execution to prevent accidental command replay. If a reservation exists, inspect it and obtain approval for another attempt rather than deleting it automatically.
+
+After one approved real request, record the validated renderer output and usage from live-result.json. Do not assert any particular winner in regression tests.
+
+### Known limits
+
+The shortlist is an explicit default evidence policy, not proof of DPS superiority. Incomparable frontiers can exceed five and return a deterministic knowledge limitation when the byte gate cannot be met. Factual baseline gaps still require real evidence; optional uncertainty never invents facts. Conversation is stateless: clients retain the original request and submit structured baseline or preference answers with it. Optional questions remain deterministic; no unrestricted model-authored dialogue is introduced. HTTP replay protection is process-local; the local runner adds a durable attempt reservation. No frontend or other progression domain was changed.
+
+Real Luna call: **not performed**. Exact remaining gate: **explicit user approval of the prepared paid request**, with freshness revalidation if delayed.
