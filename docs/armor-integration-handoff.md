@@ -123,3 +123,11 @@ Added a closed Armor upgrade grammar and prepareArmorFromRequest. Supported requ
 User floor-completion claims are checked against the retrieved profile before preparing candidates. They never update normalized progression. Explicit single-piece/partial-build/full-build scope constrains comparisons; FULL_BUILD means a four-slot comparison package, not proven combat-set activation. Asking whether a full set or partial replacement makes sense retains both kinds of comparison.
 
 52 offline Armor tests, TypeScript and targeted lint pass. Initial grammar validation exposed unconsumed "make sense"; that bounded phrase is now recognized. Scope words were given a structured field rather than discarded. No provider execution was added.
+
+## Armor execution checkpoint (2026-09-19)
+
+Preserved and reviewed the working tree following 1310527. Armor now has a separate strict decision schema, evidence-reference validator, deterministic renderer, Luna adapter and private preview/approval HTTP route. Shared Responses transport and private HTTP replay handling were extracted from Weapons without changing its request, output or replay contract. Armor requires both OPENAI_RECOMMENDATIONS_ENABLED and ARMOR_RECOMMENDATIONS_ENABLED; preview needs no model call.
+
+The model can only select an exact proposal and cite up to three supplied stat/dependency references, or abstain. It cannot change package members, costs, slots or introduce free-form claims. The renderer preserves all piece changes, losses, effects and uncertainty. Approval hashes cover the exact provider body; HTTP replay additionally binds the parsed user request. Potentially paid failures are cached, preflight failures are recoverable. Caches and concurrency locks remain per-handler/process, not durable distributed spend controls.
+
+Baseline: 114 Weapons tests, 65 Armor tests and TypeScript pass. All model tests use mocked transport. No live Armor call. Expanded adversarial validation and real-profile preview remain required before a freeze decision.
