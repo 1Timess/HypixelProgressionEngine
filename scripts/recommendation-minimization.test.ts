@@ -216,3 +216,14 @@ test("weapons exposed only in the equipment collection are still excluded as own
   const {selected}=scenario([weapon("OWNED",100),weapon("A",200)],snapshot);
   assert.ok(!selected.candidates.some(candidate=>candidate.item.id==="OWNED"));
 });
+
+test("partial stat coverage is never labeled a base-stat improvement",()=>{
+ const candidate=weapon("PARTIAL",200);delete candidate.stats.DAMAGE;candidate.stats.STRENGTH=100;
+ const owned=weapon("OWNED",100);owned.stats.STRENGTH=20;
+ const result=scenario([owned,candidate]);
+ assert.equal(result.plan.modelPayload?.candidates[0].assessment,"INSUFFICIENT_COMPARISON");
+});
+test("confirmed baseline with missing mechanics still blocks recommendation",()=>{
+ const owned=weapon("OWNED",100);owned.knowledge.rawLore=[];
+ assert.equal(scenario([owned,weapon("UPGRADE",200)],player(),intent({currentWeapon:{itemId:"OWNED"}})).plan.status,"NEEDS_KNOWLEDGE");
+});
