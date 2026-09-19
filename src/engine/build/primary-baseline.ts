@@ -8,6 +8,7 @@ import { analyzeCandidateBuildEvidence } from "@/engine/relevance/build-alignmen
 import { analyzeWeaponFunctions } from "./weapon-function";
 import { analyzeWeaponSpecialization } from "./weapon-context";
 import { analyzeWeaponContextCompatibility } from "./weapon-compatibility";
+import { hasDistinctSideFunction } from "./weapon-primary-use";
 import { deriveWeaponCombatMode } from "./weapon-evidence";
 
 export interface BaselineChoice { itemId: string; name: string; instanceUuid?: string; }
@@ -43,19 +44,19 @@ export function resolvePrimaryBaseline(snapshot: PlayerSnapshot, catalog: ItemCa
     if (deriveWeaponCombatMode(item) === "UTILITY") return false;
     const alignment = analyzeCandidateBuildEvidence(item, build).classAlignment;
     if (intent.context === "dungeon" && alignment.relationship === "DIFFERENT_DAMAGE_MODE") return false;
-    const roles = analyzeWeaponFunctions(item).observations.map((entry) => entry.function);
-    const side = roles.some((role) => role === "TRAVERSAL" || role === "RECOVERY_SUPPORT");
-    const offense = roles.some((role) => role === "DIRECT_OFFENSE" || role === "OFFENSE_ENABLING" || role === "SELF_COMBAT_BUFF");
-    if (side && !offense) return false;
+    if (hasDistinctSideFunction(analyzeWeaponFunctions(item))) return false;
     const compatibility = analyzeWeaponContextCompatibility(analyzeWeaponSpecialization(item), intent.context);
     return !compatibility.restrictions.some((entry) => entry.relationship === "INCOMPATIBLE" && entry.restriction.scope === "WEAPON");
   });
-  // An unresolved inventory item might be the real baseline. Never ignore it.
-  if (classified.unresolved.length) return clarify("Which primary weapon are you replacing?", ["Some recovered items could not be resolved against the catalog."]);
+  // Unknown inventory categories are not proof of another damage weapon. Explicitly
+  // recovered unresolved weapons do block inference; other unknowns remain a caveat.
+  const unresolvedWeapon = classified.unresolved.some(entry => snapshot.equipment.weapons.some(weapon => weapon.itemId === entry.instance.itemId));
+  if (unresolvedWeapon) return clarify("Which primary weapon are you replacing?", ["A recovered weapon could not be resolved against the catalog."]);
   if (plausible.length === 1 && plausible[0].definition!.knowledge.rawLore.length > 0) {
     return { status: "RESOLVED", source: "INFERRED", item: plausible[0].definition!, instance: plausible[0].instance,
       reasons: ["Exactly one recovered weapon fits the requested combat context after side-function evidence is considered.",
-        "This identifies a comparison baseline, not proof that the item is currently equipped."] };
+        "This identifies a comparison baseline, not proof that the item is currently equipped.",
+        ...(classified.unresolved.length ? ["Unclassified inventory items remain unresolved; inference covers recovered catalog weapons only."] : [])] };
   }
   return clarify("Which weapon do you currently use as your primary damage weapon?", [
     plausible.length === 0 ? "Recovered weapons do not establish a primary-damage baseline for this context."

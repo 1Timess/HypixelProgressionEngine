@@ -16,6 +16,7 @@ export function getOwnedItemIds(
   const ownedItemIds = new Set<string>();
 
   const collections = [
+    snapshot.equipment.weapons,
     snapshot.equipment.armor,
     snapshot.equipment.equipment,
     snapshot.equipment.accessories.accessories,

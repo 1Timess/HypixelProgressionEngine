@@ -9,6 +9,15 @@ export interface WeaponPrimaryUseEvidence {
   reasons: string[];
 }
 
+/** Recovery triggered by ordinary attacks can coexist with primary weapon use. */
+export function hasDistinctSideFunction(functions: WeaponFunctionEvidence): boolean {
+  const observations = functions.observations;
+  const offense = observations.some(entry => ["DIRECT_OFFENSE", "OFFENSE_ENABLING", "SELF_COMBAT_BUFF"].includes(entry.function));
+  if (offense) return false;
+  const attackTriggered = observations.some(entry => /\b(?:when (?:you )?hit|on hit|per hit|when hitting|melee attacks?)\b/i.test(entry.evidence.join(" ")));
+  return !attackTriggered && observations.some(entry => entry.function === "TRAVERSAL" || entry.function === "RECOVERY_SUPPORT");
+}
+
 /** Relationship to replacing a primary damage weapon, not an item's universal role. */
 export function analyzeWeaponPrimaryUse(
   build: CandidateBuildEvidence,
@@ -22,7 +31,7 @@ export function analyzeWeaponPrimaryUse(
   const observed = new Set(functions.observations.map((entry) => entry.function));
   const offense = ["DIRECT_OFFENSE", "OFFENSE_ENABLING", "SELF_COMBAT_BUFF"] as const;
   const hasOffense = offense.some((role) => observed.has(role));
-  const hasSideFunction = observed.has("TRAVERSAL") || observed.has("RECOVERY_SUPPORT");
+  const hasSideFunction = hasDistinctSideFunction(functions);
   if (hasSideFunction && !hasOffense) {
     return { relationship: "DISTINCT_SIDE_FUNCTION", reasons: [
       "Recovered ability evidence identifies traversal or recovery/support without an observed offensive function.",

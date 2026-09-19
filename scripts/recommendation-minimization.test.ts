@@ -194,3 +194,25 @@ test("purse context is included only when a surviving mechanic depends on it",()
   const purse=scenario([weapon("OWNED",100),weapon("A",200,"Damage increases with coins in your purse.")]).plan.modelPayload!;
   assert.equal(purse.player.purseCoins,20_000_000);
 });
+
+test("on-hit healing does not turn a primary damage weapon into a side tool",()=>{
+  const owned=weapon("OWNED",100);
+  owned.knowledge.rawLore=["Ability: Love Tap","Heals you for 10 health when you hit an entity while in Dungeons!"];
+  owned.knowledge.abilities=parseNeuAbilities(owned.knowledge.rawLore);
+  owned.knowledge.capabilities=deriveItemCapabilities(owned);
+  const {plan}=scenario([owned,weapon("A",200)]);
+  assert.equal(plan.status,"READY");
+  assert.equal(plan.review.baseline.itemId,"OWNED");
+});
+test("unclassified general inventory items are not invented weapon competitors",()=>{
+  const snapshot=player();
+  snapshot.inventory.relevantItems.push({itemId:"UNKNOWN_INVENTORY",count:1});
+  const {plan}=scenario([weapon("OWNED",100),weapon("A",200)],snapshot);
+  assert.equal(plan.review.baseline.itemId,"OWNED");
+});
+test("weapons exposed only in the equipment collection are still excluded as owned",()=>{
+  const snapshot=player();
+  snapshot.inventory.relevantItems=[];
+  const {selected}=scenario([weapon("OWNED",100),weapon("A",200)],snapshot);
+  assert.ok(!selected.candidates.some(candidate=>candidate.item.id==="OWNED"));
+});
