@@ -4,11 +4,17 @@
   "preparation": {
     "status": "NEEDS_CLARIFICATION",
     "question": {
-      "text": "Which capability matters most, or what smaller acquisition budget should I use to narrow these distinct options?",
+      "text": "Do you want a specific capability, such as mobility or control, or should I narrow the acquisition budget?",
       "choices": [],
       "supportedInputs": [
         "constraints.capabilities",
         "constraints.budget"
+      ],
+      "capabilityOptions": [
+        {
+          "capability": "DEFENSE",
+          "remainingCandidates": 2
+        }
       ]
     },
     "modelPayload": null,
@@ -22,7 +28,7 @@
         "source": "EXPLICIT"
       },
       "counts": {
-        "generated": 154,
+        "generated": 153,
         "afterRequiredConstraints": 60,
         "afterExistingSelection": 12,
         "afterBaseline": 12,
@@ -129,8 +135,8 @@
         }
       ],
       "sizes": {
-        "fullSelectedObjectsBytes": 987671,
-        "proposedPayloadBytes": 9169,
+        "fullSelectedObjectsBytes": 1214631,
+        "proposedPayloadBytes": 9167,
         "modelPayloadBytes": 0,
         "maxPayloadBytes": 8192
       },
@@ -150,6 +156,7 @@
           "id": "STONE_BLADE",
           "name": "Adaptive Blade",
           "source": "EXPLICIT",
+          "combatMode": "MELEE_DAMAGE",
           "stats": {
             "DAMAGE": 170
           },
@@ -161,6 +168,10 @@
             4
           ]
         },
+        "player": {
+          "dungeonClass": "berserk",
+          "purseCoins": 100000000
+        },
         "mechanics": [
           "Gemstones: [☤]",
           "As a weapon created by Scarf, it automatically adapts to its user inside Dungeons.",
@@ -170,7 +181,6 @@
           "Gemstones: []",
           "Ability: Dragon Rage RIGHT CLICK All Monsters in front of you take 12,000 damage. Hit monsters take large knockback. Mana Cost: 100",
           "❣ Requires Combat Skill 18.",
-          "Crit Damage: +20%",
           "A powerful blade forged in the depths of the Blazing Volcano.",
           "Gain +100 Strength against enemies who are in lava.",
           "❣ Requires Combat Skill 22.",
@@ -182,16 +192,13 @@
           "Dungeon Healer Bonuses: - Increases healing from your Healing Circle by 10%. - Reduces the cooldown of your Wish Ultimate by 10 seconds.",
           "Right-click to use Class Ability!",
           "❣ Requires Catacombs Skill 20.",
-          "Crit Damage: +100%",
           "Ability: Cleave When hitting an entity, monsters in a 4 block range will be hit for a portion of that damage too.",
           "❣ Requires The Catacombs Floor III Completion.",
           "Gemstones: [⚔]",
           "Ability: Ragnarock RIGHT CLICK Begin a channel. After not taking damage for 3s, gain 1.5x this weapon's  Strength for 10s. Mana Cost: 500 Cooldown: 20s",
           "Ability: Cleave When hitting an entity, monsters in a 3 block range will be hit for a portion of that damage too.",
-          "Crit Damage: +50%",
           "Ability: Bad Health RIGHT CLICK Gain +5 Strength for every 5% of total HP you have for 5s. Capped at +100 Strength. Health Cost: 100 Cooldown: 5s",
           "Ability: Thwack RIGHT CLICK Throw the spear like an arrow which will return to you.",
-          "Crit Damage: +15%",
           "Deal +150% damage to Endermen. Receive 3% less damage from Endermen when held.",
           "Ability: Creeper Veil RIGHT CLICK Spawns a layered veil that negates damage for 10s, as follows:",
           "➤ Lose a layer on hit, consuming 30 Vitality and block up to 1,000 damage. ➤ The damage blocked scales with your Dungeon Stat Boost while in The Catacombs. ➤ When the damage exceeds a layer's limit, another layer is consumed, until all damage is accounted for. ➤ When you run out of  Vitality, consume all  Vitality and take slight knockback. ➤ You cannot attack or regenerate  Vitality while the veil is up.",
@@ -271,8 +278,7 @@
             "mechanics": [
               8,
               9,
-              10,
-              11
+              10
             ],
             "assessment": "BASE_STAT_IMPROVEMENT",
             "knowledge": "LORE_AVAILABLE",
@@ -298,9 +304,9 @@
               ]
             },
             "mechanics": [
+              11,
               12,
-              13,
-              14
+              13
             ],
             "assessment": "MECHANIC_TRADEOFF",
             "knowledge": "LORE_AVAILABLE",
@@ -330,7 +336,7 @@
               ]
             },
             "mechanics": [
-              15
+              14
             ],
             "assessment": "MECHANIC_TRADEOFF",
             "knowledge": "LORE_AVAILABLE",
@@ -367,10 +373,10 @@
               ]
             },
             "mechanics": [
+              15,
               16,
               17,
-              18,
-              19
+              18
             ],
             "assessment": "BASE_STAT_IMPROVEMENT",
             "knowledge": "LORE_AVAILABLE",
@@ -404,9 +410,8 @@
               ]
             },
             "mechanics": [
-              20,
-              21,
-              22
+              19,
+              20
             ],
             "assessment": "BASE_STAT_IMPROVEMENT",
             "knowledge": "LORE_AVAILABLE",
@@ -436,9 +441,9 @@
               ]
             },
             "mechanics": [
-              23,
-              24,
-              11
+              21,
+              22,
+              10
             ],
             "assessment": "BASE_STAT_IMPROVEMENT",
             "knowledge": "LORE_AVAILABLE",
@@ -472,8 +477,7 @@
               ]
             },
             "mechanics": [
-              8,
-              25
+              23
             ],
             "assessment": "MECHANIC_TRADEOFF",
             "knowledge": "LORE_AVAILABLE",
@@ -507,9 +511,8 @@
               ]
             },
             "mechanics": [
-              26,
-              27,
-              11
+              24,
+              10
             ],
             "assessment": "BASE_STAT_IMPROVEMENT",
             "knowledge": "LORE_AVAILABLE",
@@ -539,9 +542,9 @@
               ]
             },
             "mechanics": [
-              28
+              25
             ],
-            "assessment": "MECHANIC_TRADEOFF",
+            "assessment": "INSUFFICIENT_COMPARISON",
             "knowledge": "LORE_AVAILABLE",
             "dungeon": {
               "native": false,
@@ -573,8 +576,7 @@
               ]
             },
             "mechanics": [
-              29,
-              30
+              26
             ],
             "assessment": "MECHANIC_TRADEOFF",
             "knowledge": "LORE_AVAILABLE",
@@ -615,10 +617,10 @@
               ]
             },
             "mechanics": [
-              31,
-              32,
-              33,
-              34
+              27,
+              28,
+              29,
+              30
             ],
             "assessment": "BASE_STAT_IMPROVEMENT",
             "knowledge": "LORE_AVAILABLE",
@@ -883,9 +885,7 @@
       "requiredRejections": [
         "PRICE_UNKNOWN"
       ],
-      "objectiveRejections": [
-        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
-      ],
+      "objectiveRejections": [],
       "price": null
     },
     {
@@ -1714,14 +1714,6 @@
       "price": null
     },
     {
-      "id": "LIVID_DAGGER",
-      "requiredRejections": [
-        "OVER_BUDGET"
-      ],
-      "objectiveRejections": [],
-      "price": 6200000
-    },
-    {
       "id": "UNDEAD_SWORD",
       "requiredRejections": [
         "PRICE_UNKNOWN"
@@ -1735,8 +1727,7 @@
       "id": "ZOMBIE_SOLDIER_CUTLASS",
       "requiredRejections": [],
       "objectiveRejections": [
-        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
-        "DISTINCT_SIDE_FUNCTION"
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
       ],
       "price": 40000
     },

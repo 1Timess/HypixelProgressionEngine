@@ -4,11 +4,25 @@
   "preparation": {
     "status": "NEEDS_CLARIFICATION",
     "question": {
-      "text": "Which capability matters most, or what smaller acquisition budget should I use to narrow these distinct options?",
+      "text": "Do you want a specific capability, such as mobility or control, or should I narrow the acquisition budget?",
       "choices": [],
       "supportedInputs": [
         "constraints.capabilities",
         "constraints.budget"
+      ],
+      "capabilityOptions": [
+        {
+          "capability": "DEFENSE",
+          "remainingCandidates": 2
+        },
+        {
+          "capability": "MOBILITY",
+          "remainingCandidates": 1
+        },
+        {
+          "capability": "CONTROL",
+          "remainingCandidates": 1
+        }
       ]
     },
     "modelPayload": null,
@@ -22,11 +36,11 @@
         "source": "EXPLICIT"
       },
       "counts": {
-        "generated": 154,
-        "afterRequiredConstraints": 85,
-        "afterExistingSelection": 21,
-        "afterBaseline": 21,
-        "afterDominance": 21,
+        "generated": 153,
+        "afterRequiredConstraints": 84,
+        "afterExistingSelection": 20,
+        "afterBaseline": 20,
+        "afterDominance": 20,
         "modelEligibleCandidates": 0
       },
       "candidates": [
@@ -99,14 +113,6 @@
         },
         {
           "itemId": "HYPER_CLEAVER",
-          "disposition": "RETAINED",
-          "reasons": [
-            "Has higher shared base stats against the resolved primary baseline.",
-            "No remaining candidate proves an equivalent-mechanics, no-worse-stat, no-higher-cost replacement."
-          ]
-        },
-        {
-          "itemId": "LIVID_DAGGER",
           "disposition": "RETAINED",
           "reasons": [
             "Has higher shared base stats against the resolved primary baseline.",
@@ -203,8 +209,8 @@
         }
       ],
       "sizes": {
-        "fullSelectedObjectsBytes": 1723713,
-        "proposedPayloadBytes": 15256,
+        "fullSelectedObjectsBytes": 2015701,
+        "proposedPayloadBytes": 14440,
         "modelPayloadBytes": 0,
         "maxPayloadBytes": 8192
       },
@@ -224,6 +230,7 @@
           "id": "STONE_BLADE",
           "name": "Adaptive Blade",
           "source": "EXPLICIT",
+          "combatMode": "MELEE_DAMAGE",
           "stats": {
             "DAMAGE": 170
           },
@@ -235,6 +242,10 @@
             4
           ]
         },
+        "player": {
+          "dungeonClass": "berserk",
+          "purseCoins": 100000000
+        },
         "mechanics": [
           "Gemstones: [☤]",
           "As a weapon created by Scarf, it automatically adapts to its user inside Dungeons.",
@@ -244,7 +255,6 @@
           "Gemstones: []",
           "Ability: Dragon Rage RIGHT CLICK All Monsters in front of you take 12,000 damage. Hit monsters take large knockback. Mana Cost: 100",
           "❣ Requires Combat Skill 18.",
-          "Crit Damage: +20%",
           "A powerful blade forged in the depths of the Blazing Volcano.",
           "Gain +100 Strength against enemies who are in lava.",
           "❣ Requires Combat Skill 22.",
@@ -260,36 +270,26 @@
           "Dungeon Healer Bonuses: - Increases healing from your Healing Circle by 10%. - Reduces the cooldown of your Wish Ultimate by 10 seconds.",
           "Right-click to use Class Ability!",
           "❣ Requires Catacombs Skill 20.",
-          "Crit Damage: +25%",
           "Ability: Spooktacular Deal 100% more damage to  Spooky mobs during the Spooky Festival.",
-          "Crit Damage: +120%",
           "Ability: Cleave When hitting an entity, monsters in a 5 block range will be hit for a portion of that damage too.",
           "❣ Requires The Catacombs Floor VI Completion.",
-          "Crit Damage: +100%",
           "Ability: Cleave When hitting an entity, monsters in a 4 block range will be hit for a portion of that damage too.",
           "❣ Requires The Catacombs Floor III Completion.",
-          "Crit Chance: +100% Crit Damage: +50% Attack Speed: +50% Gemstones: []",
-          "Ability: Throw RIGHT CLICK Throw your dagger at your enemies! Mana Cost: 150 Cooldown: 5s",
-          "Your Critical Hits deal 100% more damage if you are behind your target.",
-          "❣ Requires The Catacombs Floor V Completion.",
           "Gemstones: [] [⚔]",
           "Ability: Greed The strength and damage bonus of this item is dependent on the price paid for it at the Dark Auction! The maximum bonus of this item is 120 if the bid was 50,000,000 Coins or higher!",
           "❣ Requires Combat Skill 20.",
           "Ability: Raise Souls RIGHT CLICK Monsters you kill using this item will drop their soul. You can click on their souls on the ground using this item to absorb them and then spawn them to fight by your side.",
           "Mana cost is based on the power of the monsters that you summon. Shift right-click to view and remove souls from this item. If your summoned monster dies the soul will be removed. Cooldown: 1s",
           "Max Souls: 2",
-          "Crit Chance: +5% Crit Damage: +30%",
           "Ability: Burning Souls RIGHT CLICK Gain +75 Defense for 5s and cast vortex of flames towards enemies, dealing up to 30,000 over 5 seconds. Mana Cost: 400 Cooldown: 5s",
           "Gemstones: [⚔]",
           "Ability: Ragnarock RIGHT CLICK Begin a channel. After not taking damage for 3s, gain 1.5x this weapon's  Strength for 10s. Mana Cost: 500 Cooldown: 20s",
-          "Crit Damage: +30% Gemstones: []",
           "Ability: Shadow Fury RIGHT CLICK Rapidly teleports you to up to 5 enemies within 12 blocks, rooting each of them and allowing you to hit them. Cooldown: 15s",
+          "❣ Requires The Catacombs Floor V Completion.",
           "Ability: Cleave When hitting an entity, monsters in a 3 block range will be hit for a portion of that damage too.",
-          "Crit Damage: +50%",
           "Ability: Bad Health RIGHT CLICK Gain +5 Strength for every 5% of total HP you have for 5s. Capped at +100 Strength. Health Cost: 100 Cooldown: 5s",
           "Deals 1.5x damage to  Mythological mobs and grants +5 Magic Find on them.",
           "Ability: Thwack RIGHT CLICK Throw the spear like an arrow which will return to you.",
-          "Crit Damage: +15%",
           "Deal +150% damage to Endermen. Receive 3% less damage from Endermen when held.",
           "Ability: Creeper Veil RIGHT CLICK Spawns a layered veil that negates damage for 10s, as follows:",
           "➤ Lose a layer on hit, consuming 30 Vitality and block up to 1,000 damage. ➤ The damage blocked scales with your Dungeon Stat Boost while in The Catacombs. ➤ When the damage exceeds a layer's limit, another layer is consumed, until all damage is accounted for. ➤ When you run out of  Vitality, consume all  Vitality and take slight knockback. ➤ You cannot attack or regenerate  Vitality while the veil is up.",
@@ -369,8 +369,7 @@
             "mechanics": [
               8,
               9,
-              10,
-              11
+              10
             ],
             "assessment": "BASE_STAT_IMPROVEMENT",
             "knowledge": "LORE_AVAILABLE",
@@ -404,10 +403,10 @@
               ]
             },
             "mechanics": [
+              11,
               12,
               13,
-              14,
-              15
+              14
             ],
             "assessment": "BASE_STAT_IMPROVEMENT",
             "knowledge": "LORE_AVAILABLE",
@@ -440,9 +439,9 @@
               ]
             },
             "mechanics": [
+              15,
               16,
-              17,
-              18
+              17
             ],
             "assessment": "MECHANIC_TRADEOFF",
             "knowledge": "LORE_AVAILABLE",
@@ -472,7 +471,7 @@
               ]
             },
             "mechanics": [
-              19
+              18
             ],
             "assessment": "MECHANIC_TRADEOFF",
             "knowledge": "LORE_AVAILABLE",
@@ -509,10 +508,10 @@
               ]
             },
             "mechanics": [
+              19,
               20,
               21,
-              22,
-              23
+              22
             ],
             "assessment": "BASE_STAT_IMPROVEMENT",
             "knowledge": "LORE_AVAILABLE",
@@ -546,8 +545,7 @@
               ]
             },
             "mechanics": [
-              24,
-              25
+              23
             ],
             "assessment": "MECHANIC_TRADEOFF",
             "knowledge": "LORE_AVAILABLE",
@@ -594,9 +592,8 @@
               ]
             },
             "mechanics": [
-              26,
-              27,
-              28
+              24,
+              25
             ],
             "assessment": "BASE_STAT_IMPROVEMENT",
             "knowledge": "LORE_AVAILABLE",
@@ -630,54 +627,8 @@
               ]
             },
             "mechanics": [
-              29,
-              30,
-              31
-            ],
-            "assessment": "BASE_STAT_IMPROVEMENT",
-            "knowledge": "LORE_AVAILABLE",
-            "dungeon": {
-              "native": true,
-              "conversion": null
-            },
-            "conditions": []
-          },
-          {
-            "id": "LIVID_DAGGER",
-            "name": "Livid Dagger",
-            "price": {
-              "coins": 6200000,
-              "confidence": "HIGH",
-              "basis": "MEDIAN_LOWEST_FIVE",
-              "observedAt": "2026-09-17T10:55:43.689Z"
-            },
-            "changes": {
-              "DAMAGE": [
-                170,
-                210
-              ],
-              "STRENGTH": [
-                null,
-                60
-              ],
-              "ATTACK_SPEED": [
-                null,
-                50
-              ],
-              "CRITICAL_DAMAGE": [
-                null,
-                50
-              ],
-              "CRITICAL_CHANCE": [
-                null,
-                100
-              ]
-            },
-            "mechanics": [
-              32,
-              33,
-              34,
-              35
+              26,
+              27
             ],
             "assessment": "BASE_STAT_IMPROVEMENT",
             "knowledge": "LORE_AVAILABLE",
@@ -698,9 +649,9 @@
             },
             "changes": {},
             "mechanics": [
-              36,
-              37,
-              38
+              28,
+              29,
+              30
             ],
             "assessment": "MECHANIC_TRADEOFF",
             "knowledge": "LORE_AVAILABLE",
@@ -737,10 +688,10 @@
               ]
             },
             "mechanics": [
-              39,
-              40,
-              41,
-              28
+              31,
+              32,
+              33,
+              25
             ],
             "assessment": "BASE_STAT_IMPROVEMENT",
             "knowledge": "LORE_AVAILABLE",
@@ -786,8 +737,7 @@
               ]
             },
             "mechanics": [
-              42,
-              43
+              34
             ],
             "assessment": "BASE_STAT_IMPROVEMENT",
             "knowledge": "LORE_AVAILABLE",
@@ -820,9 +770,9 @@
               ]
             },
             "mechanics": [
-              44,
-              45,
-              11
+              35,
+              36,
+              10
             ],
             "assessment": "BASE_STAT_IMPROVEMENT",
             "knowledge": "LORE_AVAILABLE",
@@ -860,9 +810,9 @@
               ]
             },
             "mechanics": [
-              46,
-              47,
-              35
+              5,
+              37,
+              38
             ],
             "assessment": "BASE_STAT_IMPROVEMENT",
             "knowledge": "LORE_AVAILABLE",
@@ -896,8 +846,7 @@
               ]
             },
             "mechanics": [
-              8,
-              48
+              39
             ],
             "assessment": "MECHANIC_TRADEOFF",
             "knowledge": "LORE_AVAILABLE",
@@ -931,9 +880,8 @@
               ]
             },
             "mechanics": [
-              49,
-              50,
-              11
+              40,
+              10
             ],
             "assessment": "BASE_STAT_IMPROVEMENT",
             "knowledge": "LORE_AVAILABLE",
@@ -963,8 +911,8 @@
               ]
             },
             "mechanics": [
-              44,
-              51
+              35,
+              41
             ],
             "assessment": "BASE_STAT_IMPROVEMENT",
             "knowledge": "LORE_AVAILABLE",
@@ -1001,9 +949,9 @@
               ]
             },
             "mechanics": [
-              52
+              42
             ],
-            "assessment": "MECHANIC_TRADEOFF",
+            "assessment": "INSUFFICIENT_COMPARISON",
             "knowledge": "LORE_AVAILABLE",
             "dungeon": {
               "native": false,
@@ -1035,8 +983,7 @@
               ]
             },
             "mechanics": [
-              53,
-              54
+              43
             ],
             "assessment": "MECHANIC_TRADEOFF",
             "knowledge": "LORE_AVAILABLE",
@@ -1077,10 +1024,10 @@
               ]
             },
             "mechanics": [
-              55,
-              56,
-              57,
-              58
+              44,
+              45,
+              46,
+              47
             ],
             "assessment": "BASE_STAT_IMPROVEMENT",
             "knowledge": "LORE_AVAILABLE",
@@ -1197,12 +1144,6 @@
       "requiredRejections": [],
       "objectiveRejections": [],
       "price": 111111
-    },
-    {
-      "id": "LIVID_DAGGER",
-      "requiredRejections": [],
-      "objectiveRejections": [],
-      "price": 6200000
     },
     {
       "id": "HYPER_CLEAVER",
@@ -1385,9 +1326,7 @@
       "requiredRejections": [
         "PRICE_UNKNOWN"
       ],
-      "objectiveRejections": [
-        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
-      ],
+      "objectiveRejections": [],
       "price": null
     },
     {
@@ -2165,8 +2104,7 @@
       "id": "ZOMBIE_SOLDIER_CUTLASS",
       "requiredRejections": [],
       "objectiveRejections": [
-        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
-        "DISTINCT_SIDE_FUNCTION"
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
       ],
       "price": 40000
     },

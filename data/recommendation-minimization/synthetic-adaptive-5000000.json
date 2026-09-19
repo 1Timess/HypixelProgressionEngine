@@ -1,132 +1,943 @@
 {
-  "scenario": "COUNTERFACTUAL_ADDED_PRIMARY",
+  "scenario": "COUNTERFACTUAL_ADDED_CONFIRMED_PRIMARY",
   "budget": 5000000,
   "preparation": {
-    "status": "NEEDS_CLARIFICATION",
-    "question": {
-      "text": "Which primary weapon are you replacing?",
-      "choices": [
-        {
-          "itemId": "STONE_BLADE",
-          "name": "Adaptive Blade",
-          "instanceUuid": "diagnostic-adaptive"
-        },
-        {
-          "itemId": "FLORID_ZOMBIE_SWORD",
-          "name": "Florid Zombie Sword",
-          "instanceUuid": "08dd0638-8ec1-479f-bf88-05911c2b7074"
-        },
-        {
-          "itemId": "ASPECT_OF_THE_END",
-          "name": "Aspect of the End",
-          "instanceUuid": "f1da676d-dbd9-4756-857e-6a51ff444419"
-        },
-        {
-          "itemId": "VENOMS_TOUCH",
-          "name": "Venom's Touch",
-          "instanceUuid": "7f4ac251-1e94-42ee-8892-f0873467ef6f"
+    "status": "READY",
+    "question": null,
+    "modelPayload": {
+      "version": 1,
+      "intent": {
+        "context": "dungeon",
+        "objective": "UPGRADE_CURRENT_BUILD",
+        "constraints": {
+          "budget": {
+            "maxCoins": 5000000,
+            "strength": "REQUIRED"
+          }
         }
-      ],
-      "supportedInputs": [
-        "currentWeapon.itemId",
-        "currentWeapon.instanceUuid"
-      ]
-    },
-    "modelPayload": null,
-    "review": {
+      },
       "baseline": {
-        "status": "NEEDS_CLARIFICATION",
-        "reasons": [
-          "Some recovered items could not be resolved against the catalog."
+        "id": "STONE_BLADE",
+        "name": "Adaptive Blade",
+        "source": "EXPLICIT",
+        "combatMode": "MELEE_DAMAGE",
+        "stats": {
+          "DAMAGE": 170
+        },
+        "mechanics": [
+          0,
+          1,
+          2,
+          3,
+          4
         ]
       },
+      "player": {
+        "dungeonClass": "berserk",
+        "purseCoins": 22185208.811250195
+      },
+      "mechanics": [
+        "Gemstones: [☤]",
+        "As a weapon created by Scarf, it automatically adapts to its user inside Dungeons.",
+        "Berserk: +10 Damage, +75 Strength, +10 Speed Healer: +10 Mending & tethered players and players within 10 blocks are healed for 33% of your Life Steal, Drain, and Vampirism healing. Mage: +100 Intelligence, +10 Damage & melee attacks restore 25% additional mana. Tank: +100 Defense, +5 Vitality, +5 True Defense Archer: Your melee attacks cause enemies to take 10% more damage from your arrows for 5 seconds.",
+        "Right-click to use your class ability!",
+        "❣ Requires The Catacombs Floor II Completion.",
+        "Gemstones: []",
+        "Ability: Dragon Rage RIGHT CLICK All Monsters in front of you take 12,000 damage. Hit monsters take large knockback. Mana Cost: 100",
+        "❣ Requires Combat Skill 18.",
+        "A powerful blade forged in the depths of the Blazing Volcano.",
+        "Gain +100 Strength against enemies who are in lava.",
+        "❣ Requires Combat Skill 22.",
+        "A powerful blade made from pure Emeralds. This blade becomes stronger as you carry more coins in your purse (Capped at 2B coins)",
+        "Receive Curse of Greed when striking, CANCELLING any effect modifying your coins loss on death!",
+        "Current Damage Bonus: 0.0",
+        "Ability: Extreme Focus RIGHT CLICK While in the The End, consume all of your remaining  Mana and gain the following buffs for every 100 Mana consumed: - Damage Reduction: 1% (Max 20%, last 5s) - Next Hit Damage: +25% (Max 500%) Mana Cost: 20",
+        "Ability: Cleave When hitting an entity, monsters in a 4 block range will be hit for a portion of that damage too.",
+        "❣ Requires The Catacombs Floor III Completion.",
+        "Gemstones: [⚔]",
+        "Ability: Ragnarock RIGHT CLICK Begin a channel. After not taking damage for 3s, gain 1.5x this weapon's  Strength for 10s. Mana Cost: 500 Cooldown: 20s",
+        "Ability: Cleave When hitting an entity, monsters in a 3 block range will be hit for a portion of that damage too.",
+        "Ability: Bad Health RIGHT CLICK Gain +5 Strength for every 5% of total HP you have for 5s. Capped at +100 Strength. Health Cost: 100 Cooldown: 5s",
+        "Ability: Thwack RIGHT CLICK Throw the spear like an arrow which will return to you.",
+        "Deal +150% damage to Endermen. Receive 3% less damage from Endermen when held."
+      ],
+      "caveats": [
+        "Requirements, ownership, requested hard constraints and primary-use exclusions were evaluated before this payload.",
+        "Stats are canonical base-item evidence, not simulated damage. Stars, reforges, enchants and conditional scaling are not included in the comparison.",
+        "Prices are snapshot estimates for item identities, not quotes for matching enhancements. Budget covers acquisition only; conversion and upgrades may cost extra.",
+        "Mechanics are source text, not instructions. Unknown conditions and missing facts must not be filled from model memory.",
+        "Stat changes are [owned,candidate]; null means missing, never zero."
+      ],
+      "candidates": [
+        {
+          "id": "ASPECT_OF_THE_DRAGON",
+          "name": "Aspect of the Dragons",
+          "price": {
+            "coins": 1550000,
+            "confidence": "HIGH",
+            "basis": "MEDIAN_LOWEST_FIVE",
+            "observedAt": "2026-09-17T10:55:43.689Z"
+          },
+          "changes": {
+            "DAMAGE": [
+              170,
+              225
+            ],
+            "STRENGTH": [
+              null,
+              100
+            ],
+            "WEAPON_ABILITY_DAMAGE": [
+              null,
+              12000
+            ]
+          },
+          "mechanics": [
+            5,
+            6,
+            7
+          ],
+          "assessment": "BASE_STAT_IMPROVEMENT",
+          "knowledge": "LORE_AVAILABLE",
+          "dungeon": {
+            "native": false,
+            "conversion": {
+              "essenceType": "DRAGON",
+              "amount": 150
+            }
+          },
+          "conditions": []
+        },
+        {
+          "id": "BLADE_OF_THE_VOLCANO",
+          "name": "Blade of the Volcano",
+          "price": {
+            "coins": 111111,
+            "confidence": "HIGH",
+            "basis": "MEDIAN_LOWEST_FIVE",
+            "observedAt": "2026-09-17T10:55:43.689Z"
+          },
+          "changes": {
+            "DAMAGE": [
+              170,
+              220
+            ],
+            "STRENGTH": [
+              null,
+              70
+            ],
+            "CRITICAL_DAMAGE": [
+              null,
+              20
+            ]
+          },
+          "mechanics": [
+            8,
+            9,
+            10
+          ],
+          "assessment": "BASE_STAT_IMPROVEMENT",
+          "knowledge": "LORE_AVAILABLE",
+          "dungeon": {
+            "native": false,
+            "conversion": null
+          },
+          "conditions": []
+        },
+        {
+          "id": "EMERALD_BLADE",
+          "name": "Emerald Blade",
+          "price": {
+            "coins": 700000,
+            "confidence": "HIGH",
+            "basis": "MEDIAN_LOWEST_FIVE",
+            "observedAt": "2026-09-17T10:55:43.689Z"
+          },
+          "changes": {
+            "DAMAGE": [
+              170,
+              130
+            ]
+          },
+          "mechanics": [
+            11,
+            12,
+            13
+          ],
+          "assessment": "MECHANIC_TRADEOFF",
+          "knowledge": "LORE_AVAILABLE",
+          "dungeon": {
+            "native": false,
+            "conversion": null
+          },
+          "conditions": []
+        },
+        {
+          "id": "END_STONE_SWORD",
+          "name": "End Stone Sword",
+          "price": {
+            "coins": 2000000,
+            "confidence": "HIGH",
+            "basis": "MEDIAN_LOWEST_FIVE",
+            "observedAt": "2026-09-17T10:55:43.689Z"
+          },
+          "changes": {
+            "DAMAGE": [
+              170,
+              120
+            ],
+            "STRENGTH": [
+              null,
+              80
+            ]
+          },
+          "mechanics": [
+            14
+          ],
+          "assessment": "MECHANIC_TRADEOFF",
+          "knowledge": "LORE_AVAILABLE",
+          "dungeon": {
+            "native": false,
+            "conversion": null
+          },
+          "conditions": [
+            {
+              "kind": "LOCATION_RESTRICTED",
+              "subject": "The End",
+              "scope": "EFFECT",
+              "compatibility": "INCOMPATIBLE"
+            }
+          ]
+        },
+        {
+          "id": "HYPER_CLEAVER",
+          "name": "Hyper Cleaver",
+          "price": {
+            "coins": 1700000,
+            "confidence": "HIGH",
+            "basis": "MEDIAN_LOWEST_FIVE",
+            "observedAt": "2026-09-17T10:55:43.689Z"
+          },
+          "changes": {
+            "DAMAGE": [
+              170,
+              175
+            ],
+            "STRENGTH": [
+              null,
+              100
+            ],
+            "CRITICAL_DAMAGE": [
+              null,
+              100
+            ]
+          },
+          "mechanics": [
+            15,
+            16
+          ],
+          "assessment": "BASE_STAT_IMPROVEMENT",
+          "knowledge": "LORE_AVAILABLE",
+          "dungeon": {
+            "native": true,
+            "conversion": null
+          },
+          "conditions": []
+        },
+        {
+          "id": "RAGNAROCK_AXE",
+          "name": "Ragnarock",
+          "price": {
+            "coins": 1470000,
+            "confidence": "HIGH",
+            "basis": "MEDIAN_LOWEST_FIVE",
+            "observedAt": "2026-09-17T10:55:43.689Z"
+          },
+          "changes": {
+            "DAMAGE": [
+              170,
+              200
+            ],
+            "STRENGTH": [
+              null,
+              100
+            ]
+          },
+          "mechanics": [
+            17,
+            18,
+            10
+          ],
+          "assessment": "BASE_STAT_IMPROVEMENT",
+          "knowledge": "LORE_AVAILABLE",
+          "dungeon": {
+            "native": false,
+            "conversion": null
+          },
+          "conditions": []
+        },
+        {
+          "id": "SUPER_CLEAVER",
+          "name": "Super Cleaver",
+          "price": {
+            "coins": 318000,
+            "confidence": "HIGH",
+            "basis": "MEDIAN_LOWEST_FIVE",
+            "observedAt": "2026-09-17T10:55:43.689Z"
+          },
+          "changes": {
+            "DAMAGE": [
+              170,
+              105
+            ],
+            "STRENGTH": [
+              null,
+              20
+            ],
+            "CRITICAL_DAMAGE": [
+              null,
+              20
+            ]
+          },
+          "mechanics": [
+            19
+          ],
+          "assessment": "MECHANIC_TRADEOFF",
+          "knowledge": "LORE_AVAILABLE",
+          "dungeon": {
+            "native": true,
+            "conversion": null
+          },
+          "conditions": []
+        },
+        {
+          "id": "SWORD_OF_BAD_HEALTH",
+          "name": "Sword of Bad Health",
+          "price": {
+            "coins": 676767,
+            "confidence": "HIGH",
+            "basis": "MEDIAN_LOWEST_FIVE",
+            "observedAt": "2026-09-17T10:55:43.689Z"
+          },
+          "changes": {
+            "DAMAGE": [
+              170,
+              200
+            ],
+            "STRENGTH": [
+              null,
+              50
+            ],
+            "CRITICAL_DAMAGE": [
+              null,
+              50
+            ]
+          },
+          "mechanics": [
+            20,
+            10
+          ],
+          "assessment": "BASE_STAT_IMPROVEMENT",
+          "knowledge": "LORE_AVAILABLE",
+          "dungeon": {
+            "native": false,
+            "conversion": null
+          },
+          "conditions": []
+        },
+        {
+          "id": "TRIBAL_SPEAR",
+          "name": "Tribal Spear",
+          "price": {
+            "coins": 1000000,
+            "confidence": "HIGH",
+            "basis": "MEDIAN_LOWEST_FIVE",
+            "observedAt": "2026-09-17T10:55:43.689Z"
+          },
+          "changes": {
+            "DAMAGE": [
+              170,
+              null
+            ],
+            "STRENGTH": [
+              null,
+              100
+            ]
+          },
+          "mechanics": [
+            21
+          ],
+          "assessment": "INSUFFICIENT_COMPARISON",
+          "knowledge": "LORE_AVAILABLE",
+          "dungeon": {
+            "native": false,
+            "conversion": null
+          },
+          "conditions": []
+        },
+        {
+          "id": "VOIDWALKER_KATANA",
+          "name": "Voidwalker Katana",
+          "price": {
+            "coins": 250000,
+            "confidence": "HIGH",
+            "basis": "MEDIAN_LOWEST_FIVE",
+            "observedAt": "2026-09-17T10:55:43.689Z"
+          },
+          "changes": {
+            "DAMAGE": [
+              170,
+              105
+            ],
+            "STRENGTH": [
+              null,
+              40
+            ],
+            "CRITICAL_DAMAGE": [
+              null,
+              15
+            ]
+          },
+          "mechanics": [
+            22
+          ],
+          "assessment": "MECHANIC_TRADEOFF",
+          "knowledge": "LORE_AVAILABLE",
+          "dungeon": {
+            "native": false,
+            "conversion": null
+          },
+          "conditions": [
+            {
+              "kind": "TARGET_RESTRICTED",
+              "subject": "Endermen",
+              "scope": "EFFECT",
+              "compatibility": "NOT_DETERMINABLE"
+            }
+          ]
+        }
+      ]
+    },
+    "review": {
+      "baseline": {
+        "status": "RESOLVED",
+        "reasons": [
+          "The player explicitly identified a recovered owned weapon."
+        ],
+        "itemId": "STONE_BLADE",
+        "source": "EXPLICIT"
+      },
       "counts": {
-        "generated": 130,
+        "generated": 129,
         "afterRequiredConstraints": 55,
         "afterExistingSelection": 10,
-        "afterBaseline": 0,
-        "afterDominance": 0,
-        "modelEligibleCandidates": 0
+        "afterBaseline": 10,
+        "afterDominance": 10,
+        "modelEligibleCandidates": 10
       },
       "candidates": [
         {
           "itemId": "ASPECT_OF_THE_DRAGON",
-          "disposition": "BASELINE_NOT_RESOLVED",
+          "disposition": "RETAINED",
           "reasons": [
-            "Cannot establish an upgrade against the current primary weapon."
-          ]
-        },
-        {
-          "itemId": "RAGNAROCK_AXE",
-          "disposition": "BASELINE_NOT_RESOLVED",
-          "reasons": [
-            "Cannot establish an upgrade against the current primary weapon."
-          ]
-        },
-        {
-          "itemId": "TRIBAL_SPEAR",
-          "disposition": "BASELINE_NOT_RESOLVED",
-          "reasons": [
-            "Cannot establish an upgrade against the current primary weapon."
-          ]
-        },
-        {
-          "itemId": "SUPER_CLEAVER",
-          "disposition": "BASELINE_NOT_RESOLVED",
-          "reasons": [
-            "Cannot establish an upgrade against the current primary weapon."
-          ]
-        },
-        {
-          "itemId": "EMERALD_BLADE",
-          "disposition": "BASELINE_NOT_RESOLVED",
-          "reasons": [
-            "Cannot establish an upgrade against the current primary weapon."
-          ]
-        },
-        {
-          "itemId": "SWORD_OF_BAD_HEALTH",
-          "disposition": "BASELINE_NOT_RESOLVED",
-          "reasons": [
-            "Cannot establish an upgrade against the current primary weapon."
+            "Has higher shared base stats against the resolved primary baseline.",
+            "No remaining candidate proves an equivalent-mechanics, no-worse-stat, no-higher-cost replacement."
           ]
         },
         {
           "itemId": "BLADE_OF_THE_VOLCANO",
-          "disposition": "BASELINE_NOT_RESOLVED",
+          "disposition": "RETAINED",
           "reasons": [
-            "Cannot establish an upgrade against the current primary weapon."
+            "Has higher shared base stats against the resolved primary baseline.",
+            "No remaining candidate proves an equivalent-mechanics, no-worse-stat, no-higher-cost replacement."
           ]
         },
         {
-          "itemId": "HYPER_CLEAVER",
-          "disposition": "BASELINE_NOT_RESOLVED",
+          "itemId": "EMERALD_BLADE",
+          "disposition": "RETAINED",
           "reasons": [
-            "Cannot establish an upgrade against the current primary weapon."
-          ]
-        },
-        {
-          "itemId": "VOIDWALKER_KATANA",
-          "disposition": "BASELINE_NOT_RESOLVED",
-          "reasons": [
-            "Cannot establish an upgrade against the current primary weapon."
+            "Has lower shared base stats; preserve the tradeoff.",
+            "No remaining candidate proves an equivalent-mechanics, no-worse-stat, no-higher-cost replacement."
           ]
         },
         {
           "itemId": "END_STONE_SWORD",
-          "disposition": "BASELINE_NOT_RESOLVED",
+          "disposition": "RETAINED",
           "reasons": [
-            "Cannot establish an upgrade against the current primary weapon."
+            "Has lower shared base stats; preserve the tradeoff.",
+            "Unresolved or conditional effects must remain explicit.",
+            "No remaining candidate proves an equivalent-mechanics, no-worse-stat, no-higher-cost replacement."
+          ]
+        },
+        {
+          "itemId": "HYPER_CLEAVER",
+          "disposition": "RETAINED",
+          "reasons": [
+            "Has higher shared base stats against the resolved primary baseline.",
+            "No remaining candidate proves an equivalent-mechanics, no-worse-stat, no-higher-cost replacement."
+          ]
+        },
+        {
+          "itemId": "RAGNAROCK_AXE",
+          "disposition": "RETAINED",
+          "reasons": [
+            "Has higher shared base stats against the resolved primary baseline.",
+            "No remaining candidate proves an equivalent-mechanics, no-worse-stat, no-higher-cost replacement."
+          ]
+        },
+        {
+          "itemId": "SUPER_CLEAVER",
+          "disposition": "RETAINED",
+          "reasons": [
+            "Has lower shared base stats; preserve the tradeoff.",
+            "No remaining candidate proves an equivalent-mechanics, no-worse-stat, no-higher-cost replacement."
+          ]
+        },
+        {
+          "itemId": "SWORD_OF_BAD_HEALTH",
+          "disposition": "RETAINED",
+          "reasons": [
+            "Has higher shared base stats against the resolved primary baseline.",
+            "No remaining candidate proves an equivalent-mechanics, no-worse-stat, no-higher-cost replacement."
+          ]
+        },
+        {
+          "itemId": "TRIBAL_SPEAR",
+          "disposition": "RETAINED",
+          "reasons": [
+            "No remaining candidate proves an equivalent-mechanics, no-worse-stat, no-higher-cost replacement."
+          ]
+        },
+        {
+          "itemId": "VOIDWALKER_KATANA",
+          "disposition": "RETAINED",
+          "reasons": [
+            "Has lower shared base stats; preserve the tradeoff.",
+            "Unresolved or conditional effects must remain explicit.",
+            "No remaining candidate proves an equivalent-mechanics, no-worse-stat, no-higher-cost replacement."
           ]
         }
       ],
       "sizes": {
-        "fullSelectedObjectsBytes": 803468,
-        "proposedPayloadBytes": 0,
-        "modelPayloadBytes": 0,
+        "fullSelectedObjectsBytes": 989374,
+        "proposedPayloadBytes": 7315,
+        "modelPayloadBytes": 7315,
         "maxPayloadBytes": 8192
       },
-      "proposedPayload": null
+      "proposedPayload": {
+        "version": 1,
+        "intent": {
+          "context": "dungeon",
+          "objective": "UPGRADE_CURRENT_BUILD",
+          "constraints": {
+            "budget": {
+              "maxCoins": 5000000,
+              "strength": "REQUIRED"
+            }
+          }
+        },
+        "baseline": {
+          "id": "STONE_BLADE",
+          "name": "Adaptive Blade",
+          "source": "EXPLICIT",
+          "combatMode": "MELEE_DAMAGE",
+          "stats": {
+            "DAMAGE": 170
+          },
+          "mechanics": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "player": {
+          "dungeonClass": "berserk",
+          "purseCoins": 22185208.811250195
+        },
+        "mechanics": [
+          "Gemstones: [☤]",
+          "As a weapon created by Scarf, it automatically adapts to its user inside Dungeons.",
+          "Berserk: +10 Damage, +75 Strength, +10 Speed Healer: +10 Mending & tethered players and players within 10 blocks are healed for 33% of your Life Steal, Drain, and Vampirism healing. Mage: +100 Intelligence, +10 Damage & melee attacks restore 25% additional mana. Tank: +100 Defense, +5 Vitality, +5 True Defense Archer: Your melee attacks cause enemies to take 10% more damage from your arrows for 5 seconds.",
+          "Right-click to use your class ability!",
+          "❣ Requires The Catacombs Floor II Completion.",
+          "Gemstones: []",
+          "Ability: Dragon Rage RIGHT CLICK All Monsters in front of you take 12,000 damage. Hit monsters take large knockback. Mana Cost: 100",
+          "❣ Requires Combat Skill 18.",
+          "A powerful blade forged in the depths of the Blazing Volcano.",
+          "Gain +100 Strength against enemies who are in lava.",
+          "❣ Requires Combat Skill 22.",
+          "A powerful blade made from pure Emeralds. This blade becomes stronger as you carry more coins in your purse (Capped at 2B coins)",
+          "Receive Curse of Greed when striking, CANCELLING any effect modifying your coins loss on death!",
+          "Current Damage Bonus: 0.0",
+          "Ability: Extreme Focus RIGHT CLICK While in the The End, consume all of your remaining  Mana and gain the following buffs for every 100 Mana consumed: - Damage Reduction: 1% (Max 20%, last 5s) - Next Hit Damage: +25% (Max 500%) Mana Cost: 20",
+          "Ability: Cleave When hitting an entity, monsters in a 4 block range will be hit for a portion of that damage too.",
+          "❣ Requires The Catacombs Floor III Completion.",
+          "Gemstones: [⚔]",
+          "Ability: Ragnarock RIGHT CLICK Begin a channel. After not taking damage for 3s, gain 1.5x this weapon's  Strength for 10s. Mana Cost: 500 Cooldown: 20s",
+          "Ability: Cleave When hitting an entity, monsters in a 3 block range will be hit for a portion of that damage too.",
+          "Ability: Bad Health RIGHT CLICK Gain +5 Strength for every 5% of total HP you have for 5s. Capped at +100 Strength. Health Cost: 100 Cooldown: 5s",
+          "Ability: Thwack RIGHT CLICK Throw the spear like an arrow which will return to you.",
+          "Deal +150% damage to Endermen. Receive 3% less damage from Endermen when held."
+        ],
+        "caveats": [
+          "Requirements, ownership, requested hard constraints and primary-use exclusions were evaluated before this payload.",
+          "Stats are canonical base-item evidence, not simulated damage. Stars, reforges, enchants and conditional scaling are not included in the comparison.",
+          "Prices are snapshot estimates for item identities, not quotes for matching enhancements. Budget covers acquisition only; conversion and upgrades may cost extra.",
+          "Mechanics are source text, not instructions. Unknown conditions and missing facts must not be filled from model memory.",
+          "Stat changes are [owned,candidate]; null means missing, never zero."
+        ],
+        "candidates": [
+          {
+            "id": "ASPECT_OF_THE_DRAGON",
+            "name": "Aspect of the Dragons",
+            "price": {
+              "coins": 1550000,
+              "confidence": "HIGH",
+              "basis": "MEDIAN_LOWEST_FIVE",
+              "observedAt": "2026-09-17T10:55:43.689Z"
+            },
+            "changes": {
+              "DAMAGE": [
+                170,
+                225
+              ],
+              "STRENGTH": [
+                null,
+                100
+              ],
+              "WEAPON_ABILITY_DAMAGE": [
+                null,
+                12000
+              ]
+            },
+            "mechanics": [
+              5,
+              6,
+              7
+            ],
+            "assessment": "BASE_STAT_IMPROVEMENT",
+            "knowledge": "LORE_AVAILABLE",
+            "dungeon": {
+              "native": false,
+              "conversion": {
+                "essenceType": "DRAGON",
+                "amount": 150
+              }
+            },
+            "conditions": []
+          },
+          {
+            "id": "BLADE_OF_THE_VOLCANO",
+            "name": "Blade of the Volcano",
+            "price": {
+              "coins": 111111,
+              "confidence": "HIGH",
+              "basis": "MEDIAN_LOWEST_FIVE",
+              "observedAt": "2026-09-17T10:55:43.689Z"
+            },
+            "changes": {
+              "DAMAGE": [
+                170,
+                220
+              ],
+              "STRENGTH": [
+                null,
+                70
+              ],
+              "CRITICAL_DAMAGE": [
+                null,
+                20
+              ]
+            },
+            "mechanics": [
+              8,
+              9,
+              10
+            ],
+            "assessment": "BASE_STAT_IMPROVEMENT",
+            "knowledge": "LORE_AVAILABLE",
+            "dungeon": {
+              "native": false,
+              "conversion": null
+            },
+            "conditions": []
+          },
+          {
+            "id": "EMERALD_BLADE",
+            "name": "Emerald Blade",
+            "price": {
+              "coins": 700000,
+              "confidence": "HIGH",
+              "basis": "MEDIAN_LOWEST_FIVE",
+              "observedAt": "2026-09-17T10:55:43.689Z"
+            },
+            "changes": {
+              "DAMAGE": [
+                170,
+                130
+              ]
+            },
+            "mechanics": [
+              11,
+              12,
+              13
+            ],
+            "assessment": "MECHANIC_TRADEOFF",
+            "knowledge": "LORE_AVAILABLE",
+            "dungeon": {
+              "native": false,
+              "conversion": null
+            },
+            "conditions": []
+          },
+          {
+            "id": "END_STONE_SWORD",
+            "name": "End Stone Sword",
+            "price": {
+              "coins": 2000000,
+              "confidence": "HIGH",
+              "basis": "MEDIAN_LOWEST_FIVE",
+              "observedAt": "2026-09-17T10:55:43.689Z"
+            },
+            "changes": {
+              "DAMAGE": [
+                170,
+                120
+              ],
+              "STRENGTH": [
+                null,
+                80
+              ]
+            },
+            "mechanics": [
+              14
+            ],
+            "assessment": "MECHANIC_TRADEOFF",
+            "knowledge": "LORE_AVAILABLE",
+            "dungeon": {
+              "native": false,
+              "conversion": null
+            },
+            "conditions": [
+              {
+                "kind": "LOCATION_RESTRICTED",
+                "subject": "The End",
+                "scope": "EFFECT",
+                "compatibility": "INCOMPATIBLE"
+              }
+            ]
+          },
+          {
+            "id": "HYPER_CLEAVER",
+            "name": "Hyper Cleaver",
+            "price": {
+              "coins": 1700000,
+              "confidence": "HIGH",
+              "basis": "MEDIAN_LOWEST_FIVE",
+              "observedAt": "2026-09-17T10:55:43.689Z"
+            },
+            "changes": {
+              "DAMAGE": [
+                170,
+                175
+              ],
+              "STRENGTH": [
+                null,
+                100
+              ],
+              "CRITICAL_DAMAGE": [
+                null,
+                100
+              ]
+            },
+            "mechanics": [
+              15,
+              16
+            ],
+            "assessment": "BASE_STAT_IMPROVEMENT",
+            "knowledge": "LORE_AVAILABLE",
+            "dungeon": {
+              "native": true,
+              "conversion": null
+            },
+            "conditions": []
+          },
+          {
+            "id": "RAGNAROCK_AXE",
+            "name": "Ragnarock",
+            "price": {
+              "coins": 1470000,
+              "confidence": "HIGH",
+              "basis": "MEDIAN_LOWEST_FIVE",
+              "observedAt": "2026-09-17T10:55:43.689Z"
+            },
+            "changes": {
+              "DAMAGE": [
+                170,
+                200
+              ],
+              "STRENGTH": [
+                null,
+                100
+              ]
+            },
+            "mechanics": [
+              17,
+              18,
+              10
+            ],
+            "assessment": "BASE_STAT_IMPROVEMENT",
+            "knowledge": "LORE_AVAILABLE",
+            "dungeon": {
+              "native": false,
+              "conversion": null
+            },
+            "conditions": []
+          },
+          {
+            "id": "SUPER_CLEAVER",
+            "name": "Super Cleaver",
+            "price": {
+              "coins": 318000,
+              "confidence": "HIGH",
+              "basis": "MEDIAN_LOWEST_FIVE",
+              "observedAt": "2026-09-17T10:55:43.689Z"
+            },
+            "changes": {
+              "DAMAGE": [
+                170,
+                105
+              ],
+              "STRENGTH": [
+                null,
+                20
+              ],
+              "CRITICAL_DAMAGE": [
+                null,
+                20
+              ]
+            },
+            "mechanics": [
+              19
+            ],
+            "assessment": "MECHANIC_TRADEOFF",
+            "knowledge": "LORE_AVAILABLE",
+            "dungeon": {
+              "native": true,
+              "conversion": null
+            },
+            "conditions": []
+          },
+          {
+            "id": "SWORD_OF_BAD_HEALTH",
+            "name": "Sword of Bad Health",
+            "price": {
+              "coins": 676767,
+              "confidence": "HIGH",
+              "basis": "MEDIAN_LOWEST_FIVE",
+              "observedAt": "2026-09-17T10:55:43.689Z"
+            },
+            "changes": {
+              "DAMAGE": [
+                170,
+                200
+              ],
+              "STRENGTH": [
+                null,
+                50
+              ],
+              "CRITICAL_DAMAGE": [
+                null,
+                50
+              ]
+            },
+            "mechanics": [
+              20,
+              10
+            ],
+            "assessment": "BASE_STAT_IMPROVEMENT",
+            "knowledge": "LORE_AVAILABLE",
+            "dungeon": {
+              "native": false,
+              "conversion": null
+            },
+            "conditions": []
+          },
+          {
+            "id": "TRIBAL_SPEAR",
+            "name": "Tribal Spear",
+            "price": {
+              "coins": 1000000,
+              "confidence": "HIGH",
+              "basis": "MEDIAN_LOWEST_FIVE",
+              "observedAt": "2026-09-17T10:55:43.689Z"
+            },
+            "changes": {
+              "DAMAGE": [
+                170,
+                null
+              ],
+              "STRENGTH": [
+                null,
+                100
+              ]
+            },
+            "mechanics": [
+              21
+            ],
+            "assessment": "INSUFFICIENT_COMPARISON",
+            "knowledge": "LORE_AVAILABLE",
+            "dungeon": {
+              "native": false,
+              "conversion": null
+            },
+            "conditions": []
+          },
+          {
+            "id": "VOIDWALKER_KATANA",
+            "name": "Voidwalker Katana",
+            "price": {
+              "coins": 250000,
+              "confidence": "HIGH",
+              "basis": "MEDIAN_LOWEST_FIVE",
+              "observedAt": "2026-09-17T10:55:43.689Z"
+            },
+            "changes": {
+              "DAMAGE": [
+                170,
+                105
+              ],
+              "STRENGTH": [
+                null,
+                40
+              ],
+              "CRITICAL_DAMAGE": [
+                null,
+                15
+              ]
+            },
+            "mechanics": [
+              22
+            ],
+            "assessment": "MECHANIC_TRADEOFF",
+            "knowledge": "LORE_AVAILABLE",
+            "dungeon": {
+              "native": false,
+              "conversion": null
+            },
+            "conditions": [
+              {
+                "kind": "TARGET_RESTRICTED",
+                "subject": "Endermen",
+                "scope": "EFFECT",
+                "compatibility": "NOT_DETERMINABLE"
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   "selectionAudit": [
@@ -327,9 +1138,7 @@
       "requiredRejections": [
         "PRICE_UNKNOWN"
       ],
-      "objectiveRejections": [
-        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
-      ],
+      "objectiveRejections": [],
       "price": null
     },
     {
@@ -1031,14 +1840,6 @@
       "price": null
     },
     {
-      "id": "LIVID_DAGGER",
-      "requiredRejections": [
-        "OVER_BUDGET"
-      ],
-      "objectiveRejections": [],
-      "price": 6200000
-    },
-    {
       "id": "UNDEAD_SWORD",
       "requiredRejections": [
         "PRICE_UNKNOWN"
@@ -1052,8 +1853,7 @@
       "id": "ZOMBIE_SOLDIER_CUTLASS",
       "requiredRejections": [],
       "objectiveRejections": [
-        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
-        "DISTINCT_SIDE_FUNCTION"
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
       ],
       "price": 40000
     },

@@ -20,6 +20,7 @@
         "id": "STONE_BLADE",
         "name": "Adaptive Blade",
         "source": "EXPLICIT",
+        "combatMode": "MELEE_DAMAGE",
         "stats": {
           "DAMAGE": 170
         },
@@ -31,13 +32,16 @@
           4
         ]
       },
+      "player": {
+        "dungeonClass": "berserk",
+        "purseCoins": 100000000
+      },
       "mechanics": [
         "Gemstones: [☤]",
         "As a weapon created by Scarf, it automatically adapts to its user inside Dungeons.",
         "Berserk: +10 Damage, +75 Strength, +10 Speed Healer: +10 Mending & tethered players and players within 10 blocks are healed for 33% of your Life Steal, Drain, and Vampirism healing. Mage: +100 Intelligence, +10 Damage & melee attacks restore 25% additional mana. Tank: +100 Defense, +5 Vitality, +5 True Defense Archer: Your melee attacks cause enemies to take 10% more damage from your arrows for 5 seconds.",
         "Right-click to use your class ability!",
         "❣ Requires The Catacombs Floor II Completion.",
-        "Crit Damage: +20%",
         "A powerful blade forged in the depths of the Blazing Volcano.",
         "Gain +100 Strength against enemies who are in lava.",
         "❣ Requires Combat Skill 22.",
@@ -49,10 +53,8 @@
         "Right-click to use Class Ability!",
         "❣ Requires Catacombs Skill 20.",
         "Ability: Cleave When hitting an entity, monsters in a 3 block range will be hit for a portion of that damage too.",
-        "Crit Damage: +50%",
         "Ability: Bad Health RIGHT CLICK Gain +5 Strength for every 5% of total HP you have for 5s. Capped at +100 Strength. Health Cost: 100 Cooldown: 5s",
         "Ability: Thwack RIGHT CLICK Throw the spear like an arrow which will return to you.",
-        "Crit Damage: +15%",
         "Deal +150% damage to Endermen. Receive 3% less damage from Endermen when held."
       ],
       "caveats": [
@@ -89,8 +91,7 @@
           "mechanics": [
             5,
             6,
-            7,
-            8
+            7
           ],
           "assessment": "BASE_STAT_IMPROVEMENT",
           "knowledge": "LORE_AVAILABLE",
@@ -116,9 +117,9 @@
             ]
           },
           "mechanics": [
+            8,
             9,
-            10,
-            11
+            10
           ],
           "assessment": "MECHANIC_TRADEOFF",
           "knowledge": "LORE_AVAILABLE",
@@ -148,10 +149,10 @@
             ]
           },
           "mechanics": [
+            11,
             12,
             13,
-            14,
-            15
+            14
           ],
           "assessment": "BASE_STAT_IMPROVEMENT",
           "knowledge": "LORE_AVAILABLE",
@@ -185,8 +186,7 @@
             ]
           },
           "mechanics": [
-            5,
-            16
+            15
           ],
           "assessment": "MECHANIC_TRADEOFF",
           "knowledge": "LORE_AVAILABLE",
@@ -220,9 +220,8 @@
             ]
           },
           "mechanics": [
-            17,
-            18,
-            8
+            16,
+            7
           ],
           "assessment": "BASE_STAT_IMPROVEMENT",
           "knowledge": "LORE_AVAILABLE",
@@ -252,9 +251,9 @@
             ]
           },
           "mechanics": [
-            19
+            17
           ],
-          "assessment": "MECHANIC_TRADEOFF",
+          "assessment": "INSUFFICIENT_COMPARISON",
           "knowledge": "LORE_AVAILABLE",
           "dungeon": {
             "native": false,
@@ -286,8 +285,7 @@
             ]
           },
           "mechanics": [
-            20,
-            21
+            18
           ],
           "assessment": "MECHANIC_TRADEOFF",
           "knowledge": "LORE_AVAILABLE",
@@ -316,7 +314,7 @@
         "source": "EXPLICIT"
       },
       "counts": {
-        "generated": 154,
+        "generated": 153,
         "afterRequiredConstraints": 38,
         "afterExistingSelection": 7,
         "afterBaseline": 7,
@@ -382,9 +380,9 @@
         }
       ],
       "sizes": {
-        "fullSelectedObjectsBytes": 540358,
-        "proposedPayloadBytes": 5515,
-        "modelPayloadBytes": 5515,
+        "fullSelectedObjectsBytes": 666760,
+        "proposedPayloadBytes": 5537,
+        "modelPayloadBytes": 5537,
         "maxPayloadBytes": 8192
       },
       "proposedPayload": {
@@ -403,6 +401,7 @@
           "id": "STONE_BLADE",
           "name": "Adaptive Blade",
           "source": "EXPLICIT",
+          "combatMode": "MELEE_DAMAGE",
           "stats": {
             "DAMAGE": 170
           },
@@ -414,13 +413,16 @@
             4
           ]
         },
+        "player": {
+          "dungeonClass": "berserk",
+          "purseCoins": 100000000
+        },
         "mechanics": [
           "Gemstones: [☤]",
           "As a weapon created by Scarf, it automatically adapts to its user inside Dungeons.",
           "Berserk: +10 Damage, +75 Strength, +10 Speed Healer: +10 Mending & tethered players and players within 10 blocks are healed for 33% of your Life Steal, Drain, and Vampirism healing. Mage: +100 Intelligence, +10 Damage & melee attacks restore 25% additional mana. Tank: +100 Defense, +5 Vitality, +5 True Defense Archer: Your melee attacks cause enemies to take 10% more damage from your arrows for 5 seconds.",
           "Right-click to use your class ability!",
           "❣ Requires The Catacombs Floor II Completion.",
-          "Crit Damage: +20%",
           "A powerful blade forged in the depths of the Blazing Volcano.",
           "Gain +100 Strength against enemies who are in lava.",
           "❣ Requires Combat Skill 22.",
@@ -432,10 +434,8 @@
           "Right-click to use Class Ability!",
           "❣ Requires Catacombs Skill 20.",
           "Ability: Cleave When hitting an entity, monsters in a 3 block range will be hit for a portion of that damage too.",
-          "Crit Damage: +50%",
           "Ability: Bad Health RIGHT CLICK Gain +5 Strength for every 5% of total HP you have for 5s. Capped at +100 Strength. Health Cost: 100 Cooldown: 5s",
           "Ability: Thwack RIGHT CLICK Throw the spear like an arrow which will return to you.",
-          "Crit Damage: +15%",
           "Deal +150% damage to Endermen. Receive 3% less damage from Endermen when held."
         ],
         "caveats": [
@@ -472,8 +472,7 @@
             "mechanics": [
               5,
               6,
-              7,
-              8
+              7
             ],
             "assessment": "BASE_STAT_IMPROVEMENT",
             "knowledge": "LORE_AVAILABLE",
@@ -499,9 +498,9 @@
               ]
             },
             "mechanics": [
+              8,
               9,
-              10,
-              11
+              10
             ],
             "assessment": "MECHANIC_TRADEOFF",
             "knowledge": "LORE_AVAILABLE",
@@ -531,10 +530,10 @@
               ]
             },
             "mechanics": [
+              11,
               12,
               13,
-              14,
-              15
+              14
             ],
             "assessment": "BASE_STAT_IMPROVEMENT",
             "knowledge": "LORE_AVAILABLE",
@@ -568,8 +567,7 @@
               ]
             },
             "mechanics": [
-              5,
-              16
+              15
             ],
             "assessment": "MECHANIC_TRADEOFF",
             "knowledge": "LORE_AVAILABLE",
@@ -603,9 +601,8 @@
               ]
             },
             "mechanics": [
-              17,
-              18,
-              8
+              16,
+              7
             ],
             "assessment": "BASE_STAT_IMPROVEMENT",
             "knowledge": "LORE_AVAILABLE",
@@ -635,9 +632,9 @@
               ]
             },
             "mechanics": [
-              19
+              17
             ],
-            "assessment": "MECHANIC_TRADEOFF",
+            "assessment": "INSUFFICIENT_COMPARISON",
             "knowledge": "LORE_AVAILABLE",
             "dungeon": {
               "native": false,
@@ -669,8 +666,7 @@
               ]
             },
             "mechanics": [
-              20,
-              21
+              18
             ],
             "assessment": "MECHANIC_TRADEOFF",
             "knowledge": "LORE_AVAILABLE",
@@ -907,9 +903,7 @@
       "requiredRejections": [
         "PRICE_UNKNOWN"
       ],
-      "objectiveRejections": [
-        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
-      ],
+      "objectiveRejections": [],
       "price": null
     },
     {
@@ -1784,14 +1778,6 @@
       "price": null
     },
     {
-      "id": "LIVID_DAGGER",
-      "requiredRejections": [
-        "OVER_BUDGET"
-      ],
-      "objectiveRejections": [],
-      "price": 6200000
-    },
-    {
       "id": "UNDEAD_SWORD",
       "requiredRejections": [
         "PRICE_UNKNOWN"
@@ -1813,8 +1799,7 @@
       "id": "ZOMBIE_SOLDIER_CUTLASS",
       "requiredRejections": [],
       "objectiveRejections": [
-        "NO_POSITIVE_SHARED_STAT_EVIDENCE",
-        "DISTINCT_SIDE_FUNCTION"
+        "NO_POSITIVE_SHARED_STAT_EVIDENCE"
       ],
       "price": 40000
     },
