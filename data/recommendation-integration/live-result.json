@@ -1,0 +1,5 @@
+{
+  "httpStatus": 502,
+  "status": "INVALID_OUTPUT",
+  "error": "No recommendation was produced."
+}

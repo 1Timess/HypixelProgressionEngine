@@ -61,7 +61,7 @@ export function createRecommendationHandler(
       return reply(result, result.status === "APPROVAL_REQUIRED" ? 409 : 200);
     } catch (error) {
       const code = error instanceof LunaError ? error.code : error instanceof Error && error.message === "PROFILE_NOT_FOUND" ? "PROFILE_NOT_FOUND" : "RETRIEVAL_FAILED";
-      const result = { status: code, error: "No recommendation was produced." };
+      const result = { status: code, error: "No recommendation was produced.", ...(error instanceof LunaError && error.details ? {diagnostics:error.details} : {}) };
       // Failed/incomplete requests may still incur provider cost. Replays must not repeat them.
       const status = code === "PROFILE_NOT_FOUND" ? 404 : code === "STALE_MARKET" ? 409 : 502;
       if (body.mode === "recommend") {

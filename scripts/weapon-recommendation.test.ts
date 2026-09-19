@@ -168,3 +168,16 @@ test("optional preference can be skipped with I do not know and uses default evi
  assert.equal((await runWeaponRecommendation(request,f.dependencies)).status,"AWAITING_APPROVAL");
  assert.equal(f.calls(),0);
 });
+
+test("invalid evidence preserves usage and failure stage without model prose",async()=>{
+ const p=await plan();
+ await assert.rejects(recommendWithLuna(p,{apiKey:"fake",now,fetch:async()=>Response.json({
+   status:"completed",usage:{input_tokens:123,output_tokens:45},
+   output:[{type:"message",content:[{type:"output_text",text:JSON.stringify({...output,candidateId:"EXCLUDED_SECRET_PROSE"})}]}],
+ })}),error=>{
+   assert.ok(error instanceof LunaError);
+   assert.deepEqual(error.details,{stage:"EVIDENCE_VALIDATION",usage:{inputTokens:123,outputTokens:45}});
+   assert.ok(!JSON.stringify(error).includes("EXCLUDED_SECRET_PROSE"));
+   return true;
+ });
+});

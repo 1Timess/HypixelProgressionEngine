@@ -74,3 +74,13 @@ After one approved real request, record the validated renderer output and usage 
 The shortlist is an explicit default evidence policy, not proof of DPS superiority. Incomparable frontiers can exceed five and return a deterministic knowledge limitation when the byte gate cannot be met. Factual baseline gaps still require real evidence; optional uncertainty never invents facts. Conversation is stateless: clients retain the original request and submit structured baseline or preference answers with it. Optional questions remain deterministic; no unrestricted model-authored dialogue is introduced. HTTP replay protection is process-local; the local runner adds a durable attempt reservation. No frontend or other progression domain was changed.
 
 Real Luna call: **not performed**. Exact remaining gate: **explicit user approval of the prepared paid request**, with freshness revalidation if delayed.
+
+## First approved live attempt
+
+The user explicitly approved the saved request. One production execution was attempted with approved hash 6ca70b9fef4d33e92e6c751d78b9ff90f8a92322fbedf8ded7ec6cb14e8e6963. The freshness and approval gates permitted the adapter request. The production handler returned HTTP 502 / INVALID_OUTPUT. No recommendation was rendered, and there was no retry.
+
+Exact saved result: data/recommendation-integration/live-result.json. This is a real integration failure, not a mock. Actual provider token usage and the original response were not retained by the previous failure path, so neither the exact rejection cause nor actual charge can be reconstructed from this checkpoint. Do not infer that the model necessarily hallucinated; response-envelope parsing and evidence validation shared the same public code.
+
+Local follow-up adds bounded failure-stage and usage metadata when available, without retaining raw model prose, headers, or profile data. It does not weaken validation or change the provider request. A mocked regression verifies diagnostic retention and exclusion of rejected text.
+
+Next step: obtain explicit approval for another separately reserved live attempt, after fresh preview/hash verification. Do not overwrite live-result.json or retry automatically. The intended successful live recommendation remains incomplete.
