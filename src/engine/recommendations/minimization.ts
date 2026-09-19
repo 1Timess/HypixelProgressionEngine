@@ -28,7 +28,7 @@ export interface RecommendationPreparation {
   modelPayload: RecommendationEvidence | null;
   review: {
     baseline: { status:"RESOLVED" | "NEEDS_CLARIFICATION"; itemId?:string; source?:string; reasons:string[] };
-    counts: { generated:number; afterRequiredConstraints:number; afterExistingSelection:number; afterBaseline:number; afterDominance:number; modelEligibleCandidates:number };
+    counts: { generated:number; afterRequiredConstraints:number; afterExistingSelection:number; afterBaseline:number; afterDominance:number; afterShortlist?:number; modelEligibleCandidates:number };
     candidates: CandidateReductionAudit[];
     sizes: { fullSelectedObjectsBytes:number; proposedPayloadBytes:number; modelPayloadBytes:number; maxPayloadBytes:number };
     /** Local diagnostic preview; never a substitute for modelPayload when the gate is closed. */

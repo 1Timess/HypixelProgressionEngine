@@ -16,6 +16,7 @@ export const RecommendationRequestSchema = z.object({
   constraints: ProgressionIntentSchema.shape.constraints.optional(),
   context: ProgressionIntentSchema.shape.context.optional(),
   preferenceMode: z.enum(["DEFAULT", "ASK"]).default("DEFAULT"),
+  // A follow-up supplements the original request; it never replaces that request.
   preferenceAnswer: z.string().trim().min(1).max(100).optional(),
   mode: z.enum(["preview", "recommend"]).default("preview"),
   approvedInputHash: z.string().regex(/^[a-f0-9]{64}$/).optional(),
@@ -30,6 +31,7 @@ export interface RecommendationDependencies {
 
 export async function runWeaponRecommendation(raw: unknown, dependencies: RecommendationDependencies) {
   const request = RecommendationRequestSchema.parse(raw);
+  // Recognize a bounded reply grammar locally. Never ask Luna to interpret this prose.
   const answer = request.preferenceAnswer?.normalize("NFKC").toLowerCase().replace(/[\u2019']/g,"").replace(/[.!?]/g,"").trim();
   const noPreference = answer !== undefined && ["i do not know","i dont know","dont know","not sure","no preference","default","you decide"].includes(answer);
   const capability: "MOBILITY" | "CONTROL" | undefined = answer === "mobility" ? "MOBILITY" : answer === "control" ? "CONTROL" : undefined;
@@ -52,6 +54,7 @@ export async function runWeaponRecommendation(raw: unknown, dependencies: Recomm
   };
   const plan = await dependencies.prepare(snapshot, catalog, parsed.intent);
   const broadPool = (plan.review.shortlist?.deferred.length ?? 0) > 0 || plan.question?.supportedInputs.includes("constraints.capabilities");
+  // An explicit uncertain answer skips this branch and keeps the default shortlist.
   if (request.preferenceMode === "ASK" && answer === undefined && broadPool) return {
     status: "OPTIONAL_PREFERENCE",
     question: "Would mobility or control help your playstyle? You can say I don't know and I will use your current build.",
@@ -67,6 +70,7 @@ export async function runWeaponRecommendation(raw: unknown, dependencies: Recomm
     return { status: plan.status, question: plan.question };
   }
   const prepared = prepareLunaRequest(plan, dependencies.now?.());
+  // Bind approval to the complete provider request, including model, schema and limits.
   const hash = createHash("sha256").update(JSON.stringify(prepared.body)).digest("hex");
   if (request.mode === "preview") return {
     status: "AWAITING_APPROVAL",
@@ -88,6 +92,7 @@ export async function runWeaponRecommendation(raw: unknown, dependencies: Recomm
   return { status: "COMPLETE", ...await dependencies.recommend(plan) };
 }
 
+// Lazy imports keep offline tests independent of database credentials and network clients.
 export const defaultRecommendationDependencies: RecommendationDependencies = {
   async load(username, profileId) {
     const [{ getPlayerSkyBlockProfiles }, { findProfileById }, { normalizeSkyBlockProfile },

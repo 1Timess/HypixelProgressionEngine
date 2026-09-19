@@ -31,3 +31,14 @@ Offline replay of the saved 20M Livid Dagger case: 17 candidates / 12,930 bytes 
 58 offline tests passed, including broad-pool reduction, ID/order independence, preserving a ten-option unresolved frontier, and optional-answer fallback. TypeScript and targeted ESLint passed. The original minimization diagnostic files remain historical; live-20000000.shortlist.json is the explicit policy replay.
 
 Recovery entry points: shortlist.ts (policy), minimization.ts (gate integration), service.ts (preference state), weapon-shortlist.test.ts (broad regression), weapon-recommendation.test.ts (conversation tests). Next improve contextual mechanic evidence and test additional broad profiles before treating this default as a universally optimal shortlist. Do not run Luna until the user approves the exact payload and cost.
+
+## Small maintenance checkpoint
+
+Convenience commands from the application directory:
+
+- `npm run test:weapons` runs all five offline weapon suites, including the shortlist tests. Model transports are mocked; no API keys are required.
+- `npm run typecheck` checks TypeScript without writing incremental build metadata (useful on the OneDrive workspace).
+
+The adapter now names its existing freshness, clock-skew, timeout, and response-size limits. Comments clarify that preference replies supplement the original request, uncertain replies use the default path, and approval hashes cover the full provider request. This maintenance pass changes no ranking policy or numeric limits.
+
+The maintenance typecheck also caught and corrected the missing optional afterShortlist count declaration from the previous milestone. This is a type-only correction; runtime shortlist behavior is unchanged.

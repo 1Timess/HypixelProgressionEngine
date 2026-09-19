@@ -6,6 +6,11 @@ import { renderWeaponRecommendation } from "@/engine/recommendations/output-vali
 
 export const LUNA_MODEL = "gpt-5.6-luna";
 export const MAX_OUTPUT_TOKENS = 768;
+// Application freshness and transport limits; these are not ranking thresholds.
+const MAX_MARKET_AGE_MS = 15 * 60_000;
+const MAX_CLOCK_SKEW_MS = 60_000;
+const REQUEST_TIMEOUT_MS = 30_000;
+const MAX_RESPONSE_TEXT_BYTES = 8192;
 export const LUNA_INSTRUCTIONS = [
   "Choose one current-weapon replacement only from the supplied evidence, or abstain.",
   "Use no game knowledge, remembered facts, scores, invented calculations, or external sources.",
@@ -29,11 +34,11 @@ export function prepareLunaRequest(plan: RecommendationPreparation, now = Date.n
   if (!serialized) throw new LunaError("GATE_CLOSED", "The deterministic evidence gate is closed.");
   const evidence = RecommendationEvidenceSchema.parse(JSON.parse(serialized));
   if (!evidence.candidates.length) throw new LunaError("GATE_CLOSED", "No candidate evidence.");
-  // A price is only current within the market ingestion service's freshness window.
+  // Check freshness at both preview and execution; approval does not extend a price's lifetime.
   if (evidence.candidates.some(candidate => candidate.price && (
     !Number.isFinite(Date.parse(candidate.price.observedAt)) ||
-    now - Date.parse(candidate.price.observedAt) > 15 * 60_000 ||
-    Date.parse(candidate.price.observedAt) > now + 60_000
+    now - Date.parse(candidate.price.observedAt) > MAX_MARKET_AGE_MS ||
+    Date.parse(candidate.price.observedAt) > now + MAX_CLOCK_SKEW_MS
   ))) throw new LunaError("STALE_MARKET", "Refresh the market snapshot before preparing a recommendation.");
   const body = {
     model: LUNA_MODEL,
@@ -69,7 +74,7 @@ export async function recommendWithLuna(plan: RecommendationPreparation, options
       method: "POST",
       headers: { Authorization: "Bearer " + apiKey, "Content-Type": "application/json" },
       body: JSON.stringify(prepared.body),
-      signal: AbortSignal.timeout(30_000),
+      signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
     });
   } catch {
     throw new LunaError("UPSTREAM_FAILED", "The model request failed or timed out; it was not retried.");
@@ -94,7 +99,7 @@ export async function recommendWithLuna(plan: RecommendationPreparation, options
   if (parsed.data.status !== "completed") throw new LunaError("INCOMPLETE", "The model response did not complete; it was not retried.");
   const texts = parsed.data.output.filter(item => item.type === "message")
     .flatMap(item => item.content ?? []).filter(part => part.type === "output_text");
-  if (texts.length !== 1 || !texts[0].text || Buffer.byteLength(texts[0].text) > 8192) {
+  if (texts.length !== 1 || !texts[0].text || Buffer.byteLength(texts[0].text) > MAX_RESPONSE_TEXT_BYTES) {
     throw new LunaError("INVALID_OUTPUT", "Expected one bounded structured recommendation.");
   }
   try {
