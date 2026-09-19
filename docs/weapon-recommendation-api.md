@@ -64,3 +64,7 @@ On 2026-09-18, refreshed iTimess/Lemon inventory included Livid Dagger as the in
 The review corrected on-hit healing being mistaken for a side tool, unresolved miscellaneous inventory blocking primary inference, ownership omissions in equipment.weapons, partial-stat comparisons being mislabeled improvements, and explicitly chosen baselines bypassing missing-mechanics protection. Broader unknown tradeoffs are preserved rather than pruned with arbitrary scores.
 
 Build checkpoint: TypeScript and targeted ESLint passed. The production build was blocked by inability to download the pre-existing Google Geist fonts, even outside the sandbox. A later Hypixel diagnostic refresh also encountered a network failure; saved diagnostic files represent the earlier successful run, before the final partial-stat label correction. No live Luna call was attempted.
+
+## Optional preference/default-policy update
+
+See [weapon-shortlist-handoff.md](weapon-shortlist-handoff.md) for the newer default shortlist and conversation contract. Requests may include preferenceMode DEFAULT (default) or ASK, and preferenceAnswer such as "I don't know", "mobility", or "control" while retaining the original request. DEFAULT and an uncertain answer proceed without another preference question. An irreducibly oversized comparison returns NEEDS_KNOWLEDGE, not a mandatory preference loop. This supersedes the earlier broad-request clarification checkpoint above.

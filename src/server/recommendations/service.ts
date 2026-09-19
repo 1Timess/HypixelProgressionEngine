@@ -15,6 +15,8 @@ export const RecommendationRequestSchema = z.object({
   currentWeapon: ProgressionIntentSchema.shape.currentWeapon,
   constraints: ProgressionIntentSchema.shape.constraints.optional(),
   context: ProgressionIntentSchema.shape.context.optional(),
+  preferenceMode: z.enum(["DEFAULT", "ASK"]).default("DEFAULT"),
+  preferenceAnswer: z.string().trim().min(1).max(100).optional(),
   mode: z.enum(["preview", "recommend"]).default("preview"),
   approvedInputHash: z.string().regex(/^[a-f0-9]{64}$/).optional(),
 }).strict();
@@ -28,6 +30,16 @@ export interface RecommendationDependencies {
 
 export async function runWeaponRecommendation(raw: unknown, dependencies: RecommendationDependencies) {
   const request = RecommendationRequestSchema.parse(raw);
+  const answer = request.preferenceAnswer?.normalize("NFKC").toLowerCase().replace(/[\u2019']/g,"").replace(/[.!?]/g,"").trim();
+  const noPreference = answer !== undefined && ["i do not know","i dont know","dont know","not sure","no preference","default","you decide"].includes(answer);
+  const capability: "MOBILITY" | "CONTROL" | undefined = answer === "mobility" ? "MOBILITY" : answer === "control" ? "CONTROL" : undefined;
+  if (answer !== undefined && !noPreference && !capability) return {
+    status: "NEEDS_CLARIFICATION", question: "Choose mobility, control, or no preference. Keep your original upgrade request.",
+  };
+  if (capability) request.constraints = { ...request.constraints, capabilities: {
+    values: [...new Set([...(request.constraints?.capabilities?.values ?? []), capability])],
+    strength: "REQUIRED",
+  } };
   const { snapshot, catalog } = await dependencies.load(request.username, request.profileId);
   const ownedIds = new Set([...snapshot.equipment.weapons, ...snapshot.inventory.relevantItems].map(item => item.itemId));
   const ownedWeapons = [...ownedIds].flatMap(id => {
@@ -39,7 +51,21 @@ export async function runWeaponRecommendation(raw: unknown, dependencies: Recomm
     status: parsed.status, question: parsed.question, unresolved: parsed.unresolved,
   };
   const plan = await dependencies.prepare(snapshot, catalog, parsed.intent);
-  if (plan.status !== "READY") return { status: plan.status, question: plan.question };
+  const broadPool = (plan.review.shortlist?.deferred.length ?? 0) > 0 || plan.question?.supportedInputs.includes("constraints.capabilities");
+  if (request.preferenceMode === "ASK" && answer === undefined && broadPool) return {
+    status: "OPTIONAL_PREFERENCE",
+    question: "Would mobility or control help your playstyle? You can say I don't know and I will use your current build.",
+    choices: ["mobility", "control", "I don't know"],
+    defaultAvailable: true,
+  };
+  if (plan.status !== "READY") {
+    if (plan.status === "NEEDS_CLARIFICATION" && plan.question?.supportedInputs.includes("constraints.capabilities")) return {
+      status: "NEEDS_KNOWLEDGE", question: null,
+      explanation: "Available evidence cannot safely narrow the remaining tradeoffs within the model budget. No preference answer is required.",
+      comparison: plan.review.proposedPayload, shortlist: plan.review.shortlist,
+    };
+    return { status: plan.status, question: plan.question };
+  }
   const prepared = prepareLunaRequest(plan, dependencies.now?.());
   const hash = createHash("sha256").update(JSON.stringify(prepared.body)).digest("hex");
   if (request.mode === "preview") return {
