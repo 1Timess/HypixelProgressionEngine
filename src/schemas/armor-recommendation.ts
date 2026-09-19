@@ -4,11 +4,13 @@ import { EquipmentDependencySchema, EquipmentFactSourceSchema, EquipmentItemFact
 
 export const ARMOR_SLOTS = ["HELMET", "CHESTPLATE", "LEGGINGS", "BOOTS"] as const;
 export const ArmorSlotSchema = z.enum(ARMOR_SLOTS);
+export const ArmorReplacementScopeSchema = z.enum(["ANY", "SINGLE_PIECE", "PARTIAL_BUILD", "FULL_BUILD"]);
 export type ArmorSlot = z.infer<typeof ArmorSlotSchema>;
 export const ArmorIntentSchema = z.object({
   domain: z.literal("armor"),
   objective: z.literal("UPGRADE_CURRENT_BUILD"),
   context: z.enum(["general", "dungeon"]),
+  replacementScope: ArmorReplacementScopeSchema.default("ANY"),
   slots: z.array(ArmorSlotSchema).min(1).max(4).default([...ARMOR_SLOTS])
     .refine(slots => new Set(slots).size === slots.length, "Slots must be unique."),
   budget: BudgetConstraintSchema.strict().optional(),

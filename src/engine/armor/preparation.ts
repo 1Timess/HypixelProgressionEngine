@@ -90,6 +90,10 @@ export async function prepareArmorUpgrade(
   for (const option of options) {
     const replacements = option.items.filter(item => baseline.equipped.get(armorSlot(item)!)?.id !== item.id);
     if (!replacements.length) continue;
+    // This is user-requested replacement scope, never a ranking or top-N rule.
+    if (intent.replacementScope === "SINGLE_PIECE" && replacements.length !== 1) continue;
+    if (intent.replacementScope === "PARTIAL_BUILD" && replacements.length === 4) continue;
+    if (intent.replacementScope === "FULL_BUILD" && option.items.length !== 4) continue;
     const signature = replacements.map(item => armorSlot(item) + ":" + item.id).sort().join("|");
     if (seenBuilds.has(signature)) continue; // Identical proposed build; no semantic ranking.
     seenBuilds.add(signature);

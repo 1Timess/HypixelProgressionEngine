@@ -115,3 +115,11 @@ prepareArmorForProfile automatically loads this knowledge; dependency-injected o
 Saved ten public Hypixel item records plus corresponding local NEU lore and two Museum groups in scripts/fixtures/armor/source-items.json. This required one public resource GET with no credentials, player retrieval, market refresh or model call. Tests never access the network. The fixture verifies normalization, requirements, native Dungeon flags, source provenance, mixed armor/equipment groups, and bounded preparation after actual normalized F5 completion evidence.
 
 35 Armor tests, TypeScript and targeted lint pass at this checkpoint. Weapons code was unchanged. Natural-language Armor parsing and recommendation output validation remain next.
+
+## Deterministic conversation checkpoint
+
+Added a closed Armor upgrade grammar and prepareArmorFromRequest. Supported requests preserve slot scope, current class/context, REQUIRED/PREFERRED budget semantics and explicit latest budget revisions. Structured follow-ups supplement the original request; contradictory slot/class/context/scope answers return clarification. Unknown meanings, named baseline assumptions and vague "this chestplate" references do not reach preparation.
+
+User floor-completion claims are checked against the retrieved profile before preparing candidates. They never update normalized progression. Explicit single-piece/partial-build/full-build scope constrains comparisons; FULL_BUILD means a four-slot comparison package, not proven combat-set activation. Asking whether a full set or partial replacement makes sense retains both kinds of comparison.
+
+52 offline Armor tests, TypeScript and targeted lint pass. Initial grammar validation exposed unconsumed "make sense"; that bounded phrase is now recognized. Scope words were given a structured field rather than discarded. No provider execution was added.

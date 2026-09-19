@@ -254,3 +254,36 @@ test("profile service validates identity before retrieval and sends only bounded
  assert.equal(p.status,"READY");assert.equal(loads,1);assert.equal(f.marketCalls(),1);
  assert.ok(!serializeArmorModelInput(p,now)!.includes(request.profileId));
 });
+
+test("natural-language follow-up prepares once and preserves the original class/context",async()=>{
+ const {prepareArmorFromRequest}=await import("../src/server/recommendations/armor");
+ const f=armorFixture();let loads=0;
+ const deps={load:async()=>{loads++;return {snapshot:f.snapshot,catalog:f.catalog};},market:f.market,now:()=>now};
+ const base={username:"Example",profileId:"a".repeat(32),request:"Upgrade my armor for Berserk in Dungeons with 30m"};
+ const result=await prepareArmorFromRequest({...base,followUp:{slots:["CHESTPLATE"],budget:{maxCoins:1000,strength:"REQUIRED"}}},deps);
+ assert.equal(result.status,"READY");assert.ok("modelPayload" in result&&result.modelPayload);
+ assert.equal(result.modelPayload.intent.budget!.maxCoins,1000);
+ assert.equal(result.modelPayload.player.dungeonClass,"berserk");
+ assert.equal(loads,1);assert.equal(f.marketCalls(),1);
+ const conflict=await prepareArmorFromRequest({...base,followUp:{dungeonClass:"mage"}},deps);
+ assert.equal(conflict.status,"NEEDS_CLARIFICATION");assert.equal(loads,1);
+});
+test("user floor-completion prose never overwrites profile progression",async()=>{
+ const {prepareArmorFromRequest}=await import("../src/server/recommendations/armor");
+ const f=armorFixture();const deps={load:async()=>({snapshot:f.snapshot,catalog:f.catalog}),market:f.market,now:()=>now};
+ const request={username:"Example",profileId:"a".repeat(32),request:"I just cleared F5. What armor should I get?",followUp:{slots:["CHESTPLATE"]}};
+ assert.equal((await prepareArmorFromRequest(request,deps)).status,"NEEDS_CLARIFICATION");
+ assert.equal(f.marketCalls(),0);
+ f.snapshot.progression.dungeons.catacombs.completions["5"]=1;
+ assert.equal((await prepareArmorFromRequest(request,deps)).status,"READY");
+});
+
+test("requested one-piece/full-build scope constrains alternatives without ranking",async()=>{
+ const f=armorFixture(["HELMET","CHESTPLATE","LEGGINGS","BOOTS"]);
+ const knowledge={packages:[{id:"all",name:"Complete armor comparison",itemIds:ARMOR_SLOTS.map(slot=>"NEW_"+slot),source}]};
+ for(const replacementScope of ["SINGLE_PIECE","FULL_BUILD"]) {
+  const p=await f.run({...intent,slots:[...ARMOR_SLOTS],replacementScope},knowledge);
+  assert.equal(p.status,"READY");
+  assert.ok(p.modelPayload!.candidates.every(c=>c.replaces.length===(replacementScope==="SINGLE_PIECE"?1:4)));
+ }
+});
