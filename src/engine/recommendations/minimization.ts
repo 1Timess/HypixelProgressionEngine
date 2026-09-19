@@ -110,7 +110,19 @@ export function prepareRecommendationEvidence(
     return false;
   });
   review.counts.afterDominance = finalists.length;
-  if (!finalists.length) return finish("NO_OPTIONS");
+  if (!finalists.length) {
+    const unresolvedReplacement = selected.rejectedCandidates.some(candidate =>
+      candidate.selection.required.passed &&
+      candidate.selection.objective.rejections.length === 1 &&
+      candidate.selection.objective.rejections[0] === "NO_POSITIVE_SHARED_STAT_EVIDENCE" &&
+      compareEquivalentWeapons(baseline.item, candidate.item) === null);
+    return unresolvedReplacement
+      ? finish("NEEDS_KNOWLEDGE", "Potential replacements differ in mechanics or incomplete stats; the current evidence cannot establish an upgrade.")
+      : finish("NO_OPTIONS");
+  }
+  if (finalists.every(candidate => !candidate.item.knowledge.rawLore.length)) {
+    return finish("NEEDS_KNOWLEDGE", "No surviving candidate has mechanic evidence for a supported recommendation.");
+  }
 
   const dictionary: string[] = [];
   const intern = (facts: string[]) => facts.map((fact) => {
@@ -190,6 +202,6 @@ export function prepareRecommendationEvidence(
 export function serializeRecommendationModelInput(preparation: RecommendationPreparation): string | null {
   if (preparation.status !== "READY" || !preparation.modelPayload) return null;
   const payload = RecommendationEvidenceSchema.parse(preparation.modelPayload);
-  if (bytes(payload) > preparation.review.sizes.maxPayloadBytes) throw new Error("Model payload exceeds its byte budget.");
+  if (bytes(payload) > Math.min(preparation.review.sizes.maxPayloadBytes, DEFAULT_MINIMIZATION_POLICY.maxPayloadBytes)) throw new Error("Model payload exceeds its byte budget.");
   return JSON.stringify(payload);
 }

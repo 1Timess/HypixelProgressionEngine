@@ -33,6 +33,7 @@ import type {
   SelectedCandidate,
 } from "./types";
 
+import { resolvePrimaryBaseline } from "@/engine/build/primary-baseline";
 import { analyzeWeaponContextCompatibility } from "@/engine/build/weapon-compatibility";
 import { analyzeWeaponPrimaryUse } from "@/engine/build/weapon-primary-use";
 
@@ -582,7 +583,9 @@ function annotateCandidate(
 ): SelectedCandidate {
   if (intent.domain === "weapon") {
     const evidence = candidate.progression.weaponContext;
-    const upgrade = evidence.upgrade ?? analyzeCandidateUpgradeEvidence(candidate.item, snapshot, catalog);
+    // Precomputed annotations may compare against every owned tool. Re-evaluate against
+    // the comparison snapshot selected below so unrelated inventory cannot imply an upgrade.
+    const upgrade = analyzeCandidateUpgradeEvidence(candidate.item, snapshot, catalog);
     // Selection always uses the actual intent, including when a caller reuses annotations.
     const compatibility = analyzeWeaponContextCompatibility(evidence.specialization, intent.context);
     const primaryUse = analyzeWeaponPrimaryUse(candidate.progression.build, upgrade, evidence.functions, compatibility);
@@ -837,6 +840,15 @@ export function selectCandidates(
   catalog:
     ItemCatalog,
 ): CandidateSelectionResult {
+  let comparisonSnapshot = snapshot;
+  if (intent.domain === "weapon" && intent.objective === "UPGRADE_CURRENT_BUILD") {
+    const baseline = resolvePrimaryBaseline(snapshot, catalog, intent);
+    if (baseline.status === "RESOLVED") comparisonSnapshot = {
+      ...snapshot,
+      equipment: { ...snapshot.equipment, weapons: [baseline.instance] },
+      inventory: { ...snapshot.inventory, relevantItems: [baseline.instance] },
+    };
+  }
   const annotatedCandidates:
     SelectedCandidate[] =
     result.candidates.map(
@@ -844,7 +856,7 @@ export function selectCandidates(
         annotateCandidate(
           candidate,
           intent,
-          snapshot,
+          comparisonSnapshot,
           catalog,
         ),
     );

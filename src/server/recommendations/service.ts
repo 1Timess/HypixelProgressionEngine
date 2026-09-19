@@ -1,7 +1,7 @@
 import { classifyItem } from "@/server/knowledge/items/classification";
 import { createHash } from "node:crypto";
 import { z } from "zod";
-import { ProgressionIntentSchema } from "@/schemas/recommendations";
+import { ProgressionIntentSchema, BudgetConstraintSchema, DungeonClassConstraintSchema, WeaponFormConstraintSchema, CapabilityConstraintSchema } from "@/schemas/recommendations";
 import type { PlayerSnapshot } from "@/schemas/player";
 import type { ItemCatalog } from "@/server/knowledge/items/catalog";
 import { parseWeaponUpgradeIntent } from "@/engine/recommendations/intent-parser";
@@ -10,10 +10,15 @@ import { prepareLunaRequest, recommendWithLuna } from "./luna";
 
 export const RecommendationRequestSchema = z.object({
   username: z.string().regex(/^[A-Za-z0-9_]{1,16}$/),
-  profileId: z.string().regex(/^[a-fA-F0-9-]{32,36}$/),
+  profileId: z.string().regex(/^(?:[a-fA-F0-9]{32}|[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12})$/),
   request: z.string().trim().min(1).max(2000),
-  currentWeapon: ProgressionIntentSchema.shape.currentWeapon,
-  constraints: ProgressionIntentSchema.shape.constraints.optional(),
+  currentWeapon: ProgressionIntentSchema.shape.currentWeapon.unwrap().strict().optional(),
+  constraints: z.object({
+    budget: BudgetConstraintSchema.strict().optional(),
+    dungeonClass: DungeonClassConstraintSchema.strict().optional(),
+    weaponForm: WeaponFormConstraintSchema.strict().optional(),
+    capabilities: CapabilityConstraintSchema.strict().optional(),
+  }).strict().optional(),
   context: ProgressionIntentSchema.shape.context.optional(),
   preferenceMode: z.enum(["DEFAULT", "ASK"]).default("DEFAULT"),
   // A follow-up supplements the original request; it never replaces that request.

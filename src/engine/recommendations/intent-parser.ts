@@ -83,9 +83,22 @@ export function parseWeaponUpgradeIntent(request:string, options:IntentParseOpti
   const rest=text.replace(/[?!.,:;'"]/g," ").replace(/\s+/g," ").trim();
   if(rest) unresolved.push(rest);
   const context=options.context??(dungeon?"dungeon":"general");
-  if(options.context==="general"&&dungeon) unresolved.push("CONFLICTING_CONTEXT");
+  if((options.context==="general"&&dungeon)||(options.context==="dungeon"&&general)) unresolved.push("CONFLICTING_CONTEXT");
+  for (const key of ["dungeonClass", "weaponForm"] as const) {
+    if (constraints[key] && options.constraints?.[key] && constraints[key]!.value !== options.constraints[key]!.value) {
+      unresolved.push("CONFLICTING_"+key.toUpperCase());
+    }
+  }
+  const mergedConstraints = {...constraints,...options.constraints};
+  if (constraints.capabilities && options.constraints?.capabilities) {
+    if (constraints.capabilities.strength !== options.constraints.capabilities.strength) unresolved.push("CONFLICTING_CAPABILITY_STRENGTH");
+    mergedConstraints.capabilities = {
+      strength: constraints.capabilities.strength,
+      values: [...new Set([...constraints.capabilities.values,...options.constraints.capabilities.values])],
+    };
+  }
   const intent=ProgressionIntentSchema.parse({
-    domain:"weapon",context,objective:"UPGRADE_CURRENT_BUILD",constraints:{...constraints,...options.constraints},
+    domain:"weapon",context,objective:"UPGRADE_CURRENT_BUILD",constraints:mergedConstraints,
     ...(currentWeapon?{currentWeapon}:{}),metadata:{parser:"DETERMINISTIC",unresolved:[...new Set(unresolved)]},
   });
   return {status:unresolved.length?"NEEDS_CLARIFICATION":"READY",intent,

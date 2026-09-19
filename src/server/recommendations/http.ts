@@ -48,15 +48,16 @@ export function createRecommendationHandler(
     if (body.mode === "recommend" && !settings.enabled) return reply({ error: "Live model requests are disabled." }, 503);
     if (body.mode === "recommend" && !body.approvedInputHash) return reply({ error: "Preview approval is required." }, 409);
     for (const [key, value] of completed) if (value.expiresAt <= Date.now()) completed.delete(key);
-    const replayKey = body.approvedInputHash ?? JSON.stringify(body);
+    // A hash identifies model input, not the user's complete request. Scope replay to both.
+    const replayKey = JSON.stringify(body);
     if (body.mode === "recommend" && completed.has(replayKey)) return reply(completed.get(replayKey)!.result, completed.get(replayKey)!.status);
     if (busy) return reply({ error: "A recommendation request is already running. Retry later." }, 429);
     busy = true;
     try {
       const result = await runWeaponRecommendation(body, dependencies);
-      if (body.mode === "recommend") {
+      if (body.mode === "recommend" && result.status === "COMPLETE") {
         if (completed.size >= 100) completed.delete(completed.keys().next().value!);
-        completed.set(replayKey, { expiresAt: Date.now() + 10 * 60_000, result, status: result.status === "APPROVAL_REQUIRED" ? 409 : 200 });
+        completed.set(replayKey, { expiresAt: Date.now() + 10 * 60_000, result, status: 200 });
       }
       return reply(result, result.status === "APPROVAL_REQUIRED" ? 409 : 200);
     } catch (error) {
@@ -64,7 +65,8 @@ export function createRecommendationHandler(
       const result = { status: code, error: "No recommendation was produced.", ...(error instanceof LunaError && error.details ? {diagnostics:error.details} : {}) };
       // Failed/incomplete requests may still incur provider cost. Replays must not repeat them.
       const status = code === "PROFILE_NOT_FOUND" ? 404 : code === "STALE_MARKET" ? 409 : 502;
-      if (body.mode === "recommend") {
+      if (body.mode === "recommend" && error instanceof LunaError &&
+          ["UPSTREAM_FAILED", "INVALID_OUTPUT", "REFUSED", "INCOMPLETE"].includes(error.code)) {
         if (completed.size >= 100) completed.delete(completed.keys().next().value!);
         completed.set(replayKey, { expiresAt: Date.now() + 10 * 60_000, result, status });
       }

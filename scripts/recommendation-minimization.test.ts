@@ -112,11 +112,12 @@ test("stat tradeoffs and unknown stat direction cannot establish dominance",()=>
 });
 test("a utility comparison cannot justify replacing a stronger primary with an equivalent weaker item",()=>{
   const primary=weapon("OWNED",300),utility=weapon("UTILITY",50),candidate=weapon("WEAKER",200);
-  const {plan}=scenario([primary,utility,candidate],player(["OWNED","UTILITY"]),
+  const {plan,selected}=scenario([primary,utility,candidate],player(["OWNED","UTILITY"]),
     intent({currentWeapon:{itemId:"OWNED"}}));
-  assert.equal(plan.review.counts.afterExistingSelection,1);
   assert.equal(plan.status,"NO_OPTIONS");
-  assert.equal(plan.review.candidates[0].disposition,"NO_BASELINE_ADVANTAGE");
+  // Rejection now happens against the resolved primary in selection, before minimization.
+  assert.equal(plan.review.counts.afterExistingSelection,0);
+  assert.ok(selected.rejectedCandidates[0].selection.objective.rejections.includes("NO_POSITIVE_SHARED_STAT_EVIDENCE"));
 });
 test("unknown mechanics remain unknown rather than becoming empty equivalence",()=>{
   const a=weapon("A",250),b=weapon("B",200);

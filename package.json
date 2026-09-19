@@ -14,7 +14,7 @@
     "diagnose:neu-knowledge": "tsx scripts/sync/neu-knowledge-diagnostics.ts",
     "diagnose:abilities": "tsx scripts/sync/ability-diagnostics.ts",
     "diagnose:capabilities": "tsx scripts/sync/capability-diagnostics.ts",
-    "test:weapons": "node --import tsx --test scripts/weapon-evidence.test.ts scripts/recommendation-minimization.test.ts scripts/intent-parser.test.ts scripts/weapon-recommendation.test.ts scripts/weapon-shortlist.test.ts scripts/weapon-scenarios.test.ts",
+    "test:weapons": "node --import tsx --test scripts/weapon-evidence.test.ts scripts/recommendation-minimization.test.ts scripts/intent-parser.test.ts scripts/weapon-recommendation.test.ts scripts/weapon-shortlist.test.ts scripts/weapon-scenarios.test.ts scripts/weapon-hardening.test.ts",
     "typecheck": "tsc --noEmit --incremental false"
   },
   "dependencies": {
