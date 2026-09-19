@@ -1,3 +1,4 @@
+import { shortlistWeaponEvidence, type ShortlistAudit } from "./shortlist";
 import type { ItemCapabilityType } from "@/schemas/items";
 import type { PlayerSnapshot } from "@/schemas/player";
 import type { ItemCatalog } from "@/server/knowledge/items/catalog";
@@ -32,6 +33,7 @@ export interface RecommendationPreparation {
     sizes: { fullSelectedObjectsBytes:number; proposedPayloadBytes:number; modelPayloadBytes:number; maxPayloadBytes:number };
     /** Local diagnostic preview; never a substitute for modelPayload when the gate is closed. */
     proposedPayload: RecommendationEvidence | null;
+    shortlist?: ShortlistAudit;
   };
 }
 const bytes = (value: unknown) => new TextEncoder().encode(JSON.stringify(value)).length;
@@ -141,7 +143,7 @@ export function prepareRecommendationEvidence(
         ({kind:restriction.kind,subject:restriction.subject,scope:restriction.scope,compatibility:relationship})),
     };
   });
-  const payload = RecommendationEvidenceSchema.parse({
+  const fullPayload = RecommendationEvidenceSchema.parse({
     version:1,
     intent:{context:intent.context,objective:intent.objective,constraints:intent.constraints},
     baseline:{id:baseline.item.id,name:baseline.item.name,source:baseline.source,combatMode:mode,stats:baseline.item.stats,mechanics:baselineMechanics},
@@ -158,10 +160,14 @@ export function prepareRecommendationEvidence(
     ],
     candidates,
   });
+  const shortlisted = shortlistWeaponEvidence(fullPayload);
+  const payload = RecommendationEvidenceSchema.parse(shortlisted.payload);
+  review.shortlist = shortlisted.audit;
+  review.counts.afterShortlist = payload.candidates.length;
   review.proposedPayload = payload;
   review.sizes.proposedPayloadBytes = bytes(payload);
   if (review.sizes.proposedPayloadBytes > policy.maxPayloadBytes) {
-    if (finalists.length === 1) return finish("NEEDS_KNOWLEDGE","This item's evidence needs further structured compression before model comparison.");
+    if (payload.candidates.length === 1) return finish("NEEDS_KNOWLEDGE","This item's evidence needs further structured compression before model comparison.");
     const result = finish("NEEDS_CLARIFICATION",
       "Do you want a specific capability, such as mobility or control, or should I narrow the acquisition budget?",
       [],["constraints.capabilities","constraints.budget"]);
@@ -175,7 +181,7 @@ export function prepareRecommendationEvidence(
       .map(([capability,remainingCandidates]) => ({capability,remainingCandidates}));
     return result;
   }
-  review.counts.modelEligibleCandidates = finalists.length; // Number eligible to send; this function never calls a model.
+  review.counts.modelEligibleCandidates = payload.candidates.length; // Number eligible to send; this function never calls a model.
   review.sizes.modelPayloadBytes = review.sizes.proposedPayloadBytes;
   return {status:"READY",question:null,modelPayload:payload,review};
 }
