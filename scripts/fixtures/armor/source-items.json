@@ -1,0 +1,1313 @@
+{
+  "hypixel": {
+    "url": "https://api.hypixel.net/v2/resources/skyblock/items",
+    "lastUpdated": 1789686143064,
+    "capturedAt": "2026-09-19T15:32:24.491Z",
+    "items": [
+      {
+        "material": "LEATHER_BOOTS",
+        "color": "0,0,0",
+        "name": "Shadow Assassin Boots",
+        "category": "BOOTS",
+        "tier": "EPIC",
+        "stats": {
+          "WALK_SPEED": 7,
+          "DEFENSE": 55,
+          "HEALTH": 125,
+          "STRENGTH": 25,
+          "CRITICAL_DAMAGE": 25
+        },
+        "npc_sell_price": 5000,
+        "upgrade_costs": [
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "WITHER",
+              "amount": 20
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "WITHER",
+              "amount": 50
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "WITHER",
+              "amount": 100
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "WITHER",
+              "amount": 200
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "WITHER",
+              "amount": 300
+            }
+          ]
+        ],
+        "gear_score": 25,
+        "requirements": [
+          {
+            "type": "DUNGEON_TIER",
+            "dungeon_type": "CATACOMBS",
+            "tier": 5
+          }
+        ],
+        "dungeon_item": true,
+        "gemstone_slots": [
+          {
+            "slot_type": "JASPER",
+            "costs": [
+              {
+                "type": "COINS",
+                "coins": 50000
+              },
+              {
+                "type": "ITEM",
+                "item_id": "FINE_JASPER_GEM",
+                "amount": 20
+              }
+            ]
+          }
+        ],
+        "museum_data": {
+          "category": "DUNGEONEERING",
+          "parent": {},
+          "armor_set_donation_xp": {
+            "SHADOW_ASSASSIN": 10
+          },
+          "game_stage": "SKILLED"
+        },
+        "id": "SHADOW_ASSASSIN_BOOTS"
+      },
+      {
+        "material": "LEATHER_LEGGINGS",
+        "color": "0,0,0",
+        "name": "Shadow Assassin Leggings",
+        "category": "LEGGINGS",
+        "tier": "EPIC",
+        "stats": {
+          "WALK_SPEED": 7,
+          "DEFENSE": 95,
+          "HEALTH": 210,
+          "STRENGTH": 25,
+          "CRITICAL_DAMAGE": 25
+        },
+        "npc_sell_price": 5000,
+        "upgrade_costs": [
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "WITHER",
+              "amount": 30
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "WITHER",
+              "amount": 60
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "WITHER",
+              "amount": 120
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "WITHER",
+              "amount": 250
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "WITHER",
+              "amount": 400
+            }
+          ]
+        ],
+        "gear_score": 25,
+        "requirements": [
+          {
+            "type": "DUNGEON_TIER",
+            "dungeon_type": "CATACOMBS",
+            "tier": 5
+          }
+        ],
+        "dungeon_item": true,
+        "gemstone_slots": [
+          {
+            "slot_type": "JASPER",
+            "costs": [
+              {
+                "type": "COINS",
+                "coins": 50000
+              },
+              {
+                "type": "ITEM",
+                "item_id": "FINE_JASPER_GEM",
+                "amount": 20
+              }
+            ]
+          }
+        ],
+        "museum_data": {
+          "category": "DUNGEONEERING",
+          "parent": {},
+          "armor_set_donation_xp": {
+            "SHADOW_ASSASSIN": 10
+          },
+          "game_stage": "SKILLED"
+        },
+        "id": "SHADOW_ASSASSIN_LEGGINGS"
+      },
+      {
+        "material": "LEATHER_LEGGINGS",
+        "color": "224,148,25",
+        "name": "Strong Dragon Leggings",
+        "category": "LEGGINGS",
+        "tier": "LEGENDARY",
+        "stats": {
+          "DEFENSE": 140,
+          "HEALTH": 100,
+          "STRENGTH": 25
+        },
+        "npc_sell_price": 100000,
+        "dungeon_item_conversion_cost": {
+          "essence_type": "DRAGON",
+          "amount": 60
+        },
+        "upgrade_costs": [
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "DRAGON",
+              "amount": 25
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "DRAGON",
+              "amount": 40
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "DRAGON",
+              "amount": 65
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "DRAGON",
+              "amount": 110
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "DRAGON",
+              "amount": 160
+            }
+          ]
+        ],
+        "requirements": [
+          {
+            "type": "SKILL",
+            "skill": "COMBAT",
+            "level": 16
+          }
+        ],
+        "catacombs_requirements": [
+          {
+            "type": "DUNGEON_SKILL",
+            "dungeon_type": "CATACOMBS",
+            "level": 12
+          }
+        ],
+        "gemstone_slots": [
+          {
+            "slot_type": "JASPER",
+            "costs": [
+              {
+                "type": "COINS",
+                "coins": 50000
+              },
+              {
+                "type": "ITEM",
+                "item_id": "FINE_JASPER_GEM",
+                "amount": 20
+              }
+            ]
+          }
+        ],
+        "museum_data": {
+          "category": "COMBAT",
+          "parent": {},
+          "armor_set_donation_xp": {
+            "STRONG_DRAGON": 10
+          },
+          "game_stage": "INTERMEDIATE"
+        },
+        "id": "STRONG_DRAGON_LEGGINGS"
+      },
+      {
+        "material": "LEATHER_CHESTPLATE",
+        "color": "0,0,0",
+        "name": "Shadow Assassin Chestplate",
+        "category": "CHESTPLATE",
+        "tier": "EPIC",
+        "stats": {
+          "WALK_SPEED": 7,
+          "DEFENSE": 110,
+          "HEALTH": 240,
+          "STRENGTH": 25,
+          "CRITICAL_DAMAGE": 25
+        },
+        "npc_sell_price": 5000,
+        "upgrade_costs": [
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "WITHER",
+              "amount": 35
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "WITHER",
+              "amount": 75
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "WITHER",
+              "amount": 150
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "WITHER",
+              "amount": 300
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "WITHER",
+              "amount": 500
+            }
+          ]
+        ],
+        "gear_score": 25,
+        "requirements": [
+          {
+            "type": "DUNGEON_TIER",
+            "dungeon_type": "CATACOMBS",
+            "tier": 5
+          }
+        ],
+        "dungeon_item": true,
+        "gemstone_slots": [
+          {
+            "slot_type": "JASPER",
+            "costs": [
+              {
+                "type": "COINS",
+                "coins": 50000
+              },
+              {
+                "type": "ITEM",
+                "item_id": "FINE_JASPER_GEM",
+                "amount": 20
+              }
+            ]
+          }
+        ],
+        "museum_data": {
+          "category": "DUNGEONEERING",
+          "parent": {},
+          "armor_set_donation_xp": {
+            "SHADOW_ASSASSIN": 10
+          },
+          "game_stage": "SKILLED"
+        },
+        "id": "SHADOW_ASSASSIN_CHESTPLATE"
+      },
+      {
+        "material": "SKULL_ITEM",
+        "durability": 3,
+        "skin": {
+          "value": "ewogICJ0aW1lc3RhbXAiIDogMTcyMDA1MDM1NTY0NiwKICAicHJvZmlsZUlkIiA6ICJiMTM1MDRmMjMxOGI0OWNjYWFkZDcyYWVhYmMyNTQ1MCIsCiAgInByb2ZpbGVOYW1lIiA6ICJUeXBrZW4iLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzhiYzY1NTFiZWIyMTQ4ZDkzOWI2OTkyNTE0MGQyMzc5ZmUwZmFiNmU3ZDMxZjY1ZGY1MGI1OWU5Zjc3YTBlNCIsCiAgICAgICJtZXRhZGF0YSIgOiB7CiAgICAgICAgIm1vZGVsIiA6ICJzbGltIgogICAgICB9CiAgICB9CiAgfQp9",
+          "signature": "b0pkPKGVDl6hV/v5m8tMvxcICIJX+a+htQem27uOk8xsOZXJmKFhcTVDMf1GcLnTfi+CPFMDEpq2VCrdIX1sIophBxkXVX8WL3ptANT2EEX6HF8ByMgK9rIZd3h3kAHfEVw76dHG7Gupcybw+iDmLjCTcaTldblhyOUkRgjFdoeOSB0MhwlB5JsACcvay5GFxTT7UlvgdwG1eC+KIHl1tXcn0O77RJDb8k3ey+S0v9L2Ftx6h1QxVJzlaDq/P/tWaZ9dtamoACID9I6RzQquyGFosFKjbAuqQZAIYuPDhqL2p+UcZ1fazHuEQb9MVCW0A1WW9lunaGg0CtjBqdZcP6c5aN7FgCeFPNskFkygXmD9f9ME/yHldt7V2iyLm/3nQd5siFUq8vrHbkETZUXK7QcwbcdDuPc4+Sp7Q803qAlI13VR2Nw60O5FwkMt4vz/9aun+zGt/5Yl8SQsD5AVTkm+jTx/Z0Jr6hIR6VDQ3qLiA/4b5WTDDQEmj7kLMm/rv2dQSUodMjChe+a4Uqto6QuhhiWbMnlXkbVtuDGCSP/8a1bF6VBV1SP2izIBnGuGuBgIoMPSmxQrlAqZV5V+s0xDlYUyYPDGrHwHr1U7GIj9EYtvbAEjqV9D4h1rYY04Z5fXOit92SB3txaht3Z+lgYwTfch0tsh/H82pVpzxpo="
+        },
+        "name": "Strong Dragon Helmet",
+        "category": "HELMET",
+        "tier": "LEGENDARY",
+        "stats": {
+          "DEFENSE": 110,
+          "HEALTH": 70,
+          "STRENGTH": 25
+        },
+        "npc_sell_price": 100000,
+        "dungeon_item_conversion_cost": {
+          "essence_type": "DRAGON",
+          "amount": 40
+        },
+        "upgrade_costs": [
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "DRAGON",
+              "amount": 20
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "DRAGON",
+              "amount": 30
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "DRAGON",
+              "amount": 50
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "DRAGON",
+              "amount": 100
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "DRAGON",
+              "amount": 150
+            }
+          ]
+        ],
+        "requirements": [
+          {
+            "type": "SKILL",
+            "skill": "COMBAT",
+            "level": 16
+          }
+        ],
+        "catacombs_requirements": [
+          {
+            "type": "DUNGEON_SKILL",
+            "dungeon_type": "CATACOMBS",
+            "level": 12
+          }
+        ],
+        "gemstone_slots": [
+          {
+            "slot_type": "JASPER",
+            "costs": [
+              {
+                "type": "COINS",
+                "coins": 50000
+              },
+              {
+                "type": "ITEM",
+                "item_id": "FINE_JASPER_GEM",
+                "amount": 20
+              }
+            ]
+          }
+        ],
+        "museum_data": {
+          "category": "COMBAT",
+          "parent": {},
+          "armor_set_donation_xp": {
+            "STRONG_DRAGON": 10
+          },
+          "game_stage": "INTERMEDIATE"
+        },
+        "id": "STRONG_DRAGON_HELMET"
+      },
+      {
+        "material": "LEATHER_BOOTS",
+        "color": "240,209,36",
+        "name": "Strong Dragon Boots",
+        "category": "BOOTS",
+        "tier": "LEGENDARY",
+        "stats": {
+          "DEFENSE": 90,
+          "HEALTH": 60,
+          "STRENGTH": 25
+        },
+        "npc_sell_price": 100000,
+        "dungeon_item_conversion_cost": {
+          "essence_type": "DRAGON",
+          "amount": 35
+        },
+        "upgrade_costs": [
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "DRAGON",
+              "amount": 20
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "DRAGON",
+              "amount": 30
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "DRAGON",
+              "amount": 40
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "DRAGON",
+              "amount": 90
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "DRAGON",
+              "amount": 140
+            }
+          ]
+        ],
+        "requirements": [
+          {
+            "type": "SKILL",
+            "skill": "COMBAT",
+            "level": 16
+          }
+        ],
+        "catacombs_requirements": [
+          {
+            "type": "DUNGEON_SKILL",
+            "dungeon_type": "CATACOMBS",
+            "level": 12
+          }
+        ],
+        "gemstone_slots": [
+          {
+            "slot_type": "JASPER",
+            "costs": [
+              {
+                "type": "COINS",
+                "coins": 50000
+              },
+              {
+                "type": "ITEM",
+                "item_id": "FINE_JASPER_GEM",
+                "amount": 20
+              }
+            ]
+          }
+        ],
+        "museum_data": {
+          "category": "COMBAT",
+          "parent": {},
+          "armor_set_donation_xp": {
+            "STRONG_DRAGON": 10
+          },
+          "game_stage": "INTERMEDIATE"
+        },
+        "id": "STRONG_DRAGON_BOOTS"
+      },
+      {
+        "material": "LEATHER_CHESTPLATE",
+        "color": "217,30,65",
+        "name": "Strong Dragon Chestplate",
+        "category": "CHESTPLATE",
+        "tier": "LEGENDARY",
+        "stats": {
+          "DEFENSE": 160,
+          "HEALTH": 120,
+          "STRENGTH": 25
+        },
+        "npc_sell_price": 100000,
+        "dungeon_item_conversion_cost": {
+          "essence_type": "DRAGON",
+          "amount": 70
+        },
+        "upgrade_costs": [
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "DRAGON",
+              "amount": 30
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "DRAGON",
+              "amount": 50
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "DRAGON",
+              "amount": 80
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "DRAGON",
+              "amount": 120
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "DRAGON",
+              "amount": 180
+            }
+          ]
+        ],
+        "requirements": [
+          {
+            "type": "SKILL",
+            "skill": "COMBAT",
+            "level": 16
+          }
+        ],
+        "catacombs_requirements": [
+          {
+            "type": "DUNGEON_SKILL",
+            "dungeon_type": "CATACOMBS",
+            "level": 12
+          }
+        ],
+        "gemstone_slots": [
+          {
+            "slot_type": "JASPER",
+            "costs": [
+              {
+                "type": "COINS",
+                "coins": 50000
+              },
+              {
+                "type": "ITEM",
+                "item_id": "FINE_JASPER_GEM",
+                "amount": 20
+              }
+            ]
+          }
+        ],
+        "museum_data": {
+          "category": "COMBAT",
+          "parent": {},
+          "armor_set_donation_xp": {
+            "STRONG_DRAGON": 10
+          },
+          "game_stage": "INTERMEDIATE"
+        },
+        "id": "STRONG_DRAGON_CHESTPLATE"
+      },
+      {
+        "material": "SKULL_ITEM",
+        "durability": 3,
+        "skin": {
+          "value": "ewogICJ0aW1lc3RhbXAiIDogMTYxOTM0NjY3MzMxNCwKICAicHJvZmlsZUlkIiA6ICJiMGQ3MzJmZTAwZjc0MDdlOWU3Zjc0NjMwMWNkOThjYSIsCiAgInByb2ZpbGVOYW1lIiA6ICJPUHBscyIsCiAgInNpZ25hdHVyZVJlcXVpcmVkIiA6IHRydWUsCiAgInRleHR1cmVzIiA6IHsKICAgICJTS0lOIiA6IHsKICAgICAgInVybCIgOiAiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS9hMWFhMTRkZTljMTU4ZDM1MTM5NDljODVjYWJiOWUzNzg0OGI5ODRlYzNmYjViNDRhMzIxOWY0ZmI1OGEwMGRhIgogICAgfQogIH0KfQ==",
+          "signature": "WXrxaILy6u+t6O7+eTbq3Ao7YQFZOppJY8uDKhf9GCBYO0L1ZznTh6R1jzqU202IRmY0ICOQNBMXzEEBVa30VP0MhJO4vxfs1ieyR1MM4P6OuIcJN/E2nkTIMbT4San9rnGBb2UoWJazLu1LiPefOl/pfiCBfXpJ6kP3VJwLOnDXhvPJkrPg6KrPbsDViLB5ZdUUx8lNYJElZFe9yMzxTSD+0GJmoiQNXhzNul8jr047DAvO8+VHj7WnHN1WYnVEVG5WYQ9rfbs0LnOuRXK+SW3rcfh9F0kZRl0R6oUoWiG8UxciLKXguSbxT1+YKgfQOCvpxAw0nRcTt7ESJRPL5J+ZdNmqkwIdrwtc38JSrxMmuT2ExDbGTA5HZ/wGG8/gM80g3KSHg+LCTDebodrOqoFdA8+5x76tU2wxLX/I4+INAjBDLTRW7PTYXLQkE/v8BVaS1idxFmvJHloQOzqUCpjxwWe4CrIq1XnWQyPCduTbsWIDB2TKlEeCYA9DEKB1YzmjpB3mKvdHdTdGLC4DSvO3lRh0nrRERFMRsTUfWxxnLSqtevjBFOMW1QaH4fd8x0qAx5wJ3xyLVCViVUJ6VPgW268fHResp4mduS62ovxPHeOq6cdlZVILswiPgTmF2YOa7bkUljm0w8Oc+sieP5GRF1LxH7+VeI9v2Ssyj7s="
+        },
+        "name": "Shadow Assassin Helmet",
+        "category": "HELMET",
+        "tier": "EPIC",
+        "stats": {
+          "WALK_SPEED": 7,
+          "DEFENSE": 70,
+          "HEALTH": 160,
+          "STRENGTH": 25,
+          "CRITICAL_DAMAGE": 25
+        },
+        "npc_sell_price": 5000,
+        "upgrade_costs": [
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "WITHER",
+              "amount": 25
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "WITHER",
+              "amount": 50
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "WITHER",
+              "amount": 100
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "WITHER",
+              "amount": 200
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "WITHER",
+              "amount": 300
+            }
+          ]
+        ],
+        "gear_score": 25,
+        "requirements": [
+          {
+            "type": "DUNGEON_TIER",
+            "dungeon_type": "CATACOMBS",
+            "tier": 5
+          }
+        ],
+        "dungeon_item": true,
+        "gemstone_slots": [
+          {
+            "slot_type": "JASPER",
+            "costs": [
+              {
+                "type": "COINS",
+                "coins": 50000
+              },
+              {
+                "type": "ITEM",
+                "item_id": "FINE_JASPER_GEM",
+                "amount": 20
+              }
+            ]
+          }
+        ],
+        "museum_data": {
+          "category": "DUNGEONEERING",
+          "parent": {},
+          "armor_set_donation_xp": {
+            "SHADOW_ASSASSIN": 10
+          },
+          "game_stage": "SKILLED"
+        },
+        "id": "SHADOW_ASSASSIN_HELMET"
+      },
+      {
+        "material": "SKULL_ITEM",
+        "durability": 3,
+        "skin": {
+          "value": "ewogICJ0aW1lc3RhbXAiIDogMTY5MjI5ODIwNzA1MywKICAicHJvZmlsZUlkIiA6ICIzZWUxYWRlMzljZDI0ZjFkOWYwODliYjA2ZTkzNTY5YSIsCiAgInByb2ZpbGVOYW1lIiA6ICJSdXNvR01SIiwKICAic2lnbmF0dXJlUmVxdWlyZWQiIDogdHJ1ZSwKICAidGV4dHVyZXMiIDogewogICAgIlNLSU4iIDogewogICAgICAidXJsIiA6ICJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlL2ZhMjQzMTE0ODU3MmZlZDdiYzFlYWNmMGQyMjlkZGIyMTE1ZDFhMmNhMTgxZDMyM2QzZmNhNTIyNmU1MTZhMWQiCiAgICB9CiAgfQp9",
+          "signature": "E2+21vF+mbIwzzwWnQ7d8N7/Sr5cisgTlW5NCJGY1hjpB/wOlO5cswKUzTdeWP7Z8Z31TmEyPs0gfC9Cje4c+a2XpVTssJYzSlXx7K811nP93ygJGLTKz/+B/tX5s3Ij7cLr3INwBd9aSFPfJzi5JszZyop6wuXDau4miB0WDAF2AW1Ln+PFUpWmrR/h9gvYqQxj/qKRyyZN8gYfRRdDeQjO/TEujIHanNMCcDW1Qp5h9HkSTXcq7SvXWNh09q8mDuGpB4tOg41DGND+CeQCQr6MAjIwYLQC8KeIkwBc3c0GAIzAUtCWrY0hNvRmd1EPcdQqbE6qn50NoJEpBMHKXh4RmCL7zhDeK1hGq3NcHXdfn6EOtu6+FPe0iSJ3aZ2Qquzyr72DUWKtbKp4eps7YUGuOZ+kZNR0dNBp67Ki9zCn9IN84fsgFTP/DT2vFix2jdVqhlX1AadmPVZfZBiH6CZ+B1drQMHaHoz1kqPBLNCSNJpeBikiGc4/LCnjXayNswqbRHKs06BPBlCbN6w1yyR/bYdqpn9l3t2o7/kRSVXMRP16hyK4ZnzBATgg0p5dzt5yp2cP+FC9UIidaDjc6klDo3GHdbUCC8IJ436QB7yvO80SUupayFtcEI4k/tJH8s3OP5Rexn6J5tNlENYlFlX3roGqDWUTAty1Xnvk2c8="
+        },
+        "name": "Shadow Assassin Cloak",
+        "category": "CLOAK",
+        "tier": "EPIC",
+        "npc_sell_price": 0,
+        "dungeon_item": true,
+        "stats": {
+          "STRENGTH": 20,
+          "WALK_SPEED": 3
+        },
+        "upgrade_costs": [
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "WITHER",
+              "amount": 25
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "WITHER",
+              "amount": 50
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "WITHER",
+              "amount": 125
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "WITHER",
+              "amount": 250
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "WITHER",
+              "amount": 400
+            }
+          ]
+        ],
+        "requirements": [
+          {
+            "type": "DUNGEON_TIER",
+            "dungeon_type": "CATACOMBS",
+            "tier": 5
+          }
+        ],
+        "museum_data": {
+          "category": "DUNGEONEERING",
+          "parent": {},
+          "armor_set_donation_xp": {
+            "SHADOW_ASSASSIN": 10
+          },
+          "game_stage": "SKILLED"
+        },
+        "id": "SHADOW_ASSASSIN_CLOAK"
+      },
+      {
+        "material": "LEATHER_CHESTPLATE",
+        "color": "255,111,12",
+        "name": "Crimson Chestplate",
+        "category": "CHESTPLATE",
+        "tier": "LEGENDARY",
+        "stats": {
+          "DEFENSE": 65,
+          "HEALTH": 230,
+          "INTELLIGENCE": 5,
+          "STRENGTH": 30,
+          "CRITICAL_DAMAGE": 20
+        },
+        "requirements": [
+          {
+            "type": "SKILL",
+            "skill": "COMBAT",
+            "level": 22
+          },
+          {
+            "type": "KUUDRA_COMPLETION",
+            "kuudra_tier": "NONE"
+          }
+        ],
+        "upgrade_costs": [
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "CRIMSON",
+              "amount": 30
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "CRIMSON",
+              "amount": 35
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "CRIMSON",
+              "amount": 40
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "CRIMSON",
+              "amount": 45
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "CRIMSON",
+              "amount": 50
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "CRIMSON",
+              "amount": 55
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "CRIMSON",
+              "amount": 60
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "CRIMSON",
+              "amount": 70
+            },
+            {
+              "type": "ITEM",
+              "item_id": "HEAVY_PEARL",
+              "amount": 2
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "CRIMSON",
+              "amount": 80
+            },
+            {
+              "type": "ITEM",
+              "item_id": "HEAVY_PEARL",
+              "amount": 3
+            }
+          ],
+          [
+            {
+              "type": "ESSENCE",
+              "essence_type": "CRIMSON",
+              "amount": 90
+            },
+            {
+              "type": "ITEM",
+              "item_id": "HEAVY_PEARL",
+              "amount": 4
+            }
+          ]
+        ],
+        "prestige": {
+          "item_id": "HOT_CRIMSON_CHESTPLATE",
+          "costs": [
+            {
+              "type": "ESSENCE",
+              "essence_type": "CRIMSON",
+              "amount": 150
+            },
+            {
+              "type": "ITEM",
+              "item_id": "KUUDRA_TEETH",
+              "amount": 10
+            }
+          ]
+        },
+        "gemstone_slots": [
+          {
+            "slot_type": "COMBAT",
+            "costs": [
+              {
+                "type": "COINS",
+                "coins": 250000
+              },
+              {
+                "type": "ITEM",
+                "item_id": "FLAWLESS_JASPER_GEM",
+                "amount": 1
+              },
+              {
+                "type": "ITEM",
+                "item_id": "FLAWLESS_SAPPHIRE_GEM",
+                "amount": 1
+              },
+              {
+                "type": "ITEM",
+                "item_id": "FLAWLESS_RUBY_GEM",
+                "amount": 1
+              },
+              {
+                "type": "ITEM",
+                "item_id": "FLAWLESS_AMETHYST_GEM",
+                "amount": 1
+              }
+            ]
+          },
+          {
+            "slot_type": "COMBAT",
+            "costs": [
+              {
+                "type": "COINS",
+                "coins": 250000
+              },
+              {
+                "type": "ITEM",
+                "item_id": "FLAWLESS_JASPER_GEM",
+                "amount": 1
+              },
+              {
+                "type": "ITEM",
+                "item_id": "FLAWLESS_SAPPHIRE_GEM",
+                "amount": 1
+              },
+              {
+                "type": "ITEM",
+                "item_id": "FLAWLESS_RUBY_GEM",
+                "amount": 1
+              },
+              {
+                "type": "ITEM",
+                "item_id": "FLAWLESS_AMETHYST_GEM",
+                "amount": 1
+              }
+            ]
+          }
+        ],
+        "museum_data": {
+          "category": "COMBAT",
+          "parent": {},
+          "armor_set_donation_xp": {
+            "CRIMSON": 10
+          },
+          "game_stage": "PROFESSIONAL"
+        },
+        "id": "CRIMSON_CHESTPLATE"
+      }
+    ]
+  },
+  "neu": {
+    "metadata": {
+      "provider": "neu",
+      "repository": "NotEnoughUpdates/NotEnoughUpdates-REPO",
+      "branch": "master",
+      "etag": "W/\"e15b1f16adb21761becd756cfca0d6bf3106f2fefca612adfc58e81b4fb8d2fe\"",
+      "downloadedAt": "2026-09-17T13:35:10.975Z",
+      "itemCount": 8828
+    },
+    "items": [
+      {
+        "internalname": "SHADOW_ASSASSIN_BOOTS",
+        "displayname": "§5Shadow Assassin Boots",
+        "lore": [
+          "§7Gear Score: §d305",
+          "§7Health: §c+125",
+          "§7Defense: §a+55",
+          "§7Strength: §c+25",
+          "§7Crit Damage: §9+25%",
+          "§7Speed: §f+7",
+          "§7Gemstones: §8[]",
+          "",
+          "§6Piece Bonus: Fluxation",
+          "§7On teleport, regen §b10 Mana§7.",
+          "§8Cooldown: §a3s",
+          "",
+          "§6Full Set Bonus: Shadow Assassin §7(0/4)",
+          "§7Grants §c+1 Strength §7for every mob",
+          "§7you kill in §cThe Catacombs§7.",
+          "§8(Strength resets after each run)",
+          "",
+          "§8This item can be reforged!",
+          "§4❣ §cRequires The Catacombs Floor V Completion.",
+          "§5§lEPIC DUNGEON BOOTS"
+        ],
+        "infoType": "WIKI_URL",
+        "info": [
+          "https://hypixelskyblock.minecraft.wiki/w/Shadow_Assassin_Boots"
+        ]
+      },
+      {
+        "internalname": "SHADOW_ASSASSIN_LEGGINGS",
+        "displayname": "§5Shadow Assassin Leggings",
+        "lore": [
+          "§7Gear Score: §d470",
+          "§7Health: §c+210",
+          "§7Defense: §a+95",
+          "§7Strength: §c+25",
+          "§7Crit Damage: §9+25%",
+          "§7Speed: §f+7",
+          "§7Gemstones: §8[]",
+          "",
+          "§6Piece Bonus: Salubrious",
+          "§7On kill, heal §c+15§7.",
+          "§8Cooldown: §a3s",
+          "",
+          "§6Full Set Bonus: Shadow Assassin §7(0/4)",
+          "§7Grants §c+1 Strength §7for every mob",
+          "§7you kill in §cThe Catacombs§7.",
+          "§8(Strength resets after each run)",
+          "",
+          "§8This item can be reforged!",
+          "§4❣ §cRequires The Catacombs Floor V Completion.",
+          "§5§lEPIC DUNGEON LEGGINGS"
+        ],
+        "infoType": "WIKI_URL",
+        "info": [
+          "https://hypixelskyblock.minecraft.wiki/w/Shadow_Assassin_Leggings"
+        ]
+      },
+      {
+        "internalname": "STRONG_DRAGON_LEGGINGS",
+        "displayname": "§6Strong Dragon Leggings",
+        "lore": [
+          "§7Health: §c+100",
+          "§7Defense: §a+140",
+          "§7Strength: §c+25",
+          "§7Gemstones: §8[]",
+          "",
+          "§6Full Set Bonus: Strong Blood §7(0/4)",
+          "§7Improves §9Aspect of the End",
+          "§8⋗ §c+75 Damage",
+          "",
+          "§7Instant Transmission:",
+          "§8⋗ §a+2 §7teleport range",
+          "§8⋗ §a+3 §7seconds",
+          "§8⋗ §c+5 Strength §7on cast",
+          "",
+          "§8This item can be reforged!",
+          "§4❣ §cRequires §aCombat Skill 16§c.",
+          "§6§lLEGENDARY LEGGINGS"
+        ],
+        "infoType": "WIKI_URL",
+        "info": [
+          "https://hypixelskyblock.minecraft.wiki/w/Strong_Dragon_Leggings"
+        ]
+      },
+      {
+        "internalname": "SHADOW_ASSASSIN_CHESTPLATE",
+        "displayname": "§5Shadow Assassin Chestplate",
+        "lore": [
+          "§7Gear Score: §d530",
+          "§7Health: §c+240",
+          "§7Defense: §a+110",
+          "§7Strength: §c+25",
+          "§7Crit Damage: §9+25%",
+          "§7Speed: §f+7",
+          "§7Gemstones: §8[]",
+          "",
+          "§6Piece Bonus: Sinew",
+          "§7On teleport, gain §c+10 Strength §7for",
+          "§a10 §7seconds.",
+          "§8Cooldown: §a3s",
+          "",
+          "§6Full Set Bonus: Shadow Assassin §7(0/4)",
+          "§7Grants §c+1 Strength §7for every mob",
+          "§7you kill in §cThe Catacombs§7.",
+          "§8(Strength resets after each run)",
+          "",
+          "§8This item can be reforged!",
+          "§4❣ §cRequires The Catacombs Floor V Completion.",
+          "§5§lEPIC DUNGEON CHESTPLATE"
+        ],
+        "infoType": "WIKI_URL",
+        "info": [
+          "https://hypixelskyblock.minecraft.wiki/w/Shadow_Assassin_Chestplate"
+        ]
+      },
+      {
+        "internalname": "STRONG_DRAGON_HELMET",
+        "displayname": "§6Strong Dragon Helmet",
+        "lore": [
+          "§7Health: §c+70",
+          "§7Defense: §a+110",
+          "§7Strength: §c+25",
+          "§7Gemstones: §8[]",
+          "",
+          "§6Full Set Bonus: Strong Blood §7(0/4)",
+          "§7Improves §9Aspect of the End",
+          "§8⋗ §c+75 Damage",
+          "",
+          "§7Instant Transmission:",
+          "§8⋗ §a+2 §7teleport range",
+          "§8⋗ §a+3 §7seconds",
+          "§8⋗ §c+5 Strength §7on cast",
+          "",
+          "§8This item can be reforged!",
+          "§4❣ §cRequires §aCombat Skill 16§c.",
+          "§6§lLEGENDARY HELMET"
+        ],
+        "infoType": "WIKI_URL",
+        "info": [
+          "https://hypixelskyblock.minecraft.wiki/w/Strong_Dragon_Helmet"
+        ]
+      },
+      {
+        "internalname": "STRONG_DRAGON_BOOTS",
+        "displayname": "§6Strong Dragon Boots",
+        "lore": [
+          "§7Health: §c+60",
+          "§7Defense: §a+90",
+          "§7Strength: §c+25",
+          "§7Gemstones: §8[]",
+          "",
+          "§6Full Set Bonus: Strong Blood §7(0/4)",
+          "§7Improves §9Aspect of the End",
+          "§8⋗ §c+75 Damage",
+          "",
+          "§7Instant Transmission:",
+          "§8⋗ §a+2 §7teleport range",
+          "§8⋗ §a+3 §7seconds",
+          "§8⋗ §c+5 Strength §7on cast",
+          "",
+          "§8This item can be reforged!",
+          "§4❣ §cRequires §aCombat Skill 16§c.",
+          "§6§lLEGENDARY BOOTS"
+        ],
+        "infoType": "WIKI_URL",
+        "info": [
+          "https://hypixelskyblock.minecraft.wiki/w/Strong_Dragon_Boots"
+        ]
+      },
+      {
+        "internalname": "STRONG_DRAGON_CHESTPLATE",
+        "displayname": "§6Strong Dragon Chestplate",
+        "lore": [
+          "§7Health: §c+120",
+          "§7Defense: §a+160",
+          "§7Strength: §c+25",
+          "§7Gemstones: §8[]",
+          "",
+          "§6Full Set Bonus: Strong Blood §7(0/4)",
+          "§7Improves §9Aspect of the End",
+          "§8⋗ §c+75 Damage",
+          "",
+          "§7Instant Transmission:",
+          "§8⋗ §a+2 §7teleport range",
+          "§8⋗ §a+3 §7seconds",
+          "§8⋗ §c+5 Strength §7on cast",
+          "",
+          "§8This item can be reforged!",
+          "§4❣ §cRequires §aCombat Skill 16§c.",
+          "§6§lLEGENDARY CHESTPLATE"
+        ],
+        "infoType": "WIKI_URL",
+        "info": [
+          "https://hypixelskyblock.minecraft.wiki/w/Strong_Dragon_Chestplate"
+        ]
+      },
+      {
+        "internalname": "SHADOW_ASSASSIN_HELMET",
+        "displayname": "§5Shadow Assassin Helmet",
+        "lore": [
+          "§7Gear Score: §d370",
+          "§7Health: §c+160",
+          "§7Defense: §a+70",
+          "§7Strength: §c+25",
+          "§7Crit Damage: §9+25%",
+          "§7Speed: §f+7",
+          "§7Gemstones: §8[]",
+          "",
+          "§6Piece Bonus: Pursuit",
+          "§7On teleport, gain §8invisibility §7and §f+20",
+          "§fSpeed §7for §a10 §7seconds.",
+          "§8Cooldown: §a3s",
+          "",
+          "§6Full Set Bonus: Shadow Assassin §7(0/4)",
+          "§7Grants §c+1 Strength §7for every mob",
+          "§7you kill in §cThe Catacombs§7.",
+          "§8(Strength resets after each run)",
+          "",
+          "§8This item can be reforged!",
+          "§4❣ §cRequires The Catacombs Floor V Completion.",
+          "§5§lEPIC DUNGEON HELMET"
+        ],
+        "infoType": "WIKI_URL",
+        "info": [
+          "https://hypixelskyblock.minecraft.wiki/w/Shadow_Assassin_Helmet"
+        ]
+      },
+      {
+        "internalname": "SHADOW_ASSASSIN_CLOAK",
+        "displayname": "§5Shadow Assassin Cloak",
+        "lore": [
+          "§7Strength: §c+20",
+          "§7Speed: §f+3",
+          "",
+          "§6Piece Bonus: Bloodrush",
+          "§7On teleport: Your next melee hit",
+          "§7within §a5s §7deals §c10% §7more damage.",
+          "§8Cooldown: §a3s",
+          "",
+          "§eRight-click to equip!",
+          "",
+          "§8This item can be reforged!",
+          "§4❣ §cRequires The Catacombs Floor V Completion.",
+          "§5§lEPIC DUNGEON CLOAK"
+        ],
+        "infoType": "WIKI_URL",
+        "info": [
+          "https://hypixelskyblock.minecraft.wiki/w/Shadow_Assassin_Cloak"
+        ]
+      },
+      {
+        "internalname": "CRIMSON_CHESTPLATE",
+        "displayname": "§6Crimson Chestplate",
+        "lore": [
+          "§7Health: §c+230",
+          "§7Defense: §a+65",
+          "§7Strength: §c+30",
+          "§7Crit Damage: §9+20%",
+          "§7Intelligence: §b+5",
+          "§7Gemstones: §8[⚔] [⚔]",
+          "",
+          "§8Tiered Bonus: Dominus (0/4)",
+          "§7Every §a1.5s§7, melee attacks grant §c1§7 stack of",
+          "§6ᝐ Dominus§7. §8Lose 1 stack after 4s of not",
+          "§8gaining a stack.",
+          "",
+          "§7Each stack grants §e+0.05 Swing Range§7.",
+          "",
+          "§7At §c10§7 stacks swipe in a random direction",
+          "§7dealing §c0.5x §4Swipe Damage§7 to mobs in its path.",
+          "",
+          "§8This item can be reforged!",
+          "§4❣ §cRequires §aCombat Skill 22§c.",
+          "§4❣ §cRequires Kuudra Basic Tier Completion.",
+          "§6§lLEGENDARY CHESTPLATE"
+        ],
+        "infoType": "WIKI_URL",
+        "info": [
+          "https://hypixelskyblock.minecraft.wiki/w/Crimson_Chestplate"
+        ]
+      }
+    ]
+  },
+  "museum": {
+    "groups": {
+      "STRONG_DRAGON": [
+        "STRONG_DRAGON_BOOTS",
+        "STRONG_DRAGON_CHESTPLATE",
+        "STRONG_DRAGON_HELMET",
+        "STRONG_DRAGON_LEGGINGS"
+      ],
+      "SHADOW_ASSASSIN": [
+        "SHADOW_ASSASSIN_BOOTS",
+        "SHADOW_ASSASSIN_CHESTPLATE",
+        "SHADOW_ASSASSIN_CLOAK",
+        "SHADOW_ASSASSIN_HELMET",
+        "SHADOW_ASSASSIN_LEGGINGS"
+      ]
+    },
+    "source": "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z"
+  }
+}

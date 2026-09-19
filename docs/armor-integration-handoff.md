@@ -105,3 +105,13 @@ A paid Armor call is unnecessary until its evidence and output contracts are val
 For the September 30 submission deadline, target feature completeness around September 27; reserve the final days for real-profile coverage, deployment, UX/documentation and submission preparation. The deadline is a scope constraint, not permission to assert unknown set mechanics.
 
 Commits: 93f0eaf freezes Weapons; a7ea37e establishes Armor deterministic preparation; the final shared-retrieval/handoff commit completes this session boundary. All commits are local; no push or deployment was performed.
+
+## Automatic ingestion checkpoint
+
+Armor now derives explicit Piece Bonus / Full Set Bonus / Tiered Bonus blocks from canonical NEU lore and loads comparison packages from the already-downloaded NEU Museum snapshot. Museum taxonomy never establishes combat set membership. Full-set/tiered prerequisites remain UNKNOWN; explicit piece bonuses have independent equipment prerequisites only when no further equipment dependency is detected. Combat activation conditions remain source text, not evaluated bonuses.
+
+prepareArmorForProfile automatically loads this knowledge; dependency-injected offline callers can supply their own loader. Missing/malformed Museum source produces a diagnostic and lore-only ingestion, not guessed packages.
+
+Saved ten public Hypixel item records plus corresponding local NEU lore and two Museum groups in scripts/fixtures/armor/source-items.json. This required one public resource GET with no credentials, player retrieval, market refresh or model call. Tests never access the network. The fixture verifies normalization, requirements, native Dungeon flags, source provenance, mixed armor/equipment groups, and bounded preparation after actual normalized F5 completion evidence.
+
+35 Armor tests, TypeScript and targeted lint pass at this checkpoint. Weapons code was unchanged. Natural-language Armor parsing and recommendation output validation remain next.
