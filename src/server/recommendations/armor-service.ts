@@ -20,7 +20,9 @@ export async function runArmorRecommendation(raw: unknown, dependencies = defaul
   const plan = await dependencies.prepare(request);
   if (plan.status !== "READY") return plan;
   const prepared = prepareArmorLunaRequest(plan, dependencies.now?.());
-  const inputHash = createHash("sha256").update(JSON.stringify(prepared.body)).digest("hex");
+  // Bind consent to this request/profile as well as the complete provider body.
+  // Identity and original prose stay server-side; neither is sent to Luna.
+  const inputHash = createHash("sha256").update(JSON.stringify({ request, providerRequest: prepared.body })).digest("hex");
   if (mode === "preview") return {
     status: "AWAITING_APPROVAL" as const, inputHash,
     providerRequest: prepared.body, evidence: prepared.evidence, inputBytes: prepared.inputBytes,

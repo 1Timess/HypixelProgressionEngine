@@ -27,7 +27,7 @@ export function parseArmorEffects(item: ItemDefinition): EquipmentEffect[] {
     const body = lines.slice(index + 1, end).join("\n").trim();
     if (!body) continue; // A heading alone supplies no mechanic.
     const text = lines[index] + "\n" + body;
-    const dependencyMention = /\b(?:wear(?:ing)?|equipp?ed|pieces?|sets?|armou?r|helmet|chestplate|leggings|boots)\b/i.test(body);
+    const dependencyMention = /\b(?:wear(?:ing)?|equipp?ed|hold(?:ing)?|held|hand|us(?:e|ing)|pieces?|sets?|armou?r|helmet|chestplate|leggings|boots)\b/i.test(body);
     const independent = match[1] === "Piece Bonus" && !dependencyMention;
     const source = item.knowledge.sources.find(entry => entry.provider === "neu");
     effects.push({

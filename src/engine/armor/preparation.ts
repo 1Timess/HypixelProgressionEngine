@@ -197,7 +197,7 @@ export async function prepareArmorUpgrade(
   return { status: "READY", modelPayload: payload, review };
 }
 
-/** Inspection boundary only: Armor is not wired to a provider or the weapon output validator. */
+/** Independent freshness, shape and byte gate used by both preview and Armor execution. */
 export function serializeArmorModelInput(preparation: ArmorPreparation, now = Date.now()): string | null {
   if (preparation.status !== "READY" || !preparation.modelPayload) return null;
   const payload = ArmorEvidenceSchema.parse(preparation.modelPayload);

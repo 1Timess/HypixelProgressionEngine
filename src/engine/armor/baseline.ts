@@ -10,15 +10,18 @@ export function armorSlot(item: ItemDefinition): ArmorSlot | null {
 export function resolveArmorBaseline(snapshot: PlayerSnapshot, catalog: ItemCatalog, requiredSlots: readonly ArmorSlot[]) {
   const equipped = new Map<ArmorSlot, ItemDefinition>();
   const problems: string[] = [];
-  const seen = new Set<string>();
+  const seen = new Map<string, string>();
   for (const instance of snapshot.equipment.armor) {
     if (instance.count !== 1) { problems.push("Equipped armor count is ambiguous."); continue; }
     const item = catalog.getById(instance.itemId), slot = item && armorSlot(item);
     if (!item || !slot) { problems.push("An equipped armor item has unresolved canonical slot knowledge."); continue; }
     // Only a repeated identical instance UUID is safely deduplicated.
-    const key = instance.uuid ? instance.uuid + ":" + item.id : null;
-    if (key && seen.has(key)) continue;
-    if (key) seen.add(key);
+    const key = instance.uuid;
+    if (key && seen.has(key)) {
+      if (seen.get(key) !== item.id) problems.push("One equipped instance UUID refers to conflicting canonical items.");
+      continue;
+    }
+    if (key) seen.set(key, item.id);
     if (equipped.has(slot)) problems.push("Multiple equipped items resolve to " + slot + ".");
     else equipped.set(slot, item);
   }
