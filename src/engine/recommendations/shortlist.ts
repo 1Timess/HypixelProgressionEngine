@@ -34,7 +34,10 @@ export function shortlistWeaponEvidence(input: RecommendationEvidence): { payloa
     candidate.knowledge === "LORE_AVAILABLE" && contextReady(candidate) &&
     knownGain(candidate, PRIMARY_STATS[input.baseline.combatMode] ?? []));
   // A small set already fits the intended review scope; do not manufacture omissions.
-  const apply = input.candidates.length > 5 && known.length > 0 && known.length < input.candidates.length;
+  // This policy has no proof that known gains outweigh an explicit soft preference.
+  // Keep the frontier intact; the existing byte gate reports a limitation if it cannot fit.
+  const hasSoftPreference = Object.values(input.intent.constraints).some(constraint => constraint?.strength === "PREFERRED");
+  const apply = !hasSoftPreference && input.candidates.length > 5 && known.length > 0 && known.length < input.candidates.length;
   const selected = apply ? known : input.candidates;
   const ids = new Set(selected.map(candidate => candidate.id));
   const audit: ShortlistAudit = {

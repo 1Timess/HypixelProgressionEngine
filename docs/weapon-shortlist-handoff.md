@@ -1,3 +1,5 @@
+Latest status: [Weapons v1 freeze](weapon-v1-freeze.md). Earlier checkpoints below are historical.
+
 # Optional questions and default weapon shortlisting
 
 User direction: conversation may improve recommendations, but a user saying "I don't know" must not be trapped in repeated preference questions. Do not make a one-candidate capability test the production acceptance test. The broad request must be tested.

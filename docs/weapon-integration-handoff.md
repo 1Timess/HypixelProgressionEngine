@@ -1,3 +1,5 @@
+Latest status: [Weapons v1 freeze](weapon-v1-freeze.md). Earlier checkpoints below are historical.
+
 # Weapon conversational integration — 2026-09-19
 
 ## Audit and first milestone
