@@ -89,3 +89,7 @@ Absent a concrete failing scenario, treat weapon intent/primary resolution, comp
 The exact next major milestone is **Armor UPGRADE_CURRENT_BUILD deterministic preparation**: map shared stages, resolve equipped mixed-set/slot baselines, represent explicit set dependencies, reuse eligibility and bulk pricing, preserve piece/package costs and unresolved mechanics, and reach an inspectable bounded evidence gate. Do not begin by cloning the weapon single-item baseline or adding item-ID progression paths. Stop at a trustworthy deterministic boundary if model integration would be rushed.
 
 Historical live integration remains data/recommendation-integration/live-result-attempt-2.json, committed in 99ac251. Its Shadow Fury result is an integration observation only. Freeze hardening commits include 38d8f27 and the subsequent preference/conversation freeze milestone.
+
+## Post-freeze Armor integration check
+
+Armor required one small shared extraction: unchanged profile/catalog retrieval and player-identity validation moved to player-context.ts and recommendation-player.ts. Both domains now consume them. The full 114-test weapon suite, TypeScript and relevant lint passed afterward. No frozen recommendation policy, model payload or output-validation behavior changed. Armor's current boundary and next concrete milestone are in armor-integration-handoff.md.

@@ -239,3 +239,18 @@ test("contradictory usability and duplicate effect IDs are knowledge errors",asy
   {effects:[1,2].map(()=>({id:"same",text:"Effect",source,dependency:{kind:"INDEPENDENT"}}))},
  ]) assert.equal((await f.run(intent,{items:{NEW_CHESTPLATE:facts}})).status,"NEEDS_KNOWLEDGE");
 });
+
+test("profile service validates identity before retrieval and sends only bounded Armor evidence",async()=>{
+ const {prepareArmorForProfile}=await import("../src/server/recommendations/armor");
+ const f=armorFixture();let loads=0;
+ const deps={load:async(username:string,profileId:string)=>{
+  loads++;assert.equal(username,"Example");assert.equal(profileId,"a".repeat(32));
+  return {snapshot:f.snapshot,catalog:f.catalog};
+ },market:f.market,now:()=>now};
+ const request={username:"Example",profileId:"a".repeat(32),intent};
+ await assert.rejects(prepareArmorForProfile({...request,profileId:"-".repeat(32)},deps));
+ assert.equal(loads,0);
+ const p=await prepareArmorForProfile(request,deps);
+ assert.equal(p.status,"READY");assert.equal(loads,1);assert.equal(f.marketCalls(),1);
+ assert.ok(!serializeArmorModelInput(p,now)!.includes(request.profileId));
+});

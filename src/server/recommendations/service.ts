@@ -1,3 +1,5 @@
+import { loadRecommendationContext } from "./player-context";
+import { RecommendationPlayerSchema } from "@/schemas/recommendation-player";
 import { classifyItem } from "@/server/knowledge/items/classification";
 import { createHash } from "node:crypto";
 import { z } from "zod";
@@ -9,8 +11,7 @@ import type { RecommendationPreparation } from "@/engine/recommendations/minimiz
 import { prepareLunaRequest, recommendWithLuna } from "./luna";
 
 export const RecommendationRequestSchema = z.object({
-  username: z.string().regex(/^[A-Za-z0-9_]{1,16}$/),
-  profileId: z.string().regex(/^(?:[a-fA-F0-9]{32}|[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12})$/),
+  ...RecommendationPlayerSchema.shape,
   request: z.string().trim().min(1).max(2000),
   currentWeapon: ProgressionIntentSchema.shape.currentWeapon.unwrap().strict().optional(),
   constraints: z.object({
@@ -114,21 +115,7 @@ export async function runWeaponRecommendation(raw: unknown, dependencies: Recomm
 
 // Lazy imports keep offline tests independent of database credentials and network clients.
 export const defaultRecommendationDependencies: RecommendationDependencies = {
-  async load(username, profileId) {
-    const [{ getPlayerSkyBlockProfiles }, { findProfileById }, { normalizeSkyBlockProfile },
-      { hypixelLevelResolver }, { loadEnrichedItemCatalog }] = await Promise.all([
-      import("@/server/hypixel/profile-service"), import("@/server/hypixel/profile-selector"),
-      import("@/server/hypixel/profile-normalizer"), import("@/server/hypixel/leveling/resolver"),
-      import("@/server/knowledge/items/enriched-provider"),
-    ]);
-    const [profiles, items] = await Promise.all([getPlayerSkyBlockProfiles(username), loadEnrichedItemCatalog()]);
-    const profile = findProfileById(profiles.profiles, profileId);
-    if (!profile) throw new Error("PROFILE_NOT_FOUND");
-    const snapshot = await normalizeSkyBlockProfile({
-      minecraftUuid: profiles.player.uuid, minecraftUsername: profiles.player.username, profile, levelResolver: hypixelLevelResolver,
-    });
-    return { snapshot, catalog: items.catalog };
-  },
+  load: loadRecommendationContext,
   async prepare(snapshot, catalog, intent) {
     const { generateSelectedCandidates } = await import("@/engine/recommendations/pipeline");
     return (await generateSelectedCandidates(snapshot, catalog, intent)).recommendation;
