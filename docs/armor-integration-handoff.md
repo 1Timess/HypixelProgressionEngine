@@ -1,3 +1,5 @@
+> Current status: see [Armor v1 freeze assessment](armor-v1-freeze.md). Armor is not frozen; real-profile validation exposed a remaining narrowing/knowledge limitation. Historical checkpoints below remain for recovery.
+
 # Armor deterministic vertical: architecture and boundary
 
 Weapons v1 was frozen in 93f0eaf before this work. See weapon-v1-freeze.md.

@@ -196,3 +196,30 @@ test("conflicting source stat aliases fail ingestion rather than select an arbit
  const item=normalizeHypixelItem({id:"SAME",name:"Same",stats:{defense:30,DEFENSE:30,novel_stat:5}});
  assert.deepEqual(item.stats,{DEFENSE:30,NOVEL_STAT:5});
 });
+
+test("effect dictionary losslessly shares repeated states without dropping ten alternatives",async()=>{
+ const {packArmorEvidence,unpackArmorEvidence}=await import("../src/engine/armor/model-evidence");
+ const f=armorFixture();
+ const p=await f.run(intent,{items:{OLD_HELMET:{effects:[{id:"family",text:"Conditional family",source,
+  dependency:{kind:"PIECES",itemIds:ARMOR_SLOTS.map(s=>"OLD_"+s),minimum:4}}]}}});
+ const e=p.modelPayload!;
+ e.candidates=Array.from({length:10},(_,i)=>({...structuredClone(e.candidates[0]),id:"comparison:"+i}));
+ const packed=packArmorEvidence(e);
+ assert.equal(packed.candidates.length,10);assert.equal(packed.effects.length,1);
+ assert.deepEqual(unpackArmorEvidence(packed),e);
+ assert.ok(Buffer.byteLength(JSON.stringify(packed))<Buffer.byteLength(JSON.stringify(e)));
+ assert.deepEqual(packed.candidates.map(c=>c.id),e.candidates.map(c=>c.id));
+});
+test("effect dictionary retains distinct before/after states and rejects missing references",async()=>{
+ const {packArmorEvidence,unpackArmorEvidence}=await import("../src/engine/armor/model-evidence");
+ const f=armorFixture(["CHESTPLATE","BOOTS"]);
+ const p=await f.run({...intent,slots:["CHESTPLATE","BOOTS"]},{...packageKnowledge,items:{NEW_CHESTPLATE:{effects:[{
+  id:"pair",text:"Pair condition",source,dependency:{kind:"PIECES",itemIds:["NEW_CHESTPLATE","NEW_BOOTS"],minimum:2},
+ }]}}});
+ const packed=packArmorEvidence(p.modelPayload!);
+ assert.deepEqual(unpackArmorEvidence(packed),p.modelPayload);
+ assert.ok(packed.effects.some(e=>e.after==="SATISFIED")&&packed.effects.some(e=>e.after==="NOT_SATISFIED"));
+ packed.candidates[0].effects=[packed.effects.length];
+ assert.throws(()=>unpackArmorEvidence(packed));
+ assert.throws(()=>unpackArmorEvidence({...packed,domain:"weapon"}));
+});

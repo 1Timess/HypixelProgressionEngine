@@ -6,6 +6,7 @@ import { generateItemCandidates } from "@/engine/candidates/generator";
 import { compareItemStats } from "@/engine/upgrades/stat-comparison";
 import { ARMOR_SLOTS, ArmorEvidenceSchema, ArmorIntentSchema, ArmorKnowledgeSchema,
   type ArmorEvidence } from "@/schemas/armor-recommendation";
+import { packArmorEvidence } from "./model-evidence";
 import { armorSlot, resolveArmorBaseline } from "./baseline";
 import { equipmentDependencyState, equipmentEffects } from "./effects";
 
@@ -191,7 +192,7 @@ export async function prepareArmorUpgrade(
       effect.source.evidence = effect.source.evidence.map(index => mapping.get(index)!);
     }
   }
-  review.bytes = byteLength(payload);
+  review.bytes = byteLength(packArmorEvidence(payload));
   if (review.bytes > ARMOR_MAX_PAYLOAD_BYTES)
     return finish("NEEDS_KNOWLEDGE", "Complete Armor frontier exceeds the evidence budget; no arbitrary subset is authorized.");
   return { status: "READY", modelPayload: payload, review };
@@ -201,7 +202,8 @@ export async function prepareArmorUpgrade(
 export function serializeArmorModelInput(preparation: ArmorPreparation, now = Date.now()): string | null {
   if (preparation.status !== "READY" || !preparation.modelPayload) return null;
   const payload = ArmorEvidenceSchema.parse(preparation.modelPayload);
-  if (!Number.isFinite(now) || byteLength(payload) > ARMOR_MAX_PAYLOAD_BYTES) throw new Error("Invalid Armor evidence budget or clock.");
+  const packed = packArmorEvidence(payload);
+  if (!Number.isFinite(now) || byteLength(packed) > ARMOR_MAX_PAYLOAD_BYTES) throw new Error("Invalid Armor evidence budget or clock.");
   const indices = [...payload.baseline.flatMap(item => item.lore),
     ...payload.candidates.flatMap(candidate => [...candidate.replaces.flatMap(item => item.lore), ...candidate.effects.flatMap(effect => [effect.text, ...effect.source.evidence])])];
   if (indices.some(index => index >= payload.mechanics.length)) throw new Error("Unknown Armor mechanic reference.");
@@ -210,5 +212,5 @@ export function serializeArmorModelInput(preparation: ArmorPreparation, now = Da
     const age = now - Date.parse(replacement.price.observedAt);
     if (age > MARKET_MAX_AGE_MS || age < -60_000) throw new Error("Stale Armor price evidence.");
   }
-  return JSON.stringify(payload);
+  return JSON.stringify(packed);
 }
