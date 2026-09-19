@@ -1,3 +1,5 @@
+> Latest work-in-progress: [Armor frontier stop checkpoint](armor-frontier-checkpoint.md). User requested stop and commit before soundness review and real-profile validation were complete.
+
 # Armor UPGRADE_CURRENT_BUILD v1 — freeze assessment and handoff
 
 Status: **NOT FROZEN**. The private execution boundary is implemented and adversarially tested; realistic validation exposed a remaining deterministic narrowing/knowledge limitation. Do not start Domain #3 on the assumption that Armor's production recommendation milestone is complete.

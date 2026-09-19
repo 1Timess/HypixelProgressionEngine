@@ -7,6 +7,7 @@ import { compareItemStats } from "@/engine/upgrades/stat-comparison";
 import { ARMOR_SLOTS, ArmorEvidenceSchema, ArmorIntentSchema, ArmorKnowledgeSchema,
   type ArmorEvidence } from "@/schemas/armor-recommendation";
 import { packArmorEvidence } from "./model-evidence";
+import { narrowArmorFrontier, type ArmorFrontierAudit } from "./frontier";
 import { armorSlot, resolveArmorBaseline } from "./baseline";
 import { equipmentDependencyState, equipmentEffects } from "./effects";
 
@@ -19,7 +20,7 @@ export interface ArmorMarketReader {
 export interface ArmorPreparation {
   status: "READY" | "NEEDS_CLARIFICATION" | "NEEDS_KNOWLEDGE" | "NO_OPTIONS" | "INVALID_INPUT";
   modelPayload: ArmorEvidence | null;
-  review: { reasons: string[]; rejected: { id: string; reason: string }[]; bytes: number; generated: number };
+  review: { reasons: string[]; rejected: { id: string; reason: string }[]; bytes: number; generated: number; narrowing?: ArmorFrontierAudit };
 }
 const byteLength = (value: unknown) => Buffer.byteLength(JSON.stringify(value));
 
@@ -175,11 +176,14 @@ export async function prepareArmorUpgrade(
       "Effect states describe equipment prerequisites only, not activation of every combat/target condition. Unknown source lore is not independent.",
       "A package specifies a proposed build, not proof of a set bonus. Inventory ownership never activates an equipped-piece dependency.",
       "Class is current-build context, not proof of class-specific armor superiority. Unknown whole-item context applicability remains unknown.",
-      "All evidence-backed alternatives survive; no forced top-N or mechanic dominance is applied.",
+      "Only proven plain-armor Pareto alternatives may be deferred; uncertain mechanics and tradeoffs survive. No forced top-N is applied.",
     ],
     candidates,
   });
-  // Failed options may have interned lore; remove it rather than leaking excluded catalog evidence.
+  const narrowed = narrowArmorFrontier(payload, catalog, now);
+  review.narrowing = narrowed.audit;
+  payload.candidates = narrowed.candidates;
+  // Failed/deferred options may have interned lore; remove it before the model gate.
   const used = [...new Set([...payload.baseline.flatMap(item => item.lore),
     ...payload.candidates.flatMap(candidate => [...candidate.replaces.flatMap(item => item.lore), ...candidate.effects.flatMap(effect => [effect.text, ...effect.source.evidence])])])].sort((a,b) => a-b);
   const mapping = new Map(used.map((old,index) => [old,index]));
