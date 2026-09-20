@@ -1,4 +1,6 @@
 import type { PlayerSnapshot } from "@/schemas/player";
+import { EquipmentEffectSchema } from "@/schemas/equipment-effects";
+import type { CandidateGenerationResult } from "@/engine/candidates/types";
 import type { ItemCatalog } from "@/server/knowledge/items/catalog";
 import type { ItemDefinition } from "@/schemas/items";
 import type { MarketPrice } from "@/server/market/types";
@@ -10,6 +12,7 @@ import { packArmorEvidence } from "./model-evidence";
 import { narrowArmorFrontier, type ArmorFrontierAudit } from "./frontier";
 import { armorSlot, resolveArmorBaseline } from "./baseline";
 import { equipmentDependencyState, equipmentEffects } from "./effects";
+import { assessArmorMechanic } from "./mechanic-context";
 
 export const ARMOR_MAX_PAYLOAD_BYTES = 8192;
 const MARKET_MAX_AGE_MS = 15 * 60_000;
@@ -20,7 +23,7 @@ export interface ArmorMarketReader {
 export interface ArmorPreparation {
   status: "READY" | "NEEDS_CLARIFICATION" | "NEEDS_KNOWLEDGE" | "NO_OPTIONS" | "INVALID_INPUT";
   modelPayload: ArmorEvidence | null;
-  review: { reasons: string[]; rejected: { id: string; reason: string }[]; bytes: number; generated: number; narrowing?: ArmorFrontierAudit };
+  review: { reasons: string[]; rejected: { id: string; reason: string }[]; bytes: number; generated: number; generation?: CandidateGenerationResult["diagnostics"]; narrowing?: ArmorFrontierAudit };
 }
 const byteLength = (value: unknown) => Buffer.byteLength(JSON.stringify(value));
 
@@ -49,6 +52,7 @@ export async function prepareArmorUpgrade(
   const generated = generateItemCandidates(snapshot, catalog, {
     domain: "armor", context: intent.context, excludeOwned: false, includeUnknownEligibility: false,
   });
+  review.generation = generated.diagnostics;
   const eligible = new Map(generated.candidates.map(candidate => [candidate.item.id, candidate.item]));
   type Option = { id: string; name: string; items: ItemDefinition[] };
   const options: Option[] = generated.candidates.flatMap(({ item }) => {
@@ -150,6 +154,9 @@ export async function prepareArmorUpgrade(
     const effects = [...relevantItems.values()].flatMap(item => equipmentEffects(item, knowledge)
       .map(effect => ({
       itemId: item.id, id: effect.id, text: intern(effect.text), dependency: effect.dependency,
+      ...(effect.mechanic ? {mechanic:effect.mechanic, assessment:assessArmorMechanic(effect,intent.context,
+        beforeIds.has(item.id) ? equipmentDependencyState(effect,baseline.equipped,otherEquipped) : "NOT_EQUIPPED",
+        afterIds.has(item.id) ? equipmentDependencyState(effect,after,otherEquipped) : "NOT_EQUIPPED")} : {}),
       source: { provider: effect.source.provider, evidence: effect.source.evidence.map(intern) },
       before: beforeIds.has(item.id) ? equipmentDependencyState(effect, baseline.equipped, otherEquipped) : "NOT_EQUIPPED" as const,
       after: afterIds.has(item.id) ? equipmentDependencyState(effect, after, otherEquipped) : "NOT_EQUIPPED" as const,
@@ -176,7 +183,7 @@ export async function prepareArmorUpgrade(
       "Effect states describe equipment prerequisites only, not activation of every combat/target condition. Unknown source lore is not independent.",
       "A package specifies a proposed build, not proof of a set bonus. Inventory ownership never activates an equipped-piece dependency.",
       "Class is current-build context, not proof of class-specific armor superiority. Unknown whole-item context applicability remains unknown.",
-      "Only proven plain-armor Pareto alternatives may be deferred; uncertain mechanics and tradeoffs survive. No forced top-N is applied.",
+      "Only source-closed Armor Pareto alternatives may be deferred; uncertain mechanics and tradeoffs survive. No forced top-N is applied.",
     ],
     candidates,
   });
@@ -211,6 +218,14 @@ export function serializeArmorModelInput(preparation: ArmorPreparation, now = Da
   const indices = [...payload.baseline.flatMap(item => item.lore),
     ...payload.candidates.flatMap(candidate => [...candidate.replaces.flatMap(item => item.lore), ...candidate.effects.flatMap(effect => [effect.text, ...effect.source.evidence])])];
   if (indices.some(index => index >= payload.mechanics.length)) throw new Error("Unknown Armor mechanic reference.");
+  for (const candidate of payload.candidates) for (const effect of candidate.effects) {
+    if (!effect.mechanic && !effect.assessment) continue;
+    const fact = EquipmentEffectSchema.parse({id:effect.id,text:payload.mechanics[effect.text],
+      mechanic:effect.mechanic,dependency:effect.dependency,
+      source:{provider:effect.source.provider,evidence:effect.source.evidence.map(index=>payload.mechanics[index])}});
+    if (!fact.mechanic || JSON.stringify(assessArmorMechanic(fact,payload.intent.context,effect.before,effect.after)) !== JSON.stringify(effect.assessment))
+      throw new Error("Inconsistent Armor mechanic context evidence.");
+  }
   for (const candidate of payload.candidates) for (const replacement of candidate.replaces) {
     if (!replacement.price) continue;
     const age = now - Date.parse(replacement.price.observedAt);

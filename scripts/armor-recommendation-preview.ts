@@ -29,7 +29,7 @@ async function main() {
    recommend:async()=>{throw Error("Model execution is prohibited in the preview runner.");},
   });
   const observation={
-   observedAt:new Date().toISOString(),liveModelCalls:0,request,narrowing:preparationReview?.narrowing,
+   observedAt:new Date().toISOString(),liveModelCalls:0,request,narrowing:preparationReview?.narrowing,generation:preparationReview?.generation,
    baseline:context.snapshot.equipment.armor.map(i=>({itemId:i.itemId,category:context.catalog.getById(i.itemId)?.category??null})),
    result,
   };

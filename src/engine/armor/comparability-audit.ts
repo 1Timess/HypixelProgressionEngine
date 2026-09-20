@@ -8,6 +8,13 @@ export function auditArmorComparability(evidence: ArmorEvidence, catalog: ItemCa
  const count=(counts:Record<string,number>,flags:Set<string>)=>{
   for(const key of flags)counts[key]=(counts[key]??0)+1;
  };
+ const itemMetadataKeys:Record<string,number>={},knowledgeMetadataKeys:Record<string,number>={};
+ const missingCandidateStatKeys:Record<string,number>={},missingBaselineStatKeys:Record<string,number>={};
+ const uniqueItems=[...new Set(evidence.candidates.flatMap(c=>c.replaces.map(p=>p.toId)))].map(id=>catalog.getById(id));
+ for(const item of uniqueItems)if(item){
+  count(itemMetadataKeys,new Set(Object.keys(item.metadata)));
+  count(knowledgeMetadataKeys,new Set(Object.keys(item.knowledge.metadata)));
+ }
  const profiles=evidence.candidates.map(candidate=>{
   const flags=new Set<string>(),pieces=[...candidate.replaces].sort((a,b)=>a.slot.localeCompare(b.slot));
   const items=pieces.map(p=>catalog.getById(p.toId));
@@ -17,9 +24,13 @@ export function auditArmorComparability(evidence: ArmorEvidence, catalog: ItemCa
   if(pieces.some(p=>Object.values(p.changes).some(v=>v.includes(null))))flags.add("UNKNOWN_BASELINE_STAT_COMPARISON");
   if(candidate.effects.some(e=>e.dependency.kind==="UNKNOWN"))flags.add("UNKNOWN_EQUIPMENT_DEPENDENCY");
   if(candidate.effects.some(e=>e.after==="UNKNOWN"))flags.add("UNKNOWN_PROPOSED_DEPENDENCY_STATE");
-  if(candidate.effects.length)flags.add("UNMODELED_EFFECT_ACTIVATION_OR_RELEVANCE");
+  if(candidate.effects.some(e=>!e.assessment||e.assessment.relevance==="UNKNOWN"||e.assessment.afterActivation==="UNKNOWN"))flags.add("UNMODELED_EFFECT_ACTIVATION_OR_RELEVANCE");
+  if(candidate.effects.some(e=>e.assessment?.relevance==="RELEVANT"))flags.add("KNOWN_CONTEXT_RELEVANT_EFFECT");
+  if(candidate.effects.some(e=>e.assessment?.relevance==="IRRELEVANT"))flags.add("KNOWN_CONTEXT_IRRELEVANT_EFFECT");
   if(candidate.effects.some(e=>e.before!==e.after&&e.before!=="UNKNOWN"&&e.after!=="UNKNOWN"))flags.add("KNOWN_DEPENDENCY_TRANSITION");
   if(pieces.some(p=>p.acquisition==="BUY"&&(!p.price||p.price.confidence!=="HIGH")))flags.add("MISSING_OR_NON_HIGH_CONFIDENCE_PRICE");
+  count(missingCandidateStatKeys,new Set(pieces.flatMap(p=>Object.entries(p.changes).filter(([,v])=>v[1]===null).map(([key])=>key))));
+  count(missingBaselineStatKeys,new Set(pieces.flatMap(p=>Object.entries(p.changes).filter(([,v])=>v[0]===null).map(([key])=>key))));
   count(candidateCounts,flags);
   return {candidate,pieces,items,flags};
  });
@@ -53,5 +64,7 @@ export function auditArmorComparability(evidence: ArmorEvidence, catalog: ItemCa
   count(pairCounts,flags);
  }
  return {candidates:profiles.length,pairs:profiles.length*(profiles.length-1)/2,sameScopePairs,candidateCounts,pairCounts,
+  sourceGaps:{uniqueReplacementItems:uniqueItems.length,emptyStatItems:uniqueItems.filter(i=>i&&!Object.keys(i.stats).length).map(i=>i!.id).sort(),
+   itemMetadataKeys,knowledgeMetadataKeys,missingCandidateStatKeys,missingBaselineStatKeys},
   interpretation:"Overlapping observations, not exclusive causes or proof of a complete Pareto tradeoff. Missing dimensions remain unknown."};
 }

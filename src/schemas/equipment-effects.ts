@@ -1,4 +1,6 @@
 import { z } from "zod";
+import { ArmorFlatMechanicSchema } from "./armor-mechanics";
+import { parseFlatArmorMechanic } from "@/engine/armor/mechanic-context";
 
 export const EquipmentFactSourceSchema = z.object({
   provider: z.string().min(1),
@@ -21,9 +23,14 @@ export const EquipmentDependencySchema = z.discriminatedUnion("kind", [
 export const EquipmentEffectSchema = z.object({
   id: z.string().min(1),
   text: z.string().min(1),
+  mechanic: ArmorFlatMechanicSchema.optional(),
   dependency: EquipmentDependencySchema,
   source: EquipmentFactSourceSchema,
-}).strict();
+}).strict().refine(effect => !effect.mechanic || (
+  effect.dependency.kind === "INDEPENDENT" &&
+  JSON.stringify(parseFlatArmorMechanic(effect.text)) === JSON.stringify(effect.mechanic) &&
+  effect.source.evidence.includes(effect.text)
+), "A flat mechanic must match the complete source clause and independent equipment prerequisite.");
 export type EquipmentEffect = z.infer<typeof EquipmentEffectSchema>;
 
 export const EquipmentItemFactsSchema = z.object({

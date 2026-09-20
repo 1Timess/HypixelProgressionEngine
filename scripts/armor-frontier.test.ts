@@ -43,7 +43,7 @@ async function scenario() {
 test("plain armor dominance has a strict retained witness and no item-identity tiebreak",async()=>{
  const f=await scenario();f.stats("a",150);f.stats("b",120);
  const r=f.run();assert.deepEqual(r.candidates.map(c=>c.id),[f.ca.id]);
- assert.deepEqual(r.audit.deferred,[{candidateId:f.cb.id,reason:"PLAIN_ARMOR_PARETO_DOMINATED",witnessId:f.ca.id}]);
+ assert.deepEqual(r.audit.deferred,[{candidateId:f.cb.id,reason:"CONTEXT_CLOSED_ARMOR_PARETO_DOMINATED",witnessId:f.ca.id}]);
  f.stats("b",150);assert.equal(f.run().candidates.length,2);
 });
 test("cheaper but weaker and more expensive but stronger remain tradeoffs",async()=>{
@@ -204,4 +204,114 @@ test("comparability audit does not compare different slots or count absence as z
  assert.equal(audit.candidateCounts.EMPTY_CANONICAL_STATS,1);
  assert.equal(audit.pairCounts.UNKNOWN_PAIR_STAT_COVERAGE,1);
  assert.equal(audit.pairCounts.OBSERVED_DEFENSIVE_STAT_COST_TRADEOFF,undefined);
+});
+
+import { parseArmorEffects } from "../src/server/knowledge/items/armor";
+import { assessArmorMechanic } from "../src/engine/armor/mechanic-context";
+async function contextScenario() {
+ const f=await scenario();f.stats("a",150);f.stats("b",120);
+ for(const item of [f.a,f.b])item.knowledge.sources=[{provider:"neu",metadata:{downloadedAt:"2026-09-19T00:00:00.000Z"}}];
+ const attach=(which:"a"|"b",text:string)=>{
+  const item=which==="a"?f.a:f.b,candidate=which==="a"?f.ca:f.cb;
+  item.knowledge.rawLore.push("",text);
+  candidate.effects=parseArmorEffects(item).map(effect=>{
+   const index=f.e.mechanics.length;f.e.mechanics.push(effect.text);
+   return {itemId:item.id,id:effect.id,text:index,dependency:effect.dependency,mechanic:effect.mechanic,
+    source:{provider:effect.source.provider,evidence:[index]},before:"NOT_EQUIPPED" as const,after:"SATISFIED" as const,
+    assessment:assessArmorMechanic(effect,"dungeon","NOT_EQUIPPED","SATISFIED")};
+  });
+ };
+ return {...f,attach};
+}
+test("identical source-closed flat mechanics with known equal activation permit comparison",async()=>{
+ const f=await contextScenario();
+ for(const side of ["a","b"] as const)f.attach(side,"Grants +50 Mending while in Dungeons.");
+ assert.deepEqual(f.run().candidates.map(c=>c.id),[f.ca.id]);
+ f.e.candidates.reverse();assert.deepEqual(f.run().candidates.map(c=>c.id),[f.ca.id]);
+});
+test("different flat parameters or similar unrecognized text cannot become mechanic equivalence",async()=>{
+ for(const text of ["Grants +51 Mending while in Dungeons.","Gain +50 Mending while in Dungeons.","Grants +50 Health while in Dungeons."]){
+  const f=await contextScenario();f.attach("a","Grants +50 Mending while in Dungeons.");f.attach("b",text);
+  assert.equal(f.run().candidates.length,2,text);
+ }
+});
+test("a unique context-incompatible flat effect does not block an otherwise complete proof",async()=>{
+ const f=await contextScenario();f.attach("b","Grants +50 Mending while outside Dungeons.");
+ assert.equal(f.cb.effects[0].assessment?.relevance,"IRRELEVANT");
+ assert.deepEqual(f.run().candidates.map(c=>c.id),[f.ca.id]);
+});
+test("unique relevant and ambiguous effects preserve the frontier",async()=>{
+ for(const text of ["Grants +50 Mending while in Dungeons.","Grants +50 Mending while mining.","Grants +50 Mending while in Dungeons. If nearby players are injured."]){
+  const f=await contextScenario();f.attach("b",text);
+  assert.equal(f.run().candidates.length,2,text);
+ }
+});
+test("general context and unknown or different activation never collapse",async()=>{
+ for(const state of ["UNKNOWN","NOT_SATISFIED"] as const){
+  const f=await contextScenario();
+  for(const side of ["a","b"] as const)f.attach(side,"Grants +50 Mending while in Dungeons.");
+  f.cb.effects[0].after=state;
+  f.cb.effects[0].assessment=assessArmorMechanic(parseArmorEffects(f.b)[0],"dungeon","NOT_EQUIPPED",state);
+  assert.equal(f.run().candidates.length,2,state);
+ }
+ const f=await contextScenario();
+ for(const side of ["a","b"] as const)f.attach(side,"Grants +50 Mending while outside Dungeons.");
+ f.e.intent.context="general";
+ for(const [candidate,item] of [[f.ca,f.a],[f.cb,f.b]] as const)
+  candidate.effects[0].assessment=assessArmorMechanic(parseArmorEffects(item)[0],"general","NOT_EQUIPPED","SATISFIED");
+ assert.equal(f.run().candidates.length,2);
+});
+test("flat-effect proofs require matching canonical provenance, full coverage and assessment",async()=>{
+ for(const mutation of ["missing source","missing effect","foreign provenance","false assessment","unknown metadata"]){
+  const f=await contextScenario();f.attach("b","Grants +50 Mending while outside Dungeons.");
+  if(mutation==="missing source")f.b.knowledge.sources=[];
+  if(mutation==="missing effect")f.cb.effects=[];
+  if(mutation==="foreign provenance")f.cb.effects[0].source.provider="invented";
+  if(mutation==="false assessment")f.cb.effects[0].assessment!.relevance="RELEVANT";
+  if(mutation==="unknown metadata")for(const item of [f.a,f.b])item.metadata={mystery:true};
+  assert.equal(f.run().candidates.length,2,mutation);
+ }
+});
+
+import { deriveArmorKnowledge } from "../src/server/knowledge/items/armor";
+import { packArmorEvidence, unpackArmorEvidence } from "../src/engine/armor/model-evidence";
+test("source context facts survive actual preparation and lossless packing with retained-witness narrowing",async()=>{
+ const f=await contextScenario();
+ for(const side of ["a","b"] as const)f.attach(side,"Grants +50 Mending while in Dungeons.");
+ const knowledge=deriveArmorKnowledge(f.catalog).knowledge;
+ for(const item of [f.a,f.b])knowledge.items[item.id].usability=[{context:"dungeon",usable:true,source}];
+ const prices=new Map(f.prices);prices.set(f.b.id,{...f.prices.get(f.a.id)!,marketKey:f.b.id});
+ const plan=await prepareArmorUpgrade(f.snapshot,f.catalog,intent,{getPrices:async()=>prices},knowledge,now);
+ assert.equal(plan.status,"READY");assert.ok(plan.modelPayload);
+ assert.equal(plan.review.narrowing?.before,2);
+ assert.equal(plan.review.narrowing?.deferred.length,1);
+ assert.equal(plan.modelPayload.candidates[0].effects[0].assessment?.afterActivation,"ACTIVE");
+ assert.deepEqual(unpackArmorEvidence(packArmorEvidence(plan.modelPayload)),plan.modelPayload);
+ assert.ok(!JSON.stringify(packArmorEvidence(plan.modelPayload)).includes('"comparability"'));
+});
+test("duplicate mechanic records cannot hide another source effect",async()=>{
+ const f=await contextScenario();
+ for(const side of ["a","b"] as const){
+  f.attach(side,"Grants +50 Mending while in Dungeons.");
+  f.attach(side,"Grants +10 Health while in Dungeons.");
+ }
+ f.cb.effects[1]=structuredClone(f.cb.effects[0]);
+ assert.equal(f.run().candidates.length,2);
+});
+
+import { serializeArmorModelInput } from "../src/engine/armor/preparation";
+test("independent model gate rejects forged mechanic values, assessments and absent provenance",async()=>{
+ const f=await contextScenario();
+ f.attach("a","Grants +50 Mending while in Dungeons.");
+ f.e.candidates=[f.ca];
+ const preparation={status:"READY" as const,modelPayload:f.e,review:{reasons:[],rejected:[],bytes:0,generated:1}};
+ assert.ok(serializeArmorModelInput(preparation,now));
+ for(const kind of ["value","activation","source","missing assessment"]){
+  const changed=structuredClone(preparation),effect=changed.modelPayload.candidates[0].effects[0];
+  if(kind==="value")effect.mechanic!.amount=500;
+  if(kind==="activation")effect.assessment!.afterActivation="INACTIVE";
+  if(kind==="source")effect.source.evidence=[];
+  if(kind==="missing assessment")delete effect.assessment;
+  assert.throws(()=>serializeArmorModelInput(changed,now),kind);
+ }
 });

@@ -1,4 +1,6 @@
 import { auditArmorComparability } from "./comparability-audit";
+import { parseArmorEffects } from "@/server/knowledge/items/armor";
+import { assessArmorMechanic } from "./mechanic-context";
 import type { ItemDefinition } from "@/schemas/items";
 import type { ArmorEvidence } from "@/schemas/armor-recommendation";
 import type { ItemCatalog } from "@/server/knowledge/items/catalog";
@@ -7,10 +9,10 @@ import { stableJson } from "@/engine/build/weapon-comparison";
 type Candidate = ArmorEvidence["candidates"][number];
 type Block = "UNKNOWN_BASELINE_MECHANICS" | "UNKNOWN_ITEM_MECHANICS" | "UNKNOWN_MARKET" | "UNKNOWN_CONTEXT" | "INVALID_SCOPE";
 export interface ArmorFrontierAudit {
-  policy: "PLAIN_ARMOR_PARETO_V1";
+  policy: "CONTEXT_CLOSED_ARMOR_PARETO_V2";
   before: number;
   retained: number;
-  deferred: { candidateId: string; reason: "PLAIN_ARMOR_PARETO_DOMINATED"; witnessId: string }[];
+  deferred: { candidateId: string; reason: "CONTEXT_CLOSED_ARMOR_PARETO_DOMINATED"; witnessId: string }[];
   blocked: Partial<Record<Block, number>>;
   comparability: ReturnType<typeof auditArmorComparability>;
 }
@@ -22,12 +24,17 @@ const labels: Record<string,string> = {
   intelligence:"INTELLIGENCE", speed:"WALK_SPEED",
 };
 const monotone = new Set(["DEFENSE","HEALTH","TRUE_DEFENSE"]);
-function plain(item: ItemDefinition): boolean {
+function sourceClosed(item: ItemDefinition): boolean {
   if (!item.sources.includes("neu") || !item.knowledge.rawLore.length ||
       item.knowledge.abilities.length || item.knowledge.capabilities.length ||
       Object.keys(item.metadata).length || Object.keys(item.knowledge.metadata).length) return false;
   let statSeen = false;
-  for (const raw of item.knowledge.rawLore) {
+  const known = parseArmorEffects(item).filter(effect => effect.mechanic);
+  // Remove only complete paragraphs proved by the closed flat-clause grammar.
+  const paragraphs = item.knowledge.rawLore.join("\n").split(/\n\s*\n/);
+  const remaining = paragraphs.filter(paragraph => !known.some(effect =>
+    paragraph.split("\n").map(line=>line.replace(/§[0-9a-fk-or]/gi,"").trim()).join(" ") === effect.text));
+  for (const raw of remaining.join("\n").split("\n")) {
     const line = raw.replace(/§[0-9a-fk-or]/gi,"").trim();
     if (!line || line === "This item can be reforged!") continue;
     if (item.rarity && line === item.rarity + " " + (item.dungeon.isDungeonItem ? "DUNGEON " : "") + item.category) continue;
@@ -47,16 +54,43 @@ function facts(item: ItemDefinition): string {
   void rawLore;
   return stableJson({ ...rest, knowledge:otherKnowledge });
 }
+/** Reconstruct source facts; equal UNKNOWN states or unverified sidecar assertions never prove equivalence. */
+function mechanicKey(candidate:Candidate,evidence:ArmorEvidence,catalog:ItemCatalog):string|null {
+  const ids=new Set([...evidence.baseline.map(item=>item.id),...candidate.replaces.map(piece=>piece.toId)]);
+  const expected=[...ids].flatMap(id=>(catalog.getById(id)?parseArmorEffects(catalog.getById(id)!):[]).map(effect=>({id,effect})));
+  if(expected.length!==candidate.effects.length || new Set(candidate.effects.map(e=>stableJson([e.itemId,e.id]))).size!==candidate.effects.length)return null;
+  const beforeIds=new Set(evidence.baseline.map(item=>item.id));
+  const replacedSlots=new Set(candidate.replaces.map(piece=>piece.slot));
+  const afterIds=new Set([...evidence.baseline.filter(item=>!replacedSlots.has(item.slot)).map(item=>item.id),
+    ...candidate.replaces.map(piece=>piece.toId)]);
+  const keys:string[]=[];
+  for(const record of candidate.effects) {
+    const original=expected.find(entry=>entry.id===record.itemId&&entry.effect.id===record.id)?.effect;
+    if(!original?.mechanic || stableJson(original.mechanic)!==stableJson(record.mechanic) ||
+      stableJson(original.dependency)!==stableJson(record.dependency) ||
+      original.text!==evidence.mechanics[record.text] || original.source.provider!==record.source.provider ||
+      stableJson(original.source.evidence)!==stableJson(record.source.evidence.map(index=>evidence.mechanics[index])))return null;
+    if(record.before!==(beforeIds.has(record.itemId)?"SATISFIED":"NOT_EQUIPPED") ||
+      record.after!==(afterIds.has(record.itemId)?"SATISFIED":"NOT_EQUIPPED"))return null;
+    const assessment=assessArmorMechanic(original,evidence.intent.context,record.before,record.after);
+    if(stableJson(assessment)!==stableJson(record.assessment))return null;
+    if(assessment.relevance==="IRRELEVANT")continue;
+    if(assessment.relevance==="UNKNOWN"||assessment.beforeActivation==="UNKNOWN"||assessment.afterActivation==="UNKNOWN")return null;
+    keys.push(stableJson({slot:catalog.getById(record.itemId)?.category,mechanic:original.mechanic,
+      before:assessment.beforeActivation,after:assessment.afterActivation}));
+  }
+  return stableJson(keys.sort());
+}
 interface Certificate { candidate: Candidate; group: string; items: ItemDefinition[]; cost: number }
 
 /** Narrow current-build proof only. An unknown condition is never a comparative disadvantage. */
 export function narrowArmorFrontier(evidence: ArmorEvidence, catalog: ItemCatalog, now: number) {
-  const audit: ArmorFrontierAudit = {policy:"PLAIN_ARMOR_PARETO_V1",before:evidence.candidates.length,
+  const audit: ArmorFrontierAudit = {policy:"CONTEXT_CLOSED_ARMOR_PARETO_V2",before:evidence.candidates.length,
     retained:evidence.candidates.length,deferred:[],blocked:{},comparability:auditArmorComparability(evidence,catalog)};
   const block = (reason:Block) => { audit.blocked[reason]=(audit.blocked[reason]??0)+1; };
   // An unresolved retained/set dependency could distinguish otherwise plain replacement pieces.
   const baselineKnown = !evidence.unknownSlots.length && evidence.baseline.every(entry=>{
-    const item=catalog.getById(entry.id);return !!item&&plain(item);
+    const item=catalog.getById(entry.id);return !!item&&sourceClosed(item);
   });
   const certificates = new Map<string,Certificate>();
   for (const candidate of evidence.candidates) {
@@ -68,7 +102,8 @@ export function narrowArmorFrontier(evidence: ArmorEvidence, catalog: ItemCatalo
     }
     if (pieces.some(p=>p.contextUsability!=="EVIDENCED")) {block("UNKNOWN_CONTEXT");continue;}
     const items=pieces.map(p=>catalog.getById(p.toId));
-    if (candidate.effects.length || items.some((item,i)=>!item||!plain(item)||item.category!==pieces[i].slot)) {
+    const mechanics=mechanicKey(candidate,evidence,catalog);
+    if (mechanics===null || items.some((item,i)=>!item||!sourceClosed(item)||item.category!==pieces[i].slot)) {
       block("UNKNOWN_ITEM_MECHANICS");continue;
     }
     const snapshots=new Set<string>();let cost=0,known=Number.isFinite(now);
@@ -83,7 +118,7 @@ export function narrowArmorFrontier(evidence: ArmorEvidence, catalog: ItemCatalo
       block("UNKNOWN_MARKET");continue;
     }
     // Packages and individual pieces, ownership modes and per-slot identities remain distinct.
-    const group=stableJson({kind:candidate.id.startsWith("package:")?"package":"piece",
+    const group=stableJson({mechanics,kind:candidate.id.startsWith("package:")?"package":"piece",
       pieces:pieces.map((p,i)=>({slot:p.slot,from:p.fromId,acquisition:p.acquisition,
         dungeon:p.dungeon,context:p.contextUsability,facts:facts(items[i]!)})),snapshot:[...snapshots]});
     certificates.set(candidate.id,{candidate,group,items:items as ItemDefinition[],cost});
@@ -110,7 +145,7 @@ export function narrowArmorFrontier(evidence: ArmorEvidence, catalog: ItemCatalo
     const witness=maximal.find(a=>a!==b&&dominates(a,b));
     if(!witness)continue; // Every omission requires a directly retained witness.
     deferred.add(b.candidate.id);
-    audit.deferred.push({candidateId:b.candidate.id,reason:"PLAIN_ARMOR_PARETO_DOMINATED",witnessId:witness.candidate.id});
+    audit.deferred.push({candidateId:b.candidate.id,reason:"CONTEXT_CLOSED_ARMOR_PARETO_DOMINATED",witnessId:witness.candidate.id});
   }
   const candidates=evidence.candidates.filter(c=>!deferred.has(c.id));
   audit.retained=candidates.length;

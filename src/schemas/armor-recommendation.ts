@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { ArmorFlatMechanicSchema, ArmorMechanicAssessmentSchema } from "./armor-mechanics";
 import { BudgetConstraintSchema, DungeonClassIdSchema } from "./recommendations";
 import { EquipmentDependencySchema, EquipmentFactSourceSchema, EquipmentItemFactsSchema } from "./equipment-effects";
 
@@ -73,6 +74,8 @@ export const ArmorEvidenceSchema = z.object({
     effects: z.array(z.object({
       itemId: z.string(), id: z.string(), text: z.number().int().nonnegative(),
       before: StateSchema, after: StateSchema,
+      mechanic: ArmorFlatMechanicSchema.optional(),
+      assessment: ArmorMechanicAssessmentSchema.optional(),
       dependency: EquipmentDependencySchema,
       source: z.object({ provider: z.string(), evidence: z.array(z.number().int().nonnegative()) }).strict(),
     }).strict()),

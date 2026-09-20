@@ -40,3 +40,17 @@ Glacite source lore explicitly gives a Mining Speed bonus per Mining level and a
 Standalone explicit Dungeon clauses exist (Mender Helmet and Stone/Metal/Steel Chestplates); their context and combat activation must remain separate from whole-item usability. Shared bonus names can have different parameters (Skeleton Lord versus Zombie Lord), so names cannot establish mechanic equivalence.
 
 Diagnostic checkpoint tests: 21 frontier tests pass (including two new diagnostic properties); full Armor baseline 116 passes before the two added tests. TypeScript and changed production lint pass. Further bounded source/comparison work follows this checkpoint.
+
+## Bounded source-comparability milestone
+
+Added optional flat-stat mechanic facts to the existing equipment effect schema, with exact amount/stat/location, original source text and snapshot provenance. A closed grammar recognizes complete "Grants +N <supported stat> while in/outside Dungeons." clauses. It does not parse names into families or infer stats from display lore. Captured Mender Helmet supplies a real supported clause; the captured aura/scaling/set examples remain unresolved.
+
+Equipment prerequisite states remain separate from context compatibility, relevance and activation. General requests do not establish a location. An explicitly outside-Dungeons clause is context-incompatible for a Dungeon request; mining text alone is never irrelevant. New flat facts must agree with their complete source clause and independent prerequisite. The serializer independently recomputes the assessment.
+
+CONTEXT_CLOSED_ARMOR_PARETO_V2 extends the old proof conservatively: matching source-closed flat effects and known activation can be equivalent; explicitly context-irrelevant flat effects need not block proof. Every unexplained lore paragraph, metadata field, unknown whole-item context, unmodeled dependency, numeric difference, unique relevant effect and unknown activation still blocks or separates certificates. Canonical source facts and membership states are reconstructed before certificates; duplicate/missing/foreign effect records fail closed. Direct retained witnesses remain mandatory. No numeric mechanic valuation was added.
+
+A failing adversarial test exposed blank-line condition leakage in the new parser. The fix requires the entire surrounding source document to be closed presentation/flat-clause text before promoting a standalone clause. It deliberately loses coverage rather than claiming a condition ended at a blank line.
+
+No combat set identities were added: the audited sources do not establish the needed membership relationships. No stat normalization was added: display values do not prove canonical rolled/base/enhancement parity. Whole-item usability remains UNKNOWN unless independently sourced.
+
+Validation: 131 Armor tests and 114 Weapons tests pass; TypeScript and targeted lint pass. New tests cover exact identity/parameters, similar text, context compatibility/irrelevance/unknown, differing or unknown states, unique effects, source absence/mismatch, duplicate/missing evidence, unknown metadata, permutations, actual preparation/packing, model-gate tampering, and both pre-existing safety regressions. Existing set gain/loss, insufficient pieces and Museum-no-membership tests remain green.

@@ -1,0 +1,118 @@
+{
+  "metadata": {
+    "provider": "neu",
+    "repository": "NotEnoughUpdates/NotEnoughUpdates-REPO",
+    "branch": "master",
+    "etag": "W/\"e15b1f16adb21761becd756cfca0d6bf3106f2fefca612adfc58e81b4fb8d2fe\"",
+    "downloadedAt": "2026-09-17T13:35:10.975Z",
+    "itemCount": 8828
+  },
+  "items": [
+    {
+      "itemid": "minecraft:skull",
+      "displayname": "§9Mender Helmet",
+      "nbttag": "{ExtraAttributes:{id:\"MENDER_HELMET\"},HideFlags:254,ItemModel:\"minecraft:player_head\",SkullOwner:{Id:\"4f92d5b9-511c-36d9-8b3d-62e9f1373fa0\",Properties:{textures:[0:{Name:\"textures\",Signature:\"ltA4pbmBhrXlyNLtlEpI8fIUHNRkwrifP4hVaWGpEmfAHyvM/w7D8W8Gu6hnJHpeODH47X0gx31w0r7WOL/kTNogFKb97692ywOr6sO3TXgrsxumdubXtRgaa4lRWEpYTb7EcJ+xwZD3GrChkIv/6xIR9cCG+hdxiKqK1U7Z5sQZVUWOjGb4Wpw8nYSTKRsKEdbgXwSSW6Fufv/1K1xe4aDYOxRr5AZY7HgQZ9zY+awktn+9kaG0e+PlVn28XoayLWabOrmw274sGmW3GWqbdljO+2dXP9TiWE745ig9V7vHknx0M7o3n9eL8JNZ1O9eZnpBXOew59ZpocoZcIfMCSzwGlhDRu1tNqZHmpFkmCicdkrXqzIf7caf3V1AePySpuTSBxD0pXX/f71nOHBecvFvsL2x1S6eMRuv4i3IY1K+yV1UDecNZT/71OWJfYLVrIgL9rkvEhWohYXF5t3NdKNCdEjbgK8z5msRGXQPl78AzAfJgz8WUbG5aP2LUL08OUjlbq8PhWXDPstfGfwAEQgelT93CywHFrCR+xigju4Jhb1+oYSO182sFek7SRBByVxHQ3ySxo1IlYXwQGSUHxE+DC7AFDpxgPY90E5LIcN1GpGgTYVgHv7YA7guKhELPW82vDSbWvHA9LdudRCqkpv9TjrFpGByEXIBRmeIYsM=\",Value:\"ewogICJ0aW1lc3RhbXAiIDogMTcxOTg2MjgwODg2NSwKICAicHJvZmlsZUlkIiA6ICJiM2E3NjExNGVmMzI0ZjYyYWM4NDRiOWJmNTY1NGFiOSIsCiAgInByb2ZpbGVOYW1lIiA6ICJNcmd1eW1hbnBlcnNvbiIsCiAgInNpZ25hdHVyZVJlcXVpcmVkIiA6IHRydWUsCiAgInRleHR1cmVzIiA6IHsKICAgICJTS0lOIiA6IHsKICAgICAgInVybCIgOiAiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS8xMzMwMTk1MGExZTgwY2RmZWU4MmNmY2E0Y2IwZDhhZWVhNzEyZmUzMzMxY2NkN2UxZTU1NzIyMjMwYmQ0M2ZmIgogICAgfQogIH0KfQ==\"}]},hypixelPopulated:1B},display:{Lore:[0:\"§7Gear Score: §d80\",1:\"§7Health: §c+80\",2:\"\",3:\"§7Grants §a+50 Mending §7while in\",4:\"§7Dungeons.\",5:\"\",6:\"§8This item can be reforged!\",7:\"§9§lRARE DUNGEON HELMET\"],Name:\"§9Mender Helmet\"}}",
+      "damage": 3,
+      "lore": [
+        "§7Gear Score: §d80",
+        "§7Health: §c+80",
+        "",
+        "§7Grants §a+50 Mending §7while in",
+        "§7Dungeons.",
+        "",
+        "§8This item can be reforged!",
+        "§9§lRARE DUNGEON HELMET"
+      ],
+      "internalname": "MENDER_HELMET",
+      "clickcommand": "",
+      "crafttext": "",
+      "modver": "Firmament 44.2.0-dev+mc26.1.2+g00fd3323",
+      "infoType": "WIKI_URL",
+      "info": [
+        "https://hypixelskyblock.minecraft.wiki/w/Mender_Helmet"
+      ]
+    },
+    {
+      "itemid": "minecraft:leather_chestplate",
+      "displayname": "§9Stone Chestplate",
+      "nbttag": "{ExtraAttributes:{id:\"STONE_CHESTPLATE\"},HideFlags:254,ItemModel:\"minecraft:leather_chestplate\",Unbreakable:1B,display:{Lore:[0:\"§7Gear Score: §d260\",1:\"§7Defense: §a+130\",2:\"\",3:\"§7While in Dungeons, players within §e10\",4:\"§7blocks of you take §c5% §7less damage.\",5:\"§7This range is extended to §e30 §7blocks\",6:\"§7while playing as a Tank.\",7:\"\",8:\"§8This item can be reforged!\",9:\"§9§lRARE DUNGEON CHESTPLATE\"],Name:\"§9Stone Chestplate\",color:14277081}}",
+      "damage": 0,
+      "lore": [
+        "§7Gear Score: §d260",
+        "§7Defense: §a+130",
+        "",
+        "§7While in Dungeons, players within §e10",
+        "§7blocks of you take §c5% §7less damage.",
+        "§7This range is extended to §e30 §7blocks",
+        "§7while playing as a Tank.",
+        "",
+        "§8This item can be reforged!",
+        "§9§lRARE DUNGEON CHESTPLATE"
+      ],
+      "internalname": "STONE_CHESTPLATE",
+      "clickcommand": "",
+      "crafttext": "",
+      "modver": "Firmament 3.4.0-dev+mc1.21.5+g4cd6602",
+      "infoType": "WIKI_URL",
+      "info": [
+        "https://hypixelskyblock.minecraft.wiki/w/Stone_Chestplate"
+      ]
+    },
+    {
+      "itemid": "minecraft:leather_chestplate",
+      "displayname": "§5Glacite Chestplate",
+      "nbttag": "{ExtraAttributes:{id:\"GLACITE_CHESTPLATE\"},HideFlags:254,ItemModel:\"minecraft:leather_chestplate\",Unbreakable:1B,display:{Lore:[0:\"§7Defense: §a+150\",1:\"§7True Defense: §f+10\",2:\"§7Mining Speed: §6+10\",3:\"§7Mining Fortune: §6+5\",4:\"§7Speed: §f+15\",5:\"§7Gemstones: §8[§7§8] []\",6:\"\",7:\"§6Full Set Bonus: Expert Miner §7(0/4)\",8:\"§7Grants §6+2 Mining Speed §7per Mining\",9:\"§7Skill level unlocked.\",10:\"\",11:\"§8This item can be reforged!\",12:\"§5§lEPIC CHESTPLATE\"],Name:\"§5Glacite Chestplate\",color:261368}}",
+      "damage": 0,
+      "lore": [
+        "§7Defense: §a+150",
+        "§7True Defense: §f+10",
+        "§7Mining Speed: §6+10",
+        "§7Mining Fortune: §6+5",
+        "§7Speed: §f+15",
+        "§7Gemstones: §8[§7§8] []",
+        "",
+        "§6Full Set Bonus: Expert Miner §7(0/4)",
+        "§7Grants §6+2 Mining Speed §7per Mining",
+        "§7Skill level unlocked.",
+        "",
+        "§8This item can be reforged!",
+        "§5§lEPIC CHESTPLATE"
+      ],
+      "internalname": "GLACITE_CHESTPLATE",
+      "clickcommand": "",
+      "crafttext": "",
+      "modver": "Firmament 44.2.0-dev+mc26.1.2+g0c5f541d",
+      "infoType": "WIKI_URL",
+      "info": [
+        "https://hypixelskyblock.minecraft.wiki/w/Glacite_Chestplate"
+      ]
+    },
+    {
+      "itemid": "minecraft:leather_chestplate",
+      "displayname": "§9Heavy Chestplate",
+      "nbttag": "{ExtraAttributes:{id:\"HEAVY_CHESTPLATE\"},HideFlags:254,ItemModel:\"minecraft:leather_chestplate\",Unbreakable:1B,display:{Lore:[0:\"§7Gear Score: §d234\",1:\"§7Defense: §a+112\",2:\"§7Speed: §f-5\",3:\"\",4:\"§6Full Set Bonus: Vindicate §7(0/4)\",5:\"§7Grants §f+1 walk speed §7for every §a50\",6:\"§7defense that you have.\",7:\"\",8:\"§8This item can be reforged!\",9:\"§4❣ §cRequires Catacombs Skill 2.\",10:\"§9§lRARE DUNGEON CHESTPLATE\"],Name:\"§9Heavy Chestplate\",color:8553090}}",
+      "damage": 0,
+      "lore": [
+        "§7Gear Score: §d234",
+        "§7Defense: §a+112",
+        "§7Speed: §f-5",
+        "",
+        "§6Full Set Bonus: Vindicate §7(0/4)",
+        "§7Grants §f+1 walk speed §7for every §a50",
+        "§7defense that you have.",
+        "",
+        "§8This item can be reforged!",
+        "§4❣ §cRequires Catacombs Skill 2.",
+        "§9§lRARE DUNGEON CHESTPLATE"
+      ],
+      "internalname": "HEAVY_CHESTPLATE",
+      "clickcommand": "",
+      "crafttext": "",
+      "modver": "Firmament 3.4.0-dev+mc1.21.5+g4cd6602",
+      "infoType": "WIKI_URL",
+      "info": [
+        "https://hypixelskyblock.minecraft.wiki/w/Heavy_Chestplate"
+      ]
+    }
+  ]
+}

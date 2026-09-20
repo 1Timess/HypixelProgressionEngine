@@ -40,6 +40,7 @@ export function renderArmorRecommendation(raw: unknown, evidence: ArmorEvidence)
   const effectView = (effect: typeof candidate.effects[number]) => ({
     itemId: effect.itemId, id: effect.id, text: evidence.mechanics[effect.text],
     before: effect.before, after: effect.after, dependency: effect.dependency,
+    ...(effect.mechanic ? {mechanic:effect.mechanic,assessment:effect.assessment} : {}),
     source: { provider: effect.source.provider, evidence: effect.source.evidence.map(index => evidence.mechanics[index]) },
     qualification: "Equipment prerequisites only; combat activation and numeric impact are not simulated.",
   });

@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { parseFlatArmorMechanic } from "@/engine/armor/mechanic-context";
 import type { ItemDefinition } from "@/schemas/items";
 import { ArmorKnowledgeSchema, type ArmorKnowledge } from "@/schemas/armor-recommendation";
 import type { EquipmentEffect } from "@/schemas/equipment-effects";
@@ -19,9 +20,30 @@ export function parseArmorEffects(item: ItemDefinition): EquipmentEffect[] {
   if (!armorSlot(item) || !item.sources.includes("neu")) return [];
   const lines = item.knowledge.rawLore.map(clean);
   const effects: EquipmentEffect[] = [];
+  // Blank lines are formatting, not proof that an earlier condition ended.
+  // Promote a standalone clause only in an otherwise closed presentation/flat-clause document.
+  const flatEnvironmentClosed = lines.join("\n").split(/\n\s*\n/).every(paragraph =>
+    !!parseFlatArmorMechanic(paragraph.split("\n").join(" ")) || paragraph.split("\n").every(line =>
+      !line || line === "This item can be reforged!" ||
+      /^(?:Gear Score|Health|Defense|True Defense|Mending|Strength|Intelligence|Speed|Crit Chance|Crit Damage): [+-]?\d+(?:\.\d+)?%?$/.test(line) ||
+      /^(?:COMMON|UNCOMMON|RARE|EPIC|LEGENDARY|MYTHIC|DIVINE|SPECIAL|VERY SPECIAL) (?:DUNGEON )?(?:HELMET|CHESTPLATE|LEGGINGS|BOOTS)$/.test(line)));
   for (let index = 0; index < lines.length; index++) {
     const match = lines[index].match(header);
-    if (!match) continue;
+    if (!match) {
+      // Standalone paragraphs only: a matching line inside a larger condition is not complete evidence.
+      if (index > 0 && lines[index - 1] !== "") continue;
+      let end = index;
+      while (end < lines.length && lines[end] && !header.test(lines[end]) && !footer.test(lines[end])) end++;
+      const text = lines.slice(index, end).join(" ");
+      const mechanic = parseFlatArmorMechanic(text);
+      const snapshot = item.knowledge.sources.find(entry => entry.provider === "neu")?.metadata.downloadedAt;
+      if (flatEnvironmentClosed && mechanic && typeof snapshot === "string" && Number.isFinite(Date.parse(snapshot))) {
+        effects.push({ id: "lore:" + index, text, mechanic, dependency: {kind:"INDEPENDENT"},
+          source: {provider:"neu:items/" + item.id + "@" + snapshot, evidence:[text]} });
+        index = end - 1;
+      }
+      continue;
+    }
     let end = index + 1;
     while (end < lines.length && !header.test(lines[end]) && !footer.test(lines[end])) end++;
     const body = lines.slice(index + 1, end).join("\n").trim();

@@ -96,3 +96,50 @@ test("captured real catalog reaches bounded comparison only after canonical floo
  assert.ok(Buffer.byteLength(serializeArmorModelInput(after,now)!)<=8192);
  assert.ok(reads<=2);
 });
+
+const contextSource=JSON.parse(readFileSync("scripts/fixtures/armor/context-source.json","utf8"));
+const contextItems=contextSource.items.map((neu:unknown)=>{
+ const item=NeuItemSourceSchema.parse(neu);
+ return enrichItemWithNeu(ItemDefinitionSchema.parse({id:item.internalname,name:item.internalname,
+  category:item.internalname.endsWith("HELMET")?"HELMET":"CHESTPLATE",sources:["hypixel"]}),item,NeuSnapshotMetadataSchema.parse(contextSource.metadata));
+});
+test("captured Mender source establishes a scoped flat bonus, not whole-item usability",()=>{
+ const item=contextItems.find((i: {id:string})=>i.id==="MENDER_HELMET")!;
+ const effects=parseArmorEffects(item);
+ assert.equal(effects.length,1);
+ assert.deepEqual(effects[0].mechanic,{kind:"FLAT_STAT_BONUS",stat:"MENDING",amount:50,location:"DUNGEON"});
+ assert.equal(effects[0].dependency.kind,"INDEPENDENT");
+ assert.ok(effects[0].source.provider.endsWith(contextSource.metadata.downloadedAt));
+ const knowledge=deriveArmorKnowledge(new InMemoryItemCatalog([item])).knowledge;
+ assert.deepEqual(knowledge.items[item.id].usability,[]);
+});
+test("captured aura, scaling and set text do not acquire flat-mechanic assertions",()=>{
+ for(const item of contextItems.filter((i: {id:string})=>i.id!=="MENDER_HELMET")){
+  assert.ok(parseArmorEffects(item).every((effect:ReturnType<typeof parseArmorEffects>[number])=>!effect.mechanic),item.id);
+ }
+});
+test("standalone parser cannot promote a line nested under an unmodeled conditional or set heading",()=>{
+ const original=contextItems.find((i: {id:string})=>i.id==="MENDER_HELMET")!;
+ for(const lore of [
+  ["While holding another item:","Grants +50 Mending while in Dungeons."],
+  ["Full Set Bonus: Example","Grants +50 Mending while in Dungeons."],
+  ["Piece Bonus: Example","Grants +50 Mending while in Dungeons."],
+  ["Grants +50 Mending while in Dungeons.","when your health is low."],
+ ]){
+  const item=structuredClone(original);item.knowledge.rawLore=lore;
+  assert.ok(parseArmorEffects(item).every(effect=>!effect.mechanic));
+ }
+ const item=structuredClone(original);item.knowledge.sources=[];
+ assert.deepEqual(parseArmorEffects(item),[]);
+});
+
+test("a blank line cannot erase a surrounding condition on a flat-looking clause",()=>{
+ const original=contextItems.find((i:{id:string})=>i.id==="MENDER_HELMET")!;
+ for(const lore of [
+  ["While holding another item:","","Grants +50 Mending while in Dungeons."],
+  ["Grants +50 Mending while in Dungeons.","","Only while your health is low."],
+ ]){
+  const item=structuredClone(original);item.knowledge.rawLore=lore;
+  assert.ok(parseArmorEffects(item).every(effect=>!effect.mechanic));
+ }
+});
