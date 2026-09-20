@@ -1,3 +1,4 @@
+import { inspectArmorStatContract } from "./stat-contract";
 import type { ArmorEvidence } from "@/schemas/armor-recommendation";
 import type { ItemCatalog } from "@/server/knowledge/items/catalog";
 import { stableJson } from "@/engine/build/weapon-comparison";
@@ -15,6 +16,20 @@ export function auditArmorComparability(evidence: ArmorEvidence, catalog: ItemCa
   count(itemMetadataKeys,new Set(Object.keys(item.metadata)));
   count(knowledgeMetadataKeys,new Set(Object.keys(item.knowledge.metadata)));
  }
+ const contracts=uniqueItems.filter(i=>!!i).map(inspectArmorStatContract);
+ const observations=contracts.flatMap(c=>c.keys.map(key=>c.observe(key)));
+ const statContract={
+  policy:"RESOURCE_SCOPE_ONLY_V1",
+  knownAbsenceCount:0, exactVariantBoundStatCount:0,
+  resourceValueCount:observations.filter(o=>o.kind==="RESOURCE_VALUE").length,
+  unboundTierStatCount:observations.filter(o=>o.kind==="UNBOUND_TIER_TABLE").length,
+  observedConstantColumns:observations.filter(o=>o.kind==="UNBOUND_TIER_TABLE"&&o.table.kind==="OBSERVED_CONSTANT").length,
+  observedVariableColumns:observations.filter(o=>o.kind==="UNBOUND_TIER_TABLE"&&o.table.kind==="OBSERVED_VALUES").length,
+  unprovenSourceRelations:observations.filter(o=>o.kind==="SOURCE_RELATION_UNPROVEN").length,
+  invalidSourceItems:contracts.filter(c=>!c.sourceValid).length,
+  unknownStatPairCount:0,
+  qualification:"Counts cover unique replacement item/stat observations, not exact owned or priced variant values. No inspected contract proves known absence or exact variant binding.",
+ };
  const profiles=evidence.candidates.map(candidate=>{
   const flags=new Set<string>(),pieces=[...candidate.replaces].sort((a,b)=>a.slot.localeCompare(b.slot));
   const items=pieces.map(p=>catalog.getById(p.toId));
@@ -40,9 +55,13 @@ export function auditArmorComparability(evidence: ArmorEvidence, catalog: ItemCa
   if(stableJson(a.pieces.map(p=>[p.slot,p.fromId]))!==stableJson(b.pieces.map(p=>[p.slot,p.fromId])))flags.add("DIFFERENT_REPLACEMENT_SCOPE");
   else{
    sameScopePairs++;
-   let positive=false,negative=false,unknown=false,other=false;
+   let positive=false,negative=false,unknown=false,other=false,contractUnknown=false;
    for(let k=0;k<a.items.length;k++){
     const x=a.items[k]?.stats??{},y=b.items[k]?.stats??{},keys=new Set([...Object.keys(x),...Object.keys(y)]);
+    const ca=a.items[k]?inspectArmorStatContract(a.items[k]!):undefined;
+    const cb=b.items[k]?inspectArmorStatContract(b.items[k]!):undefined;
+    const sourceKeys=new Set([...(ca?.keys??[]),...(cb?.keys??[])]);
+    if(!sourceKeys.size||[...sourceKeys].some(key=>ca?.observe(key).kind!=="RESOURCE_VALUE"||cb?.observe(key).kind!=="RESOURCE_VALUE"))contractUnknown=true;
     if(!keys.size)unknown=true;
     for(const key of keys){
      if(!Object.hasOwn(x,key)||!Object.hasOwn(y,key)){unknown=true;continue;}
@@ -51,6 +70,7 @@ export function auditArmorComparability(evidence: ArmorEvidence, catalog: ItemCa
      if(x[key]>y[key])positive=true;else negative=true;
     }
    }
+   if(contractUnknown)statContract.unknownStatPairCount++;
    if(unknown)flags.add("UNKNOWN_PAIR_STAT_COVERAGE");
    if(other)flags.add("UNEQUAL_STAT_WITHOUT_SUPPORTED_DIRECTION");
    if(a.candidate.acquisitionCoins!==null&&b.candidate.acquisitionCoins!==null){
@@ -63,7 +83,7 @@ export function auditArmorComparability(evidence: ArmorEvidence, catalog: ItemCa
   }
   count(pairCounts,flags);
  }
- return {candidates:profiles.length,pairs:profiles.length*(profiles.length-1)/2,sameScopePairs,candidateCounts,pairCounts,
+ return {candidates:profiles.length,pairs:profiles.length*(profiles.length-1)/2,sameScopePairs,candidateCounts,pairCounts,statContract,
   sourceGaps:{uniqueReplacementItems:uniqueItems.length,emptyStatItems:uniqueItems.filter(i=>i&&!Object.keys(i.stats).length).map(i=>i!.id).sort(),
    itemMetadataKeys,knowledgeMetadataKeys,missingCandidateStatKeys,missingBaselineStatKeys},
   interpretation:"Overlapping observations, not exclusive causes or proof of a complete Pareto tradeoff. Missing dimensions remain unknown."};

@@ -49,3 +49,19 @@ Observed:
 - Neither fixed non-Dungeon status, starred/prestige IDs, absence of a tier table, nor a simple NEU display proves a complete base-stat map.
 
 No speculative production normalization has been introduced. Strongest defensible contract so far: explicit ordinary values are canonical resource observations; missing keys remain unknown; tier-table values remain unbound observations, including equal columns. Exact instance/market binding and known absence remain unproven.
+
+## Implemented conservative stat contract
+
+Added src/engine/armor/stat-contract.ts, used only by server-side comparability diagnostics. It returns source-scoped observations rather than a replacement numeric stat map:
+- RESOURCE_VALUE: an explicit finite canonical resource value, including explicit numeric zero.
+- UNBOUND_TIER_TABLE: the original column values, labeled OBSERVED_CONSTANT or OBSERVED_VALUES with observed extrema. These are not bounds over all legal acquisition variants.
+- SOURCE_RELATION_UNPROVEN: both ordinary and tiered values mention the same key; no precedence/addition/override is assumed.
+- UNKNOWN: missing key, missing source, malformed/nonfinite values or conflicting aliases.
+
+Completeness remains UNPROVEN and concrete variant binding UNRESOLVED. There is no COMPLETE/known-absence producer because the inspected sources did not prove one. There is no exact-bound tier producer. There are no added range comparisons. Existing numeric maps, model evidence, approval boundaries and dominance rules are unchanged.
+
+A captured counterexample invalidated the initial diagnostic assumption that all table columns have equal length: KALHUIKI_MASK has DEFENSE [50] and HEALTH [100,10]. The inspector now records unequal column lengths without inventing shared row semantics; each valid column is merely an observation. Malformed values and conflicting aliases still fail closed. No item-ID exception was introduced.
+
+Added 20 offline adversarial tests, including actual gzip/NBT auction normalization. Coverage: explicit zero versus missing, fixed-item completeness claims rejected, absent/empty maps, unbound indices, constant/variable/negative/zero columns, source omission, ordinary/tier overlap, nonfinite/malformed/conflicting aliases, order invariance, preserved owned tier/quality, heterogeneous auction identity, unpromoted overlapping/superior observed ranges, all 54 captured tier tables, and the nonrectangular source record. Exact-tier binding and complete-map positive cases are deliberately not fabricated from synthetic authority.
+
+Checks: 151 Armor / 114 Weapons pass; TypeScript and targeted lint pass. Existing Armor unknown-context, unexplained-metadata and direct-witness regressions remain green. Diagnostic known-absence and exact-variant-bound counts are zero by the implemented contract; this describes unsupported proof, not zero player stats.
