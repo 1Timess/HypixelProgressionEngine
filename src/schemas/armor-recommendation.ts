@@ -1,3 +1,4 @@
+import {ArmorContextCertificateSchema} from "./armor-context";
 import {ArmorStatEvidenceSchema,ArmorVariantIdentitySchema} from "./armor-variant";
 import { z } from "zod";
 import { ArmorFlatMechanicSchema, ArmorMechanicAssessmentSchema } from "./armor-mechanics";
@@ -74,6 +75,7 @@ export const ArmorEvidenceSchema = z.object({
         conversion: z.object({ essenceType: z.string(), amount: z.number().nonnegative() }).strict().nullable(),
       }).strict(),
       contextUsability: z.enum(["EVIDENCED", "UNKNOWN"]),
+      contextCertificate: ArmorContextCertificateSchema.optional(),
       dependencyCoverage: z.enum(["UNMODELED", "PARTIAL"]),
     }).strict()).min(1).max(4),
     acquisitionCoins: NumberOrUnknown,

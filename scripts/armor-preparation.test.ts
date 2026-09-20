@@ -97,7 +97,7 @@ test("source-backed whole-item restrictions differ from unmodeled effect conditi
  assert.equal((await f.run(intent,knowledge)).status,"NO_OPTIONS");
  assert.equal((await f.run({...intent,context:"general"},knowledge)).status,"READY");
  const p=await f.run();
- assert.equal(p.modelPayload!.candidates[0].replaces[0].contextUsability,"UNKNOWN");
+ assert.equal(p.modelPayload!.candidates[0].replaces[0].contextUsability,"EVIDENCED");
  assert.equal(p.modelPayload!.candidates[0].replaces[0].dependencyCoverage,"UNMODELED");
 });
 test("replacing a piece preserves a lost set dependency on a retained helmet",async()=>{

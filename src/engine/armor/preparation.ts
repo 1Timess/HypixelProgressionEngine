@@ -1,3 +1,4 @@
+import {certifyArmorContext} from "./context";
 import {bindArmorVariant,armorVariantInput,type ArmorVariantInput} from "./variant";
 import {variantIdentity,validArmorListing,type ArmorListing} from "./acquisition";
 import {stableJson} from "@/engine/build/weapon-comparison";
@@ -35,6 +36,7 @@ const byteLength = (value: unknown) => Buffer.byteLength(JSON.stringify(value));
 export async function prepareArmorUpgrade(
   snapshot: PlayerSnapshot, catalog: ItemCatalog, rawIntent: unknown,
   market: ArmorMarketReader, rawKnowledge: unknown = {}, now = Date.now(),
+  observeEvidence?: (evidence: Readonly<ArmorEvidence>) => void,
 ): Promise<ArmorPreparation> {
   const review: ArmorPreparation["review"] = { reasons: [], rejected: [], bytes: 0, generated: 0 };
   const finish = (status: ArmorPreparation["status"], reason: string): ArmorPreparation => {
@@ -59,6 +61,7 @@ export async function prepareArmorUpgrade(
     domain: "armor", context: intent.context, excludeOwned: false, includeUnknownEligibility: false,
   });
   review.generation = generated.diagnostics;
+  const eligibility = new Map(generated.candidates.map(candidate => [candidate.item.id, candidate.eligibility]));
   const eligible = new Map(generated.candidates.map(candidate => [candidate.item.id, candidate.item]));
   type Option = { id: string; name: string; items: ItemDefinition[]; variant?:ArmorVariantInput; listing?:ArmorListing; reference?:string };
   const options: Option[] = generated.candidates.flatMap(({ item }) => {
@@ -134,8 +137,8 @@ export async function prepareArmorUpgrade(
       const slot = armorSlot(item)!, previous = baseline.equipped.get(slot);
       if (!previous) { blocked = "Missing slot baseline."; unknown = true; break; }
       if (!item.knowledge.rawLore.length) { blocked = "Missing candidate mechanic evidence."; unknown = true; break; }
-      const usability = knowledge.items[item.id]?.usability.filter(fact => fact.context === intent.context) ?? [];
-      if (usability.some(fact => !fact.usable)) { blocked = "Source-backed whole-item context restriction."; break; }
+      const contextCertificate = certifyArmorContext(item, eligibility.get(item.id)!, knowledge);
+      if (contextCertificate.result === "NOT_USABLE") { blocked = "Source-backed whole-item context restriction."; break; }
       const alreadyOwned = !option.listing && owned.has(item.id);
       const exact=option.variant ? bindArmorVariant(item,option.variant).exact : {};
       const variant=option.variant&&option.reference ? variantIdentity(option.variant,option.reference) : undefined;
@@ -168,7 +171,8 @@ export async function prepareArmorUpgrade(
           .map(stat => [stat.stat, [stat.ownedValue, stat.candidateValue]])),
         lore: lore(item), acquisition: alreadyOwned ? "ALREADY_OWNED" : "BUY", price,
         dungeon: { native: item.dungeon.isDungeonItem, conversion: item.dungeon.conversionCost ?? null },
-        contextUsability: usability.some(fact => fact.usable) ? "EVIDENCED" : "UNKNOWN",
+        contextUsability: contextCertificate.result === "USABLE" ? "EVIDENCED" : "UNKNOWN",
+        contextCertificate,
         dependencyCoverage: equipmentEffects(item, knowledge).length ? "PARTIAL" : "UNMODELED",
       });
     }
@@ -219,6 +223,7 @@ export async function prepareArmorUpgrade(
     ],
     candidates,
   });
+  observeEvidence?.(structuredClone(payload)); // Trusted diagnostic observer; never model execution or a production feature flag.
   const narrowed = narrowArmorFrontier(payload, catalog, now);
   review.narrowing = narrowed.audit;
   payload.candidates = narrowed.candidates;
@@ -264,6 +269,11 @@ export function serializeArmorModelInput(preparation: ArmorPreparation, now = Da
       throw Error("Mismatched Armor baseline variant.");
   }
   for (const candidate of payload.candidates) for (const replacement of candidate.replaces) {
+    const certificate = replacement.contextCertificate;
+    if (certificate && (certificate.itemId !== replacement.toId || certificate.slot !== replacement.slot ||
+        certificate.context !== payload.intent.context || certificate.result === "NOT_USABLE" ||
+        (certificate.result === "USABLE") !== (replacement.contextUsability === "EVIDENCED")))
+      throw Error("Mismatched Armor context certificate.");
     for(const [key,stat] of Object.entries(replacement.statEvidence??{})){
       if(stat.provenance.stat!==key||stat.provenance.itemId!==replacement.toId||!replacement.variant||
          stat.provenance.tier!==replacement.variant.tier||stat.provenance.quality!==replacement.variant.quality)
