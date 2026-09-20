@@ -1,0 +1,2329 @@
+{
+  "observedAt": "2026-09-20T04:29:37.390Z",
+  "sources": {
+    "hypixel": {
+      "lastUpdated": 1789686143064
+    },
+    "neu": {
+      "repository": "NotEnoughUpdates/NotEnoughUpdates-REPO",
+      "branch": "master",
+      "etag": "W/\"e15b1f16adb21761becd756cfca0d6bf3106f2fefca612adfc58e81b4fb8d2fe\"",
+      "downloadedAt": "2026-09-17T13:35:10.975Z",
+      "itemCount": 8828
+    }
+  },
+  "armorItems": 834,
+  "metadataFieldCounts": {
+    "color": 445,
+    "rarity_salvageable": 88,
+    "salvages": 25,
+    "durability": 189,
+    "skin": 184,
+    "glowing": 8,
+    "description": 11,
+    "enchantments": 3,
+    "museum": 72,
+    "unstackable": 6,
+    "tiered_stats": 54,
+    "salvageable_from_recipe": 20,
+    "salvage": 1,
+    "can_have_attributes": 4,
+    "ability_damage_scaling": 1,
+    "has_uuid": 5,
+    "can_place": 3,
+    "rift_transferrable": 6,
+    "can_have_booster": 12,
+    "origin": 28,
+    "item_specific": 11,
+    "motes_sell_price": 1,
+    "can_recombobulate": 4,
+    "prestige": 80
+  },
+  "tieredStats": [
+    {
+      "itemId": "BOUNCY_BOOTS",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "HEALTH": [
+          55,
+          62,
+          69,
+          77,
+          86,
+          97,
+          108,
+          122,
+          136,
+          153
+        ],
+        "CRITICAL_CHANCE": [
+          5,
+          5,
+          6,
+          6,
+          7,
+          7,
+          8,
+          8,
+          9,
+          10
+        ]
+      }
+    },
+    {
+      "itemId": "BOUNCY_CHESTPLATE",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "HEALTH": [
+          120,
+          134,
+          150,
+          168,
+          188,
+          211,
+          236,
+          265,
+          297,
+          333
+        ],
+        "CRITICAL_CHANCE": [
+          5,
+          5,
+          6,
+          6,
+          7,
+          7,
+          8,
+          8,
+          9,
+          10
+        ]
+      }
+    },
+    {
+      "itemId": "BOUNCY_HELMET",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "HEALTH": [
+          65,
+          73,
+          81,
+          91,
+          102,
+          114,
+          128,
+          143,
+          161,
+          180
+        ],
+        "CRITICAL_CHANCE": [
+          5,
+          5,
+          6,
+          6,
+          7,
+          7,
+          8,
+          8,
+          9,
+          10
+        ]
+      }
+    },
+    {
+      "itemId": "BOUNCY_LEGGINGS",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "HEALTH": [
+          105,
+          117,
+          131,
+          147,
+          165,
+          185,
+          207,
+          232,
+          260,
+          291
+        ],
+        "CRITICAL_CHANCE": [
+          5,
+          5,
+          6,
+          6,
+          7,
+          7,
+          8,
+          8,
+          9,
+          10
+        ]
+      }
+    },
+    {
+      "itemId": "CRYPT_WITHERLORD_HELMET",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "WALK_SPEED": [
+          5,
+          6
+        ],
+        "DEFENSE": [
+          70,
+          80
+        ]
+      }
+    },
+    {
+      "itemId": "HEAVY_BOOTS",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "WALK_SPEED": [
+          -5,
+          -5,
+          -5,
+          -5,
+          -5,
+          -5,
+          -5,
+          -5,
+          -5,
+          -5
+        ],
+        "DEFENSE": [
+          57,
+          62,
+          67,
+          73,
+          79,
+          86,
+          94,
+          102,
+          110,
+          120
+        ]
+      }
+    },
+    {
+      "itemId": "HEAVY_CHESTPLATE",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "WALK_SPEED": [
+          -5,
+          -5,
+          -5,
+          -5,
+          -5,
+          -5,
+          -5,
+          -5,
+          -5,
+          -5
+        ],
+        "DEFENSE": [
+          112,
+          121,
+          132,
+          143,
+          155,
+          168,
+          183,
+          199,
+          216,
+          235
+        ]
+      }
+    },
+    {
+      "itemId": "HEAVY_HELMET",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "WALK_SPEED": [
+          -5,
+          -5,
+          -5,
+          -5,
+          -5,
+          -5,
+          -5,
+          -5,
+          -5,
+          -5
+        ],
+        "DEFENSE": [
+          62,
+          67,
+          73,
+          79,
+          86,
+          93,
+          101,
+          110,
+          120,
+          130
+        ]
+      }
+    },
+    {
+      "itemId": "HEAVY_LEGGINGS",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "WALK_SPEED": [
+          -5,
+          -5,
+          -5,
+          -5,
+          -5,
+          -5,
+          -5,
+          -5,
+          -5,
+          -5
+        ],
+        "DEFENSE": [
+          92,
+          100,
+          109,
+          118,
+          129,
+          140,
+          152,
+          165,
+          179,
+          195
+        ]
+      }
+    },
+    {
+      "itemId": "KALHUIKI_MASK",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          50
+        ],
+        "HEALTH": [
+          100,
+          10
+        ]
+      }
+    },
+    {
+      "itemId": "ROTTEN_BOOTS",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "HEALTH": [
+          60,
+          65,
+          71,
+          78,
+          85,
+          92,
+          101,
+          109,
+          120,
+          130
+        ],
+        "STRENGTH": [
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          17,
+          18,
+          20,
+          22
+        ]
+      }
+    },
+    {
+      "itemId": "ROTTEN_CHESTPLATE",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "HEALTH": [
+          125,
+          136,
+          149,
+          162,
+          176,
+          192,
+          209,
+          229,
+          249,
+          271
+        ],
+        "STRENGTH": [
+          20,
+          22,
+          23,
+          26,
+          28,
+          31,
+          33,
+          36,
+          40,
+          43
+        ]
+      }
+    },
+    {
+      "itemId": "ROTTEN_HELMET",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "HEALTH": [
+          70,
+          76,
+          83,
+          90,
+          99,
+          108,
+          118,
+          128,
+          139,
+          152
+        ],
+        "STRENGTH": [
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          17,
+          18,
+          20,
+          22
+        ]
+      }
+    },
+    {
+      "itemId": "ROTTEN_LEGGINGS",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "HEALTH": [
+          110,
+          120,
+          131,
+          142,
+          155,
+          169,
+          184,
+          201,
+          219,
+          239
+        ],
+        "STRENGTH": [
+          15,
+          16,
+          18,
+          19,
+          21,
+          23,
+          25,
+          27,
+          30,
+          33
+        ]
+      }
+    },
+    {
+      "itemId": "SKELETON_GRUNT_BOOTS",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          20,
+          23,
+          23,
+          26,
+          29,
+          31,
+          34,
+          37,
+          40,
+          43
+        ],
+        "HEALTH": [
+          23,
+          24,
+          24,
+          26,
+          27,
+          29,
+          31,
+          33,
+          34,
+          36
+        ],
+        "CRITICAL_DAMAGE": [
+          15,
+          16,
+          18,
+          19,
+          21,
+          23,
+          24,
+          27,
+          29,
+          32
+        ]
+      }
+    },
+    {
+      "itemId": "SKELETON_GRUNT_CHESTPLATE",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          38,
+          41,
+          44,
+          49,
+          52,
+          57,
+          62,
+          67,
+          73,
+          80
+        ],
+        "HEALTH": [
+          33,
+          36,
+          38,
+          41,
+          43,
+          46,
+          50,
+          52,
+          56,
+          60
+        ],
+        "CRITICAL_DAMAGE": [
+          15,
+          16,
+          18,
+          19,
+          21,
+          23,
+          24,
+          27,
+          29,
+          32
+        ]
+      }
+    },
+    {
+      "itemId": "SKELETON_GRUNT_HELMET",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          33,
+          35,
+          37,
+          40,
+          42,
+          45,
+          48,
+          51,
+          55,
+          59
+        ],
+        "HEALTH": [
+          14,
+          15,
+          17,
+          19,
+          20,
+          22,
+          23,
+          26,
+          28,
+          30
+        ],
+        "CRITICAL_DAMAGE": [
+          15,
+          16,
+          18,
+          19,
+          21,
+          23,
+          24,
+          27,
+          29,
+          32
+        ]
+      }
+    },
+    {
+      "itemId": "SKELETON_GRUNT_LEGGINGS",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          44,
+          48,
+          51,
+          55,
+          59,
+          62,
+          67,
+          72,
+          77,
+          84
+        ],
+        "HEALTH": [
+          22,
+          23,
+          25,
+          28,
+          31,
+          32,
+          36,
+          39,
+          42,
+          46
+        ],
+        "CRITICAL_DAMAGE": [
+          15,
+          16,
+          18,
+          19,
+          21,
+          23,
+          24,
+          27,
+          29,
+          32
+        ]
+      }
+    },
+    {
+      "itemId": "SKELETON_LORD_BOOTS",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          28,
+          31,
+          33,
+          36,
+          40,
+          43,
+          47,
+          51,
+          55,
+          60
+        ],
+        "HEALTH": [
+          14,
+          15,
+          16,
+          18,
+          19,
+          21,
+          23,
+          25,
+          27,
+          29
+        ],
+        "CRITICAL_DAMAGE": [
+          19,
+          22,
+          24,
+          27,
+          30,
+          33,
+          36,
+          41,
+          45,
+          50
+        ],
+        "CRITICAL_CHANCE": [
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "itemId": "SKELETON_LORD_CHESTPLATE",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          52,
+          56,
+          61,
+          67,
+          72,
+          79,
+          86,
+          93,
+          101,
+          110
+        ],
+        "HEALTH": [
+          26,
+          29,
+          31,
+          34,
+          37,
+          40,
+          44,
+          47,
+          51,
+          56
+        ],
+        "CRITICAL_DAMAGE": [
+          19,
+          22,
+          24,
+          27,
+          30,
+          33,
+          36,
+          41,
+          45,
+          50
+        ],
+        "CRITICAL_CHANCE": [
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "itemId": "SKELETON_LORD_HELMET",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          32,
+          35,
+          38,
+          41,
+          45,
+          49,
+          53,
+          57,
+          63,
+          68
+        ],
+        "HEALTH": [
+          16,
+          17,
+          19,
+          21,
+          22,
+          24,
+          26,
+          29,
+          31,
+          34
+        ],
+        "CRITICAL_DAMAGE": [
+          19,
+          22,
+          24,
+          27,
+          30,
+          33,
+          36,
+          41,
+          45,
+          50
+        ],
+        "CRITICAL_CHANCE": [
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "itemId": "SKELETON_LORD_LEGGINGS",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          48,
+          52,
+          57,
+          62,
+          67,
+          73,
+          79,
+          86,
+          93,
+          102
+        ],
+        "HEALTH": [
+          24,
+          26,
+          28,
+          31,
+          34,
+          36,
+          40,
+          43,
+          47,
+          51
+        ],
+        "CRITICAL_DAMAGE": [
+          19,
+          22,
+          24,
+          27,
+          30,
+          33,
+          36,
+          41,
+          45,
+          50
+        ],
+        "CRITICAL_CHANCE": [
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "itemId": "SKELETON_MASTER_BOOTS",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          22,
+          25,
+          26,
+          29,
+          32,
+          34,
+          38,
+          41,
+          44,
+          48
+        ],
+        "HEALTH": [
+          14,
+          15,
+          16,
+          18,
+          19,
+          21,
+          23,
+          25,
+          27,
+          29
+        ],
+        "CRITICAL_DAMAGE": [
+          22,
+          23,
+          25,
+          27,
+          30,
+          32,
+          35,
+          38,
+          41,
+          45
+        ],
+        "CRITICAL_CHANCE": [
+          2,
+          2,
+          2,
+          2,
+          3,
+          3,
+          3,
+          3,
+          4,
+          4
+        ]
+      }
+    },
+    {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          42,
+          45,
+          49,
+          54,
+          58,
+          63,
+          69,
+          74,
+          81,
+          88
+        ],
+        "HEALTH": [
+          26,
+          29,
+          31,
+          34,
+          37,
+          40,
+          44,
+          47,
+          51,
+          56
+        ],
+        "CRITICAL_DAMAGE": [
+          22,
+          23,
+          25,
+          27,
+          30,
+          32,
+          35,
+          38,
+          41,
+          45
+        ],
+        "CRITICAL_CHANCE": [
+          2,
+          2,
+          2,
+          2,
+          3,
+          3,
+          3,
+          3,
+          4,
+          4
+        ]
+      }
+    },
+    {
+      "itemId": "SKELETON_MASTER_HELMET",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          26,
+          28,
+          30,
+          33,
+          36,
+          39,
+          42,
+          45,
+          50,
+          54
+        ],
+        "HEALTH": [
+          16,
+          17,
+          19,
+          21,
+          22,
+          24,
+          26,
+          29,
+          31,
+          34
+        ],
+        "CRITICAL_DAMAGE": [
+          22,
+          23,
+          25,
+          27,
+          30,
+          32,
+          35,
+          38,
+          41,
+          45
+        ],
+        "CRITICAL_CHANCE": [
+          2,
+          2,
+          2,
+          2,
+          3,
+          3,
+          3,
+          3,
+          4,
+          4
+        ]
+      }
+    },
+    {
+      "itemId": "SKELETON_MASTER_LEGGINGS",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          38,
+          42,
+          46,
+          50,
+          54,
+          58,
+          63,
+          69,
+          74,
+          82
+        ],
+        "HEALTH": [
+          24,
+          26,
+          28,
+          31,
+          34,
+          36,
+          40,
+          43,
+          47,
+          51
+        ],
+        "CRITICAL_DAMAGE": [
+          22,
+          23,
+          25,
+          27,
+          30,
+          32,
+          35,
+          38,
+          41,
+          45
+        ],
+        "CRITICAL_CHANCE": [
+          2,
+          2,
+          2,
+          2,
+          3,
+          3,
+          3,
+          3,
+          4,
+          4
+        ]
+      }
+    },
+    {
+      "itemId": "SKELETON_SOLDIER_BOOTS",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          22,
+          25,
+          26,
+          29,
+          32,
+          34,
+          38,
+          41,
+          44,
+          48
+        ],
+        "HEALTH": [
+          14,
+          15,
+          16,
+          18,
+          19,
+          21,
+          23,
+          25,
+          27,
+          29
+        ],
+        "CRITICAL_DAMAGE": [
+          17,
+          18,
+          20,
+          21,
+          23,
+          25,
+          27,
+          30,
+          32,
+          35
+        ],
+        "CRITICAL_CHANCE": [
+          2,
+          2,
+          2,
+          2,
+          3,
+          3,
+          3,
+          3,
+          4,
+          4
+        ]
+      }
+    },
+    {
+      "itemId": "SKELETON_SOLDIER_CHESTPLATE",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          42,
+          45,
+          49,
+          54,
+          58,
+          63,
+          69,
+          74,
+          81,
+          88
+        ],
+        "HEALTH": [
+          26,
+          29,
+          31,
+          34,
+          37,
+          40,
+          44,
+          47,
+          51,
+          56
+        ],
+        "CRITICAL_DAMAGE": [
+          17,
+          18,
+          20,
+          21,
+          23,
+          25,
+          27,
+          30,
+          32,
+          35
+        ],
+        "CRITICAL_CHANCE": [
+          2,
+          2,
+          2,
+          2,
+          3,
+          3,
+          3,
+          3,
+          4,
+          4
+        ]
+      }
+    },
+    {
+      "itemId": "SKELETON_SOLDIER_HELMET",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          26,
+          28,
+          30,
+          33,
+          36,
+          39,
+          42,
+          45,
+          50,
+          54
+        ],
+        "HEALTH": [
+          16,
+          17,
+          19,
+          21,
+          22,
+          24,
+          26,
+          29,
+          31,
+          34
+        ],
+        "CRITICAL_DAMAGE": [
+          16,
+          17,
+          19,
+          20,
+          22,
+          24,
+          26,
+          28,
+          31,
+          34
+        ],
+        "CRITICAL_CHANCE": [
+          2,
+          2,
+          2,
+          2,
+          3,
+          3,
+          3,
+          3,
+          4,
+          4
+        ]
+      }
+    },
+    {
+      "itemId": "SKELETON_SOLDIER_LEGGINGS",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          38,
+          42,
+          46,
+          50,
+          54,
+          58,
+          63,
+          69,
+          74,
+          82
+        ],
+        "HEALTH": [
+          24,
+          26,
+          28,
+          31,
+          34,
+          36,
+          40,
+          43,
+          47,
+          51
+        ],
+        "CRITICAL_DAMAGE": [
+          17,
+          18,
+          20,
+          21,
+          23,
+          25,
+          27,
+          30,
+          32,
+          35
+        ],
+        "CRITICAL_CHANCE": [
+          2,
+          2,
+          2,
+          2,
+          3,
+          3,
+          3,
+          3,
+          4,
+          4
+        ]
+      }
+    },
+    {
+      "itemId": "SKELETOR_BOOTS",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          20,
+          22,
+          25,
+          26,
+          29,
+          32,
+          34,
+          38,
+          41,
+          44
+        ],
+        "HEALTH": [
+          13,
+          14,
+          15,
+          16,
+          18,
+          19,
+          21,
+          23,
+          25,
+          27
+        ],
+        "CRITICAL_DAMAGE": [
+          20,
+          22,
+          23,
+          25,
+          28,
+          30,
+          33,
+          36,
+          39,
+          42
+        ],
+        "CRITICAL_CHANCE": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          3,
+          3,
+          3,
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "itemId": "SKELETOR_CHESTPLATE",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          40,
+          42,
+          45,
+          49,
+          54,
+          58,
+          63,
+          69,
+          74,
+          81
+        ],
+        "HEALTH": [
+          25,
+          26,
+          29,
+          31,
+          34,
+          37,
+          40,
+          44,
+          47,
+          51
+        ],
+        "CRITICAL_DAMAGE": [
+          20,
+          22,
+          24,
+          26,
+          28,
+          31,
+          33,
+          36,
+          40,
+          43
+        ],
+        "CRITICAL_CHANCE": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          3,
+          3,
+          3,
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "itemId": "SKELETOR_HELMET",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          25,
+          26,
+          28,
+          30,
+          33,
+          36,
+          39,
+          42,
+          45,
+          50
+        ],
+        "HEALTH": [
+          15,
+          16,
+          17,
+          19,
+          21,
+          22,
+          24,
+          26,
+          29,
+          31
+        ],
+        "CRITICAL_DAMAGE": [
+          20,
+          22,
+          23,
+          25,
+          28,
+          30,
+          33,
+          36,
+          39,
+          42
+        ],
+        "CRITICAL_CHANCE": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          3,
+          3,
+          3,
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "itemId": "SKELETOR_LEGGINGS",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          36,
+          38,
+          42,
+          46,
+          50,
+          54,
+          58,
+          63,
+          69,
+          74
+        ],
+        "HEALTH": [
+          22,
+          24,
+          26,
+          28,
+          31,
+          34,
+          36,
+          40,
+          43,
+          47
+        ],
+        "CRITICAL_DAMAGE": [
+          20,
+          22,
+          24,
+          26,
+          28,
+          31,
+          33,
+          36,
+          40,
+          43
+        ],
+        "CRITICAL_CHANCE": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          3,
+          3,
+          3,
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "itemId": "SUPER_HEAVY_BOOTS",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "WALK_SPEED": [
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10
+        ],
+        "DEFENSE": [
+          63,
+          70,
+          77,
+          85,
+          95,
+          105,
+          117,
+          130,
+          144,
+          160
+        ]
+      }
+    },
+    {
+      "itemId": "SUPER_HEAVY_CHESTPLATE",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "WALK_SPEED": [
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10
+        ],
+        "DEFENSE": [
+          112,
+          124,
+          139,
+          154,
+          171,
+          190,
+          211,
+          234,
+          261,
+          290
+        ]
+      }
+    },
+    {
+      "itemId": "SUPER_HEAVY_HELMET",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "WALK_SPEED": [
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10
+        ],
+        "DEFENSE": [
+          70,
+          78,
+          86,
+          96,
+          106,
+          118,
+          131,
+          146,
+          162,
+          180
+        ]
+      }
+    },
+    {
+      "itemId": "SUPER_HEAVY_LEGGINGS",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "WALK_SPEED": [
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10,
+          -10
+        ],
+        "DEFENSE": [
+          98,
+          109,
+          121,
+          134,
+          149,
+          165,
+          183,
+          203,
+          225,
+          250
+        ]
+      }
+    },
+    {
+      "itemId": "ZOMBIE_COMMANDER_BOOTS",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          17,
+          19,
+          22,
+          23,
+          26,
+          30,
+          32,
+          36,
+          41,
+          45
+        ],
+        "HEALTH": [
+          32,
+          34,
+          38,
+          43,
+          48,
+          52,
+          59,
+          65,
+          72,
+          80
+        ],
+        "STRENGTH": [
+          8,
+          10,
+          11,
+          12,
+          13,
+          14,
+          16,
+          17,
+          19,
+          22
+        ],
+        "INTELLIGENCE": [
+          4,
+          5,
+          5,
+          6,
+          7,
+          7,
+          8,
+          8,
+          10,
+          11
+        ]
+      }
+    },
+    {
+      "itemId": "ZOMBIE_COMMANDER_CHESTPLATE",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          35,
+          39,
+          43,
+          48,
+          53,
+          59,
+          65,
+          73,
+          81,
+          90
+        ],
+        "HEALTH": [
+          59,
+          67,
+          74,
+          82,
+          91,
+          101,
+          112,
+          124,
+          139,
+          154
+        ],
+        "STRENGTH": [
+          8,
+          10,
+          11,
+          12,
+          13,
+          14,
+          16,
+          17,
+          19,
+          22
+        ],
+        "INTELLIGENCE": [
+          4,
+          5,
+          5,
+          6,
+          7,
+          7,
+          8,
+          8,
+          10,
+          11
+        ]
+      }
+    },
+    {
+      "itemId": "ZOMBIE_COMMANDER_HELMET",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          22,
+          25,
+          28,
+          31,
+          34,
+          38,
+          42,
+          48,
+          52,
+          58
+        ],
+        "HEALTH": [
+          39,
+          43,
+          48,
+          54,
+          60,
+          66,
+          74,
+          82,
+          91,
+          102
+        ],
+        "STRENGTH": [
+          8,
+          10,
+          11,
+          12,
+          13,
+          14,
+          16,
+          17,
+          19,
+          22
+        ],
+        "INTELLIGENCE": [
+          4,
+          5,
+          5,
+          6,
+          7,
+          7,
+          8,
+          8,
+          10,
+          11
+        ]
+      }
+    },
+    {
+      "itemId": "ZOMBIE_COMMANDER_LEGGINGS",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          30,
+          32,
+          36,
+          41,
+          45,
+          50,
+          55,
+          62,
+          70,
+          77
+        ],
+        "HEALTH": [
+          51,
+          57,
+          64,
+          71,
+          78,
+          87,
+          97,
+          107,
+          120,
+          134
+        ],
+        "STRENGTH": [
+          8,
+          10,
+          11,
+          12,
+          13,
+          14,
+          16,
+          17,
+          19,
+          22
+        ],
+        "INTELLIGENCE": [
+          4,
+          5,
+          5,
+          6,
+          7,
+          7,
+          8,
+          8,
+          10,
+          11
+        ]
+      }
+    },
+    {
+      "itemId": "ZOMBIE_KNIGHT_BOOTS",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "WALK_SPEED": [
+          5,
+          5,
+          5,
+          6,
+          6,
+          6,
+          7,
+          7,
+          7,
+          8
+        ],
+        "DEFENSE": [
+          46,
+          50,
+          55,
+          60,
+          65,
+          71,
+          78,
+          84,
+          92,
+          100
+        ],
+        "STRENGTH": [
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          17,
+          18,
+          20,
+          22
+        ]
+      }
+    },
+    {
+      "itemId": "ZOMBIE_KNIGHT_CHESTPLATE",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "WALK_SPEED": [
+          5,
+          5,
+          5,
+          6,
+          6,
+          6,
+          7,
+          7,
+          7,
+          8
+        ],
+        "DEFENSE": [
+          96,
+          105,
+          115,
+          123,
+          135,
+          148,
+          161,
+          176,
+          192,
+          209
+        ],
+        "STRENGTH": [
+          20,
+          22,
+          23,
+          26,
+          28,
+          31,
+          33,
+          36,
+          40,
+          43
+        ]
+      }
+    },
+    {
+      "itemId": "ZOMBIE_KNIGHT_HELMET",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "WALK_SPEED": [
+          5,
+          5,
+          5,
+          6,
+          6,
+          6,
+          7,
+          7,
+          7,
+          8
+        ],
+        "DEFENSE": [
+          54,
+          59,
+          64,
+          69,
+          76,
+          83,
+          91,
+          98,
+          107,
+          117
+        ],
+        "STRENGTH": [
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          17,
+          18,
+          20,
+          22
+        ]
+      }
+    },
+    {
+      "itemId": "ZOMBIE_KNIGHT_LEGGINGS",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "WALK_SPEED": [
+          5,
+          5,
+          5,
+          6,
+          6,
+          6,
+          7,
+          7,
+          7,
+          8
+        ],
+        "DEFENSE": [
+          85,
+          92,
+          101,
+          109,
+          119,
+          130,
+          142,
+          155,
+          169,
+          184
+        ],
+        "STRENGTH": [
+          15,
+          16,
+          18,
+          19,
+          21,
+          23,
+          25,
+          27,
+          30,
+          33
+        ]
+      }
+    },
+    {
+      "itemId": "ZOMBIE_LORD_BOOTS",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          19,
+          21,
+          24,
+          26,
+          29,
+          33,
+          36,
+          40,
+          45,
+          50
+        ],
+        "HEALTH": [
+          45,
+          49,
+          55,
+          61,
+          68,
+          75,
+          84,
+          93,
+          103,
+          115
+        ],
+        "STRENGTH": [
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          16,
+          18
+        ],
+        "INTELLIGENCE": [
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          16,
+          18
+        ]
+      }
+    },
+    {
+      "itemId": "ZOMBIE_LORD_CHESTPLATE",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          39,
+          43,
+          48,
+          53,
+          59,
+          65,
+          73,
+          81,
+          90,
+          100
+        ],
+        "HEALTH": [
+          85,
+          95,
+          105,
+          117,
+          130,
+          144,
+          160,
+          178,
+          198,
+          220
+        ],
+        "STRENGTH": [
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          16,
+          18
+        ],
+        "INTELLIGENCE": [
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          16,
+          18
+        ]
+      }
+    },
+    {
+      "itemId": "ZOMBIE_LORD_HELMET",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          25,
+          28,
+          31,
+          34,
+          38,
+          42,
+          47,
+          53,
+          58,
+          65
+        ],
+        "HEALTH": [
+          56,
+          62,
+          69,
+          77,
+          86,
+          95,
+          106,
+          117,
+          130,
+          145
+        ],
+        "STRENGTH": [
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          16,
+          18
+        ],
+        "INTELLIGENCE": [
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          16,
+          18
+        ]
+      }
+    },
+    {
+      "itemId": "ZOMBIE_LORD_LEGGINGS",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          33,
+          36,
+          40,
+          45,
+          50,
+          56,
+          62,
+          69,
+          77,
+          85
+        ],
+        "HEALTH": [
+          73,
+          82,
+          91,
+          101,
+          112,
+          125,
+          138,
+          153,
+          171,
+          190
+        ],
+        "STRENGTH": [
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          16,
+          18
+        ],
+        "INTELLIGENCE": [
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          16,
+          18
+        ]
+      }
+    },
+    {
+      "itemId": "ZOMBIE_SOLDIER_BOOTS",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          36,
+          40,
+          44,
+          48,
+          53,
+          58,
+          64,
+          70,
+          77,
+          85
+        ],
+        "HEALTH": [
+          17,
+          19,
+          21,
+          23,
+          25,
+          27,
+          30,
+          33,
+          36,
+          40
+        ]
+      }
+    },
+    {
+      "itemId": "ZOMBIE_SOLDIER_CHESTPLATE",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          81,
+          89,
+          98,
+          108,
+          119,
+          130,
+          143,
+          157,
+          173,
+          190
+        ],
+        "HEALTH": [
+          43,
+          47,
+          52,
+          57,
+          62,
+          69,
+          75,
+          83,
+          91,
+          100
+        ]
+      }
+    },
+    {
+      "itemId": "ZOMBIE_SOLDIER_HELMET",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          43,
+          47,
+          52,
+          57,
+          62,
+          69,
+          75,
+          83,
+          91,
+          100
+        ],
+        "HEALTH": [
+          21,
+          24,
+          26,
+          28,
+          31,
+          34,
+          38,
+          41,
+          46,
+          50
+        ]
+      }
+    },
+    {
+      "itemId": "ZOMBIE_SOLDIER_LEGGINGS",
+      "canonicalStats": {},
+      "tiered_stats": {
+        "DEFENSE": [
+          71,
+          78,
+          85,
+          94,
+          103,
+          113,
+          124,
+          137,
+          150,
+          165
+        ],
+        "HEALTH": [
+          34,
+          38,
+          41,
+          45,
+          50,
+          55,
+          60,
+          66,
+          73,
+          80
+        ]
+      }
+    }
+  ],
+  "knownFlatMechanics": [
+    {
+      "itemId": "MENDER_HELMET",
+      "id": "lore:3",
+      "text": "Grants +50 Mending while in Dungeons.",
+      "mechanic": {
+        "kind": "FLAT_STAT_BONUS",
+        "stat": "MENDING",
+        "amount": 50,
+        "location": "DUNGEON"
+      },
+      "dependency": {
+        "kind": "INDEPENDENT"
+      },
+      "source": {
+        "provider": "neu:items/MENDER_HELMET@2026-09-17T13:35:10.975Z",
+        "evidence": [
+          "Grants +50 Mending while in Dungeons."
+        ]
+      }
+    }
+  ],
+  "unknownEquipmentDependencies": 566,
+  "provenCombatMembershipEffects": 0,
+  "wholeItemUsabilityFacts": 0,
+  "qualification": "Raw source observations only. Tier indices are not bound to a player item or market quote; no tier, extrema, zero, or display value is selected as a canonical stat."
+}

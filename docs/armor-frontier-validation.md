@@ -1,3 +1,5 @@
+> Latest: [Armor comparability investigation](armor-comparability-investigation.md). Source-backed context proof added; final real deferrals remain zero. Armor is not frozen.
+
 # Armor frontier verification — follow-up to fad1016
 
 ## Starting state and findings

@@ -54,3 +54,70 @@ A failing adversarial test exposed blank-line condition leakage in the new parse
 No combat set identities were added: the audited sources do not establish the needed membership relationships. No stat normalization was added: display values do not prove canonical rolled/base/enhancement parity. Whole-item usability remains UNKNOWN unless independently sourced.
 
 Validation: 131 Armor tests and 114 Weapons tests pass; TypeScript and targeted lint pass. New tests cover exact identity/parameters, similar text, context compatibility/irrelevance/unknown, differing or unknown states, unique effects, source absence/mismatch, duplicate/missing evidence, unknown metadata, permutations, actual preparation/packing, model-gate tampering, and both pre-existing safety regressions. Existing set gain/loss, insufficient pieces and Museum-no-membership tests remain green.
+
+## Final real-profile measurement and source audit
+
+Final model-free matrix uses fresh market snapshot 11. Source audit separately reloads public canonical data; it does not retrieve a player or call a model. Artifacts:
+- data/armor-integration/previews-comparability-after.json
+- data/armor-integration/source-comparability-audit.json
+- Reproduce source audit with: node --env-file=.env.local --import tsx scripts/armor-source-audit.ts <output.json>
+
+All requests start from a catalog of 5655 items, including 834 Armor items. Generic scope admits 819, excludes 15, then establishes 528 eligible / 190 ineligible / 101 unknown eligibility. Scope exclusion reason counts overlap. Slot/scope filtering, package validation, prices and lore checks occur afterward; the recorded generated-option and rejected counts must not be added to generic eligibility counts as though they share one denominator.
+
+| Request | Generated options | Rejection records | Pre-narrow | Retained | Deferred | Bytes | Status |
+|---|---:|---:|---:|---:|---:|---:|---|
+| All armor 20M | 601 | 322 | 324 | 324 | 0 | 460255 | NEEDS_KNOWLEDGE |
+| Full build 20M | 601 | 80 | 37 | 37 | 0 | 181326 | NEEDS_KNOWLEDGE |
+| Chestplate 20M | 118 | 47 | 71 | 71 | 0 | 102186 | NEEDS_KNOWLEDGE |
+| Chestplate 1M | 118 | 79 | 39 | 39 | 0 | 53201 | NEEDS_KNOWLEDGE |
+| Chestplate 100K | 118 | 110 | 8 | 8 | 0 | 15164 | NEEDS_KNOWLEDGE |
+| Chestplate 20K | 118 | not exposed by READY service result | 2 | 2 | 0 | 6739 | AWAITING_APPROVAL |
+
+Broad/package rejection records include 46 invalid-eligibility package proposals that are not in generated options. Scope filters and duplicate builds also prevent simple subtraction. The chestplate 20M 47 rejections are 32 unknown affordability, 6 over budget and 9 missing mechanic evidence; 100K differs only in 69 over-budget rejections.
+
+Direct historical comparison:
+| Request | f1fda8e retained / bytes | This session before / bytes | Final retained / bytes |
+|---|---:|---:|---:|
+| All armor 20M | 327 / 465146 | 323 / 461764 | 324 / 460255 |
+| Chestplate 20M | 72 / 102384 | 69 / 101325 | 71 / 102186 |
+| Chestplate 100K | 10 / 18272 | 8 / 15163 | 8 / 15164 |
+
+These are different market snapshots. **No cross-run count/byte change is credited to pruning. Every same-run before/retained count shows zero real deferrals.** One new context-relevant flat effect appears in the broad frontier; none resolves the chestplate baseline.
+
+Final 71-candidate / 2485-pair chestplate audit:
+- All 71 / 2485 encounter unknown whole-item context, unresolved equipment dependencies, unmodeled activation/relevance and unclassified metadata.
+- 2361 pairs have unknown stat coverage (95.0%); 11 candidates have empty canonical stats.
+- 1006 pairs have opposing known defensive-stat/cost directions (40.5%), but this overlaps the knowledge gaps and is NOT proof of full-mechanic Pareto incomparability.
+- 24 candidates have non-HIGH price confidence, affecting 1404 pairs.
+- 1518 pairs differ in Dungeon properties; 172 differ in stats whose comparative direction this policy does not assert.
+- All 71 candidate maps omit the baseline TRUE_DEFENSE key; 67 omit MINING_SPEED, 69 omit MINING_FORTUNE, 62 omit WALK_SPEED and 16 omit DEFENSE. Conversely the baseline omits HEALTH for 34 comparisons and other candidate stat keys. These are missing coverage, not zero-value assertions.
+- Every replacement has NEU internalName/displayName/modVersion metadata. This bucket is partly **unclassified available information**, not necessarily missing game mechanics. Metadata cannot be discarded wholesale: 11 also contain tiered_stats, and others retain salvage/description/upgrade-related fields. The identical-unexplained-metadata guard remains intact.
+
+The 100K frontier is still 8 candidates / 28 pairs, with unknown stat coverage in all pairs, empty canonical stats in 4 candidates and only 3 observed defensive-stat/cost tradeoffs.
+
+## What the canonical sources can and cannot establish
+
+The reproducible source audit covers all 834 Armor items:
+- 54 have Hypixel tiered_stats tables.
+- 566 ingested effects have unknown equipment dependencies.
+- 0 effects have source-derived PIECES membership.
+- 0 source-derived whole-item usability facts.
+- 1 exact flat context clause is recognized by the new closed grammar.
+
+All 11 empty-stat chestplates in the final 20M frontier have tiered_stats. For example, Heavy Chestplate supplies DEFENSE [112,121,132,143,155,168,183,199,216,235] and ten WALK_SPEED values of -5; Bouncy Chestplate supplies HEALTH [120,134,150,168,188,211,236,265,297,333] and CRITICAL_CHANCE [5,5,6,6,7,7,8,8,9,10]. These item names are observations, never production exceptions.
+
+The NEU Heavy display Defense 112 matches one table entry; that does not bind an owned instance or aggregated market quote to that entry. The current source contract does not establish complete tier/roll/enhancement mapping. No first-tier, minimum, maximum, average, display-stat substitution, or zero-filling was applied. Even invariant-looking entries are left in the raw table until its authoritative semantics are established.
+
+Museum groups remain comparison packages only. Matching bonus titles, counters, upgrade-parent links, and similar lore do not establish complete combat membership. Conditional aura/target/class/scaling lore remains supplied text rather than fabricated flat effects. No existing source was found that safely closes the Glacite baseline's combat membership and context proof.
+
+## Freeze decision and exact next task
+
+**Armor v1 is NOT FROZEN.** No useful realistic request reached the model gate. The fitting 20K owned-only comparison remains insufficient justification for a paid demonstration. Zero live Luna calls; no Equipment, Accessories, frontend or other-domain work.
+
+The main finding is **missing or uninterpreted comparison facts, not a demonstrated global Pareto frontier**. Some real stat/cost tradeoffs are observable, but we cannot classify the rest as dominated or genuinely incomparable until the source gaps close. The bounded grammar is a tested proof extension, not completion of broad Armor mechanic/set comparability.
+
+Highest-leverage next task: **establish a source-backed Armor stat-completeness and tier/variant-binding contract against the saved chestplate frontier.** Prove when an omitted stat is known absent versus unknown, and how Hypixel tiered_stats relates to concrete owned/market variants, before normalizing any values. This targets the measured 2361/2485 pair coverage gap. It will not by itself authorize pruning: independent whole-item-context and baseline combat-set membership proofs remain necessary. Do not relax those guards or pretend the new contract alone freezes Armor.
+
+Do not begin a global-frontier decision decomposition yet: current measurements cannot distinguish its necessary size from missing knowledge. Reassess that architecture only after closing the source contracts exposes a genuinely incomparable remainder.
+
+Keep unchanged absent a concrete failing scenario: frozen Weapons, exact market/approval/replay boundaries, 8192-byte ceiling, strict model output/reference validation, unknown semantics, source/metadata guards and retained-witness requirement. No top-N, hidden utility, item-ID exceptions or model-assisted pruning was introduced.

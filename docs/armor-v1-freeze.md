@@ -1,3 +1,5 @@
+> Latest: [Armor comparability investigation](armor-comparability-investigation.md). Source-backed context proof added; final real deferrals remain zero. Armor is not frozen.
+
 > Latest verified state: [Armor frontier validation](armor-frontier-validation.md). Soundness fixes pass; fresh real-profile deferrals are zero. Armor remains unfrozen.
 
 > Latest work-in-progress: [Armor frontier stop checkpoint](armor-frontier-checkpoint.md). User requested stop and commit before soundness review and real-profile validation were complete.
@@ -86,7 +88,7 @@ Saved data/armor-integration files are historical previews/reviews, not fresh ex
 Keep frozen absent concrete bugs: strict output reference validation, deterministic rendering, source provenance/unknown semantics, exact acquisition cost handling, approval/replay separation and hard wire gate. Do not weaken these to make a demonstration succeed.
 
 Armor as a whole is not frozen:
-- No semantic Armor shortlist policy yet exists. Complete surviving tradeoffs are preserved, then the hard limit closes the gate. Packing improves representation but does not resolve hundreds of substantive alternatives.
+- A source-closed Armor Pareto proof now exists, but its real-profile deferrals remain zero. Surviving uncertainty and tradeoffs are preserved, then the hard limit closes the gate. See the latest comparability investigation for quantified source gaps.
 - Unknown base stats are not zeros. Rolled Dungeon item stats, enhancement parity and generic lore display values can leave important comparisons unknown.
 - Combat class/context superiority, conditional impact, set membership and marginal build gains are not simulated.
 - Source-heading parsing is partial; unmodeled lore is preserved rather than asserted active.
