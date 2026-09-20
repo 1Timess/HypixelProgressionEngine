@@ -179,3 +179,29 @@ test("identical unexplained metadata can reverse stat value and prevents pruning
   assert.equal(f.run().candidates.length,2,location);
  }
 });
+
+test("comparability audit reports overlapping blockers without granting pruning permission",async()=>{
+ const f=await scenario();f.stats("a",150);f.stats("b",120);f.price("a",2000);f.price("b",1000);
+ f.ca.replaces[0].contextUsability="UNKNOWN";delete f.b.stats.HEALTH;
+ f.a.metadata={unexplained:true};
+ const r=f.run(),audit=r.audit.comparability;
+ assert.equal(r.candidates.length,2);
+ assert.equal(audit.pairs,1);
+ for(const key of ["UNKNOWN_WHOLE_ITEM_CONTEXT","UNEXPLAINED_METADATA","UNKNOWN_PAIR_STAT_COVERAGE","OBSERVED_DEFENSIVE_STAT_COST_TRADEOFF"])
+  assert.equal(audit.pairCounts[key],1,key);
+ f.e.candidates.reverse();
+ assert.deepEqual(f.run().audit.comparability,audit);
+});
+
+test("comparability audit does not compare different slots or count absence as zero",async()=>{
+ const f=await scenario();f.stats("a",150);f.stats("b",120);
+ f.cb.replaces[0].slot="BOOTS";
+ let audit=f.run().audit.comparability;
+ assert.equal(audit.sameScopePairs,0);
+ assert.equal(audit.pairCounts.OBSERVED_DEFENSIVE_STAT_COST_TRADEOFF,undefined);
+ f.cb.replaces[0].slot="CHESTPLATE";delete f.b.stats.DEFENSE;delete f.b.stats.HEALTH;
+ audit=f.run().audit.comparability;
+ assert.equal(audit.candidateCounts.EMPTY_CANONICAL_STATS,1);
+ assert.equal(audit.pairCounts.UNKNOWN_PAIR_STAT_COVERAGE,1);
+ assert.equal(audit.pairCounts.OBSERVED_DEFENSIVE_STAT_COST_TRADEOFF,undefined);
+});

@@ -1,3 +1,4 @@
+import { auditArmorComparability } from "./comparability-audit";
 import type { ItemDefinition } from "@/schemas/items";
 import type { ArmorEvidence } from "@/schemas/armor-recommendation";
 import type { ItemCatalog } from "@/server/knowledge/items/catalog";
@@ -11,6 +12,7 @@ export interface ArmorFrontierAudit {
   retained: number;
   deferred: { candidateId: string; reason: "PLAIN_ARMOR_PARETO_DOMINATED"; witnessId: string }[];
   blocked: Partial<Record<Block, number>>;
+  comparability: ReturnType<typeof auditArmorComparability>;
 }
 
 // This is a closed proof grammar, not a general lore parser. Any remaining clause blocks pruning.
@@ -50,7 +52,7 @@ interface Certificate { candidate: Candidate; group: string; items: ItemDefiniti
 /** Narrow current-build proof only. An unknown condition is never a comparative disadvantage. */
 export function narrowArmorFrontier(evidence: ArmorEvidence, catalog: ItemCatalog, now: number) {
   const audit: ArmorFrontierAudit = {policy:"PLAIN_ARMOR_PARETO_V1",before:evidence.candidates.length,
-    retained:evidence.candidates.length,deferred:[],blocked:{}};
+    retained:evidence.candidates.length,deferred:[],blocked:{},comparability:auditArmorComparability(evidence,catalog)};
   const block = (reason:Block) => { audit.blocked[reason]=(audit.blocked[reason]??0)+1; };
   // An unresolved retained/set dependency could distinguish otherwise plain replacement pieces.
   const baselineKnown = !evidence.unknownSlots.length && evidence.baseline.every(entry=>{
