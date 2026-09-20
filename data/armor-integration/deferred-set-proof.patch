@@ -1,0 +1,296 @@
+diff --git a/scripts/armor-knowledge.test.ts b/scripts/armor-knowledge.test.ts
+index 4422502..d20c97d 100644
+--- a/scripts/armor-knowledge.test.ts
++++ b/scripts/armor-knowledge.test.ts
+@@ -26,7 +26,7 @@ test("real canonical items retain explicit piece, full-set and tiered bonus dist
+  assert.ok(crimson[0].text.includes("0.5x"));
+  assert.ok(crimson[0].source.provider.includes(captured.neu.metadata.downloadedAt));
+ });
+-test("real Museum collections generate packages without claiming combat membership",()=>{
++test("real Museum membership requires matching threshold lore before combat dependency promotion",()=>{
+  const result=deriveArmorKnowledge(catalog,captured.museum);
+  assert.equal(result.knowledge.packages.length,2);
+  for(const pack of result.knowledge.packages) {
+@@ -35,7 +35,11 @@ test("real Museum collections generate packages without claiming combat membersh
+  }
+  for(const facts of Object.values(result.knowledge.items))
+   for(const effect of facts.effects.filter(e=>e.text.startsWith("Full Set Bonus")))
+-   assert.equal(effect.dependency.kind,"UNKNOWN");
++   if (effect.dependency.kind === "PIECES") {
++    assert.equal(effect.dependency.minimum,4);
++    assert.match(effect.text,/\(0\/4\)/);
++    assert.ok(effect.source.evidence.includes("FOUR_SLOT_FULL_SET_V1"));
++   } else assert.equal(effect.dependency.kind,"UNKNOWN");
+ });
+ test("shared names and identical full-set headings cannot fabricate membership",()=>{
+  const items=["A","B","C","D"].map((id,i)=>ItemDefinitionSchema.parse({
+diff --git a/src/engine/armor/frontier.ts b/src/engine/armor/frontier.ts
+index c21b487..8672485 100644
+--- a/src/engine/armor/frontier.ts
++++ b/src/engine/armor/frontier.ts
+@@ -1,9 +1,9 @@
+ import {equipmentDependencyState} from "./effects";
+ import { auditArmorComparability } from "./comparability-audit";
+-import { parseArmorEffects } from "@/server/knowledge/items/armor";
++import { parseArmorEffects, corroborateArmorSets } from "@/server/knowledge/items/armor";
+ import { assessArmorMechanic } from "./mechanic-context";
+ import type { ItemDefinition } from "@/schemas/items";
+-import type { ArmorEvidence } from "@/schemas/armor-recommendation";
++import type { ArmorEvidence, ArmorKnowledge } from "@/schemas/armor-recommendation";
+ import type { ItemCatalog } from "@/server/knowledge/items/catalog";
+ import { stableJson } from "@/engine/build/weapon-comparison";
+ 
+@@ -26,7 +26,7 @@ const labels: Record<string,string> = {
+   intelligence:"INTELLIGENCE", speed:"WALK_SPEED",
+ };
+ const monotone = new Set(["DEFENSE","HEALTH","TRUE_DEFENSE"]);
+-function sourceClosed(item: ItemDefinition, allowIndependentOpaque = false): boolean {
++function sourceClosed(item: ItemDefinition, allowIndependentOpaque = false, inactive: string[] = []): boolean {
+   if (!item.sources.includes("neu") || !item.knowledge.rawLore.length ||
+       item.knowledge.abilities.length || item.knowledge.capabilities.length ||
+       Object.keys(item.metadata).length || Object.keys(item.knowledge.metadata).length) return false;
+@@ -34,8 +34,8 @@ function sourceClosed(item: ItemDefinition, allowIndependentOpaque = false): boo
+   const known = parseArmorEffects(item).filter(effect => effect.mechanic || allowIndependentOpaque && effect.dependency.kind==="INDEPENDENT");
+   // Remove only complete paragraphs proved by the closed flat-clause grammar.
+   const paragraphs = item.knowledge.rawLore.join("\n").split(/\n\s*\n/);
+-  const remaining = paragraphs.filter(paragraph => !known.some(effect =>
+-    paragraph.split("\n").map(line=>line.replace(/§[0-9a-fk-or]/gi,"").trim()).join(" ") === effect.text.replace(/\s+/g," ")));
++  const remaining = paragraphs.filter(paragraph => !inactive.some(text => paragraph.split("\n").map(line=>line.replace(/§[0-9a-fk-or]/gi,"").trim()).join(" ").trim() === text.replace(/\s+/g," ")) && !known.some(effect =>
++    paragraph.split("\n").map(line=>line.replace(/§[0-9a-fk-or]/gi,"").trim()).join(" ").trim() === effect.text.replace(/\s+/g," ")));
+   for (const raw of remaining.join("\n").split("\n")) {
+     const line = raw.replace(/§[0-9a-fk-or]/gi,"").trim();
+     if (!line || line === "This item can be reforged!") continue;
+@@ -57,9 +57,9 @@ function facts(item: ItemDefinition): string {
+   return stableJson({ ...rest, knowledge:otherKnowledge });
+ }
+ /** Reconstruct source facts; equal UNKNOWN states or unverified sidecar assertions never prove equivalence. */
+-function mechanicKey(candidate:Candidate,evidence:ArmorEvidence,catalog:ItemCatalog):{key:string;opaqueInvariant:boolean}|null {
++function mechanicKey(candidate:Candidate,evidence:ArmorEvidence,catalog:ItemCatalog,verified:ArmorKnowledge):{key:string;opaqueInvariant:boolean}|null {
+   const ids=new Set([...evidence.baseline.map(item=>item.id),...candidate.replaces.map(piece=>piece.toId)]);
+-  const expected=[...ids].flatMap(id=>(catalog.getById(id)?parseArmorEffects(catalog.getById(id)!):[]).map(effect=>({id,effect})));
++  const expected=[...ids].flatMap(id=>(verified.items[id]?.effects??[]).map(effect=>({id,effect})));
+   if(expected.length!==candidate.effects.length || new Set(candidate.effects.map(e=>stableJson([e.itemId,e.id]))).size!==candidate.effects.length)return null;
+   const beforeIds=new Set(evidence.baseline.map(item=>item.id));
+   const replacedSlots=new Set(candidate.replaces.map(piece=>piece.slot));
+@@ -72,8 +72,9 @@ function mechanicKey(candidate:Candidate,evidence:ArmorEvidence,catalog:ItemCata
+   if(evidence.unknownSlots.length)return null;
+   for(const [slot,item] of afterBuild){
+     if(replacedSlots.has(slot))continue;
+-    if(!sourceClosed(item,true))return null;
+-    if(!sourceClosed(item))opaqueInvariant=true;
++    const inactive = (verified.items[item.id]?.effects??[]).filter(effect => effect.dependency.kind==="PIECES" && equipmentDependencyState(effect,afterBuild,new Set())==="NOT_SATISFIED").map(effect=>effect.text);
++    if(!sourceClosed(item,true,inactive))return null;
++    if(!sourceClosed(item,false,inactive))opaqueInvariant=true;
+   }
+   for(const record of candidate.effects) {
+     const original=expected.find(entry=>entry.id===record.itemId&&entry.effect.id===record.id)?.effect;
+@@ -85,7 +86,7 @@ function mechanicKey(candidate:Candidate,evidence:ArmorEvidence,catalog:ItemCata
+       record.after!==(afterIds.has(record.itemId)?equipmentDependencyState(original,afterBuild,new Set()):"NOT_EQUIPPED"))return null;
+     // Lost under this resulting build. Same replacement-scope grouping makes the loss common.
+     // Recommendation evidence still retains the loss and its uncertainty.
+-    if(record.after==="NOT_EQUIPPED")continue;
++    if(record.after==="NOT_EQUIPPED" || original.dependency.kind==="PIECES" && record.after==="NOT_SATISFIED")continue;
+     if(!original.mechanic){
+       if(!beforeIds.has(record.itemId)||original.dependency.kind!=="INDEPENDENT"||record.after!=="SATISFIED")return null;
+       opaqueInvariant=true;
+@@ -110,7 +111,8 @@ function sameResultIdentity(a:Certificate,b:Certificate):boolean {
+ }
+ 
+ /** Narrow current-build proof only. An unknown condition is never a comparative disadvantage. */
+-export function narrowArmorFrontier(evidence: ArmorEvidence, catalog: ItemCatalog, now: number) {
++export function narrowArmorFrontier(evidence: ArmorEvidence, catalog: ItemCatalog, now: number, knowledge?: ArmorKnowledge) {
++  const verified = corroborateArmorSets(catalog,{items:Object.fromEntries(catalog.getAll().map(item=>[item.id,{effects:parseArmorEffects(item),usability:[]}])),packages:knowledge?.packages??[]});
+   const audit: ArmorFrontierAudit = {policy:"COMPARISON_LOCAL_ARMOR_PARETO_V3",before:evidence.candidates.length,
+     retained:evidence.candidates.length,deferred:[],blocked:{},comparability:auditArmorComparability(evidence,catalog)};
+   const block = (reason:Block) => { audit.blocked[reason]=(audit.blocked[reason]??0)+1; };
+@@ -118,7 +120,7 @@ export function narrowArmorFrontier(evidence: ArmorEvidence, catalog: ItemCatalo
+   const baselineKnown = !evidence.unknownSlots.length && evidence.baseline.every(entry=>{
+     const item=catalog.getById(entry.id);return !!item&&sourceClosed(item);
+   });
+-  const mechanicCertificates=new Map(evidence.candidates.map(c=>[c.id,mechanicKey(c,evidence,catalog)]));
++  const mechanicCertificates=new Map(evidence.candidates.map(c=>[c.id,mechanicKey(c,evidence,catalog,verified)]));
+   const certificates = new Map<string,Certificate>();
+   for (const candidate of evidence.candidates) {
+ 
+diff --git a/src/engine/armor/preparation.ts b/src/engine/armor/preparation.ts
+index 5435f55..d8501d8 100644
+--- a/src/engine/armor/preparation.ts
++++ b/src/engine/armor/preparation.ts
+@@ -1,3 +1,4 @@
++import {corroborateArmorSets} from "@/server/knowledge/items/armor";
+ import {certifyArmorContext} from "./context";
+ import {bindArmorVariant,armorVariantInput,type ArmorVariantInput} from "./variant";
+ import {variantIdentity,validArmorListing,type ArmorListing} from "./acquisition";
+@@ -46,7 +47,7 @@ export async function prepareArmorUpgrade(
+   if (!parsed.success || !Number.isFinite(now)) return finish("INVALID_INPUT", "Invalid structured Armor intent or evaluation time.");
+   const knowledgeResult = ArmorKnowledgeSchema.safeParse(rawKnowledge);
+   if (!knowledgeResult.success) return finish("NEEDS_KNOWLEDGE", "Malformed source-backed equipment knowledge.");
+-  const intent = parsed.data, knowledge = knowledgeResult.data;
++  const intent = parsed.data, knowledge = corroborateArmorSets(catalog, knowledgeResult.data);
+   if (intent.context === "dungeon" && intent.dungeonClass &&
+       intent.dungeonClass !== snapshot.progression.dungeons.selectedClass)
+     return finish("NEEDS_CLARIFICATION", "The requested class differs from the current class; this objective does not switch builds.");
+@@ -224,7 +225,7 @@ export async function prepareArmorUpgrade(
+     candidates,
+   });
+   observeEvidence?.(structuredClone(payload)); // Trusted diagnostic observer; never model execution or a production feature flag.
+-  const narrowed = narrowArmorFrontier(payload, catalog, now);
++  const narrowed = narrowArmorFrontier(payload, catalog, now, knowledge);
+   review.narrowing = narrowed.audit;
+   payload.candidates = narrowed.candidates;
+   // Failed/deferred options may have interned lore; remove it before the model gate.
+diff --git a/src/server/knowledge/items/armor.ts b/src/server/knowledge/items/armor.ts
+index 926aac0..1dfca93 100644
+--- a/src/server/knowledge/items/armor.ts
++++ b/src/server/knowledge/items/armor.ts
+@@ -102,7 +102,7 @@ export function deriveArmorKnowledge(catalog: ItemCatalog, rawMuseum?: unknown):
+       ] },
+     });
+   }
+-  return { knowledge: ArmorKnowledgeSchema.parse(knowledge), diagnostics };
++  return { knowledge: corroborateArmorSets(catalog, knowledge), diagnostics };
+ }
+ 
+ /** Reuses the already downloaded NEU snapshot. Never fetches per-candidate knowledge. */
+@@ -124,3 +124,35 @@ export async function loadArmorKnowledge(catalog: ItemCatalog): Promise<ArmorKno
+     return deriveArmorKnowledge(catalog);
+   }
+ }
++
++/** Four-slot membership + identical complete source bonus + explicit threshold, never names alone. */
++export function corroborateArmorSets(catalog: ItemCatalog, input: ArmorKnowledge): ArmorKnowledge {
++  const knowledge = structuredClone(input);
++  for (const pack of knowledge.packages) {
++    if (pack.itemIds.length !== 4 || new Set(pack.itemIds).size !== 4 || !pack.source.evidence.length) continue;
++    const items = pack.itemIds.map(id => catalog.getById(id));
++    if (items.some(item => !item || !armorSlot(item)) || new Set(items.map(item => armorSlot(item!))).size !== 4) continue;
++    // Overlapping, different membership claims are unresolved, even if only one has matching lore.
++    if (knowledge.packages.some(other => other !== pack && other.itemIds.some(id => pack.itemIds.includes(id)) &&
++        JSON.stringify([...other.itemIds].sort()) !== JSON.stringify([...pack.itemIds].sort()))) continue;
++    const effects = items.map(item => parseArmorEffects(item!));
++    for (const first of effects[0]) {
++      if (!/^Full Set Bonus: .+ \(0\/4\)\n/.test(first.text)) continue;
++      const matching = effects.map(list => list.filter(effect => effect.text === first.text));
++      if (matching.some(list => list.length !== 1 || list[0].source.provider.endsWith("@unknown-snapshot"))) continue;
++      const proof = [
++        "FOUR_SLOT_FULL_SET_V1",
++        JSON.stringify({itemIds:[...pack.itemIds].sort(),minimum:4,groupSource:pack.source}),
++        ...matching.map((list,index) => JSON.stringify({itemId:items[index]!.id,provider:list[0].source.provider,bonus:"Identical to this effect text"})),
++      ];
++      for (let index = 0; index < items.length; index++) {
++        const stored = knowledge.items[items[index]!.id]?.effects.find(effect =>
++          effect.id === matching[index][0].id && effect.text === first.text);
++        if (!stored || stored.dependency.kind !== "UNKNOWN") continue;
++        stored.dependency = {kind:"PIECES",itemIds:[...pack.itemIds].sort(),minimum:4};
++        stored.source.evidence = [...stored.source.evidence,...proof];
++      }
++    }
++  }
++  return ArmorKnowledgeSchema.parse(knowledge);
++}
+
+diff --git a/scripts/armor-set-dependency.test.ts b/scripts/armor-set-dependency.test.ts
+new file mode 100644
+--- /dev/null
++++ b/scripts/armor-set-dependency.test.ts
+@@ -0,0 +1,100 @@
++import test from "node:test";
++import assert from "node:assert/strict";
++import {readFileSync} from "node:fs";
++import {armorFixture,intent} from "./fixtures/armor-scenario";
++import {now} from "./fixtures/weapon-scenario";
++import {deriveArmorKnowledge} from "../src/server/knowledge/items/armor";
++import {equipmentDependencyState} from "../src/engine/armor/effects";
++import {InMemoryItemCatalog} from "../src/server/knowledge/items/catalog";
++import {prepareArmorUpgrade} from "../src/engine/armor/preparation";
++import {narrowArmorFrontier} from "../src/engine/armor/frontier";
++import {ARMOR_SLOTS,type ArmorEvidence} from "../src/schemas/armor-recommendation";
++import type {ItemDefinition} from "../src/schemas/items";
++const date="2026-09-20T00:00:00Z";
++function scenario(){
++ const f=armorFixture();const ids=ARMOR_SLOTS.map(slot=>"OLD_"+slot);
++ for(const item of f.catalog.getAll()){
++  item.rarity="COMMON";
++  item.knowledge.sources=[{provider:"neu",metadata:{downloadedAt:date}}];
++  item.knowledge.rawLore=["Defense: +"+item.stats.DEFENSE,"Health: +"+item.stats.HEALTH];
++  if(ids.includes(item.id))item.knowledge.rawLore.push("","Full Set Bonus: Shared (0/4)","A conditional skill benefit.","");
++ }
++ const museum={groups:{family:ids},source:"neu:constants/museum@"+date};
++ const derive=()=>deriveArmorKnowledge(f.catalog,museum).knowledge;
++ const build=new Map(ARMOR_SLOTS.map(slot=>[slot,f.catalog.getById("OLD_"+slot)!]));
++ return {...f,ids,museum,derive,build};
++}
++test("corroborated four-slot complete bonus promotes PIECES with versioned proof",()=>{
++ const f=scenario(),k=f.derive();
++ for(const id of f.ids){const e=k.items[id].effects[0];assert.deepEqual(e.dependency,{kind:"PIECES",itemIds:[...f.ids].sort(),minimum:4});
++ assert.ok(e.source.evidence.includes("FOUR_SLOT_FULL_SET_V1"));assert.ok(e.source.evidence.some(s=>s.includes(f.museum.source)));}
++ assert.equal(equipmentDependencyState(k.items[f.ids[0]].effects[0],f.build,new Set()),"SATISFIED");
++});
++test("Museum membership with different source bonuses is insufficient",()=>{
++ const f=scenario();f.catalog.getById(f.ids[1])!.knowledge.rawLore[3]="Full Set Bonus: Different (0/4)";
++ assert.equal(f.derive().items[f.ids[0]].effects[0].dependency.kind,"UNKNOWN");
++});
++test("headings without membership remain unknown",()=>{
++ const f=scenario();assert.equal(deriveArmorKnowledge(f.catalog).knowledge.items[f.ids[0]].effects[0].dependency.kind,"UNKNOWN");
++});
++test("membership without explicit threshold remains unknown",()=>{
++ const f=scenario();for(const item of f.build.values())item.knowledge.rawLore=item.knowledge.rawLore.map(s=>s.replace(" (0/4)",""));
++ assert.equal(f.derive().items[f.ids[0]].effects[0].dependency.kind,"UNKNOWN");
++});
++test("conflicting membership remains unknown",()=>{
++ const f=scenario();const other=[...f.ids];other[1]="NEW_CHESTPLATE";
++ const k=deriveArmorKnowledge(f.catalog,{...f.museum,groups:{family:f.ids,conflict:other}}).knowledge;
++ assert.equal(k.items[f.ids[0]].effects[0].dependency.kind,"UNKNOWN");
++});
++test("unknown source snapshot and duplicate slots cannot establish a set",()=>{
++ const f=scenario();f.catalog.getById(f.ids[1])!.knowledge.sources=[];
++ assert.equal(f.derive().items[f.ids[0]].effects[0].dependency.kind,"UNKNOWN");
++ f.catalog.getById(f.ids[1])!.category="HELMET";assert.equal(f.derive().packages.length,0);
++});
++test("both chestplate alternatives lose the same set while comparison retains loss evidence",async()=>{
++ const f=scenario(),a=f.catalog.getById("NEW_CHESTPLATE")!,b=structuredClone(a);b.id="ALTERNATIVE";b.name="Alternative";
++ const catalog=new InMemoryItemCatalog([...f.catalog.getAll(),b]);
++ const price=structuredClone(f.prices.get(a.id)!);price.marketKey=b.id;f.prices.set(b.id,price);
++ const k=deriveArmorKnowledge(catalog,f.museum).knowledge;
++ let evidence:ArmorEvidence|undefined;
++ await prepareArmorUpgrade(f.snapshot,catalog,intent,f.market,k,now,e=>{evidence=structuredClone(e);});
++ assert.ok(evidence);
++ for(const c of evidence.candidates)for(const effect of c.effects){
++  assert.equal(effect.before,"SATISFIED");
++  assert.equal(effect.after,effect.itemId==="OLD_CHESTPLATE"?"NOT_EQUIPPED":"NOT_SATISFIED");
++ }
++ const result=narrowArmorFrontier(evidence,catalog,now,k);
++ assert.equal(result.audit.pairLocal?.differentialMechanicBlockedPairs,0);
++ assert.equal(result.audit.pairLocal?.comparablePairs,1);
++ assert.equal(result.candidates.length,2); // Equal outcomes are not arbitrarily sliced.
++ evidence.candidates.reverse();assert.equal(narrowArmorFrontier(evidence,catalog,now,k).audit.pairLocal?.comparablePairs,1);
++ // One alternative reactivates the set. Unsupported active mechanics remain a blocker.
++ const preserved=evidence.candidates[0];preserved.replaces[0].toId="OLD_CHESTPLATE";
++ for(const e of preserved.effects)e.after="SATISFIED";
++ assert.equal(narrowArmorFrontier(evidence,catalog,now,k).audit.pairLocal?.differentialMechanicBlockedPairs,1);
++});
++test("unexplained metadata still blocks despite known identical set loss",async()=>{
++ const f=scenario(),k=f.derive();f.catalog.getById("OLD_HELMET")!.metadata={unknown:true};
++ let e:ArmorEvidence|undefined;await prepareArmorUpgrade(f.snapshot,f.catalog,intent,f.market,k,now,x=>{e=structuredClone(x);});
++ assert.ok(e);const r=narrowArmorFrontier(e,f.catalog,now,k);assert.equal(r.audit.blocked.UNKNOWN_ITEM_MECHANICS,1);
++});
++test("full-build source package activates the dependency",async()=>{
++ const f=scenario(),k=f.derive(),effect=k.items[f.ids[0]].effects[0];
++ const empty=new Map(f.build);empty.delete("CHESTPLATE");
++ assert.equal(equipmentDependencyState(effect,empty,new Set()),"UNKNOWN");
++ empty.set("CHESTPLATE",f.catalog.getById("NEW_CHESTPLATE")!);
++ assert.equal(equipmentDependencyState(effect,empty,new Set()),"NOT_SATISFIED");
++ empty.set("CHESTPLATE",f.catalog.getById("OLD_CHESTPLATE")!);
++ assert.equal(equipmentDependencyState(effect,empty,new Set()),"SATISFIED");
++ assert.deepEqual(k.packages[0].itemIds,[...f.ids].sort());
++});
++test("captured Glacite source corroborates all four slots without historical Defense claims",()=>{
++ const capture=JSON.parse(readFileSync("data/armor-integration/closure-cohort.json","utf8"));
++ const catalog=new InMemoryItemCatalog(capture.catalog as ItemDefinition[]);
++ const groups=Object.fromEntries(capture.knowledge.packages.map((p:{id:string;itemIds:string[]})=>[p.id,p.itemIds]));
++ const k=deriveArmorKnowledge(catalog,{groups,source:"captured-museum@"+date}).knowledge;
++ for(const baseline of capture.evidence.baseline){
++  const effects=k.items[baseline.id].effects;assert.equal(effects[0].dependency.kind,"PIECES");
++  assert.match(effects[0].text,/Expert Miner/);assert.doesNotMatch(effects[0].text,/Defense|Mining Island/i);
++ }
++});

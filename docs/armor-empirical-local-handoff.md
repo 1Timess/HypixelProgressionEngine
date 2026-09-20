@@ -1,3 +1,5 @@
+> Latest checkpoint: [Armor closure pause and measured context ablation](armor-closure-handoff.md). Health/Defense contradictions require user review; no stat promotion or active full-set change.
+
 # Armor empirical binding and comparison-local frontier handoff
 
 Date: 2026-09-20. Started at clean 2c94ab5. **Armor NOT FROZEN. Weapons remains frozen.**
