@@ -1,3 +1,5 @@
+> Latest: [independent render audit](armor-render-context-handoff.md) and [validated full-set resumption](armor-set-resumption-handoff.md). Health/Defense production promotion remains paused.
+
 # Armor closure checkpoint — paused for a source decision
 
 Starting HEAD: 68961efe036be830ff2d94e53786e9e84ab8037f.

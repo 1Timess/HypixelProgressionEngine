@@ -102,7 +102,7 @@ export function deriveArmorKnowledge(catalog: ItemCatalog, rawMuseum?: unknown):
       ] },
     });
   }
-  return { knowledge: ArmorKnowledgeSchema.parse(knowledge), diagnostics };
+  return { knowledge: corroborateArmorSets(catalog, knowledge), diagnostics };
 }
 
 /** Reuses the already downloaded NEU snapshot. Never fetches per-candidate knowledge. */
@@ -123,4 +123,37 @@ export async function loadArmorKnowledge(catalog: ItemCatalog): Promise<ArmorKno
   } catch {
     return deriveArmorKnowledge(catalog);
   }
+}
+
+/** Four-slot membership + identical complete source bonus + explicit threshold, never names alone. */
+export function corroborateArmorSets(catalog: ItemCatalog, input: ArmorKnowledge): ArmorKnowledge {
+  const knowledge = structuredClone(input);
+  for (const pack of knowledge.packages) {
+    if (pack.itemIds.length !== 4 || new Set(pack.itemIds).size !== 4 || !pack.source.evidence.length) continue;
+    const items = pack.itemIds.map(id => catalog.getById(id));
+    if (items.some(item => !item || !armorSlot(item)) || new Set(items.map(item => armorSlot(item!))).size !== 4) continue;
+    // Overlapping, different membership claims are unresolved, even if only one has matching lore.
+    if (knowledge.packages.some(other => other !== pack && other.itemIds.some(id => pack.itemIds.includes(id)) &&
+        JSON.stringify([...other.itemIds].sort()) !== JSON.stringify([...pack.itemIds].sort()))) continue;
+    const effects = items.map(item => parseArmorEffects(item!));
+    for (const first of effects[0]) {
+      if (!/^Full Set Bonus: .+ \(0\/4\)\n/.test(first.text)) continue;
+      const matching = effects.map(list => list.filter(effect => effect.text === first.text));
+      if (matching.some(list => list.length !== 1 || list[0].source.provider.endsWith("@unknown-snapshot"))) continue;
+      const proof = [
+        "FOUR_SLOT_FULL_SET_V1",
+        "All four dependency members have identical complete bonus text with explicit (0/4).",
+        pack.source.provider, ...pack.source.evidence,
+        ...matching.map(list => list[0].source.provider),
+      ];
+      for (let index = 0; index < items.length; index++) {
+        const stored = knowledge.items[items[index]!.id]?.effects.find(effect =>
+          effect.id === matching[index][0].id && effect.text === first.text);
+        if (!stored || stored.dependency.kind !== "UNKNOWN") continue;
+        stored.dependency = {kind:"PIECES",itemIds:[...pack.itemIds].sort(),minimum:4};
+        stored.source.evidence = [...stored.source.evidence,...proof];
+      }
+    }
+  }
+  return ArmorKnowledgeSchema.parse(knowledge);
 }

@@ -1,3 +1,5 @@
+> Latest: [independent render audit](armor-render-context-handoff.md) and [validated full-set resumption](armor-set-resumption-handoff.md). Health/Defense production promotion remains paused.
+
 > Latest checkpoint: [Armor closure pause and measured context ablation](armor-closure-handoff.md). Health/Defense contradictions require user review; no stat promotion or active full-set change.
 
 # Armor empirical binding and comparison-local frontier handoff

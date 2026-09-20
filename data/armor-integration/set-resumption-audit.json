@@ -1,0 +1,266 @@
+{
+  "snapshot": {
+    "id": "14",
+    "hypixel_last_updated": "1789914403689",
+    "status": "COMPLETE"
+  },
+  "paidModelCalls": 0,
+  "candidates": 208,
+  "retained": 208,
+  "promotedEffectRecords": 959,
+  "baselineDependencies": [
+    {
+      "itemId": "GLACITE_BOOTS",
+      "id": "lore:7",
+      "text": "Full Set Bonus: Expert Miner (0/4)\nGrants +2 Mining Speed per Mining\nSkill level unlocked.",
+      "before": "SATISFIED",
+      "after": "NOT_SATISFIED",
+      "dependency": {
+        "kind": "PIECES",
+        "itemIds": [
+          "GLACITE_BOOTS",
+          "GLACITE_CHESTPLATE",
+          "GLACITE_HELMET",
+          "GLACITE_LEGGINGS"
+        ],
+        "minimum": 4
+      },
+      "source": {
+        "provider": "neu:items/GLACITE_BOOTS@2026-09-17T13:35:10.975Z",
+        "evidence": [
+          "Full Set Bonus: Expert Miner (0/4)\nGrants +2 Mining Speed per Mining\nSkill level unlocked.",
+          "FOUR_SLOT_FULL_SET_V1",
+          "All four dependency members have identical complete bonus text with explicit (0/4).",
+          "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+          "{\"group\":\"GLACITE\",\"members\":[\"GLACITE_BOOTS\",\"GLACITE_CHESTPLATE\",\"GLACITE_HELMET\",\"GLACITE_LEGGINGS\"]}",
+          "Museum grouping supports a comparison package only; it does not prove a combat set bonus.",
+          "neu:items/GLACITE_BOOTS@2026-09-17T13:35:10.975Z",
+          "neu:items/GLACITE_CHESTPLATE@2026-09-17T13:35:10.975Z",
+          "neu:items/GLACITE_HELMET@2026-09-17T13:35:10.975Z",
+          "neu:items/GLACITE_LEGGINGS@2026-09-17T13:35:10.975Z"
+        ]
+      }
+    },
+    {
+      "itemId": "GLACITE_LEGGINGS",
+      "id": "lore:7",
+      "text": "Full Set Bonus: Expert Miner (0/4)\nGrants +2 Mining Speed per Mining\nSkill level unlocked.",
+      "before": "SATISFIED",
+      "after": "NOT_SATISFIED",
+      "dependency": {
+        "kind": "PIECES",
+        "itemIds": [
+          "GLACITE_BOOTS",
+          "GLACITE_CHESTPLATE",
+          "GLACITE_HELMET",
+          "GLACITE_LEGGINGS"
+        ],
+        "minimum": 4
+      },
+      "source": {
+        "provider": "neu:items/GLACITE_LEGGINGS@2026-09-17T13:35:10.975Z",
+        "evidence": [
+          "Full Set Bonus: Expert Miner (0/4)\nGrants +2 Mining Speed per Mining\nSkill level unlocked.",
+          "FOUR_SLOT_FULL_SET_V1",
+          "All four dependency members have identical complete bonus text with explicit (0/4).",
+          "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+          "{\"group\":\"GLACITE\",\"members\":[\"GLACITE_BOOTS\",\"GLACITE_CHESTPLATE\",\"GLACITE_HELMET\",\"GLACITE_LEGGINGS\"]}",
+          "Museum grouping supports a comparison package only; it does not prove a combat set bonus.",
+          "neu:items/GLACITE_BOOTS@2026-09-17T13:35:10.975Z",
+          "neu:items/GLACITE_CHESTPLATE@2026-09-17T13:35:10.975Z",
+          "neu:items/GLACITE_HELMET@2026-09-17T13:35:10.975Z",
+          "neu:items/GLACITE_LEGGINGS@2026-09-17T13:35:10.975Z"
+        ]
+      }
+    },
+    {
+      "itemId": "GLACITE_CHESTPLATE",
+      "id": "lore:7",
+      "text": "Full Set Bonus: Expert Miner (0/4)\nGrants +2 Mining Speed per Mining\nSkill level unlocked.",
+      "before": "SATISFIED",
+      "after": "NOT_EQUIPPED",
+      "dependency": {
+        "kind": "PIECES",
+        "itemIds": [
+          "GLACITE_BOOTS",
+          "GLACITE_CHESTPLATE",
+          "GLACITE_HELMET",
+          "GLACITE_LEGGINGS"
+        ],
+        "minimum": 4
+      },
+      "source": {
+        "provider": "neu:items/GLACITE_CHESTPLATE@2026-09-17T13:35:10.975Z",
+        "evidence": [
+          "Full Set Bonus: Expert Miner (0/4)\nGrants +2 Mining Speed per Mining\nSkill level unlocked.",
+          "FOUR_SLOT_FULL_SET_V1",
+          "All four dependency members have identical complete bonus text with explicit (0/4).",
+          "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+          "{\"group\":\"GLACITE\",\"members\":[\"GLACITE_BOOTS\",\"GLACITE_CHESTPLATE\",\"GLACITE_HELMET\",\"GLACITE_LEGGINGS\"]}",
+          "Museum grouping supports a comparison package only; it does not prove a combat set bonus.",
+          "neu:items/GLACITE_BOOTS@2026-09-17T13:35:10.975Z",
+          "neu:items/GLACITE_CHESTPLATE@2026-09-17T13:35:10.975Z",
+          "neu:items/GLACITE_HELMET@2026-09-17T13:35:10.975Z",
+          "neu:items/GLACITE_LEGGINGS@2026-09-17T13:35:10.975Z"
+        ]
+      }
+    },
+    {
+      "itemId": "GLACITE_HELMET",
+      "id": "lore:7",
+      "text": "Full Set Bonus: Expert Miner (0/4)\nGrants +2 Mining Speed per Mining\nSkill level unlocked.",
+      "before": "SATISFIED",
+      "after": "NOT_SATISFIED",
+      "dependency": {
+        "kind": "PIECES",
+        "itemIds": [
+          "GLACITE_BOOTS",
+          "GLACITE_CHESTPLATE",
+          "GLACITE_HELMET",
+          "GLACITE_LEGGINGS"
+        ],
+        "minimum": 4
+      },
+      "source": {
+        "provider": "neu:items/GLACITE_HELMET@2026-09-17T13:35:10.975Z",
+        "evidence": [
+          "Full Set Bonus: Expert Miner (0/4)\nGrants +2 Mining Speed per Mining\nSkill level unlocked.",
+          "FOUR_SLOT_FULL_SET_V1",
+          "All four dependency members have identical complete bonus text with explicit (0/4).",
+          "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+          "{\"group\":\"GLACITE\",\"members\":[\"GLACITE_BOOTS\",\"GLACITE_CHESTPLATE\",\"GLACITE_HELMET\",\"GLACITE_LEGGINGS\"]}",
+          "Museum grouping supports a comparison package only; it does not prove a combat set bonus.",
+          "neu:items/GLACITE_BOOTS@2026-09-17T13:35:10.975Z",
+          "neu:items/GLACITE_CHESTPLATE@2026-09-17T13:35:10.975Z",
+          "neu:items/GLACITE_HELMET@2026-09-17T13:35:10.975Z",
+          "neu:items/GLACITE_LEGGINGS@2026-09-17T13:35:10.975Z"
+        ]
+      }
+    }
+  ],
+  "contextUnknown": 0,
+  "bytes": 452169,
+  "status": "NEEDS_KNOWLEDGE",
+  "audit": {
+    "policy": "COMPARISON_LOCAL_ARMOR_PARETO_V3",
+    "before": 208,
+    "retained": 208,
+    "deferred": [],
+    "blocked": {
+      "UNKNOWN_ITEM_MECHANICS": 208
+    },
+    "comparability": {
+      "candidates": 208,
+      "pairs": 21528,
+      "sameScopePairs": 21528,
+      "candidateCounts": {
+        "UNEXPLAINED_METADATA": 208,
+        "UNKNOWN_BASELINE_STAT_COMPARISON": 208,
+        "UNMODELED_EFFECT_ACTIVATION_OR_RELEVANCE": 208,
+        "KNOWN_DEPENDENCY_TRANSITION": 208,
+        "UNKNOWN_EQUIPMENT_DEPENDENCY": 51,
+        "UNKNOWN_PROPOSED_DEPENDENCY_STATE": 51,
+        "MISSING_OR_NON_HIGH_CONFIDENCE_PRICE": 159,
+        "EMPTY_CANONICAL_STATS": 149
+      },
+      "pairCounts": {
+        "UNEXPLAINED_METADATA": 21528,
+        "UNKNOWN_BASELINE_STAT_COMPARISON": 21528,
+        "UNMODELED_EFFECT_ACTIVATION_OR_RELEVANCE": 21528,
+        "KNOWN_DEPENDENCY_TRANSITION": 21528,
+        "UNKNOWN_EQUIPMENT_DEPENDENCY": 9282,
+        "UNKNOWN_PROPOSED_DEPENDENCY_STATE": 9282,
+        "OBSERVED_DEFENSIVE_STAT_COST_TRADEOFF": 1047,
+        "MISSING_OR_NON_HIGH_CONFIDENCE_PRICE": 20352,
+        "UNKNOWN_PAIR_STAT_COVERAGE": 18718,
+        "DIFFERENT_DUNGEON_PROPERTIES": 8825,
+        "UNEQUAL_STAT_WITHOUT_SUPPORTED_DIRECTION": 5612,
+        "EMPTY_CANONICAL_STATS": 19817,
+        "DIFFERENT_ACQUISITION_MODE": 412
+      },
+      "statContract": {
+        "policy": "RESOURCE_AND_EMPIRICAL_VARIANT_V1",
+        "knownAbsenceCount": 0,
+        "exactVariantBoundStatCount": 213,
+        "resourceValueCount": 153,
+        "unboundTierStatCount": 279,
+        "observedConstantColumns": 2,
+        "observedVariableColumns": 277,
+        "unprovenSourceRelations": 0,
+        "invalidSourceItems": 0,
+        "unknownStatPairCount": 21411,
+        "beforeBindingUnknownStatPairCount": 21411,
+        "variantCompatibleAcquisitions": 138,
+        "genericOnlyMarketEvidence": 68,
+        "missingMarketEvidence": 0,
+        "unsupportedTables": 0,
+        "qualification": "Counts distinguish concrete variant references from generic resource observations. Missing stats remain unknown; unsupported enhancements do not bind."
+      },
+      "sourceGaps": {
+        "uniqueReplacementItems": 70,
+        "emptyStatItems": [
+          "BOUNCY_CHESTPLATE",
+          "HEAVY_CHESTPLATE",
+          "ROTTEN_CHESTPLATE",
+          "SKELETON_GRUNT_CHESTPLATE",
+          "SKELETON_MASTER_CHESTPLATE",
+          "SKELETON_SOLDIER_CHESTPLATE",
+          "SKELETOR_CHESTPLATE",
+          "SUPER_HEAVY_CHESTPLATE",
+          "ZOMBIE_COMMANDER_CHESTPLATE",
+          "ZOMBIE_KNIGHT_CHESTPLATE",
+          "ZOMBIE_SOLDIER_CHESTPLATE"
+        ],
+        "itemMetadataKeys": {
+          "color": 50,
+          "description": 1,
+          "rarity_salvageable": 12,
+          "tiered_stats": 11,
+          "museum": 2,
+          "salvageable_from_recipe": 2,
+          "salvages": 1,
+          "can_recombobulate": 1,
+          "can_have_booster": 2
+        },
+        "knowledgeMetadataKeys": {
+          "internalName": 70,
+          "displayName": 70,
+          "modVersion": 70,
+          "slayerRequirement": 1
+        },
+        "missingCandidateStatKeys": {
+          "WALK_SPEED": 170,
+          "TRUE_DEFENSE": 208,
+          "MINING_SPEED": 204,
+          "MINING_FORTUNE": 206,
+          "DEFENSE": 153
+        },
+        "missingBaselineStatKeys": {
+          "HEALTH": 34,
+          "STRENGTH": 49,
+          "INTELLIGENCE": 10,
+          "TROPHY_FISH_CHANCE": 1,
+          "BLOCK_FORTUNE": 1,
+          "CRITICAL_DAMAGE": 82,
+          "CRITICAL_CHANCE": 76,
+          "MENDING": 1,
+          "FARMING_FORTUNE": 2,
+          "SEA_CREATURE_CHANCE": 3,
+          "PRESSURE_RESISTANCE": 2,
+          "RESPIRATION": 1,
+          "BONUS_PEST_CHANCE": 1,
+          "FORAGING_FORTUNE": 2,
+          "SWEEP": 2
+        }
+      },
+      "interpretation": "Overlapping observations, not exclusive causes or proof of a complete Pareto tradeoff. Missing dimensions remain unknown."
+    },
+    "pairLocal": {
+      "totalPairs": 21528,
+      "comparablePairs": 0,
+      "differentialMechanicBlockedPairs": 21528,
+      "previousGlobalBlockedCandidates": 208,
+      "globalOnlyBlockRemovedCandidates": 0
+    }
+  }
+}

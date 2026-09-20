@@ -1,3 +1,4 @@
+import {corroborateArmorSets} from "@/server/knowledge/items/armor";
 import {certifyArmorContext} from "./context";
 import {bindArmorVariant,armorVariantInput,type ArmorVariantInput} from "./variant";
 import {variantIdentity,validArmorListing,type ArmorListing} from "./acquisition";
@@ -46,7 +47,7 @@ export async function prepareArmorUpgrade(
   if (!parsed.success || !Number.isFinite(now)) return finish("INVALID_INPUT", "Invalid structured Armor intent or evaluation time.");
   const knowledgeResult = ArmorKnowledgeSchema.safeParse(rawKnowledge);
   if (!knowledgeResult.success) return finish("NEEDS_KNOWLEDGE", "Malformed source-backed equipment knowledge.");
-  const intent = parsed.data, knowledge = knowledgeResult.data;
+  const intent = parsed.data, knowledge = corroborateArmorSets(catalog, knowledgeResult.data);
   if (intent.context === "dungeon" && intent.dungeonClass &&
       intent.dungeonClass !== snapshot.progression.dungeons.selectedClass)
     return finish("NEEDS_CLARIFICATION", "The requested class differs from the current class; this objective does not switch builds.");
@@ -114,7 +115,8 @@ export async function prepareArmorUpgrade(
     if (index === -1) { index = dictionary.length; dictionary.push(text); }
     return index;
   };
-  const lore = (item: ItemDefinition) => item.knowledge.rawLore.length ? [intern(item.knowledge.rawLore.join("\n"))] : [];
+  // Ordered line references preserve every source character and blank line while sharing repeated lore.
+  const lore = (item: ItemDefinition) => item.knowledge.rawLore.map(intern);
   const candidates: ArmorEvidence["candidates"] = [];
   const seenBuilds = new Set<string>();
   const otherEquipped = new Set(snapshot.equipment.equipment.filter(item => item.count > 0).map(item => item.itemId));
@@ -224,7 +226,7 @@ export async function prepareArmorUpgrade(
     candidates,
   });
   observeEvidence?.(structuredClone(payload)); // Trusted diagnostic observer; never model execution or a production feature flag.
-  const narrowed = narrowArmorFrontier(payload, catalog, now);
+  const narrowed = narrowArmorFrontier(payload, catalog, now, knowledge);
   review.narrowing = narrowed.audit;
   payload.candidates = narrowed.candidates;
   // Failed/deferred options may have interned lore; remove it before the model gate.

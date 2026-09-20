@@ -26,7 +26,7 @@ test("real canonical items retain explicit piece, full-set and tiered bonus dist
  assert.ok(crimson[0].text.includes("0.5x"));
  assert.ok(crimson[0].source.provider.includes(captured.neu.metadata.downloadedAt));
 });
-test("real Museum collections generate packages without claiming combat membership",()=>{
+test("real Museum membership requires matching threshold lore before combat dependency promotion",()=>{
  const result=deriveArmorKnowledge(catalog,captured.museum);
  assert.equal(result.knowledge.packages.length,2);
  for(const pack of result.knowledge.packages) {
@@ -35,7 +35,11 @@ test("real Museum collections generate packages without claiming combat membersh
  }
  for(const facts of Object.values(result.knowledge.items))
   for(const effect of facts.effects.filter(e=>e.text.startsWith("Full Set Bonus")))
-   assert.equal(effect.dependency.kind,"UNKNOWN");
+   if (effect.dependency.kind === "PIECES") {
+    assert.equal(effect.dependency.minimum,4);
+    assert.match(effect.text,/\(0\/4\)/);
+    assert.ok(effect.source.evidence.includes("FOUR_SLOT_FULL_SET_V1"));
+   } else assert.equal(effect.dependency.kind,"UNKNOWN");
 });
 test("shared names and identical full-set headings cannot fabricate membership",()=>{
  const items=["A","B","C","D"].map((id,i)=>ItemDefinitionSchema.parse({
@@ -89,11 +93,14 @@ test("captured real catalog reaches bounded comparison only after canonical floo
  assert.notEqual(before.status,"READY");
  snapshot.progression.dungeons.catacombs.completions["5"]=1;
  const after=await prepareArmorUpgrade(snapshot,catalog,intent,market,knowledge,now);
- assert.equal(after.status,"READY");
+ assert.equal(after.status,"READY", JSON.stringify(after.review));
  const payload=after.modelPayload!;
  assert.ok(payload.candidates.every(c=>c.replaces.every(piece=>piece.price===null||piece.price.coins<=2000)));
  assert.ok(payload.candidates.flatMap(c=>c.effects).filter(e=>payload.mechanics[e.text].startsWith("Full Set Bonus")).every(e=>e.after!=="SATISFIED"));
  assert.ok(Buffer.byteLength(serializeArmorModelInput(after,now)!)<=8192);
+ assert.equal(Buffer.byteLength(serializeArmorModelInput(after,now)!),after.review.bytes);
+ for(const b of payload.baseline)assert.equal(b.lore.map(i=>payload.mechanics[i]).join("\n"),catalog.getById(b.id)!.knowledge.rawLore.join("\n"));
+ for(const c of payload.candidates)for(const p of c.replaces)assert.equal(p.lore.map(i=>payload.mechanics[i]).join("\n"),catalog.getById(p.toId)!.knowledge.rawLore.join("\n"));
  assert.ok(reads<=2);
 });
 
