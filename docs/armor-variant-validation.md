@@ -1,3 +1,5 @@
+> Latest: [Empirical binding and local closure](armor-empirical-local-handoff.md). Scoped contract promoted; listing-backed evidence added; real deferrals remain zero. Armor is NOT FROZEN.
+
 # Dungeon Armor variant validation — Path C handoff
 
 Date: 2026-09-20. Started at clean 6dedfce. Armor NOT FROZEN; Weapons frozen and unchanged.

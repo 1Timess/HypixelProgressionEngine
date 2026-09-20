@@ -1,3 +1,5 @@
+> Latest: [Empirical binding and local closure](armor-empirical-local-handoff.md). Scoped contract promoted; listing-backed evidence added; real deferrals remain zero. Armor is NOT FROZEN.
+
 > Latest: [Dungeon variant validation](armor-variant-validation.md). Path C: real NBT exposes positive rounding discrepancies; 161 Armor / 114 Weapons pass. No production binding promoted.
 
 > Latest: [Armor stat contract](armor-stat-contract.md). Outcome C: completeness/variant semantics remain unproven; fresh real deferrals are zero. Armor is not frozen.

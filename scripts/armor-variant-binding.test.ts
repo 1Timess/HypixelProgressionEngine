@@ -115,3 +115,10 @@ test("owned baseline binding retains exact evidence without altering the canonic
  assert.equal(baseline.stats.STRENGTH,13);assert.equal(baseline.statEvidence?.STRENGTH.provenance.contract,DUNGEON_VARIANT_CONTRACT);
  assert.deepEqual(old.stats,{});assert.ok(serializeArmorModelInput(result,now));
 });
+
+test("conflicting variant evidence under one equipped UUID requires clarification",()=>{
+ const f=armorFixture();const copy=structuredClone(f.snapshot.equipment.armor[0]);
+ copy.extraAttributes={item_tier:2,baseStatBoostPercentage:50};
+ f.snapshot.equipment.armor.push(copy);
+ assert.ok(resolveArmorBaseline(f.snapshot,f.catalog,[]).problems.some(p=>p.includes("conflicting concrete")));
+});

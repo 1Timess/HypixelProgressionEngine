@@ -331,9 +331,9 @@ function refreshCanonicalEffects(f:Awaited<ReturnType<typeof scenario>>) {
 for(const slot of ["HELMET","BOOTS"])test("common independent opaque "+slot+" permits price-only proof, not changed-stat activation assumptions",async()=>{
  const f=await scenario();const retained=f.catalog.getById("OLD_"+slot)!;
  retained.knowledge.rawLore.push("","Piece Bonus: Conditional","Sometimes grants a mysterious benefit.");
- refreshCanonicalEffects(f);f.price("a",900);
+ f.cb.replaces[0].toId=f.a.id;refreshCanonicalEffects(f);f.price("a",900);
  assert.deepEqual(f.run().candidates.map(c=>c.id),[f.ca.id]);
- f.stats("a",150);assert.equal(f.run().candidates.length,2);
+ f.cb.replaces[0].toId=f.b.id;refreshCanonicalEffects(f);f.stats("a",150);assert.equal(f.run().candidates.length,2);
 });
 test("unknown baseline chestplate lost identically does not distinguish resulting builds",async()=>{
  const f=await scenario();f.stats("a",150);
@@ -363,4 +363,26 @@ test("local loss proofs preserve retained direct witnesses under input permutati
  const forward=f.run();f.e.candidates.reverse();const reverse=f.run();
  assert.deepEqual(forward.audit.deferred,reverse.audit.deferred);
  for(const d of reverse.audit.deferred)assert.ok(reverse.candidates.some(c=>c.id===d.witnessId));
+});
+
+test("an opaque independent activation may name a replacement and cannot be canceled across different identities",async()=>{
+ const f=await scenario();f.price("a",900);
+ f.catalog.getById("OLD_HELMET")!.knowledge.rawLore.push("","Piece Bonus: Opaque","Gain power when NEW_CHESTPLATE is present.");
+ refreshCanonicalEffects(f);
+ assert.equal(f.run().candidates.length,2);
+});
+
+test("equal retained alternatives are never sliced while direct witness references are order-independent",async()=>{
+ const f=await scenario();f.stats("a",150);f.stats("b",120);
+ const equivalent=structuredClone(f.ca);equivalent.id="piece:equal-proof";
+ f.e.candidates.push(equivalent);
+ const forward=f.run();f.e.candidates.reverse();const reverse=f.run();
+ assert.deepEqual(new Set(forward.candidates.map(c=>c.id)),new Set([f.ca.id,equivalent.id]));
+ assert.deepEqual(forward.audit.deferred,reverse.audit.deferred);
+});
+test("comparable-pair metrics do not call different opaque resulting identities comparable",async()=>{
+ const f=await scenario();f.price("a",900);
+ f.catalog.getById("OLD_BOOTS")!.knowledge.rawLore.push("","Piece Bonus: Opaque","Gain power when NEW_CHESTPLATE is present.");
+ refreshCanonicalEffects(f);
+ assert.equal(f.run().audit.pairLocal?.comparablePairs,0);
 });

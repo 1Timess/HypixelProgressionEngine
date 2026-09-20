@@ -1,3 +1,5 @@
+> Latest: [Empirical binding and local closure](armor-empirical-local-handoff.md). Scoped contract promoted; listing-backed evidence added; real deferrals remain zero. Armor is NOT FROZEN.
+
 > Latest: [Armor stat contract](armor-stat-contract.md). Outcome C: completeness/variant semantics remain unproven; fresh real deferrals are zero. Armor is not frozen.
 
 # Armor comparability investigation

@@ -1,3 +1,4 @@
+import {stableJson} from "@/engine/build/weapon-comparison";
 import type { ItemDefinition } from "@/schemas/items";
 import type { ItemInstance, PlayerSnapshot } from "@/schemas/player";
 import { ARMOR_SLOTS, ArmorSlotSchema, type ArmorSlot } from "@/schemas/armor-recommendation";
@@ -12,6 +13,7 @@ export function resolveArmorBaseline(snapshot: PlayerSnapshot, catalog: ItemCata
   const equipped = new Map<ArmorSlot, ItemDefinition>();
   const problems: string[] = [];
   const seen = new Map<string, string>();
+  const concrete = new Map<string,string>();
   for (const instance of snapshot.equipment.armor) {
     if (instance.count !== 1) { problems.push("Equipped armor count is ambiguous."); continue; }
     const item = catalog.getById(instance.itemId), slot = item && armorSlot(item);
@@ -20,9 +22,10 @@ export function resolveArmorBaseline(snapshot: PlayerSnapshot, catalog: ItemCata
     const key = instance.uuid;
     if (key && seen.has(key)) {
       if (seen.get(key) !== item.id) problems.push("One equipped instance UUID refers to conflicting canonical items.");
+      else if(concrete.get(key)!==stableJson(instance))problems.push("One equipped instance UUID has conflicting concrete variant evidence.");
       continue;
     }
-    if (key) seen.set(key, item.id);
+    if (key) { seen.set(key, item.id);concrete.set(key,stableJson(instance)); }
     if (equipped.has(slot)) problems.push("Multiple equipped items resolve to " + slot + ".");
     else { equipped.set(slot, item); instances.set(slot, instance); }
   }

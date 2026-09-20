@@ -28,8 +28,13 @@ async function main() {
    },
    recommend:async()=>{throw Error("Model execution is prohibited in the preview runner.");},
   });
+  const genericComparison=process.argv.includes("--compare-generic")
+    ? await prepareArmorFromRequest({username:request.username,profileId:request.profileId,request:request.request,followUp:request.followUp},{load:async()=>context,
+      market:{getPrices:keys=>marketService.getPrices(keys)},loadKnowledge:async()=>knowledge}) : null;
   const observation={
-   observedAt:new Date().toISOString(),liveModelCalls:0,request,narrowing:preparationReview?.narrowing,generation:preparationReview?.generation,
+   observedAt:new Date().toISOString(),liveModelCalls:0,request,
+   genericOnlyCounterfactual:genericComparison&&"review" in genericComparison ? {status:genericComparison.status,review:genericComparison.review} : null,
+   narrowing:preparationReview?.narrowing,generation:preparationReview?.generation,
    baseline:context.snapshot.equipment.armor.map(i=>({itemId:i.itemId,category:context.catalog.getById(i.itemId)?.category??null})),
    result,
   };

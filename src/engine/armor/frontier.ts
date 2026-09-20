@@ -10,7 +10,7 @@ import { stableJson } from "@/engine/build/weapon-comparison";
 type Candidate = ArmorEvidence["candidates"][number];
 type Block = "UNKNOWN_BASELINE_MECHANICS" | "UNKNOWN_ITEM_MECHANICS" | "UNKNOWN_MARKET" | "UNKNOWN_CONTEXT" | "INVALID_SCOPE";
 export interface ArmorFrontierAudit {
-  policy: "CONTEXT_CLOSED_ARMOR_PARETO_V2";
+  policy: "COMPARISON_LOCAL_ARMOR_PARETO_V3";
   before: number;
   retained: number;
   deferred: { candidateId: string; reason: "CONTEXT_CLOSED_ARMOR_PARETO_DOMINATED"; witnessId: string }[];
@@ -103,9 +103,15 @@ function mechanicKey(candidate:Candidate,evidence:ArmorEvidence,catalog:ItemCata
 }
 interface Certificate { candidate: Candidate; group: string; items: ItemDefinition[]; cost: number; opaqueInvariant:boolean }
 
+function sameResultIdentity(a:Certificate,b:Certificate):boolean {
+ const identity=(c:Certificate)=>[...c.candidate.replaces].sort((x,y)=>x.slot.localeCompare(y.slot)).map(p=>
+  ({slot:p.slot,itemId:p.toId,variant:p.variant?{...p.variant,reference:undefined}:null}));
+ return stableJson(identity(a))===stableJson(identity(b));
+}
+
 /** Narrow current-build proof only. An unknown condition is never a comparative disadvantage. */
 export function narrowArmorFrontier(evidence: ArmorEvidence, catalog: ItemCatalog, now: number) {
-  const audit: ArmorFrontierAudit = {policy:"CONTEXT_CLOSED_ARMOR_PARETO_V2",before:evidence.candidates.length,
+  const audit: ArmorFrontierAudit = {policy:"COMPARISON_LOCAL_ARMOR_PARETO_V3",before:evidence.candidates.length,
     retained:evidence.candidates.length,deferred:[],blocked:{},comparability:auditArmorComparability(evidence,catalog)};
   const block = (reason:Block) => { audit.blocked[reason]=(audit.blocked[reason]??0)+1; };
   // An unresolved retained/set dependency could distinguish otherwise plain replacement pieces.
@@ -146,6 +152,9 @@ export function narrowArmorFrontier(evidence: ArmorEvidence, catalog: ItemCatalo
   }
   function dominates(a:Certificate,b:Certificate): boolean {
     if(a.group!==b.group||a.cost>b.cost)return false;
+    // An opaque activation may name a concrete replacement or inspect its variant.
+    // Equipment-INDEPENDENT alone only describes prerequisites, not all activation inputs.
+    if((a.opaqueInvariant||b.opaqueInvariant)&&!sameResultIdentity(a,b))return false;
     let strict=a.cost<b.cost;
     for(let i=0;i<a.items.length;i++) {
       const x=a.items[i].stats,y=b.items[i].stats,keys=Object.keys(x).sort();
@@ -160,13 +169,19 @@ export function narrowArmorFrontier(evidence: ArmorEvidence, catalog: ItemCatalo
     }
     return strict; // Equal evidence stays: no identity-based representative selection.
   }
-  const all=[...certificates.values()];
+  // Sorting chooses a reproducible proof witness only; all equal alternatives remain retained.
+  const all=[...certificates.values()].sort((a,b)=>a.candidate.id.localeCompare(b.candidate.id));
   audit.pairLocal={totalPairs:evidence.candidates.length*(evidence.candidates.length-1)/2,
     comparablePairs:0,differentialMechanicBlockedPairs:0,previousGlobalBlockedCandidates:baselineKnown?0:evidence.candidates.length,
     globalOnlyBlockRemovedCandidates:baselineKnown?0:all.length};
   for(let i=0;i<evidence.candidates.length;i++)for(let j=i+1;j<evidence.candidates.length;j++){
     const a=certificates.get(evidence.candidates[i].id),b=certificates.get(evidence.candidates[j].id);
-    if(a&&b&&a.group===b.group)audit.pairLocal.comparablePairs++;
+    if(a&&b&&a.group===b.group&&(!(a.opaqueInvariant||b.opaqueInvariant)||sameResultIdentity(a,b))&&a.items.every((item,k)=>{
+      const x=item.stats,y=b.items[k].stats,keys=Object.keys(x).sort();
+      return keys.length>0&&stableJson(keys)===stableJson(Object.keys(y).sort())&&
+        keys.every(key=>Number.isFinite(x[key])&&Number.isFinite(y[key])&&
+          (x[key]===y[key]||!a.opaqueInvariant&&!b.opaqueInvariant&&monotone.has(key)));
+    }))audit.pairLocal.comparablePairs++;
     if(!mechanicCertificates.get(evidence.candidates[i].id)||!mechanicCertificates.get(evidence.candidates[j].id))
       audit.pairLocal.differentialMechanicBlockedPairs++;
   }
