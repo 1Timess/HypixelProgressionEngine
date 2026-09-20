@@ -191,6 +191,10 @@ function uniqueMarketKeys(
 }
 
 export class MarketService {
+  async getArmorListings(keys: readonly string[]) {
+    const {getArmorListings}=await import("./armor-listings");
+    return getArmorListings(keys,this.pool);
+  }
   constructor(
     private readonly pool: Pool =
       db,

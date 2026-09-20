@@ -1,3 +1,6 @@
+import {bindArmorVariant,armorVariantInput,type ArmorVariantInput} from "./variant";
+import {variantIdentity,validArmorListing,type ArmorListing} from "./acquisition";
+import {stableJson} from "@/engine/build/weapon-comparison";
 import type { PlayerSnapshot } from "@/schemas/player";
 import { EquipmentEffectSchema } from "@/schemas/equipment-effects";
 import type { CandidateGenerationResult } from "@/engine/candidates/types";
@@ -18,6 +21,7 @@ export const ARMOR_MAX_PAYLOAD_BYTES = 8192;
 const MARKET_MAX_AGE_MS = 15 * 60_000;
 const MAX_EVALUATED_OPTIONS = 2000;
 export interface ArmorMarketReader {
+  getArmorListings?(keys: readonly string[]): Promise<ArmorListing[]>;
   getPrices(keys: readonly string[]): Promise<Map<string, MarketPrice>>;
 }
 export interface ArmorPreparation {
@@ -49,12 +53,14 @@ export async function prepareArmorUpgrade(
   if ([...baseline.equipped.values()].some(item => !item.knowledge.rawLore.length))
     return finish("NEEDS_KNOWLEDGE", "Current equipped armor is missing mechanic evidence.");
 
+  const baselineBindings=new Map([...baseline.instances].map(([slot,instance])=>[slot,bindArmorVariant(baseline.equipped.get(slot)!,armorVariantInput(instance)).exact]));
+  const withStats=(item:ItemDefinition,exact:ReturnType<typeof bindArmorVariant>["exact"])=>({...item,stats:{...item.stats,...Object.fromEntries(Object.entries(exact).map(([key,value])=>[key,value.value]))}});
   const generated = generateItemCandidates(snapshot, catalog, {
     domain: "armor", context: intent.context, excludeOwned: false, includeUnknownEligibility: false,
   });
   review.generation = generated.diagnostics;
   const eligible = new Map(generated.candidates.map(candidate => [candidate.item.id, candidate.item]));
-  type Option = { id: string; name: string; items: ItemDefinition[] };
+  type Option = { id: string; name: string; items: ItemDefinition[]; variant?:ArmorVariantInput; listing?:ArmorListing; reference?:string };
   const options: Option[] = generated.candidates.flatMap(({ item }) => {
     const slot = armorSlot(item);
     return slot && intent.slots.includes(slot) && baseline.equipped.get(slot)?.id !== item.id
@@ -72,6 +78,22 @@ export async function prepareArmorUpgrade(
       review.rejected.push({ id: pack.id, reason: "Not every package item has established current eligibility." }); continue;
     }
     options.push({ id: "package:" + pack.id, name: pack.name, items: items as ItemDefinition[] });
+  }
+  const tieredIds=[...new Set(options.filter(o=>o.items.length===1&&o.items[0].metadata.tiered_stats).map(o=>o.items[0].id))];
+  const listings=market.getArmorListings?await market.getArmorListings(tieredIds):[];
+  for(const option of [...options]){
+    if(option.items.length!==1||!option.items[0].metadata.tiered_stats)continue;
+    const item=option.items[0];
+    for(const [index,instance] of [...snapshot.equipment.armor,...snapshot.inventory.relevantItems].entries()){
+      if(instance.itemId!==item.id||instance.count!==1)continue;
+      const variant=armorVariantInput(instance);
+      if(!Object.keys(bindArmorVariant(item,variant).exact).length)continue;
+      options.push({...option,id:option.id+":owned:"+index,variant,reference:"owned:"+index});
+    }
+    for(const listing of listings){
+      if(!validArmorListing(listing,item.id,now)||!Object.keys(bindArmorVariant(item,listing).exact).length)continue;
+      options.push({...option,id:option.id+":listing:"+listing.reference,variant:listing,listing,reference:listing.reference});
+    }
   }
   review.generated = options.length;
   if (new Set(options.map(option => option.id)).size !== options.length)
@@ -100,7 +122,7 @@ export async function prepareArmorUpgrade(
     if (intent.replacementScope === "SINGLE_PIECE" && replacements.length !== 1) continue;
     if (intent.replacementScope === "PARTIAL_BUILD" && replacements.length === 4) continue;
     if (intent.replacementScope === "FULL_BUILD" && option.items.length !== 4) continue;
-    const signature = replacements.map(item => armorSlot(item) + ":" + item.id).sort().join("|");
+    const signature = replacements.map(item => armorSlot(item) + ":" + item.id).sort().join("|") + (option.reference ? ":"+option.reference : "");
     if (seenBuilds.has(signature)) continue; // Identical proposed build; no semantic ranking.
     seenBuilds.add(signature);
     let blocked: string | null = null;
@@ -114,10 +136,12 @@ export async function prepareArmorUpgrade(
       if (!item.knowledge.rawLore.length) { blocked = "Missing candidate mechanic evidence."; unknown = true; break; }
       const usability = knowledge.items[item.id]?.usability.filter(fact => fact.context === intent.context) ?? [];
       if (usability.some(fact => !fact.usable)) { blocked = "Source-backed whole-item context restriction."; break; }
-      const alreadyOwned = owned.has(item.id);
+      const alreadyOwned = !option.listing && owned.has(item.id);
+      const exact=option.variant ? bindArmorVariant(item,option.variant).exact : {};
+      const variant=option.variant&&option.reference ? variantIdentity(option.variant,option.reference) : undefined;
       const quote = alreadyOwned ? undefined : prices.get(item.id);
       let price: ArmorEvidence["candidates"][number]["replaces"][number]["price"] = null;
-      if (quote && quote.acquisition.price !== null) {
+      if (!option.listing && quote && quote.acquisition.price !== null) {
         const observed = quote.snapshot.observedAt.getTime(), age = now - observed;
         if (quote.marketKey !== item.id || !Number.isFinite(age) || age > MARKET_MAX_AGE_MS || age < -60_000 ||
             !quote.snapshot.snapshotId || !Number.isFinite(quote.acquisition.price) || quote.acquisition.price < 0 ||
@@ -128,12 +152,19 @@ export async function prepareArmorUpgrade(
           basis: quote.acquisition.basis, snapshotId: quote.snapshot.snapshotId, observedAt: quote.snapshot.observedAt.toISOString() };
         snapshotIds.add(quote.snapshot.snapshotId);
       }
+      if(option.listing&&variant){
+        if(!validArmorListing(option.listing,item.id,now)){blocked="Invalid concrete listing.";break;}
+        price={coins:option.listing.coins,confidence:"OBSERVED_LISTING",basis:"BIN_LISTING",
+          snapshotId:option.listing.snapshotId,observedAt:option.listing.observedAt,endsAt:option.listing.endsAt,variant};
+        snapshotIds.clear();snapshotIds.add(option.listing.snapshotId);
+      }
       if (!alreadyOwned && price === null) coins = null;
       else if (!alreadyOwned && coins !== null) coins += price!.coins;
       after.set(slot, item);
       changes.push({
         slot, fromId: previous.id, toId: item.id, name: item.name,
-        changes: Object.fromEntries(compareItemStats(previous, item).filter(stat => stat.direction !== "EQUAL")
+        ...(Object.keys(exact).length ? {statEvidence:exact,variant} : {}),
+        changes: Object.fromEntries(compareItemStats(withStats(previous,baselineBindings.get(slot)??{}), withStats(item,exact)).filter(stat => stat.direction !== "EQUAL")
           .map(stat => [stat.stat, [stat.ownedValue, stat.candidateValue]])),
         lore: lore(item), acquisition: alreadyOwned ? "ALREADY_OWNED" : "BUY", price,
         dungeon: { native: item.dungeon.isDungeonItem, conversion: item.dungeon.conversionCost ?? null },
@@ -171,14 +202,15 @@ export async function prepareArmorUpgrade(
     player: { dungeonClass: intent.context === "dungeon" ? snapshot.progression.dungeons.selectedClass ?? null : null },
     baseline: ARMOR_SLOTS.flatMap(slot => {
       const item = baseline.equipped.get(slot);
-      return item ? [{ slot, id: item.id, name: item.name, stats: item.stats, lore: lore(item),
+      return item ? [{ slot, id: item.id, name: item.name, stats: withStats(item,baselineBindings.get(slot)??{}).stats, lore: lore(item),
+        ...(Object.keys(baselineBindings.get(slot)??{}).length ? {statEvidence:baselineBindings.get(slot),variant:variantIdentity(armorVariantInput(baseline.instances.get(slot)!),"equipped:"+slot)} : {}),
         dependencyCoverage: equipmentEffects(item, knowledge).length ? "PARTIAL" : "UNMODELED" }] : [];
     }),
     unknownSlots: baseline.unknownSlots,
     mechanics: dictionary,
     caveats: [
       "Candidates are comparisons, not proven upgrades or a DPS ranking. No set, class or stat score was used.",
-      "Stats are canonical per-piece values; null means unknown. Enhancement parity and conditional scaling are not modeled.",
+      "Stats are resource or explicitly versioned empirical rolled-base observations; null means unknown. Enhancement parity and conditional scaling are not modeled. Listing asks are observations, not high-confidence market valuations.",
       "Cost covers changed, unowned pieces only. Owned pieces cost zero acquisition; conversion, stars, reforges and enchants cost extra.",
       "Effect states describe equipment prerequisites only, not activation of every combat/target condition. Unknown source lore is not independent.",
       "A package specifies a proposed build, not proof of a set bonus. Inventory ownership never activates an equipped-piece dependency.",
@@ -226,8 +258,28 @@ export function serializeArmorModelInput(preparation: ArmorPreparation, now = Da
     if (!fact.mechanic || JSON.stringify(assessArmorMechanic(fact,payload.intent.context,effect.before,effect.after)) !== JSON.stringify(effect.assessment))
       throw new Error("Inconsistent Armor mechanic context evidence.");
   }
+  for(const item of payload.baseline)for(const [key,stat] of Object.entries(item.statEvidence??{})){
+    if(stat.provenance.stat!==key||stat.provenance.itemId!==item.id||stat.value!==item.stats[key]||
+       !item.variant||stat.provenance.tier!==item.variant.tier||stat.provenance.quality!==item.variant.quality)
+      throw Error("Mismatched Armor baseline variant.");
+  }
   for (const candidate of payload.candidates) for (const replacement of candidate.replaces) {
+    for(const [key,stat] of Object.entries(replacement.statEvidence??{})){
+      if(stat.provenance.stat!==key||stat.provenance.itemId!==replacement.toId||!replacement.variant||
+         stat.provenance.tier!==replacement.variant.tier||stat.provenance.quality!==replacement.variant.quality)
+        throw Error("Mismatched Armor variant stat provenance.");
+      const baseline=payload.baseline.find(b=>b.slot===replacement.slot&&b.id===replacement.fromId);
+      const shown=replacement.changes[key]?.[1]??baseline?.stats[key];
+      if(shown!==stat.value)throw Error("Mismatched Armor variant comparison value.");
+      if(replacement.acquisition==="BUY"&&(!replacement.price||replacement.price.basis!=="BIN_LISTING"||
+         replacement.price.confidence!=="OBSERVED_LISTING"||stableJson(replacement.variant)!==stableJson(replacement.price.variant)))
+        throw Error("Exact Armor variant lacks a compatible listing price.");
+    }
     if (!replacement.price) continue;
+    if((replacement.price.confidence==="OBSERVED_LISTING")!==(replacement.price.basis==="BIN_LISTING"))throw Error("Inconsistent listing valuation semantics.");
+    if(replacement.price.basis==="BIN_LISTING"&&(!replacement.price.endsAt||Date.parse(replacement.price.endsAt)<=now||
+       replacement.price.confidence!=="OBSERVED_LISTING"||!replacement.variant||
+       stableJson(replacement.variant)!==stableJson(replacement.price.variant)))throw Error("Invalid Armor listing evidence.");
     const age = now - Date.parse(replacement.price.observedAt);
     if (age > MARKET_MAX_AGE_MS || age < -60_000) throw new Error("Stale Armor price evidence.");
   }

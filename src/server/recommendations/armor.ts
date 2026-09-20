@@ -27,7 +27,10 @@ export interface ArmorPreparationDependencies {
 const defaultDependencies: ArmorPreparationDependencies = {
   load: loadRecommendationContext,
   loadKnowledge: loadArmorKnowledge,
-  market: { async getPrices(keys) {
+  market: { async getArmorListings(keys) {
+    const {getArmorListings}=await import("@/server/market/armor-listings");
+    return getArmorListings(keys);
+  }, async getPrices(keys) {
     const { marketService } = await import("@/server/market/service");
     return marketService.getPrices(keys);
   } },

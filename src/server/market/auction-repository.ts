@@ -52,6 +52,7 @@ export async function createAuctionSnapshot(
 }
 
 interface AuctionInsertRow {
+  rawLore: string[] | null;
   snapshotId: string;
 
   auctionUuid: string;
@@ -110,6 +111,7 @@ function prepareAuctionRow(
 
   return {
     snapshotId,
+    rawLore: auction.rawLore ?? null,
 
     auctionUuid:
       auction.auctionUuid,
@@ -191,7 +193,7 @@ function prepareAuctionRow(
   };
 }
 
-const INSERT_COLUMNS_PER_ROW = 26;
+const INSERT_COLUMNS_PER_ROW = 27;
 
 const MAX_POSTGRES_PARAMETERS =
   65_535;
@@ -294,6 +296,7 @@ export async function insertAuctions(
             row.petCandyUsed,
 
             new Date(),
+            row.rawLore === null ? null : JSON.stringify(row.rawLore),
           );
 
           const p = (
@@ -328,7 +331,8 @@ export async function insertAuctions(
               ${p(23)},
               ${p(24)},
               ${p(25)},
-              ${p(26)}
+              ${p(26)},
+              ${p(27)}::jsonb
             )
           `;
         },
@@ -372,7 +376,8 @@ export async function insertAuctions(
           pet_held_item,
           pet_candy_used,
 
-          ingested_at
+          ingested_at,
+          raw_lore
         )
         VALUES
           ${placeholders.join(",")}

@@ -53,3 +53,65 @@ test("same ID concrete variants remain distinct and baseline retains its equippe
  const baseline=resolveArmorBaseline(f.snapshot,f.catalog,[]);
  assert.ok([...baseline.instances.values()].includes(instance));
 });
+
+import {prepareArmorUpgrade,serializeArmorModelInput} from "../src/engine/armor/preparation";
+import {intent} from "./fixtures/armor-scenario";
+import {now} from "./fixtures/weapon-scenario";
+import type {ArmorListing} from "../src/engine/armor/acquisition";
+import {validArmorListing} from "../src/engine/armor/acquisition";
+async function variantPreparation(owned=false){
+ const f=armorFixture();const candidate=f.catalog.getById("NEW_CHESTPLATE")!;
+ candidate.stats={};candidate.metadata.tiered_stats={STRENGTH:Array(10).fill(10)};
+ candidate.knowledge.rawLore=["Strength: +10"];
+ const listing:ArmorListing={itemId:candidate.id,reference:"listing-a",coins:321,snapshotId:"one",
+  observedAt:new Date(now).toISOString(),endsAt:new Date(now+60_000).toISOString(),
+  extraAttributes:{item_tier:1,baseStatBoostPercentage:20,modifier:"wise"},
+  rawLore:["§7Strength: §c+13"]};
+ if(owned)for(const q of [20,50])f.snapshot.inventory.relevantItems.push({itemId:candidate.id,count:1,
+  extraAttributes:{item_tier:1,baseStatBoostPercentage:q},rawLore:["§7Strength: §c+"+(q===20?13:15)]});
+ const prepared=await prepareArmorUpgrade(f.snapshot,f.catalog,intent,{...f.market,getArmorListings:async()=>[listing]}, {},now);
+ assert.ok(prepared.modelPayload);
+ return {f,prepared,listing};
+}
+test("listing-backed preparation pairs exact stats with its ask and disclosed enhancements",async()=>{
+ const {prepared}=await variantPreparation();
+ const c=prepared.modelPayload!.candidates.find(c=>c.replaces[0].price?.basis==="BIN_LISTING")!;
+ assert.equal(c.acquisitionCoins,321);assert.equal(c.replaces[0].statEvidence?.STRENGTH.value,13);
+ assert.equal(c.replaces[0].price?.confidence,"OBSERVED_LISTING");
+ assert.match(c.replaces[0].variant!.enhancements,/wise/);
+ assert.ok(serializeArmorModelInput(prepared,now));
+});
+test("model gate rejects incompatible generic quotes, changed identities and expired listing asks",async()=>{
+ const {prepared}=await variantPreparation();
+ for(const kind of ["generic","quality","expired","value"]){
+  const copy=structuredClone(prepared),p=copy.modelPayload!.candidates.find(c=>c.replaces[0].price?.basis==="BIN_LISTING")!.replaces[0];
+  if(kind==="generic"){p.price!.basis="LOWEST_BIN";p.price!.confidence="LOW";}
+  if(kind==="quality")p.price!.variant!.quality=50;
+  if(kind==="expired")p.price!.endsAt=new Date(now-1).toISOString();
+  if(kind==="value")p.changes.STRENGTH[1]=999;
+  assert.throws(()=>serializeArmorModelInput(copy,now),kind);
+ }
+});
+test("two owned copies of one item keep distinct references and rolls",async()=>{
+ const {prepared}=await variantPreparation(true);
+ const pieces=prepared.modelPayload!.candidates.flatMap(c=>c.replaces).filter(p=>p.acquisition==="ALREADY_OWNED"&&p.statEvidence);
+ assert.deepEqual(pieces.map(p=>p.statEvidence!.STRENGTH.value).sort((a,b)=>a-b),[13,15]);
+ assert.equal(new Set(pieces.map(p=>p.variant!.reference)).size,2);
+});
+test("listing validity rejects foreign stale expired and unsafe-price evidence",async()=>{
+ const {listing}=await variantPreparation();
+ assert.equal(validArmorListing(listing,"OTHER",now),false);
+ for(const patch of [{observedAt:new Date(now-900001).toISOString()},{endsAt:new Date(now).toISOString()},{coins:NaN},{coins:Number.MAX_SAFE_INTEGER+1}]){
+  assert.equal(validArmorListing({...listing,...patch},listing.itemId,now),false);
+ }
+});
+test("owned baseline binding retains exact evidence without altering the canonical definition",async()=>{
+ const f=armorFixture(),old=f.catalog.getById("OLD_CHESTPLATE")!;
+ old.stats={};old.metadata.tiered_stats={STRENGTH:Array(10).fill(10)};
+ const instance=f.snapshot.equipment.armor.find(i=>i.itemId===old.id)!;
+ instance.extraAttributes={item_tier:1,baseStatBoostPercentage:20};instance.rawLore=["§7Strength: §c+13"];
+ const result=await f.run();assert.ok(result.modelPayload);
+ const baseline=result.modelPayload.baseline.find(p=>p.id===old.id)!;
+ assert.equal(baseline.stats.STRENGTH,13);assert.equal(baseline.statEvidence?.STRENGTH.provenance.contract,DUNGEON_VARIANT_CONTRACT);
+ assert.deepEqual(old.stats,{});assert.ok(serializeArmorModelInput(result,now));
+});

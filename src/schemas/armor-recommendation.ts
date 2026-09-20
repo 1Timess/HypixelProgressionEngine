@@ -1,3 +1,4 @@
+import {ArmorStatEvidenceSchema,ArmorVariantIdentitySchema} from "./armor-variant";
 import { z } from "zod";
 import { ArmorFlatMechanicSchema, ArmorMechanicAssessmentSchema } from "./armor-mechanics";
 import { BudgetConstraintSchema, DungeonClassIdSchema } from "./recommendations";
@@ -36,6 +37,8 @@ const StateSchema = z.enum(["SATISFIED", "NOT_SATISFIED", "UNKNOWN", "NOT_EQUIPP
 const SlotItemSchema = z.object({
   slot: ArmorSlotSchema, id: z.string(), name: z.string(),
   stats: z.record(z.string(), z.number().finite()),
+  statEvidence: ArmorStatEvidenceSchema.optional(),
+  variant: ArmorVariantIdentitySchema.optional(),
   lore: z.array(z.number().int().nonnegative()),
   dependencyCoverage: z.enum(["UNMODELED", "PARTIAL"]),
 }).strict();
@@ -43,8 +46,10 @@ const PriceSchema = z.object({
   coins: z.number().finite().nonnegative(),
   observedAt: z.string().datetime(),
   snapshotId: z.string(),
-  confidence: z.enum(["HIGH", "MEDIUM", "LOW"]),
-  basis: z.enum(["MEDIAN_LOWEST_FIVE", "SECOND_LOWEST_BIN", "LOWEST_BIN"]),
+  confidence: z.enum(["HIGH", "MEDIUM", "LOW", "OBSERVED_LISTING"]),
+  variant: ArmorVariantIdentitySchema.optional(),
+  endsAt: z.string().datetime().optional(),
+  basis: z.enum(["MEDIAN_LOWEST_FIVE", "SECOND_LOWEST_BIN", "LOWEST_BIN", "BIN_LISTING"]),
 }).strict();
 export const ArmorEvidenceSchema = z.object({
   version: z.literal(1), domain: z.literal("armor"),
@@ -58,6 +63,8 @@ export const ArmorEvidenceSchema = z.object({
     id: z.string(), name: z.string(),
     replaces: z.array(z.object({
       slot: ArmorSlotSchema, fromId: z.string(), toId: z.string(), name: z.string(),
+      statEvidence: ArmorStatEvidenceSchema.optional(),
+      variant: ArmorVariantIdentitySchema.optional(),
       changes: z.record(z.string(), z.tuple([NumberOrUnknown, NumberOrUnknown])),
       lore: z.array(z.number().int().nonnegative()),
       acquisition: z.enum(["ALREADY_OWNED", "BUY"]),

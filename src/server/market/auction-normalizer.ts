@@ -10,6 +10,7 @@ import { normalizeDecodedItems } from "@/server/hypixel/item-normalizer";
 import type { HypixelAuction } from "@/server/hypixel/auctions/types";
 
 export interface NormalizedAuction {
+  rawLore?: string[];
   auctionUuid: string;
 
   auctioneerUuid: string;
@@ -113,6 +114,7 @@ export async function normalizeAuction(
 
   return {
     auctionUuid: auction.uuid,
+    ...(item.rawLore ? {rawLore:item.rawLore} : {}),
 
     auctioneerUuid:
       auction.auctioneer,

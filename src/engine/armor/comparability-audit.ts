@@ -17,10 +17,17 @@ export function auditArmorComparability(evidence: ArmorEvidence, catalog: ItemCa
   count(knowledgeMetadataKeys,new Set(Object.keys(item.knowledge.metadata)));
  }
  const contracts=uniqueItems.filter(i=>!!i).map(item=>inspectArmorStatContract(item));
- const observations=contracts.flatMap(c=>c.keys.map(key=>c.observe(key)));
+ const uniquePieces=[...new Map(evidence.candidates.flatMap(c=>c.replaces).map(p=>[p.toId+":"+(p.variant?.reference??"generic"),p])).values()];
+ const observations=uniquePieces.flatMap(p=>{
+  const item=catalog.getById(p.toId);if(!item)return [];
+  const contract=inspectArmorStatContract(item);
+  return contract.keys.map(key=>p.statEvidence?.[key]??contract.observe(key));
+ });
+ const resolved=(item:ReturnType<ItemCatalog["getById"]>,piece:ArmorEvidence["candidates"][number]["replaces"][number])=>
+  ({...item?.stats,...Object.fromEntries(Object.entries(piece.statEvidence??{}).map(([k,v])=>[k,v.value]))});
  const statContract={
-  policy:"RESOURCE_SCOPE_ONLY_V1",
-  knownAbsenceCount:0, exactVariantBoundStatCount:0,
+  policy:"RESOURCE_AND_EMPIRICAL_VARIANT_V1",
+  knownAbsenceCount:0, exactVariantBoundStatCount:observations.filter(o=>o.kind==="EXACT_VARIANT_VALUE").length,
   resourceValueCount:observations.filter(o=>o.kind==="RESOURCE_VALUE").length,
   unboundTierStatCount:observations.filter(o=>o.kind==="UNBOUND_TIER_TABLE").length,
   observedConstantColumns:observations.filter(o=>o.kind==="UNBOUND_TIER_TABLE"&&o.table.kind==="OBSERVED_CONSTANT").length,
@@ -28,7 +35,12 @@ export function auditArmorComparability(evidence: ArmorEvidence, catalog: ItemCa
   unprovenSourceRelations:observations.filter(o=>o.kind==="SOURCE_RELATION_UNPROVEN").length,
   invalidSourceItems:contracts.filter(c=>!c.sourceValid).length,
   unknownStatPairCount:0,
-  qualification:"Counts cover unique replacement item/stat observations, not exact owned or priced variant values. No inspected contract proves known absence or exact variant binding.",
+  beforeBindingUnknownStatPairCount:0,
+  variantCompatibleAcquisitions:uniquePieces.filter(p=>p.price?.basis==="BIN_LISTING"&&p.variant&&p.statEvidence).length,
+  genericOnlyMarketEvidence:uniquePieces.filter(p=>p.price&&p.price.basis!=="BIN_LISTING").length,
+  missingMarketEvidence:uniquePieces.filter(p=>p.acquisition==="BUY"&&!p.price).length,
+  unsupportedTables:contracts.filter(c=>c.tableStatus==="INVALID"||c.columnLayout==="UNEQUAL_LENGTHS").length,
+  qualification:"Counts distinguish concrete variant references from generic resource observations. Missing stats remain unknown; unsupported enhancements do not bind.",
  };
  const profiles=evidence.candidates.map(candidate=>{
   const flags=new Set<string>(),pieces=[...candidate.replaces].sort((a,b)=>a.slot.localeCompare(b.slot));
@@ -55,13 +67,16 @@ export function auditArmorComparability(evidence: ArmorEvidence, catalog: ItemCa
   if(stableJson(a.pieces.map(p=>[p.slot,p.fromId]))!==stableJson(b.pieces.map(p=>[p.slot,p.fromId])))flags.add("DIFFERENT_REPLACEMENT_SCOPE");
   else{
    sameScopePairs++;
-   let positive=false,negative=false,unknown=false,other=false,contractUnknown=false;
+   let positive=false,negative=false,unknown=false,other=false,contractUnknown=false,beforeBindingUnknown=false;
    for(let k=0;k<a.items.length;k++){
-    const x=a.items[k]?.stats??{},y=b.items[k]?.stats??{},keys=new Set([...Object.keys(x),...Object.keys(y)]);
+    const x=resolved(a.items[k],a.pieces[k]),y=resolved(b.items[k],b.pieces[k]),keys=new Set([...Object.keys(x),...Object.keys(y)]);
     const ca=a.items[k]?inspectArmorStatContract(a.items[k]!):undefined;
     const cb=b.items[k]?inspectArmorStatContract(b.items[k]!):undefined;
     const sourceKeys=new Set([...(ca?.keys??[]),...(cb?.keys??[])]);
-    if(!sourceKeys.size||[...sourceKeys].some(key=>ca?.observe(key).kind!=="RESOURCE_VALUE"||cb?.observe(key).kind!=="RESOURCE_VALUE"))contractUnknown=true;
+    if(!sourceKeys.size||[...sourceKeys].some(key=>ca?.observe(key).kind!=="RESOURCE_VALUE"||cb?.observe(key).kind!=="RESOURCE_VALUE"))beforeBindingUnknown=true;
+    if(!sourceKeys.size||[...sourceKeys].some(key=>
+      !(a.pieces[k].statEvidence?.[key]||ca?.observe(key).kind==="RESOURCE_VALUE")||
+      !(b.pieces[k].statEvidence?.[key]||cb?.observe(key).kind==="RESOURCE_VALUE")))contractUnknown=true;
     if(!keys.size)unknown=true;
     for(const key of keys){
      if(!Object.hasOwn(x,key)||!Object.hasOwn(y,key)){unknown=true;continue;}
@@ -71,6 +86,7 @@ export function auditArmorComparability(evidence: ArmorEvidence, catalog: ItemCa
     }
    }
    if(contractUnknown)statContract.unknownStatPairCount++;
+   if(beforeBindingUnknown)statContract.beforeBindingUnknownStatPairCount++;
    if(unknown)flags.add("UNKNOWN_PAIR_STAT_COVERAGE");
    if(other)flags.add("UNEQUAL_STAT_WITHOUT_SUPPORTED_DIRECTION");
    if(a.candidate.acquisitionCoins!==null&&b.candidate.acquisitionCoins!==null){
