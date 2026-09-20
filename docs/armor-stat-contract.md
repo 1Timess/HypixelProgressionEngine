@@ -65,3 +65,55 @@ A captured counterexample invalidated the initial diagnostic assumption that all
 Added 20 offline adversarial tests, including actual gzip/NBT auction normalization. Coverage: explicit zero versus missing, fixed-item completeness claims rejected, absent/empty maps, unbound indices, constant/variable/negative/zero columns, source omission, ordinary/tier overlap, nonfinite/malformed/conflicting aliases, order invariance, preserved owned tier/quality, heterogeneous auction identity, unpromoted overlapping/superior observed ranges, all 54 captured tier tables, and the nonrectangular source record. Exact-tier binding and complete-map positive cases are deliberately not fabricated from synthetic authority.
 
 Checks: 151 Armor / 114 Weapons pass; TypeScript and targeted lint pass. Existing Armor unknown-context, unexplained-metadata and direct-witness regressions remain green. Diagnostic known-absence and exact-variant-bound counts are zero by the implemented contract; this describes unsupported proof, not zero player stats.
+
+## Tier/variant questions resolved and unresolved
+
+1. Array index meaning: not established from the inspected authoritative API contract.
+2. Quality percentage versus tier/floor: no equality or transformation proved. Raw item_tier and baseStatBoostPercentage coexist, so treating them as interchangeable would be an assumption.
+3. Ordering: numeric ordering is not a documented semantic ordering; supplied column order is preserved.
+4. Concrete NBT: the raw fields can be recovered, but recovering a number is not proving how it indexes a table or composes with modifiers.
+5. Profile loss: ExtraAttributes survive. Display Lore does not; Armor baseline currently selects the canonical definition rather than binding the raw instance.
+6. Auction loss: ExtraAttributes survive into JSONB. The generic aggregate/MarketPrice drops concrete variant identity and listing association.
+7. Generic quote: not safely assignable to a chosen high-tier row. Real buckets show heterogeneous tiers/quality/reforges under one key.
+8. Constants: 9 supplied source columns are constant, but legal-variant exhaustiveness and transformations are unproved. No exact acquisition value is promoted.
+9. Positive columns: positivity of supplied entries is observable; positivity for every legal enhanced/contextual instance is not established.
+10. Absent columns: no known-absence inference, even if every supplied column omits a stat.
+11. Ordinary plus tiered: zero real co-present records in this capture; a general merge/override/addition contract cannot follow from that. Synthetic overlap is SOURCE_RELATION_UNPROVEN.
+12. Exact owned versus generic acquisition: neither receives exact instance stats in this implementation. Owned raw metadata is richer, but the transformation contract is still missing. The current comparison remains explicitly canonical-resource scope.
+
+## Final fresh measurement
+
+Market snapshot 12 was refreshed immediately before the six previews; no model execution was reachable.
+Artifact: data/armor-integration/previews-stat-contract.json.
+
+| Request | Candidates / retained | Pairs | Unknown stat pairs | Unbound tier stat columns | Constant / variable columns | Bytes | Status |
+|---|---:|---:|---:|---:|---:|---:|---|
+| All Armor 20M | 317 / 317 | 50086 | 10138 of 10436 same-scope pairs | 126 | 9 / 117 | 452333 | NEEDS_KNOWLEDGE |
+| Full build 20M | 35 / 35 | 595 | 588 | 112 | 8 / 104 | 176603 | NEEDS_KNOWLEDGE |
+| Chestplate 20M | 69 / 69 | 2346 | 2236 | 32 | 2 / 30 | 100635 | NEEDS_KNOWLEDGE |
+| Chestplate 1M | 38 / 38 | 703 | 685 | 32 | 2 / 30 | 52026 | NEEDS_KNOWLEDGE |
+| Chestplate 100K | 12 / 12 | 66 | 66 | 19 | 1 / 18 | 21026 | NEEDS_KNOWLEDGE |
+| Chestplate 20K | 2 / 2 | 1 | 1 | 2 | 1 / 1 | 6739 | AWAITING_APPROVAL |
+
+Every row: known-absence count 0; exact-variant-bound stat count 0; deferred count 0.
+Unbound columns count unique replacement item/stat pairs, not instances or inferred legal ranges. The 20M chestplate case has 152 explicit resource values alongside 32 unbound columns; the 100K case has 18 explicit resource values and 19 unbound columns. These resource values were already present before this work.
+
+The previous checkpoint's 20M chestplate frontier was 71 candidates / 2485 pairs / 2361 unknown pairs / 102186 bytes. It is now 69 / 2346 / 2236 / 100635. Unknown coverage is still about 95.3%, compared with 95.0% previously. The 100K case was 8 / 28 / 28 / 15164, now 12 / 66 / 66 / 21026. These are different market snapshots, not improvement or regression attributable to pruning.
+
+Within the same fresh run, the legacy unknown-stat counter and source-contract counter agree for every request. No comparison-ready fact was added, no ordinary numeric map was mutated, and no model payload field was added. Diagnostics stay in review only. The 20K payload remains the same 6739 bytes and still does not establish a useful upgrade problem.
+
+## Architecture decision: Outcome C
+
+The measured evidence still supports **missing facts / missing acquisition binding**, not a demonstrated genuinely multi-objective remainder. In the fresh 20M chestplate case, 2236/2346 pairs lack stat coverage. There are 951 observed defensive-stat/cost tradeoffs, but they overlap the unresolved dimensions and do not prove full-mechanic Pareto incomparability.
+
+A narrower explicit-slot contract alone is insufficient: we already tested chestplates, and stat completeness, variant binding, whole-item usability and baseline combat-set dependencies remain unresolved. Silently excluding tiered or unknown-stat alternatives would alter user intent and would not close the fixed-stat omission contract. Armor must stay UNFROZEN. Do not start decision decomposition or Equipment on this evidence.
+
+Another authoritative evidence contract is required. Exact missing content:
+- A versioned declaration of the scope/completeness of ordinary item stats and omitted-key semantics.
+- Tier-column index meaning, legal variants/exhaustiveness, and how item_tier and baseStatBoostPercentage affect values.
+- Modifier/rounding/context composition sufficient to distinguish canonical base observations from concrete equipped/acquired values.
+- Once those semantics exist, compatible variant identity carried with price evidence rather than an item-ID-only aggregate.
+
+**Single next task:** obtain and validate a versioned authoritative stat/variant specification covering those first three semantic gaps, using the saved counterexamples as acceptance fixtures. Do not first build a guessed simulator or a new narrowing strategy. A subsequent variant-specific quote contract is necessary before attaching exact acquisition stats to prices.
+
+Final checks: 151/151 Armor, 114/114 Weapons, TypeScript and targeted ESLint pass. No paid calls, no broad mechanic parsing, no production stat normalization, no weaker dominance guard and no other-domain changes. Model size, eligibility, market freshness, approval/replay and strict output validation remain unchanged.

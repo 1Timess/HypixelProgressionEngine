@@ -1,3 +1,5 @@
+> Latest: [Armor stat contract](armor-stat-contract.md). Outcome C: completeness/variant semantics remain unproven; fresh real deferrals are zero. Armor is not frozen.
+
 > Latest: [Armor comparability investigation](armor-comparability-investigation.md). Source-backed context proof added; final real deferrals remain zero. Armor is not frozen.
 
 > Latest verified state: [Armor frontier validation](armor-frontier-validation.md). Soundness fixes pass; fresh real-profile deferrals are zero. Armor remains unfrozen.

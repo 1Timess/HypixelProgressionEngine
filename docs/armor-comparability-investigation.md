@@ -1,3 +1,5 @@
+> Latest: [Armor stat contract](armor-stat-contract.md). Outcome C: completeness/variant semantics remain unproven; fresh real deferrals are zero. Armor is not frozen.
+
 # Armor comparability investigation
 
 Armor remains **NOT FROZEN**. Starting checkpoint: f1fda8e, clean.
