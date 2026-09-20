@@ -118,7 +118,7 @@ test("unknown baseline set lore blocks cross-item proofs even for plain replacem
  const f=await scenario();f.stats("a",150);
  f.catalog.getById("OLD_HELMET")!.knowledge.rawLore=["Full Set Bonus: Unknown family"];
  const r=f.run();assert.equal(r.candidates.length,2);
- assert.equal(r.audit.blocked.UNKNOWN_BASELINE_MECHANICS,2);
+ assert.equal(r.audit.blocked.UNKNOWN_ITEM_MECHANICS,2);
 });
 test("rarity, future dependencies, tradeability and unexplained metadata are not discarded",async()=>{
  for(const kind of ["rarity","recipe","trade","metadata"]) {
@@ -314,4 +314,53 @@ test("independent model gate rejects forged mechanic values, assessments and abs
   if(kind==="missing assessment")delete effect.assessment;
   assert.throws(()=>serializeArmorModelInput(changed,now),kind);
  }
+});
+
+function refreshCanonicalEffects(f:Awaited<ReturnType<typeof scenario>>) {
+ for(const candidate of f.e.candidates){
+  const after=new Set([...f.e.baseline.filter(p=>!candidate.replaces.some(r=>r.slot===p.slot)).map(p=>p.id),...candidate.replaces.map(p=>p.toId)]);
+  const before=new Set(f.e.baseline.map(p=>p.id));
+  candidate.effects=[...new Set([...before,...after])].flatMap(id=>parseArmorEffects(f.catalog.getById(id)!).map(effect=>{
+   const index=f.e.mechanics.length;f.e.mechanics.push(effect.text);
+   const state=effect.dependency.kind==="INDEPENDENT"?"SATISFIED" as const:"UNKNOWN" as const;
+   return {itemId:id,id:effect.id,text:index,dependency:effect.dependency,source:{provider:effect.source.provider,evidence:[index]},
+    before:before.has(id)?state:"NOT_EQUIPPED" as const,after:after.has(id)?state:"NOT_EQUIPPED" as const};
+  }));
+ }
+}
+for(const slot of ["HELMET","BOOTS"])test("common independent opaque "+slot+" permits price-only proof, not changed-stat activation assumptions",async()=>{
+ const f=await scenario();const retained=f.catalog.getById("OLD_"+slot)!;
+ retained.knowledge.rawLore.push("","Piece Bonus: Conditional","Sometimes grants a mysterious benefit.");
+ refreshCanonicalEffects(f);f.price("a",900);
+ assert.deepEqual(f.run().candidates.map(c=>c.id),[f.ca.id]);
+ f.stats("a",150);assert.equal(f.run().candidates.length,2);
+});
+test("unknown baseline chestplate lost identically does not distinguish resulting builds",async()=>{
+ const f=await scenario();f.stats("a",150);
+ f.catalog.getById("OLD_CHESTPLATE")!.knowledge.rawLore=["Full Set Bonus: Unknown","An unresolved armor dependency."];
+ refreshCanonicalEffects(f);const r=f.run();
+ assert.deepEqual(r.candidates.map(c=>c.id),[f.ca.id]);
+ assert.equal(r.audit.pairLocal?.previousGlobalBlockedCandidates,2);
+ assert.equal(r.audit.pairLocal?.globalOnlyBlockRemovedCandidates,2);
+ assert.ok(f.ca.effects.some(e=>e.itemId==="OLD_CHESTPLATE"&&e.after==="NOT_EQUIPPED"&&e.before==="UNKNOWN"));
+});
+test("unchanged equipment and unknown set dependencies remain differential blockers",async()=>{
+ for(const body of ["While wearing a special chestplate, gain power.","For each armor piece, gain power."]){
+  const f=await scenario();f.stats("a",150);
+  f.catalog.getById("OLD_HELMET")!.knowledge.rawLore.push("","Piece Bonus: Conditional",body);
+  refreshCanonicalEffects(f);const r=f.run();assert.equal(r.candidates.length,2);
+  assert.equal(r.audit.pairLocal?.differentialMechanicBlockedPairs,1);
+ }
+});
+test("a common opaque effect never becomes an advantage and forged differing activation blocks",async()=>{
+ const f=await scenario();f.catalog.getById("OLD_BOOTS")!.knowledge.rawLore.push("","Piece Bonus: Conditional","Sometimes grants a mysterious benefit.");
+ refreshCanonicalEffects(f);assert.equal(f.run().candidates.length,2);
+ f.price("a",900);f.cb.effects[0].after="UNKNOWN";assert.equal(f.run().candidates.length,2);
+});
+test("local loss proofs preserve retained direct witnesses under input permutations",async()=>{
+ const f=await scenario();f.stats("a",150);
+ f.catalog.getById("OLD_CHESTPLATE")!.knowledge.rawLore=["Opaque lost fact"];
+ const forward=f.run();f.e.candidates.reverse();const reverse=f.run();
+ assert.deepEqual(forward.audit.deferred,reverse.audit.deferred);
+ for(const d of reverse.audit.deferred)assert.ok(reverse.candidates.some(c=>c.id===d.witnessId));
 });
