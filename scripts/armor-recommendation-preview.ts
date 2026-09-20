@@ -5,6 +5,7 @@ import { loadRecommendationContext } from "../src/server/recommendations/player-
 import { loadArmorKnowledge } from "../src/server/knowledge/items/armor";
 import { marketService } from "../src/server/market/service";
 import { db } from "../src/server/database/client";
+import type { ArmorPreparation } from "../src/engine/armor/preparation";
 
 /** Real retrieval, never model execution. Arrays reuse retrieval for one profile, never change its facts. */
 async function main() {
@@ -18,17 +19,22 @@ async function main() {
  const knowledge=await loadArmorKnowledge(context.catalog);
  const observations=[];
  for(const request of requests) {
+  let preparationReview: ArmorPreparation["review"] | undefined;
   const result=await runArmorRecommendation(request,{
-   prepare:raw=>prepareArmorFromRequest(raw,{load:async()=>context,market:marketService,loadKnowledge:async()=>knowledge}),
+   prepare:async raw=>{
+    const plan=await prepareArmorFromRequest(raw,{load:async()=>context,market:marketService,loadKnowledge:async()=>knowledge});
+    if("review" in plan)preparationReview=plan.review;
+    return plan;
+   },
    recommend:async()=>{throw Error("Model execution is prohibited in the preview runner.");},
   });
   const observation={
-   observedAt:new Date().toISOString(),liveModelCalls:0,request,
+   observedAt:new Date().toISOString(),liveModelCalls:0,request,narrowing:preparationReview?.narrowing,
    baseline:context.snapshot.equipment.armor.map(i=>({itemId:i.itemId,category:context.catalog.getById(i.itemId)?.category??null})),
    result,
   };
   observations.push(observation);
-  console.log(JSON.stringify({status:result.status,request:request.request,outputFile,
+  console.log(JSON.stringify({status:result.status,request:request.request,outputFile,narrowing:preparationReview?.narrowing,
    ...("review" in result?{reasons:result.review.reasons.slice(0,3),bytes:result.review.bytes,generated:result.review.generated}:{}),
    ...("inputBytes" in result?{bytes:result.inputBytes,candidates:result.evidence?.candidates.length}:{}),
   }));

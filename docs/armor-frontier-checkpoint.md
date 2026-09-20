@@ -1,3 +1,5 @@
+> Latest verified state: [Armor frontier validation](armor-frontier-validation.md). Soundness fixes pass; fresh real-profile deferrals are zero. Armor remains unfrozen.
+
 # Armor frontier checkpoint — stopped at user request
 
 This is a recoverable work-in-progress checkpoint, not an Armor v1 freeze or production certification. The user requested an immediate stop and commit because session usage was nearly exhausted.

@@ -1,3 +1,5 @@
+> Latest verified state: [Armor frontier validation](armor-frontier-validation.md). Soundness fixes pass; fresh real-profile deferrals are zero. Armor remains unfrozen.
+
 > Latest work-in-progress: [Armor frontier stop checkpoint](armor-frontier-checkpoint.md). User requested stop and commit before soundness review and real-profile validation were complete.
 
 > Current status: see [Armor v1 freeze assessment](armor-v1-freeze.md). Armor is not frozen; real-profile validation exposed a remaining narrowing/knowledge limitation. Historical checkpoints below remain for recovery.

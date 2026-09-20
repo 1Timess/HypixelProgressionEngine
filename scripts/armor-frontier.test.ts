@@ -14,7 +14,8 @@ async function scenario() {
   item.rarity="COMMON";
   item.knowledge.rawLore=["Defense: +"+item.stats.DEFENSE,"Health: +"+item.stats.HEALTH];
  }
- const p=await f.run();assert.ok(p.modelPayload);
+ const knowledge={items:Object.fromEntries(["NEW_CHESTPLATE","ALTERNATIVE"].map(id=>[id,{usability:[{context:"dungeon",usable:true,source}]}]))};
+ const p=await f.run(intent,knowledge);assert.ok(p.modelPayload);
  const e=structuredClone(p.modelPayload);
  const a=f.catalog.getById("NEW_CHESTPLATE")!;
  const b=structuredClone(a);b.id="ALTERNATIVE";b.name="Alternative";
@@ -37,7 +38,7 @@ async function scenario() {
  const price=(which:"a"|"b",coins:number)=>{
   const c=which==="a"?ca:cb;c.acquisitionCoins=coins;c.replaces[0].price!.coins=coins;
  };
- return {...f,e,catalog,a,b,ca,cb,run,stats,price};
+ return {...f,e,catalog,a,b,ca,cb,run,stats,price,knowledge};
 }
 test("plain armor dominance has a strict retained witness and no item-identity tiebreak",async()=>{
  const f=await scenario();f.stats("a",150);f.stats("b",120);
@@ -142,6 +143,8 @@ test("large frontier and permutations keep all incomparable points and direct re
   item.stats.DEFENSE=200+Math.floor(i/2)*10-(i%2);
   item.knowledge.rawLore=["Defense: +"+item.stats.DEFENSE,"Health: +100"];
   const c=structuredClone(f.ca);c.id="piece:"+item.id;c.replaces[0].toId=item.id;
+  c.replaces[0].changes.DEFENSE=[100,item.stats.DEFENSE];
+  c.replaces[0].lore=[f.e.mechanics.length];f.e.mechanics.push(item.knowledge.rawLore.join("\n"));
   c.acquisitionCoins=1000+Math.floor(i/2)*100;c.replaces[0].price!.coins=c.acquisitionCoins;
   items.push(item);candidates.push(c);
  }
@@ -155,8 +158,24 @@ test("large frontier and permutations keep all incomparable points and direct re
 test("production preparation records narrowing and never serializes a deferred proposal",async()=>{
  const f=await scenario();f.stats("a",150);f.stats("b",120);
  const quote=structuredClone(f.prices.get(f.a.id)!);quote.marketKey=f.b.id;f.prices.set(f.b.id,quote);
- const p=await prepareArmorUpgrade(f.snapshot,f.catalog,intent,f.market,{},now);
+ const p=await prepareArmorUpgrade(f.snapshot,f.catalog,intent,f.market,f.knowledge,now);
  assert.equal(p.status,"READY");assert.equal(p.review.narrowing!.before,2);
  assert.equal(p.review.narrowing!.retained,1);assert.equal(p.review.narrowing!.deferred.length,1);
  assert.ok(!p.modelPayload!.candidates.some(c=>c.id===f.cb.id));
+});
+
+test("equal UNKNOWN context is not proof of equal applicability",async()=>{
+ const f=await scenario();f.stats("a",150);
+ f.ca.replaces[0].contextUsability="UNKNOWN";f.cb.replaces[0].contextUsability="UNKNOWN";
+ assert.equal(f.run().candidates.length,2);
+});
+test("identical unexplained metadata can reverse stat value and prevents pruning",async()=>{
+ for(const location of ["item","knowledge"]) {
+  const f=await scenario();f.stats("a",150);
+  for(const item of [f.a,f.b]) {
+   if(location==="item")item.metadata.unmodeledHealthInteraction="unknown";
+   else item.knowledge.metadata.unmodeledHealthInteraction="unknown";
+  }
+  assert.equal(f.run().candidates.length,2,location);
+ }
 });

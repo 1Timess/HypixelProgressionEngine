@@ -4,7 +4,7 @@ import type { ItemCatalog } from "@/server/knowledge/items/catalog";
 import { stableJson } from "@/engine/build/weapon-comparison";
 
 type Candidate = ArmorEvidence["candidates"][number];
-type Block = "UNKNOWN_BASELINE_MECHANICS" | "UNKNOWN_ITEM_MECHANICS" | "UNKNOWN_MARKET" | "INVALID_SCOPE";
+type Block = "UNKNOWN_BASELINE_MECHANICS" | "UNKNOWN_ITEM_MECHANICS" | "UNKNOWN_MARKET" | "UNKNOWN_CONTEXT" | "INVALID_SCOPE";
 export interface ArmorFrontierAudit {
   policy: "PLAIN_ARMOR_PARETO_V1";
   before: number;
@@ -22,7 +22,8 @@ const labels: Record<string,string> = {
 const monotone = new Set(["DEFENSE","HEALTH","TRUE_DEFENSE"]);
 function plain(item: ItemDefinition): boolean {
   if (!item.sources.includes("neu") || !item.knowledge.rawLore.length ||
-      item.knowledge.abilities.length || item.knowledge.capabilities.length) return false;
+      item.knowledge.abilities.length || item.knowledge.capabilities.length ||
+      Object.keys(item.metadata).length || Object.keys(item.knowledge.metadata).length) return false;
   let statSeen = false;
   for (const raw of item.knowledge.rawLore) {
     const line = raw.replace(/§[0-9a-fk-or]/gi,"").trim();
@@ -63,6 +64,7 @@ export function narrowArmorFrontier(evidence: ArmorEvidence, catalog: ItemCatalo
       !evidence.intent.slots.includes(p.slot)||!evidence.baseline.some(b=>b.slot===p.slot&&b.id===p.fromId))) {
       block("INVALID_SCOPE");continue;
     }
+    if (pieces.some(p=>p.contextUsability!=="EVIDENCED")) {block("UNKNOWN_CONTEXT");continue;}
     const items=pieces.map(p=>catalog.getById(p.toId));
     if (candidate.effects.length || items.some((item,i)=>!item||!plain(item)||item.category!==pieces[i].slot)) {
       block("UNKNOWN_ITEM_MECHANICS");continue;
