@@ -131,6 +131,7 @@ function normalizeSingleItem(value: SimplifiedNbt): ItemInstance | null {
 
   return {
     itemId,
+    ...(Array.isArray(display?.Lore) && display.Lore.every(line => typeof line === "string") ? {rawLore: display.Lore as string[]} : {}),
     count: Math.max(0, Math.trunc(count)),
 
     ...(uuid ? { uuid } : {}),

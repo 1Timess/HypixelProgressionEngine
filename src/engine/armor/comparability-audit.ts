@@ -16,7 +16,7 @@ export function auditArmorComparability(evidence: ArmorEvidence, catalog: ItemCa
   count(itemMetadataKeys,new Set(Object.keys(item.metadata)));
   count(knowledgeMetadataKeys,new Set(Object.keys(item.knowledge.metadata)));
  }
- const contracts=uniqueItems.filter(i=>!!i).map(inspectArmorStatContract);
+ const contracts=uniqueItems.filter(i=>!!i).map(item=>inspectArmorStatContract(item));
  const observations=contracts.flatMap(c=>c.keys.map(key=>c.observe(key)));
  const statContract={
   policy:"RESOURCE_SCOPE_ONLY_V1",

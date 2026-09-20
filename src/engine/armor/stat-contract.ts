@@ -1,9 +1,11 @@
+import { bindArmorVariant, type ArmorVariantInput, type ExactArmorStat } from "./variant";
 import type { ItemDefinition } from "@/schemas/items";
 
 type TableObservation =
   | { kind: "OBSERVED_CONSTANT"; values: number[]; value: number }
   | { kind: "OBSERVED_VALUES"; values: number[]; minimum: number; maximum: number };
 export type ArmorStatObservation =
+  | ExactArmorStat
   | { kind: "RESOURCE_VALUE"; value: number }
   | { kind: "UNBOUND_TIER_TABLE"; table: TableObservation }
   | { kind: "SOURCE_RELATION_UNPROVEN"; resourceValue: number; table: TableObservation }
@@ -14,7 +16,8 @@ export type ArmorStatObservation =
  * No inspected source proves completeness, table-index semantics or modifier composition.
  * Deliberately does not return a comparison-ready numeric stat map.
  */
-export function inspectArmorStatContract(item: ItemDefinition) {
+export function inspectArmorStatContract(item: ItemDefinition, variant?: ArmorVariantInput) {
+  const bound = variant ? bindArmorVariant(item,variant) : null;
   const ordinary = item.stats;
   const raw = item.metadata.tiered_stats;
   const tablePresent = Object.hasOwn(item.metadata, "tiered_stats");
@@ -42,13 +45,14 @@ export function inspectArmorStatContract(item: ItemDefinition) {
     if (!valid) return {kind:"UNKNOWN"};
     const key = stat.trim().toUpperCase(), values = columns.get(key);
     if (values && Object.hasOwn(ordinary,key)) return {kind:"SOURCE_RELATION_UNPROVEN",resourceValue:ordinary[key],table:table(values)};
+    if (bound?.exact[key]) return bound.exact[key];
     if (values) return {kind:"UNBOUND_TIER_TABLE",table:table(values)};
     if (Object.hasOwn(ordinary,key)) return {kind:"RESOURCE_VALUE",value:ordinary[key]};
     return {kind:"UNKNOWN"}; // Neither a sparse map nor a table proves absence.
   };
   return {
     completeness: "UNPROVEN" as const,
-    variantBinding: "UNRESOLVED" as const,
+    variantBinding: bound && Object.keys(bound.exact).length ? "EXACT_EMPIRICAL" as const : "UNRESOLVED" as const,
     tableStatus: !tablePresent ? "NOT_PRESENT" as const : valid ? "OBSERVED_UNBOUND" as const : "INVALID" as const,
     columnLayout: columnLengths.size > 1 ? "UNEQUAL_LENGTHS" as const : columnLengths.size === 1 ? "EQUAL_LENGTHS" as const : "UNKNOWN" as const,
     sourceValid: valid, keys, observe,

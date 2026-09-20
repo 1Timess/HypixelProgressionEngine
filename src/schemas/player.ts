@@ -8,6 +8,7 @@ export const ItemInstanceSchema = z.object({
   uuid: z.string().optional(),
 
   displayName: z.string().optional(),
+  rawLore: z.array(z.string()).optional(),
 
   rarity: z.string().optional(),
 

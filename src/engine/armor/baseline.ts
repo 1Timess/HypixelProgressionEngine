@@ -1,5 +1,5 @@
 import type { ItemDefinition } from "@/schemas/items";
-import type { PlayerSnapshot } from "@/schemas/player";
+import type { ItemInstance, PlayerSnapshot } from "@/schemas/player";
 import { ARMOR_SLOTS, ArmorSlotSchema, type ArmorSlot } from "@/schemas/armor-recommendation";
 import type { ItemCatalog } from "@/server/knowledge/items/catalog";
 
@@ -8,6 +8,7 @@ export function armorSlot(item: ItemDefinition): ArmorSlot | null {
   return parsed.success ? parsed.data : null;
 }
 export function resolveArmorBaseline(snapshot: PlayerSnapshot, catalog: ItemCatalog, requiredSlots: readonly ArmorSlot[]) {
+  const instances = new Map<ArmorSlot, ItemInstance>();
   const equipped = new Map<ArmorSlot, ItemDefinition>();
   const problems: string[] = [];
   const seen = new Map<string, string>();
@@ -23,9 +24,9 @@ export function resolveArmorBaseline(snapshot: PlayerSnapshot, catalog: ItemCata
     }
     if (key) seen.set(key, item.id);
     if (equipped.has(slot)) problems.push("Multiple equipped items resolve to " + slot + ".");
-    else equipped.set(slot, item);
+    else { equipped.set(slot, item); instances.set(slot, instance); }
   }
   const unknownSlots = ARMOR_SLOTS.filter(slot => !equipped.has(slot));
   for (const slot of requiredSlots) if (!equipped.has(slot)) problems.push("No confirmed equipped baseline for " + slot + ".");
-  return { equipped, unknownSlots, problems };
+  return { equipped, instances, unknownSlots, problems };
 }
