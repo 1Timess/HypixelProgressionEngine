@@ -1,3 +1,5 @@
+> Latest: [Dungeon variant validation](armor-variant-validation.md). Path C: real NBT exposes positive rounding discrepancies; 161 Armor / 114 Weapons pass. No production binding promoted.
+
 # Armor stat source contract investigation
 
 Status: in progress; Armor NOT FROZEN. Start: clean c676935.
