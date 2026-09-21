@@ -1,0 +1,1347 @@
+{
+  "policy": "INACTIVE_REPLACEMENT_PROOF_PROVENANCE_AUDIT_V1",
+  "snapshot": {
+    "id": "14",
+    "hypixel_last_updated": "1789914403689",
+    "status": "COMPLETE"
+  },
+  "summary": {
+    "headingCandidates": 18,
+    "currentProofQualified": 15,
+    "uniqueParagraphs": 13,
+    "completeResultingBuilds": 15,
+    "proofDependsOnTargetParagraph": 13,
+    "excluded": [
+      {
+        "itemId": "RABBIT_CHESTPLATE",
+        "effects": [
+          {
+            "dependency": {
+              "kind": "UNKNOWN",
+              "reason": "Source bonus heading does not establish combat set membership, tier thresholds or all equipment prerequisites."
+            },
+            "after": "UNKNOWN"
+          }
+        ]
+      },
+      {
+        "itemId": "SNOW_SUIT_CHESTPLATE",
+        "effects": [
+          {
+            "dependency": {
+              "kind": "UNKNOWN",
+              "reason": "Source bonus heading does not establish combat set membership, tier thresholds or all equipment prerequisites."
+            },
+            "after": "UNKNOWN"
+          }
+        ]
+      },
+      {
+        "itemId": "ZOMBIE_CHESTPLATE",
+        "effects": [
+          {
+            "dependency": {
+              "kind": "UNKNOWN",
+              "reason": "Source bonus heading does not establish combat set membership, tier thresholds or all equipment prerequisites."
+            },
+            "after": "UNKNOWN"
+          }
+        ]
+      }
+    ]
+  },
+  "rows": [
+    {
+      "candidateId": "piece:BLAZE_CHESTPLATE",
+      "itemId": "BLAZE_CHESTPLATE",
+      "slot": "CHESTPLATE",
+      "replacedSlot": "CHESTPLATE",
+      "sourceParagraphs": [
+        "§7Defense: §a+165\n§7Strength: §c+30\n§7Speed: §f+2\n§7Gemstones: §8[]",
+        "§6Full Set Bonus: Blazing Aura §7(0/4)\n§7Damages mobs within §a5§7 blocks for §a3%\n§7of their max §c Health §7per second.",
+        "§7Max §c500 §7damage/s\n§7Blaze Rod Collection: §60\n§8+100 per 5,000 rods",
+        "§8This item can be reforged!\n§4❣ §cRequires §aCombat Skill 22§c.\n§5§lEPIC CHESTPLATE"
+      ],
+      "resultingBuild": {
+        "HELMET": "GLACITE_HELMET",
+        "CHESTPLATE": "BLAZE_CHESTPLATE",
+        "LEGGINGS": "GLACITE_LEGGINGS",
+        "BOOTS": "GLACITE_BOOTS"
+      },
+      "effects": [
+        {
+          "effectId": "lore:5",
+          "text": "Full Set Bonus: Blazing Aura (0/4)\nDamages mobs within 5 blocks for 3%\nof their max  Health per second.\n\nMax 500 damage/s\nBlaze Rod Collection: 0\n+100 per 5,000 rods",
+          "rawSourceParagraph": null,
+          "paragraphMatches": 0,
+          "effectsMatchingParagraph": 1,
+          "dependency": {
+            "kind": "PIECES",
+            "itemIds": [
+              "BLAZE_BOOTS",
+              "BLAZE_CHESTPLATE",
+              "BLAZE_HELMET",
+              "BLAZE_LEGGINGS"
+            ],
+            "minimum": 4
+          },
+          "membershipSources": [
+            {
+              "id": "museum:BLAZE",
+              "name": "Armor pieces from Museum group BLAZE",
+              "itemIds": [
+                "BLAZE_BOOTS",
+                "BLAZE_CHESTPLATE",
+                "BLAZE_HELMET",
+                "BLAZE_LEGGINGS"
+              ],
+              "source": {
+                "provider": "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+                "evidence": [
+                  "{\"group\":\"BLAZE\",\"members\":[\"BLAZE_BOOTS\",\"BLAZE_CHESTPLATE\",\"BLAZE_HELMET\",\"BLAZE_LEGGINGS\"]}",
+                  "Museum grouping supports a comparison package only; it does not prove a combat set bonus."
+                ]
+              }
+            }
+          ],
+          "before": "NOT_EQUIPPED",
+          "after": "NOT_SATISFIED",
+          "resultingMembershipCount": 1,
+          "source": {
+            "provider": "neu:items/BLAZE_CHESTPLATE@2026-09-17T13:35:10.975Z",
+            "evidence": [
+              "Full Set Bonus: Blazing Aura (0/4)\nDamages mobs within 5 blocks for 3%\nof their max  Health per second.\n\nMax 500 damage/s\nBlaze Rod Collection: 0\n+100 per 5,000 rods",
+              "FOUR_SLOT_FULL_SET_V1",
+              "All four dependency members have identical complete bonus text with explicit (0/4).",
+              "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+              "{\"group\":\"BLAZE\",\"members\":[\"BLAZE_BOOTS\",\"BLAZE_CHESTPLATE\",\"BLAZE_HELMET\",\"BLAZE_LEGGINGS\"]}",
+              "Museum grouping supports a comparison package only; it does not prove a combat set bonus.",
+              "neu:items/BLAZE_BOOTS@2026-09-17T13:35:10.975Z",
+              "neu:items/BLAZE_CHESTPLATE@2026-09-17T13:35:10.975Z",
+              "neu:items/BLAZE_HELMET@2026-09-17T13:35:10.975Z",
+              "neu:items/BLAZE_LEGGINGS@2026-09-17T13:35:10.975Z"
+            ]
+          },
+          "completeBuild": true,
+          "currentProofQualified": true,
+          "peerDependencyAfterRemovingTargetParagraph": null,
+          "independentOfTargetParagraph": null
+        }
+      ]
+    },
+    {
+      "candidateId": "piece:EMERALD_ARMOR_CHESTPLATE",
+      "itemId": "EMERALD_ARMOR_CHESTPLATE",
+      "slot": "CHESTPLATE",
+      "replacedSlot": "CHESTPLATE",
+      "sourceParagraphs": [
+        "§7Defense: §a+100",
+        "§6Full Set Bonus: Tank §7(0/4)\n§7Increases §c Health §7by §a+1§7 and §a\n§aDefense§7 by §a+1§7 for every §b3,000\n§7Emeralds in your collection. Max 350\n§7each.",
+        "§8This item can be reforged!\n§5§lEPIC CHESTPLATE"
+      ],
+      "resultingBuild": {
+        "HELMET": "GLACITE_HELMET",
+        "CHESTPLATE": "EMERALD_ARMOR_CHESTPLATE",
+        "LEGGINGS": "GLACITE_LEGGINGS",
+        "BOOTS": "GLACITE_BOOTS"
+      },
+      "effects": [
+        {
+          "effectId": "lore:2",
+          "text": "Full Set Bonus: Tank (0/4)\nIncreases  Health by +1 and \nDefense by +1 for every 3,000\nEmeralds in your collection. Max 350\neach.",
+          "rawSourceParagraph": "§6Full Set Bonus: Tank §7(0/4)\n§7Increases §c Health §7by §a+1§7 and §a\n§aDefense§7 by §a+1§7 for every §b3,000\n§7Emeralds in your collection. Max 350\n§7each.",
+          "paragraphMatches": 1,
+          "effectsMatchingParagraph": 1,
+          "dependency": {
+            "kind": "PIECES",
+            "itemIds": [
+              "EMERALD_ARMOR_BOOTS",
+              "EMERALD_ARMOR_CHESTPLATE",
+              "EMERALD_ARMOR_HELMET",
+              "EMERALD_ARMOR_LEGGINGS"
+            ],
+            "minimum": 4
+          },
+          "membershipSources": [
+            {
+              "id": "museum:EMERALD_ARMOR",
+              "name": "Armor pieces from Museum group EMERALD_ARMOR",
+              "itemIds": [
+                "EMERALD_ARMOR_BOOTS",
+                "EMERALD_ARMOR_CHESTPLATE",
+                "EMERALD_ARMOR_HELMET",
+                "EMERALD_ARMOR_LEGGINGS"
+              ],
+              "source": {
+                "provider": "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+                "evidence": [
+                  "{\"group\":\"EMERALD_ARMOR\",\"members\":[\"EMERALD_ARMOR_BOOTS\",\"EMERALD_ARMOR_CHESTPLATE\",\"EMERALD_ARMOR_HELMET\",\"EMERALD_ARMOR_LEGGINGS\"]}",
+                  "Museum grouping supports a comparison package only; it does not prove a combat set bonus."
+                ]
+              }
+            }
+          ],
+          "before": "NOT_EQUIPPED",
+          "after": "NOT_SATISFIED",
+          "resultingMembershipCount": 1,
+          "source": {
+            "provider": "neu:items/EMERALD_ARMOR_CHESTPLATE@2026-09-17T13:35:10.975Z",
+            "evidence": [
+              "Full Set Bonus: Tank (0/4)\nIncreases  Health by +1 and \nDefense by +1 for every 3,000\nEmeralds in your collection. Max 350\neach.",
+              "FOUR_SLOT_FULL_SET_V1",
+              "All four dependency members have identical complete bonus text with explicit (0/4).",
+              "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+              "{\"group\":\"EMERALD_ARMOR\",\"members\":[\"EMERALD_ARMOR_BOOTS\",\"EMERALD_ARMOR_CHESTPLATE\",\"EMERALD_ARMOR_HELMET\",\"EMERALD_ARMOR_LEGGINGS\"]}",
+              "Museum grouping supports a comparison package only; it does not prove a combat set bonus.",
+              "neu:items/EMERALD_ARMOR_BOOTS@2026-09-17T13:35:10.975Z",
+              "neu:items/EMERALD_ARMOR_CHESTPLATE@2026-09-17T13:35:10.975Z",
+              "neu:items/EMERALD_ARMOR_HELMET@2026-09-17T13:35:10.975Z",
+              "neu:items/EMERALD_ARMOR_LEGGINGS@2026-09-17T13:35:10.975Z"
+            ]
+          },
+          "completeBuild": true,
+          "currentProofQualified": true,
+          "peerDependencyAfterRemovingTargetParagraph": "UNKNOWN",
+          "independentOfTargetParagraph": false
+        }
+      ]
+    },
+    {
+      "candidateId": "piece:FAIRY_CHESTPLATE",
+      "itemId": "FAIRY_CHESTPLATE",
+      "slot": "CHESTPLATE",
+      "replacedSlot": "CHESTPLATE",
+      "sourceParagraphs": [
+        "§7Health: §c+1\n§7Defense: §a+1\n§7Intelligence: §b-1\n§7Speed: §f+10",
+        "§6Full Set Bonus: Fairy's Outfit §7(0/4)\n§7Gain §c1❤ §7per Fairy Soul.\n§7You found: §d1 Fairy Soul",
+        "§8This item can be reforged!\n§9§lRARE CHESTPLATE"
+      ],
+      "resultingBuild": {
+        "HELMET": "GLACITE_HELMET",
+        "CHESTPLATE": "FAIRY_CHESTPLATE",
+        "LEGGINGS": "GLACITE_LEGGINGS",
+        "BOOTS": "GLACITE_BOOTS"
+      },
+      "effects": [
+        {
+          "effectId": "lore:5",
+          "text": "Full Set Bonus: Fairy's Outfit (0/4)\nGain 1❤ per Fairy Soul.\nYou found: 1 Fairy Soul",
+          "rawSourceParagraph": "§6Full Set Bonus: Fairy's Outfit §7(0/4)\n§7Gain §c1❤ §7per Fairy Soul.\n§7You found: §d1 Fairy Soul",
+          "paragraphMatches": 1,
+          "effectsMatchingParagraph": 1,
+          "dependency": {
+            "kind": "PIECES",
+            "itemIds": [
+              "FAIRY_BOOTS",
+              "FAIRY_CHESTPLATE",
+              "FAIRY_HELMET",
+              "FAIRY_LEGGINGS"
+            ],
+            "minimum": 4
+          },
+          "membershipSources": [
+            {
+              "id": "museum:FAIRY",
+              "name": "Armor pieces from Museum group FAIRY",
+              "itemIds": [
+                "FAIRY_BOOTS",
+                "FAIRY_CHESTPLATE",
+                "FAIRY_HELMET",
+                "FAIRY_LEGGINGS"
+              ],
+              "source": {
+                "provider": "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+                "evidence": [
+                  "{\"group\":\"FAIRY\",\"members\":[\"FAIRY_BOOTS\",\"FAIRY_CHESTPLATE\",\"FAIRY_HELMET\",\"FAIRY_LEGGINGS\"]}",
+                  "Museum grouping supports a comparison package only; it does not prove a combat set bonus."
+                ]
+              }
+            }
+          ],
+          "before": "NOT_EQUIPPED",
+          "after": "NOT_SATISFIED",
+          "resultingMembershipCount": 1,
+          "source": {
+            "provider": "neu:items/FAIRY_CHESTPLATE@2026-09-17T13:35:10.975Z",
+            "evidence": [
+              "Full Set Bonus: Fairy's Outfit (0/4)\nGain 1❤ per Fairy Soul.\nYou found: 1 Fairy Soul",
+              "FOUR_SLOT_FULL_SET_V1",
+              "All four dependency members have identical complete bonus text with explicit (0/4).",
+              "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+              "{\"group\":\"FAIRY\",\"members\":[\"FAIRY_BOOTS\",\"FAIRY_CHESTPLATE\",\"FAIRY_HELMET\",\"FAIRY_LEGGINGS\"]}",
+              "Museum grouping supports a comparison package only; it does not prove a combat set bonus.",
+              "neu:items/FAIRY_BOOTS@2026-09-17T13:35:10.975Z",
+              "neu:items/FAIRY_CHESTPLATE@2026-09-17T13:35:10.975Z",
+              "neu:items/FAIRY_HELMET@2026-09-17T13:35:10.975Z",
+              "neu:items/FAIRY_LEGGINGS@2026-09-17T13:35:10.975Z"
+            ]
+          },
+          "completeBuild": true,
+          "currentProofQualified": true,
+          "peerDependencyAfterRemovingTargetParagraph": "UNKNOWN",
+          "independentOfTargetParagraph": false
+        }
+      ]
+    },
+    {
+      "candidateId": "piece:GOBLIN_CHESTPLATE",
+      "itemId": "GOBLIN_CHESTPLATE",
+      "slot": "CHESTPLATE",
+      "replacedSlot": "CHESTPLATE",
+      "sourceParagraphs": [
+        "§7Health: §c+140\n§7Intelligence: §b-1\n§7Mining Speed: §6+10\n§7Mining Fortune: §6+4\n§7Gemstones: §8[§7§8] []",
+        "§6Full Set Bonus: Smart Miner §7(0/4)\n§7Converts your Intelligence into\n§7Mining Speed. §6+1 Mining Speed §7for\n§7every §b15 Intelligence §7removed.",
+        "§8This item can be reforged!\n§9§lRARE CHESTPLATE"
+      ],
+      "resultingBuild": {
+        "HELMET": "GLACITE_HELMET",
+        "CHESTPLATE": "GOBLIN_CHESTPLATE",
+        "LEGGINGS": "GLACITE_LEGGINGS",
+        "BOOTS": "GLACITE_BOOTS"
+      },
+      "effects": [
+        {
+          "effectId": "lore:6",
+          "text": "Full Set Bonus: Smart Miner (0/4)\nConverts your Intelligence into\nMining Speed. +1 Mining Speed for\nevery 15 Intelligence removed.",
+          "rawSourceParagraph": "§6Full Set Bonus: Smart Miner §7(0/4)\n§7Converts your Intelligence into\n§7Mining Speed. §6+1 Mining Speed §7for\n§7every §b15 Intelligence §7removed.",
+          "paragraphMatches": 1,
+          "effectsMatchingParagraph": 1,
+          "dependency": {
+            "kind": "PIECES",
+            "itemIds": [
+              "GOBLIN_BOOTS",
+              "GOBLIN_CHESTPLATE",
+              "GOBLIN_HELMET",
+              "GOBLIN_LEGGINGS"
+            ],
+            "minimum": 4
+          },
+          "membershipSources": [
+            {
+              "id": "museum:GOBLIN",
+              "name": "Armor pieces from Museum group GOBLIN",
+              "itemIds": [
+                "GOBLIN_BOOTS",
+                "GOBLIN_CHESTPLATE",
+                "GOBLIN_HELMET",
+                "GOBLIN_LEGGINGS"
+              ],
+              "source": {
+                "provider": "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+                "evidence": [
+                  "{\"group\":\"GOBLIN\",\"members\":[\"GOBLIN_BOOTS\",\"GOBLIN_CHESTPLATE\",\"GOBLIN_HELMET\",\"GOBLIN_LEGGINGS\"]}",
+                  "Museum grouping supports a comparison package only; it does not prove a combat set bonus."
+                ]
+              }
+            }
+          ],
+          "before": "NOT_EQUIPPED",
+          "after": "NOT_SATISFIED",
+          "resultingMembershipCount": 1,
+          "source": {
+            "provider": "neu:items/GOBLIN_CHESTPLATE@2026-09-17T13:35:10.975Z",
+            "evidence": [
+              "Full Set Bonus: Smart Miner (0/4)\nConverts your Intelligence into\nMining Speed. +1 Mining Speed for\nevery 15 Intelligence removed.",
+              "FOUR_SLOT_FULL_SET_V1",
+              "All four dependency members have identical complete bonus text with explicit (0/4).",
+              "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+              "{\"group\":\"GOBLIN\",\"members\":[\"GOBLIN_BOOTS\",\"GOBLIN_CHESTPLATE\",\"GOBLIN_HELMET\",\"GOBLIN_LEGGINGS\"]}",
+              "Museum grouping supports a comparison package only; it does not prove a combat set bonus.",
+              "neu:items/GOBLIN_BOOTS@2026-09-17T13:35:10.975Z",
+              "neu:items/GOBLIN_CHESTPLATE@2026-09-17T13:35:10.975Z",
+              "neu:items/GOBLIN_HELMET@2026-09-17T13:35:10.975Z",
+              "neu:items/GOBLIN_LEGGINGS@2026-09-17T13:35:10.975Z"
+            ]
+          },
+          "completeBuild": true,
+          "currentProofQualified": true,
+          "peerDependencyAfterRemovingTargetParagraph": "UNKNOWN",
+          "independentOfTargetParagraph": false
+        }
+      ]
+    },
+    {
+      "candidateId": "piece:GOLEM_ARMOR_CHESTPLATE",
+      "itemId": "GOLEM_ARMOR_CHESTPLATE",
+      "slot": "CHESTPLATE",
+      "replacedSlot": "CHESTPLATE",
+      "sourceParagraphs": [
+        "§7Health: §c+65\n§7Defense: §a+90",
+        "§6Full Set Bonus: Absorption §7(0/4)\n§7Grants the wearer §aAbsorption 3§7 for\n§a20 seconds§7 when they kill an enemy.",
+        "§8This item can be reforged!\n§9§lRARE CHESTPLATE"
+      ],
+      "resultingBuild": {
+        "HELMET": "GLACITE_HELMET",
+        "CHESTPLATE": "GOLEM_ARMOR_CHESTPLATE",
+        "LEGGINGS": "GLACITE_LEGGINGS",
+        "BOOTS": "GLACITE_BOOTS"
+      },
+      "effects": [
+        {
+          "effectId": "lore:3",
+          "text": "Full Set Bonus: Absorption (0/4)\nGrants the wearer Absorption 3 for\n20 seconds when they kill an enemy.",
+          "rawSourceParagraph": "§6Full Set Bonus: Absorption §7(0/4)\n§7Grants the wearer §aAbsorption 3§7 for\n§a20 seconds§7 when they kill an enemy.",
+          "paragraphMatches": 1,
+          "effectsMatchingParagraph": 1,
+          "dependency": {
+            "kind": "PIECES",
+            "itemIds": [
+              "GOLEM_ARMOR_BOOTS",
+              "GOLEM_ARMOR_CHESTPLATE",
+              "GOLEM_ARMOR_HELMET",
+              "GOLEM_ARMOR_LEGGINGS"
+            ],
+            "minimum": 4
+          },
+          "membershipSources": [
+            {
+              "id": "museum:GOLEM_ARMOR",
+              "name": "Armor pieces from Museum group GOLEM_ARMOR",
+              "itemIds": [
+                "GOLEM_ARMOR_BOOTS",
+                "GOLEM_ARMOR_CHESTPLATE",
+                "GOLEM_ARMOR_HELMET",
+                "GOLEM_ARMOR_LEGGINGS"
+              ],
+              "source": {
+                "provider": "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+                "evidence": [
+                  "{\"group\":\"GOLEM_ARMOR\",\"members\":[\"GOLEM_ARMOR_BOOTS\",\"GOLEM_ARMOR_CHESTPLATE\",\"GOLEM_ARMOR_HELMET\",\"GOLEM_ARMOR_LEGGINGS\"]}",
+                  "Museum grouping supports a comparison package only; it does not prove a combat set bonus."
+                ]
+              }
+            }
+          ],
+          "before": "NOT_EQUIPPED",
+          "after": "NOT_SATISFIED",
+          "resultingMembershipCount": 1,
+          "source": {
+            "provider": "neu:items/GOLEM_ARMOR_CHESTPLATE@2026-09-17T13:35:10.975Z",
+            "evidence": [
+              "Full Set Bonus: Absorption (0/4)\nGrants the wearer Absorption 3 for\n20 seconds when they kill an enemy.",
+              "FOUR_SLOT_FULL_SET_V1",
+              "All four dependency members have identical complete bonus text with explicit (0/4).",
+              "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+              "{\"group\":\"GOLEM_ARMOR\",\"members\":[\"GOLEM_ARMOR_BOOTS\",\"GOLEM_ARMOR_CHESTPLATE\",\"GOLEM_ARMOR_HELMET\",\"GOLEM_ARMOR_LEGGINGS\"]}",
+              "Museum grouping supports a comparison package only; it does not prove a combat set bonus.",
+              "neu:items/GOLEM_ARMOR_BOOTS@2026-09-17T13:35:10.975Z",
+              "neu:items/GOLEM_ARMOR_CHESTPLATE@2026-09-17T13:35:10.975Z",
+              "neu:items/GOLEM_ARMOR_HELMET@2026-09-17T13:35:10.975Z",
+              "neu:items/GOLEM_ARMOR_LEGGINGS@2026-09-17T13:35:10.975Z"
+            ]
+          },
+          "completeBuild": true,
+          "currentProofQualified": true,
+          "peerDependencyAfterRemovingTargetParagraph": "UNKNOWN",
+          "independentOfTargetParagraph": false
+        }
+      ]
+    },
+    {
+      "candidateId": "piece:HOLY_DRAGON_CHESTPLATE",
+      "itemId": "HOLY_DRAGON_CHESTPLATE",
+      "slot": "CHESTPLATE",
+      "replacedSlot": "CHESTPLATE",
+      "sourceParagraphs": [
+        "§7Health: §c+180\n§7Defense: §a+160\n§7Mending: §a+10\n§7Gemstones: §8[]",
+        "§6Full Set Bonus: Holy Blood §7(0/4)\n§7Grants §c+75 Health Regen §7to you\n§7and all players within §a10 §7blocks.\n§8Effect only applies once!",
+        "§8This item can be reforged!\n§4❣ §cRequires §aCombat Skill 16§c.\n§6§lLEGENDARY CHESTPLATE"
+      ],
+      "resultingBuild": {
+        "HELMET": "GLACITE_HELMET",
+        "CHESTPLATE": "HOLY_DRAGON_CHESTPLATE",
+        "LEGGINGS": "GLACITE_LEGGINGS",
+        "BOOTS": "GLACITE_BOOTS"
+      },
+      "effects": [
+        {
+          "effectId": "lore:5",
+          "text": "Full Set Bonus: Holy Blood (0/4)\nGrants +75 Health Regen to you\nand all players within 10 blocks.\nEffect only applies once!",
+          "rawSourceParagraph": "§6Full Set Bonus: Holy Blood §7(0/4)\n§7Grants §c+75 Health Regen §7to you\n§7and all players within §a10 §7blocks.\n§8Effect only applies once!",
+          "paragraphMatches": 1,
+          "effectsMatchingParagraph": 1,
+          "dependency": {
+            "kind": "PIECES",
+            "itemIds": [
+              "HOLY_DRAGON_BOOTS",
+              "HOLY_DRAGON_CHESTPLATE",
+              "HOLY_DRAGON_HELMET",
+              "HOLY_DRAGON_LEGGINGS"
+            ],
+            "minimum": 4
+          },
+          "membershipSources": [
+            {
+              "id": "museum:HOLY_DRAGON",
+              "name": "Armor pieces from Museum group HOLY_DRAGON",
+              "itemIds": [
+                "HOLY_DRAGON_BOOTS",
+                "HOLY_DRAGON_CHESTPLATE",
+                "HOLY_DRAGON_HELMET",
+                "HOLY_DRAGON_LEGGINGS"
+              ],
+              "source": {
+                "provider": "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+                "evidence": [
+                  "{\"group\":\"HOLY_DRAGON\",\"members\":[\"HOLY_DRAGON_BOOTS\",\"HOLY_DRAGON_CHESTPLATE\",\"HOLY_DRAGON_HELMET\",\"HOLY_DRAGON_LEGGINGS\"]}",
+                  "Museum grouping supports a comparison package only; it does not prove a combat set bonus."
+                ]
+              }
+            }
+          ],
+          "before": "NOT_EQUIPPED",
+          "after": "NOT_SATISFIED",
+          "resultingMembershipCount": 1,
+          "source": {
+            "provider": "neu:items/HOLY_DRAGON_CHESTPLATE@2026-09-17T13:35:10.975Z",
+            "evidence": [
+              "Full Set Bonus: Holy Blood (0/4)\nGrants +75 Health Regen to you\nand all players within 10 blocks.\nEffect only applies once!",
+              "FOUR_SLOT_FULL_SET_V1",
+              "All four dependency members have identical complete bonus text with explicit (0/4).",
+              "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+              "{\"group\":\"HOLY_DRAGON\",\"members\":[\"HOLY_DRAGON_BOOTS\",\"HOLY_DRAGON_CHESTPLATE\",\"HOLY_DRAGON_HELMET\",\"HOLY_DRAGON_LEGGINGS\"]}",
+              "Museum grouping supports a comparison package only; it does not prove a combat set bonus.",
+              "neu:items/HOLY_DRAGON_BOOTS@2026-09-17T13:35:10.975Z",
+              "neu:items/HOLY_DRAGON_CHESTPLATE@2026-09-17T13:35:10.975Z",
+              "neu:items/HOLY_DRAGON_HELMET@2026-09-17T13:35:10.975Z",
+              "neu:items/HOLY_DRAGON_LEGGINGS@2026-09-17T13:35:10.975Z"
+            ]
+          },
+          "completeBuild": true,
+          "currentProofQualified": true,
+          "peerDependencyAfterRemovingTargetParagraph": "UNKNOWN",
+          "independentOfTargetParagraph": false
+        }
+      ]
+    },
+    {
+      "candidateId": "piece:MERCENARY_CHESTPLATE",
+      "itemId": "MERCENARY_CHESTPLATE",
+      "slot": "CHESTPLATE",
+      "replacedSlot": "CHESTPLATE",
+      "sourceParagraphs": [
+        "§7Health: §c+70\n§7Defense: §a+70\n§7Strength: §c+10",
+        "§6Full Set Bonus: Death Tax §7(0/4)\n§7Earn §6+5 coins §7and heal §c20❤ §7each kill.\n§8Only against level 10+ mobs!",
+        "§8This item can be reforged!\n§4❣ §cRequires §aCombat Skill 8§c.\n§9§lRARE CHESTPLATE"
+      ],
+      "resultingBuild": {
+        "HELMET": "GLACITE_HELMET",
+        "CHESTPLATE": "MERCENARY_CHESTPLATE",
+        "LEGGINGS": "GLACITE_LEGGINGS",
+        "BOOTS": "GLACITE_BOOTS"
+      },
+      "effects": [
+        {
+          "effectId": "lore:4",
+          "text": "Full Set Bonus: Death Tax (0/4)\nEarn +5 coins and heal 20❤ each kill.\nOnly against level 10+ mobs!",
+          "rawSourceParagraph": "§6Full Set Bonus: Death Tax §7(0/4)\n§7Earn §6+5 coins §7and heal §c20❤ §7each kill.\n§8Only against level 10+ mobs!",
+          "paragraphMatches": 1,
+          "effectsMatchingParagraph": 1,
+          "dependency": {
+            "kind": "PIECES",
+            "itemIds": [
+              "MERCENARY_BOOTS",
+              "MERCENARY_CHESTPLATE",
+              "MERCENARY_HELMET",
+              "MERCENARY_LEGGINGS"
+            ],
+            "minimum": 4
+          },
+          "membershipSources": [
+            {
+              "id": "museum:MERCENARY",
+              "name": "Armor pieces from Museum group MERCENARY",
+              "itemIds": [
+                "MERCENARY_BOOTS",
+                "MERCENARY_CHESTPLATE",
+                "MERCENARY_HELMET",
+                "MERCENARY_LEGGINGS"
+              ],
+              "source": {
+                "provider": "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+                "evidence": [
+                  "{\"group\":\"MERCENARY\",\"members\":[\"MERCENARY_BOOTS\",\"MERCENARY_CHESTPLATE\",\"MERCENARY_HELMET\",\"MERCENARY_LEGGINGS\"]}",
+                  "Museum grouping supports a comparison package only; it does not prove a combat set bonus."
+                ]
+              }
+            }
+          ],
+          "before": "NOT_EQUIPPED",
+          "after": "NOT_SATISFIED",
+          "resultingMembershipCount": 1,
+          "source": {
+            "provider": "neu:items/MERCENARY_CHESTPLATE@2026-09-17T13:35:10.975Z",
+            "evidence": [
+              "Full Set Bonus: Death Tax (0/4)\nEarn +5 coins and heal 20❤ each kill.\nOnly against level 10+ mobs!",
+              "FOUR_SLOT_FULL_SET_V1",
+              "All four dependency members have identical complete bonus text with explicit (0/4).",
+              "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+              "{\"group\":\"MERCENARY\",\"members\":[\"MERCENARY_BOOTS\",\"MERCENARY_CHESTPLATE\",\"MERCENARY_HELMET\",\"MERCENARY_LEGGINGS\"]}",
+              "Museum grouping supports a comparison package only; it does not prove a combat set bonus.",
+              "neu:items/MERCENARY_BOOTS@2026-09-17T13:35:10.975Z",
+              "neu:items/MERCENARY_CHESTPLATE@2026-09-17T13:35:10.975Z",
+              "neu:items/MERCENARY_HELMET@2026-09-17T13:35:10.975Z",
+              "neu:items/MERCENARY_LEGGINGS@2026-09-17T13:35:10.975Z"
+            ]
+          },
+          "completeBuild": true,
+          "currentProofQualified": true,
+          "peerDependencyAfterRemovingTargetParagraph": "UNKNOWN",
+          "independentOfTargetParagraph": false
+        }
+      ]
+    },
+    {
+      "candidateId": "piece:MINER_OUTFIT_CHESTPLATE",
+      "itemId": "MINER_OUTFIT_CHESTPLATE",
+      "slot": "CHESTPLATE",
+      "replacedSlot": "CHESTPLATE",
+      "sourceParagraphs": [
+        "§7Defense: §a+40\n§7Mining Speed: §6+15",
+        "§6Full Set Bonus: Beginner's Boost §7(0/4)\n§7Grants §6+40 Mining Speed§7.",
+        "§8This item can be reforged!\n§a§lUNCOMMON CHESTPLATE"
+      ],
+      "resultingBuild": {
+        "HELMET": "GLACITE_HELMET",
+        "CHESTPLATE": "MINER_OUTFIT_CHESTPLATE",
+        "LEGGINGS": "GLACITE_LEGGINGS",
+        "BOOTS": "GLACITE_BOOTS"
+      },
+      "effects": [
+        {
+          "effectId": "lore:3",
+          "text": "Full Set Bonus: Beginner's Boost (0/4)\nGrants +40 Mining Speed.",
+          "rawSourceParagraph": "§6Full Set Bonus: Beginner's Boost §7(0/4)\n§7Grants §6+40 Mining Speed§7.",
+          "paragraphMatches": 1,
+          "effectsMatchingParagraph": 1,
+          "dependency": {
+            "kind": "PIECES",
+            "itemIds": [
+              "MINER_OUTFIT_BOOTS",
+              "MINER_OUTFIT_CHESTPLATE",
+              "MINER_OUTFIT_HELMET",
+              "MINER_OUTFIT_LEGGINGS"
+            ],
+            "minimum": 4
+          },
+          "membershipSources": [
+            {
+              "id": "museum:MINER_OUTFIT",
+              "name": "Armor pieces from Museum group MINER_OUTFIT",
+              "itemIds": [
+                "MINER_OUTFIT_BOOTS",
+                "MINER_OUTFIT_CHESTPLATE",
+                "MINER_OUTFIT_HELMET",
+                "MINER_OUTFIT_LEGGINGS"
+              ],
+              "source": {
+                "provider": "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+                "evidence": [
+                  "{\"group\":\"MINER_OUTFIT\",\"members\":[\"MINER_OUTFIT_BOOTS\",\"MINER_OUTFIT_CHESTPLATE\",\"MINER_OUTFIT_HELMET\",\"MINER_OUTFIT_LEGGINGS\"]}",
+                  "Museum grouping supports a comparison package only; it does not prove a combat set bonus."
+                ]
+              }
+            }
+          ],
+          "before": "NOT_EQUIPPED",
+          "after": "NOT_SATISFIED",
+          "resultingMembershipCount": 1,
+          "source": {
+            "provider": "neu:items/MINER_OUTFIT_CHESTPLATE@2026-09-17T13:35:10.975Z",
+            "evidence": [
+              "Full Set Bonus: Beginner's Boost (0/4)\nGrants +40 Mining Speed.",
+              "FOUR_SLOT_FULL_SET_V1",
+              "All four dependency members have identical complete bonus text with explicit (0/4).",
+              "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+              "{\"group\":\"MINER_OUTFIT\",\"members\":[\"MINER_OUTFIT_BOOTS\",\"MINER_OUTFIT_CHESTPLATE\",\"MINER_OUTFIT_HELMET\",\"MINER_OUTFIT_LEGGINGS\"]}",
+              "Museum grouping supports a comparison package only; it does not prove a combat set bonus.",
+              "neu:items/MINER_OUTFIT_BOOTS@2026-09-17T13:35:10.975Z",
+              "neu:items/MINER_OUTFIT_CHESTPLATE@2026-09-17T13:35:10.975Z",
+              "neu:items/MINER_OUTFIT_HELMET@2026-09-17T13:35:10.975Z",
+              "neu:items/MINER_OUTFIT_LEGGINGS@2026-09-17T13:35:10.975Z"
+            ]
+          },
+          "completeBuild": true,
+          "currentProofQualified": true,
+          "peerDependencyAfterRemovingTargetParagraph": "UNKNOWN",
+          "independentOfTargetParagraph": false
+        }
+      ]
+    },
+    {
+      "candidateId": "piece:OLD_DRAGON_CHESTPLATE",
+      "itemId": "OLD_DRAGON_CHESTPLATE",
+      "slot": "CHESTPLATE",
+      "replacedSlot": "CHESTPLATE",
+      "sourceParagraphs": [
+        "§7Health: §c+150\n§7Defense: §a+160\n§7Gemstones: §8[☤]",
+        "§6Full Set Bonus: Old Blood §7(0/4)\n§7Increases the strength of §9Growth§7,\n§9Protection§7, §9Feather Falling§7, §9Sugar\n§9Rush§7, and §9True Protection§7 while worn.",
+        "§8This item can be reforged!\n§4❣ §cRequires §aCombat Skill 16§c.\n§6§lLEGENDARY CHESTPLATE"
+      ],
+      "resultingBuild": {
+        "HELMET": "GLACITE_HELMET",
+        "CHESTPLATE": "OLD_DRAGON_CHESTPLATE",
+        "LEGGINGS": "GLACITE_LEGGINGS",
+        "BOOTS": "GLACITE_BOOTS"
+      },
+      "effects": [
+        {
+          "effectId": "lore:4",
+          "text": "Full Set Bonus: Old Blood (0/4)\nIncreases the strength of Growth,\nProtection, Feather Falling, Sugar\nRush, and True Protection while worn.",
+          "rawSourceParagraph": "§6Full Set Bonus: Old Blood §7(0/4)\n§7Increases the strength of §9Growth§7,\n§9Protection§7, §9Feather Falling§7, §9Sugar\n§9Rush§7, and §9True Protection§7 while worn.",
+          "paragraphMatches": 1,
+          "effectsMatchingParagraph": 1,
+          "dependency": {
+            "kind": "PIECES",
+            "itemIds": [
+              "OLD_DRAGON_BOOTS",
+              "OLD_DRAGON_CHESTPLATE",
+              "OLD_DRAGON_HELMET",
+              "OLD_DRAGON_LEGGINGS"
+            ],
+            "minimum": 4
+          },
+          "membershipSources": [
+            {
+              "id": "museum:OLD_DRAGON",
+              "name": "Armor pieces from Museum group OLD_DRAGON",
+              "itemIds": [
+                "OLD_DRAGON_BOOTS",
+                "OLD_DRAGON_CHESTPLATE",
+                "OLD_DRAGON_HELMET",
+                "OLD_DRAGON_LEGGINGS"
+              ],
+              "source": {
+                "provider": "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+                "evidence": [
+                  "{\"group\":\"OLD_DRAGON\",\"members\":[\"OLD_DRAGON_BOOTS\",\"OLD_DRAGON_CHESTPLATE\",\"OLD_DRAGON_HELMET\",\"OLD_DRAGON_LEGGINGS\"]}",
+                  "Museum grouping supports a comparison package only; it does not prove a combat set bonus."
+                ]
+              }
+            }
+          ],
+          "before": "NOT_EQUIPPED",
+          "after": "NOT_SATISFIED",
+          "resultingMembershipCount": 1,
+          "source": {
+            "provider": "neu:items/OLD_DRAGON_CHESTPLATE@2026-09-17T13:35:10.975Z",
+            "evidence": [
+              "Full Set Bonus: Old Blood (0/4)\nIncreases the strength of Growth,\nProtection, Feather Falling, Sugar\nRush, and True Protection while worn.",
+              "FOUR_SLOT_FULL_SET_V1",
+              "All four dependency members have identical complete bonus text with explicit (0/4).",
+              "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+              "{\"group\":\"OLD_DRAGON\",\"members\":[\"OLD_DRAGON_BOOTS\",\"OLD_DRAGON_CHESTPLATE\",\"OLD_DRAGON_HELMET\",\"OLD_DRAGON_LEGGINGS\"]}",
+              "Museum grouping supports a comparison package only; it does not prove a combat set bonus.",
+              "neu:items/OLD_DRAGON_BOOTS@2026-09-17T13:35:10.975Z",
+              "neu:items/OLD_DRAGON_CHESTPLATE@2026-09-17T13:35:10.975Z",
+              "neu:items/OLD_DRAGON_HELMET@2026-09-17T13:35:10.975Z",
+              "neu:items/OLD_DRAGON_LEGGINGS@2026-09-17T13:35:10.975Z"
+            ]
+          },
+          "completeBuild": true,
+          "currentProofQualified": true,
+          "peerDependencyAfterRemovingTargetParagraph": "UNKNOWN",
+          "independentOfTargetParagraph": false
+        }
+      ]
+    },
+    {
+      "candidateId": "piece:PROTECTOR_DRAGON_CHESTPLATE",
+      "itemId": "PROTECTOR_DRAGON_CHESTPLATE",
+      "slot": "CHESTPLATE",
+      "replacedSlot": "CHESTPLATE",
+      "sourceParagraphs": [
+        "§7Health: §c+120\n§7Defense: §a+185\n§7Gemstones: §8[]",
+        "§6Full Set Bonus: Protective Blood §7(0/4)\n§7Increases the defense of each\n§7armor piece by §a+1%§7 §a Defense§7 for\n§7each missing percent of HP.",
+        "§8This item can be reforged!\n§4❣ §cRequires §aCombat Skill 16§c.\n§6§lLEGENDARY CHESTPLATE"
+      ],
+      "resultingBuild": {
+        "HELMET": "GLACITE_HELMET",
+        "CHESTPLATE": "PROTECTOR_DRAGON_CHESTPLATE",
+        "LEGGINGS": "GLACITE_LEGGINGS",
+        "BOOTS": "GLACITE_BOOTS"
+      },
+      "effects": [
+        {
+          "effectId": "lore:4",
+          "text": "Full Set Bonus: Protective Blood (0/4)\nIncreases the defense of each\narmor piece by +1%  Defense for\neach missing percent of HP.",
+          "rawSourceParagraph": "§6Full Set Bonus: Protective Blood §7(0/4)\n§7Increases the defense of each\n§7armor piece by §a+1%§7 §a Defense§7 for\n§7each missing percent of HP.",
+          "paragraphMatches": 1,
+          "effectsMatchingParagraph": 1,
+          "dependency": {
+            "kind": "PIECES",
+            "itemIds": [
+              "PROTECTOR_DRAGON_BOOTS",
+              "PROTECTOR_DRAGON_CHESTPLATE",
+              "PROTECTOR_DRAGON_HELMET",
+              "PROTECTOR_DRAGON_LEGGINGS"
+            ],
+            "minimum": 4
+          },
+          "membershipSources": [
+            {
+              "id": "museum:PROTECTOR_DRAGON",
+              "name": "Armor pieces from Museum group PROTECTOR_DRAGON",
+              "itemIds": [
+                "PROTECTOR_DRAGON_BOOTS",
+                "PROTECTOR_DRAGON_CHESTPLATE",
+                "PROTECTOR_DRAGON_HELMET",
+                "PROTECTOR_DRAGON_LEGGINGS"
+              ],
+              "source": {
+                "provider": "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+                "evidence": [
+                  "{\"group\":\"PROTECTOR_DRAGON\",\"members\":[\"PROTECTOR_DRAGON_BOOTS\",\"PROTECTOR_DRAGON_CHESTPLATE\",\"PROTECTOR_DRAGON_HELMET\",\"PROTECTOR_DRAGON_LEGGINGS\"]}",
+                  "Museum grouping supports a comparison package only; it does not prove a combat set bonus."
+                ]
+              }
+            }
+          ],
+          "before": "NOT_EQUIPPED",
+          "after": "NOT_SATISFIED",
+          "resultingMembershipCount": 1,
+          "source": {
+            "provider": "neu:items/PROTECTOR_DRAGON_CHESTPLATE@2026-09-17T13:35:10.975Z",
+            "evidence": [
+              "Full Set Bonus: Protective Blood (0/4)\nIncreases the defense of each\narmor piece by +1%  Defense for\neach missing percent of HP.",
+              "FOUR_SLOT_FULL_SET_V1",
+              "All four dependency members have identical complete bonus text with explicit (0/4).",
+              "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+              "{\"group\":\"PROTECTOR_DRAGON\",\"members\":[\"PROTECTOR_DRAGON_BOOTS\",\"PROTECTOR_DRAGON_CHESTPLATE\",\"PROTECTOR_DRAGON_HELMET\",\"PROTECTOR_DRAGON_LEGGINGS\"]}",
+              "Museum grouping supports a comparison package only; it does not prove a combat set bonus.",
+              "neu:items/PROTECTOR_DRAGON_BOOTS@2026-09-17T13:35:10.975Z",
+              "neu:items/PROTECTOR_DRAGON_CHESTPLATE@2026-09-17T13:35:10.975Z",
+              "neu:items/PROTECTOR_DRAGON_HELMET@2026-09-17T13:35:10.975Z",
+              "neu:items/PROTECTOR_DRAGON_LEGGINGS@2026-09-17T13:35:10.975Z"
+            ]
+          },
+          "completeBuild": true,
+          "currentProofQualified": true,
+          "peerDependencyAfterRemovingTargetParagraph": "UNKNOWN",
+          "independentOfTargetParagraph": false
+        }
+      ]
+    },
+    {
+      "candidateId": "piece:RABBIT_CHESTPLATE",
+      "itemId": "RABBIT_CHESTPLATE",
+      "slot": "CHESTPLATE",
+      "replacedSlot": "CHESTPLATE",
+      "sourceParagraphs": [
+        "§7Defense: §a+40\n§7Speed: §f+5",
+        "§6Full Set Bonus: Springsneak §e§lSNEAK\n§7While sneaking, you have permanent\n§bJump Boost II.",
+        "§8This item can be reforged!\n§f§lCOMMON CHESTPLATE"
+      ],
+      "resultingBuild": {
+        "HELMET": "GLACITE_HELMET",
+        "CHESTPLATE": "RABBIT_CHESTPLATE",
+        "LEGGINGS": "GLACITE_LEGGINGS",
+        "BOOTS": "GLACITE_BOOTS"
+      },
+      "effects": [
+        {
+          "effectId": "lore:3",
+          "text": "Full Set Bonus: Springsneak SNEAK\nWhile sneaking, you have permanent\nJump Boost II.",
+          "rawSourceParagraph": "§6Full Set Bonus: Springsneak §e§lSNEAK\n§7While sneaking, you have permanent\n§bJump Boost II.",
+          "paragraphMatches": 1,
+          "effectsMatchingParagraph": 1,
+          "dependency": {
+            "kind": "UNKNOWN",
+            "reason": "Source bonus heading does not establish combat set membership, tier thresholds or all equipment prerequisites."
+          },
+          "membershipSources": [],
+          "before": "NOT_EQUIPPED",
+          "after": "UNKNOWN",
+          "resultingMembershipCount": 0,
+          "source": {
+            "provider": "neu:items/RABBIT_CHESTPLATE@2026-09-17T13:35:10.975Z",
+            "evidence": [
+              "Full Set Bonus: Springsneak SNEAK\nWhile sneaking, you have permanent\nJump Boost II."
+            ]
+          },
+          "completeBuild": true,
+          "currentProofQualified": false,
+          "peerDependencyAfterRemovingTargetParagraph": null,
+          "independentOfTargetParagraph": null
+        }
+      ]
+    },
+    {
+      "candidateId": "piece:SNOW_SUIT_CHESTPLATE",
+      "itemId": "SNOW_SUIT_CHESTPLATE",
+      "slot": "CHESTPLATE",
+      "replacedSlot": "CHESTPLATE",
+      "sourceParagraphs": [
+        "§7Health: §c+100\n§7Defense: §a+40",
+        "§6Full Set Bonus: Cold Thumb §7(0/8)\n§7Allows the wearer to shoot unlimited\n§7snowballs when using §9Frosty the\n§9Snow Cannon§7.",
+        "§7Each piece grants a §a5% §7bonus gift\n§7chance for every present you earn\n§7from the §cGift Attack §7minigame!",
+        "§7All stats of this armor piece are\n§7doubled while on §cJerry's Workshop§7!",
+        "§8This item can be reforged!\n§5§lEPIC CHESTPLATE"
+      ],
+      "resultingBuild": {
+        "HELMET": "GLACITE_HELMET",
+        "CHESTPLATE": "SNOW_SUIT_CHESTPLATE",
+        "LEGGINGS": "GLACITE_LEGGINGS",
+        "BOOTS": "GLACITE_BOOTS"
+      },
+      "effects": [
+        {
+          "effectId": "lore:3",
+          "text": "Full Set Bonus: Cold Thumb (0/8)\nAllows the wearer to shoot unlimited\nsnowballs when using Frosty the\nSnow Cannon.\n\nEach piece grants a 5% bonus gift\nchance for every present you earn\nfrom the Gift Attack minigame!\n\nAll stats of this armor piece are\ndoubled while on Jerry's Workshop!",
+          "rawSourceParagraph": null,
+          "paragraphMatches": 0,
+          "effectsMatchingParagraph": 1,
+          "dependency": {
+            "kind": "UNKNOWN",
+            "reason": "Source bonus heading does not establish combat set membership, tier thresholds or all equipment prerequisites."
+          },
+          "membershipSources": [],
+          "before": "NOT_EQUIPPED",
+          "after": "UNKNOWN",
+          "resultingMembershipCount": 0,
+          "source": {
+            "provider": "neu:items/SNOW_SUIT_CHESTPLATE@2026-09-17T13:35:10.975Z",
+            "evidence": [
+              "Full Set Bonus: Cold Thumb (0/8)\nAllows the wearer to shoot unlimited\nsnowballs when using Frosty the\nSnow Cannon.\n\nEach piece grants a 5% bonus gift\nchance for every present you earn\nfrom the Gift Attack minigame!\n\nAll stats of this armor piece are\ndoubled while on Jerry's Workshop!"
+            ]
+          },
+          "completeBuild": true,
+          "currentProofQualified": false,
+          "peerDependencyAfterRemovingTargetParagraph": null,
+          "independentOfTargetParagraph": null
+        }
+      ]
+    },
+    {
+      "candidateId": "piece:SPEEDSTER_CHESTPLATE",
+      "itemId": "SPEEDSTER_CHESTPLATE",
+      "slot": "CHESTPLATE",
+      "replacedSlot": "CHESTPLATE",
+      "sourceParagraphs": [
+        "§7Defense: §a+70\n§7Speed: §f+15",
+        "§6Full Set Bonus: Bonus Speed §7(0/4)\n§7Increases §f Speed §7by §a+20§7.",
+        "§8This item can be reforged!\n§a§lUNCOMMON CHESTPLATE"
+      ],
+      "resultingBuild": {
+        "HELMET": "GLACITE_HELMET",
+        "CHESTPLATE": "SPEEDSTER_CHESTPLATE",
+        "LEGGINGS": "GLACITE_LEGGINGS",
+        "BOOTS": "GLACITE_BOOTS"
+      },
+      "effects": [
+        {
+          "effectId": "lore:3",
+          "text": "Full Set Bonus: Bonus Speed (0/4)\nIncreases  Speed by +20.",
+          "rawSourceParagraph": "§6Full Set Bonus: Bonus Speed §7(0/4)\n§7Increases §f Speed §7by §a+20§7.",
+          "paragraphMatches": 1,
+          "effectsMatchingParagraph": 1,
+          "dependency": {
+            "kind": "PIECES",
+            "itemIds": [
+              "SPEEDSTER_BOOTS",
+              "SPEEDSTER_CHESTPLATE",
+              "SPEEDSTER_HELMET",
+              "SPEEDSTER_LEGGINGS"
+            ],
+            "minimum": 4
+          },
+          "membershipSources": [
+            {
+              "id": "museum:SPEEDSTER",
+              "name": "Armor pieces from Museum group SPEEDSTER",
+              "itemIds": [
+                "SPEEDSTER_BOOTS",
+                "SPEEDSTER_CHESTPLATE",
+                "SPEEDSTER_HELMET",
+                "SPEEDSTER_LEGGINGS"
+              ],
+              "source": {
+                "provider": "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+                "evidence": [
+                  "{\"group\":\"SPEEDSTER\",\"members\":[\"SPEEDSTER_BOOTS\",\"SPEEDSTER_CHESTPLATE\",\"SPEEDSTER_HELMET\",\"SPEEDSTER_LEGGINGS\"]}",
+                  "Museum grouping supports a comparison package only; it does not prove a combat set bonus."
+                ]
+              }
+            }
+          ],
+          "before": "NOT_EQUIPPED",
+          "after": "NOT_SATISFIED",
+          "resultingMembershipCount": 1,
+          "source": {
+            "provider": "neu:items/SPEEDSTER_CHESTPLATE@2026-09-17T13:35:10.975Z",
+            "evidence": [
+              "Full Set Bonus: Bonus Speed (0/4)\nIncreases  Speed by +20.",
+              "FOUR_SLOT_FULL_SET_V1",
+              "All four dependency members have identical complete bonus text with explicit (0/4).",
+              "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+              "{\"group\":\"SPEEDSTER\",\"members\":[\"SPEEDSTER_BOOTS\",\"SPEEDSTER_CHESTPLATE\",\"SPEEDSTER_HELMET\",\"SPEEDSTER_LEGGINGS\"]}",
+              "Museum grouping supports a comparison package only; it does not prove a combat set bonus.",
+              "neu:items/SPEEDSTER_BOOTS@2026-09-17T13:35:10.975Z",
+              "neu:items/SPEEDSTER_CHESTPLATE@2026-09-17T13:35:10.975Z",
+              "neu:items/SPEEDSTER_HELMET@2026-09-17T13:35:10.975Z",
+              "neu:items/SPEEDSTER_LEGGINGS@2026-09-17T13:35:10.975Z"
+            ]
+          },
+          "completeBuild": true,
+          "currentProofQualified": true,
+          "peerDependencyAfterRemovingTargetParagraph": "UNKNOWN",
+          "independentOfTargetParagraph": false
+        }
+      ]
+    },
+    {
+      "candidateId": "piece:STARLIGHT_CHESTPLATE",
+      "itemId": "STARLIGHT_CHESTPLATE",
+      "slot": "CHESTPLATE",
+      "replacedSlot": "CHESTPLATE",
+      "sourceParagraphs": [
+        "§7Health: §c+40\n§7Defense: §a+40\n§7Intelligence: §b+90",
+        "§6Full Set Bonus: Starpower §7(0/4)\n§7Increases the duration of §6Starfall\n§7by §a2x §7and its range by §a+1§7.",
+        "§8This item can be reforged!\n§4❣ §cRequires §aCombat Skill 8§c.\n§9§lRARE CHESTPLATE"
+      ],
+      "resultingBuild": {
+        "HELMET": "GLACITE_HELMET",
+        "CHESTPLATE": "STARLIGHT_CHESTPLATE",
+        "LEGGINGS": "GLACITE_LEGGINGS",
+        "BOOTS": "GLACITE_BOOTS"
+      },
+      "effects": [
+        {
+          "effectId": "lore:4",
+          "text": "Full Set Bonus: Starpower (0/4)\nIncreases the duration of Starfall\nby 2x and its range by +1.",
+          "rawSourceParagraph": "§6Full Set Bonus: Starpower §7(0/4)\n§7Increases the duration of §6Starfall\n§7by §a2x §7and its range by §a+1§7.",
+          "paragraphMatches": 1,
+          "effectsMatchingParagraph": 1,
+          "dependency": {
+            "kind": "PIECES",
+            "itemIds": [
+              "STARLIGHT_BOOTS",
+              "STARLIGHT_CHESTPLATE",
+              "STARLIGHT_HELMET",
+              "STARLIGHT_LEGGINGS"
+            ],
+            "minimum": 4
+          },
+          "membershipSources": [
+            {
+              "id": "museum:STARLIGHT",
+              "name": "Armor pieces from Museum group STARLIGHT",
+              "itemIds": [
+                "STARLIGHT_BOOTS",
+                "STARLIGHT_CHESTPLATE",
+                "STARLIGHT_HELMET",
+                "STARLIGHT_LEGGINGS"
+              ],
+              "source": {
+                "provider": "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+                "evidence": [
+                  "{\"group\":\"STARLIGHT\",\"members\":[\"STARLIGHT_BOOTS\",\"STARLIGHT_CHESTPLATE\",\"STARLIGHT_HELMET\",\"STARLIGHT_LEGGINGS\"]}",
+                  "Museum grouping supports a comparison package only; it does not prove a combat set bonus."
+                ]
+              }
+            }
+          ],
+          "before": "NOT_EQUIPPED",
+          "after": "NOT_SATISFIED",
+          "resultingMembershipCount": 1,
+          "source": {
+            "provider": "neu:items/STARLIGHT_CHESTPLATE@2026-09-17T13:35:10.975Z",
+            "evidence": [
+              "Full Set Bonus: Starpower (0/4)\nIncreases the duration of Starfall\nby 2x and its range by +1.",
+              "FOUR_SLOT_FULL_SET_V1",
+              "All four dependency members have identical complete bonus text with explicit (0/4).",
+              "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+              "{\"group\":\"STARLIGHT\",\"members\":[\"STARLIGHT_BOOTS\",\"STARLIGHT_CHESTPLATE\",\"STARLIGHT_HELMET\",\"STARLIGHT_LEGGINGS\"]}",
+              "Museum grouping supports a comparison package only; it does not prove a combat set bonus.",
+              "neu:items/STARLIGHT_BOOTS@2026-09-17T13:35:10.975Z",
+              "neu:items/STARLIGHT_CHESTPLATE@2026-09-17T13:35:10.975Z",
+              "neu:items/STARLIGHT_HELMET@2026-09-17T13:35:10.975Z",
+              "neu:items/STARLIGHT_LEGGINGS@2026-09-17T13:35:10.975Z"
+            ]
+          },
+          "completeBuild": true,
+          "currentProofQualified": true,
+          "peerDependencyAfterRemovingTargetParagraph": "UNKNOWN",
+          "independentOfTargetParagraph": false
+        }
+      ]
+    },
+    {
+      "candidateId": "piece:STRONG_DRAGON_CHESTPLATE",
+      "itemId": "STRONG_DRAGON_CHESTPLATE",
+      "slot": "CHESTPLATE",
+      "replacedSlot": "CHESTPLATE",
+      "sourceParagraphs": [
+        "§7Health: §c+120\n§7Defense: §a+160\n§7Strength: §c+25\n§7Gemstones: §8[]",
+        "§6Full Set Bonus: Strong Blood §7(0/4)\n§7Improves §9Aspect of the End\n§8⋗ §c+75 Damage",
+        "§7Instant Transmission:\n§8⋗ §a+2 §7teleport range\n§8⋗ §a+3 §7seconds\n§8⋗ §c+5 Strength §7on cast",
+        "§8This item can be reforged!\n§4❣ §cRequires §aCombat Skill 16§c.\n§6§lLEGENDARY CHESTPLATE"
+      ],
+      "resultingBuild": {
+        "HELMET": "GLACITE_HELMET",
+        "CHESTPLATE": "STRONG_DRAGON_CHESTPLATE",
+        "LEGGINGS": "GLACITE_LEGGINGS",
+        "BOOTS": "GLACITE_BOOTS"
+      },
+      "effects": [
+        {
+          "effectId": "lore:5",
+          "text": "Full Set Bonus: Strong Blood (0/4)\nImproves Aspect of the End\n⋗ +75 Damage\n\nInstant Transmission:\n⋗ +2 teleport range\n⋗ +3 seconds\n⋗ +5 Strength on cast",
+          "rawSourceParagraph": null,
+          "paragraphMatches": 0,
+          "effectsMatchingParagraph": 1,
+          "dependency": {
+            "kind": "PIECES",
+            "itemIds": [
+              "STRONG_DRAGON_BOOTS",
+              "STRONG_DRAGON_CHESTPLATE",
+              "STRONG_DRAGON_HELMET",
+              "STRONG_DRAGON_LEGGINGS"
+            ],
+            "minimum": 4
+          },
+          "membershipSources": [
+            {
+              "id": "museum:STRONG_DRAGON",
+              "name": "Armor pieces from Museum group STRONG_DRAGON",
+              "itemIds": [
+                "STRONG_DRAGON_BOOTS",
+                "STRONG_DRAGON_CHESTPLATE",
+                "STRONG_DRAGON_HELMET",
+                "STRONG_DRAGON_LEGGINGS"
+              ],
+              "source": {
+                "provider": "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+                "evidence": [
+                  "{\"group\":\"STRONG_DRAGON\",\"members\":[\"STRONG_DRAGON_BOOTS\",\"STRONG_DRAGON_CHESTPLATE\",\"STRONG_DRAGON_HELMET\",\"STRONG_DRAGON_LEGGINGS\"]}",
+                  "Museum grouping supports a comparison package only; it does not prove a combat set bonus."
+                ]
+              }
+            }
+          ],
+          "before": "NOT_EQUIPPED",
+          "after": "NOT_SATISFIED",
+          "resultingMembershipCount": 1,
+          "source": {
+            "provider": "neu:items/STRONG_DRAGON_CHESTPLATE@2026-09-17T13:35:10.975Z",
+            "evidence": [
+              "Full Set Bonus: Strong Blood (0/4)\nImproves Aspect of the End\n⋗ +75 Damage\n\nInstant Transmission:\n⋗ +2 teleport range\n⋗ +3 seconds\n⋗ +5 Strength on cast",
+              "FOUR_SLOT_FULL_SET_V1",
+              "All four dependency members have identical complete bonus text with explicit (0/4).",
+              "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+              "{\"group\":\"STRONG_DRAGON\",\"members\":[\"STRONG_DRAGON_BOOTS\",\"STRONG_DRAGON_CHESTPLATE\",\"STRONG_DRAGON_HELMET\",\"STRONG_DRAGON_LEGGINGS\"]}",
+              "Museum grouping supports a comparison package only; it does not prove a combat set bonus.",
+              "neu:items/STRONG_DRAGON_BOOTS@2026-09-17T13:35:10.975Z",
+              "neu:items/STRONG_DRAGON_CHESTPLATE@2026-09-17T13:35:10.975Z",
+              "neu:items/STRONG_DRAGON_HELMET@2026-09-17T13:35:10.975Z",
+              "neu:items/STRONG_DRAGON_LEGGINGS@2026-09-17T13:35:10.975Z"
+            ]
+          },
+          "completeBuild": true,
+          "currentProofQualified": true,
+          "peerDependencyAfterRemovingTargetParagraph": null,
+          "independentOfTargetParagraph": null
+        }
+      ]
+    },
+    {
+      "candidateId": "piece:WISE_DRAGON_CHESTPLATE",
+      "itemId": "WISE_DRAGON_CHESTPLATE",
+      "slot": "CHESTPLATE",
+      "replacedSlot": "CHESTPLATE",
+      "sourceParagraphs": [
+        "§7Health: §c+120\n§7Defense: §a+160\n§7Intelligence: §b+75\n§7Gemstones: §8[]",
+        "§6Full Set Bonus: Wise Blood §7(0/4)\n§7Abilities have §a2/3 §7of the mana cost.",
+        "§8This item can be reforged!\n§4❣ §cRequires §aCombat Skill 16§c.\n§6§lLEGENDARY CHESTPLATE"
+      ],
+      "resultingBuild": {
+        "HELMET": "GLACITE_HELMET",
+        "CHESTPLATE": "WISE_DRAGON_CHESTPLATE",
+        "LEGGINGS": "GLACITE_LEGGINGS",
+        "BOOTS": "GLACITE_BOOTS"
+      },
+      "effects": [
+        {
+          "effectId": "lore:5",
+          "text": "Full Set Bonus: Wise Blood (0/4)\nAbilities have 2/3 of the mana cost.",
+          "rawSourceParagraph": "§6Full Set Bonus: Wise Blood §7(0/4)\n§7Abilities have §a2/3 §7of the mana cost.",
+          "paragraphMatches": 1,
+          "effectsMatchingParagraph": 1,
+          "dependency": {
+            "kind": "PIECES",
+            "itemIds": [
+              "WISE_DRAGON_BOOTS",
+              "WISE_DRAGON_CHESTPLATE",
+              "WISE_DRAGON_HELMET",
+              "WISE_DRAGON_LEGGINGS"
+            ],
+            "minimum": 4
+          },
+          "membershipSources": [
+            {
+              "id": "museum:WISE_DRAGON",
+              "name": "Armor pieces from Museum group WISE_DRAGON",
+              "itemIds": [
+                "WISE_DRAGON_BOOTS",
+                "WISE_DRAGON_CHESTPLATE",
+                "WISE_DRAGON_HELMET",
+                "WISE_DRAGON_LEGGINGS"
+              ],
+              "source": {
+                "provider": "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+                "evidence": [
+                  "{\"group\":\"WISE_DRAGON\",\"members\":[\"WISE_DRAGON_BOOTS\",\"WISE_DRAGON_CHESTPLATE\",\"WISE_DRAGON_HELMET\",\"WISE_DRAGON_LEGGINGS\"]}",
+                  "Museum grouping supports a comparison package only; it does not prove a combat set bonus."
+                ]
+              }
+            }
+          ],
+          "before": "NOT_EQUIPPED",
+          "after": "NOT_SATISFIED",
+          "resultingMembershipCount": 1,
+          "source": {
+            "provider": "neu:items/WISE_DRAGON_CHESTPLATE@2026-09-17T13:35:10.975Z",
+            "evidence": [
+              "Full Set Bonus: Wise Blood (0/4)\nAbilities have 2/3 of the mana cost.",
+              "FOUR_SLOT_FULL_SET_V1",
+              "All four dependency members have identical complete bonus text with explicit (0/4).",
+              "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+              "{\"group\":\"WISE_DRAGON\",\"members\":[\"WISE_DRAGON_BOOTS\",\"WISE_DRAGON_CHESTPLATE\",\"WISE_DRAGON_HELMET\",\"WISE_DRAGON_LEGGINGS\"]}",
+              "Museum grouping supports a comparison package only; it does not prove a combat set bonus.",
+              "neu:items/WISE_DRAGON_BOOTS@2026-09-17T13:35:10.975Z",
+              "neu:items/WISE_DRAGON_CHESTPLATE@2026-09-17T13:35:10.975Z",
+              "neu:items/WISE_DRAGON_HELMET@2026-09-17T13:35:10.975Z",
+              "neu:items/WISE_DRAGON_LEGGINGS@2026-09-17T13:35:10.975Z"
+            ]
+          },
+          "completeBuild": true,
+          "currentProofQualified": true,
+          "peerDependencyAfterRemovingTargetParagraph": "UNKNOWN",
+          "independentOfTargetParagraph": false
+        }
+      ]
+    },
+    {
+      "candidateId": "piece:YOUNG_DRAGON_CHESTPLATE",
+      "itemId": "YOUNG_DRAGON_CHESTPLATE",
+      "slot": "CHESTPLATE",
+      "replacedSlot": "CHESTPLATE",
+      "sourceParagraphs": [
+        "§7Health: §c+120\n§7Defense: §a+160\n§7Speed: §f+20\n§7Gemstones: §8[⚔]",
+        "§6Full Set Bonus: Young Blood §7(0/4)\n§7Gain §a+70§7 Walk Speed while you are\n§7above §a50%§7 HP.\n§8+100 Walk Speed Cap",
+        "§8This item can be reforged!\n§4❣ §cRequires §aCombat Skill 16§c.\n§6§lLEGENDARY CHESTPLATE"
+      ],
+      "resultingBuild": {
+        "HELMET": "GLACITE_HELMET",
+        "CHESTPLATE": "YOUNG_DRAGON_CHESTPLATE",
+        "LEGGINGS": "GLACITE_LEGGINGS",
+        "BOOTS": "GLACITE_BOOTS"
+      },
+      "effects": [
+        {
+          "effectId": "lore:5",
+          "text": "Full Set Bonus: Young Blood (0/4)\nGain +70 Walk Speed while you are\nabove 50% HP.\n+100 Walk Speed Cap",
+          "rawSourceParagraph": "§6Full Set Bonus: Young Blood §7(0/4)\n§7Gain §a+70§7 Walk Speed while you are\n§7above §a50%§7 HP.\n§8+100 Walk Speed Cap",
+          "paragraphMatches": 1,
+          "effectsMatchingParagraph": 1,
+          "dependency": {
+            "kind": "PIECES",
+            "itemIds": [
+              "YOUNG_DRAGON_BOOTS",
+              "YOUNG_DRAGON_CHESTPLATE",
+              "YOUNG_DRAGON_HELMET",
+              "YOUNG_DRAGON_LEGGINGS"
+            ],
+            "minimum": 4
+          },
+          "membershipSources": [
+            {
+              "id": "museum:YOUNG_DRAGON",
+              "name": "Armor pieces from Museum group YOUNG_DRAGON",
+              "itemIds": [
+                "YOUNG_DRAGON_BOOTS",
+                "YOUNG_DRAGON_CHESTPLATE",
+                "YOUNG_DRAGON_HELMET",
+                "YOUNG_DRAGON_LEGGINGS"
+              ],
+              "source": {
+                "provider": "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+                "evidence": [
+                  "{\"group\":\"YOUNG_DRAGON\",\"members\":[\"YOUNG_DRAGON_BOOTS\",\"YOUNG_DRAGON_CHESTPLATE\",\"YOUNG_DRAGON_HELMET\",\"YOUNG_DRAGON_LEGGINGS\"]}",
+                  "Museum grouping supports a comparison package only; it does not prove a combat set bonus."
+                ]
+              }
+            }
+          ],
+          "before": "NOT_EQUIPPED",
+          "after": "NOT_SATISFIED",
+          "resultingMembershipCount": 1,
+          "source": {
+            "provider": "neu:items/YOUNG_DRAGON_CHESTPLATE@2026-09-17T13:35:10.975Z",
+            "evidence": [
+              "Full Set Bonus: Young Blood (0/4)\nGain +70 Walk Speed while you are\nabove 50% HP.\n+100 Walk Speed Cap",
+              "FOUR_SLOT_FULL_SET_V1",
+              "All four dependency members have identical complete bonus text with explicit (0/4).",
+              "neu:constants/museum.json#sets_to_items@2026-09-17T13:35:10.975Z",
+              "{\"group\":\"YOUNG_DRAGON\",\"members\":[\"YOUNG_DRAGON_BOOTS\",\"YOUNG_DRAGON_CHESTPLATE\",\"YOUNG_DRAGON_HELMET\",\"YOUNG_DRAGON_LEGGINGS\"]}",
+              "Museum grouping supports a comparison package only; it does not prove a combat set bonus.",
+              "neu:items/YOUNG_DRAGON_BOOTS@2026-09-17T13:35:10.975Z",
+              "neu:items/YOUNG_DRAGON_CHESTPLATE@2026-09-17T13:35:10.975Z",
+              "neu:items/YOUNG_DRAGON_HELMET@2026-09-17T13:35:10.975Z",
+              "neu:items/YOUNG_DRAGON_LEGGINGS@2026-09-17T13:35:10.975Z"
+            ]
+          },
+          "completeBuild": true,
+          "currentProofQualified": true,
+          "peerDependencyAfterRemovingTargetParagraph": "UNKNOWN",
+          "independentOfTargetParagraph": false
+        }
+      ]
+    },
+    {
+      "candidateId": "piece:ZOMBIE_CHESTPLATE",
+      "itemId": "ZOMBIE_CHESTPLATE",
+      "slot": "CHESTPLATE",
+      "replacedSlot": "CHESTPLATE",
+      "sourceParagraphs": [
+        "§7Health: §c+200\n§7Defense: §a+40",
+        "§6Full Set Bonus: Projectile Absorption §7(0/3)\n§7Heals the wearer for §a10§7 per second\n§7for §a5§7 seconds when hit by a\n§7projectile.",
+        "§8This item can be reforged!\n§5§lEPIC CHESTPLATE"
+      ],
+      "resultingBuild": {
+        "HELMET": "GLACITE_HELMET",
+        "CHESTPLATE": "ZOMBIE_CHESTPLATE",
+        "LEGGINGS": "GLACITE_LEGGINGS",
+        "BOOTS": "GLACITE_BOOTS"
+      },
+      "effects": [
+        {
+          "effectId": "lore:3",
+          "text": "Full Set Bonus: Projectile Absorption (0/3)\nHeals the wearer for 10 per second\nfor 5 seconds when hit by a\nprojectile.",
+          "rawSourceParagraph": "§6Full Set Bonus: Projectile Absorption §7(0/3)\n§7Heals the wearer for §a10§7 per second\n§7for §a5§7 seconds when hit by a\n§7projectile.",
+          "paragraphMatches": 1,
+          "effectsMatchingParagraph": 1,
+          "dependency": {
+            "kind": "UNKNOWN",
+            "reason": "Source bonus heading does not establish combat set membership, tier thresholds or all equipment prerequisites."
+          },
+          "membershipSources": [],
+          "before": "NOT_EQUIPPED",
+          "after": "UNKNOWN",
+          "resultingMembershipCount": 0,
+          "source": {
+            "provider": "neu:items/ZOMBIE_CHESTPLATE@2026-09-17T13:35:10.975Z",
+            "evidence": [
+              "Full Set Bonus: Projectile Absorption (0/3)\nHeals the wearer for 10 per second\nfor 5 seconds when hit by a\nprojectile."
+            ]
+          },
+          "completeBuild": true,
+          "currentProofQualified": false,
+          "peerDependencyAfterRemovingTargetParagraph": null,
+          "independentOfTargetParagraph": null
+        }
+      ]
+    }
+  ],
+  "qualification": "Read-only current proof audit plus in-memory source ablation with fresh parsing, not cached corroborated dependencies. Ablation does not modify source files or production logic. NOT_SATISFIED calculation uses only existing dependency+build; that dependency's provenance includes the paragraph being closed."
+}
