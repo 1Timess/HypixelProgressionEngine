@@ -1,0 +1,211 @@
+{
+  "policy": "CANONICAL_VS_INSTANCE_COLOR_PROVENANCE_V1",
+  "sources": {
+    "hypixel": {
+      "lastUpdated": 1789686143064
+    },
+    "neu": {
+      "repository": "NotEnoughUpdates/NotEnoughUpdates-REPO",
+      "branch": "master",
+      "etag": "W/\"e15b1f16adb21761becd756cfca0d6bf3106f2fefca612adfc58e81b4fb8d2fe\"",
+      "downloadedAt": "2026-09-17T13:35:10.975Z",
+      "itemCount": 8828
+    }
+  },
+  "examples": [
+    {
+      "itemId": "GLACITE_LEGGINGS",
+      "canonicalRGB": "3,252,248",
+      "neuDisplayPacked": 261368,
+      "neuDisplayRGB": "3,252,248",
+      "displayEvidence": "Name:\"§5Glacite Leggings\",color:261368}}",
+      "canonicalMatchesDisplay": true,
+      "rawLore": [
+        "§7Defense: §a+125",
+        "§7True Defense: §f+10",
+        "§7Mining Speed: §6+10",
+        "§7Mining Fortune: §6+5",
+        "§7Speed: §f+15",
+        "§7Gemstones: §8[§7§8] []",
+        "",
+        "§6Full Set Bonus: Expert Miner §7(0/4)",
+        "§7Grants §6+2 Mining Speed §7per Mining",
+        "§7Skill level unlocked.",
+        "",
+        "§8This item can be reforged!",
+        "§5§lEPIC LEGGINGS"
+      ],
+      "selectable": false,
+      "gameplayColor": false,
+      "provenance": "Hypixel saved resource metadata versus local NEU template NBT; NEU is not a live player instance"
+    },
+    {
+      "itemId": "GLACITE_BOOTS",
+      "canonicalRGB": "3,252,248",
+      "neuDisplayPacked": 261368,
+      "neuDisplayRGB": "3,252,248",
+      "displayEvidence": "Name:\"§5Glacite Boots\",color:261368}}",
+      "canonicalMatchesDisplay": true,
+      "rawLore": [
+        "§7Defense: §a+70",
+        "§7True Defense: §f+5",
+        "§7Mining Speed: §6+10",
+        "§7Mining Fortune: §6+5",
+        "§7Speed: §f+10",
+        "§7Gemstones: §8[§7§8] []",
+        "",
+        "§6Full Set Bonus: Expert Miner §7(0/4)",
+        "§7Grants §6+2 Mining Speed §7per Mining",
+        "§7Skill level unlocked.",
+        "",
+        "§8This item can be reforged!",
+        "§5§lEPIC BOOTS"
+      ],
+      "selectable": false,
+      "gameplayColor": false,
+      "provenance": "Hypixel saved resource metadata versus local NEU template NBT; NEU is not a live player instance"
+    },
+    {
+      "itemId": "LAPIS_ARMOR_LEGGINGS",
+      "canonicalRGB": "0,0,255",
+      "neuDisplayPacked": 255,
+      "neuDisplayRGB": "0,0,255",
+      "displayEvidence": "Name:\"§aLapis Armor Leggings\",color:255}}",
+      "canonicalMatchesDisplay": true,
+      "rawLore": [
+        "§7Defense: §a+35",
+        "§7Mining Speed: §6+20",
+        "§7Mining Fortune: §6+2",
+        "",
+        "§6Piece Bonus: Magnetic",
+        "§7Earn §a+50% §7more Exp when mining.",
+        "",
+        "§8This item can be reforged!",
+        "§4❣ §cRequires §aMining Skill 5§c.",
+        "§a§lUNCOMMON LEGGINGS"
+      ],
+      "selectable": false,
+      "gameplayColor": false,
+      "provenance": "Hypixel saved resource metadata versus local NEU template NBT; NEU is not a live player instance"
+    },
+    {
+      "itemId": "LEGGINGS_OF_THE_COVEN",
+      "canonicalRGB": null,
+      "neuDisplayPacked": 10040115,
+      "neuDisplayRGB": "153,51,51",
+      "displayEvidence": "Name:\"§6Leggings of the Coven\",color:10040115}}",
+      "canonicalMatchesDisplay": null,
+      "rawLore": [
+        "§7Rift Time: §a+80s",
+        "§7Hearts: §c+1",
+        "§7Mana Regen: §b+6%",
+        "",
+        "§6Ability: Friendship is Power ",
+        "§7Gain §5+1❁ Rift Damage §7and §b+2⚡ Mana",
+        "§bRegen §7for each other wearer within",
+        "§a64 §7blocks.",
+        "§8Max of 3 players!",
+        "",
+        "§dSame color = 2x stats!",
+        "§eLeft-click to pick color!",
+        "",
+        "§4☠ §cRequires §5Vampire Slayer 3§c.",
+        "§6§lLEGENDARY LEGGINGS"
+      ],
+      "selectable": true,
+      "gameplayColor": true,
+      "provenance": "Hypixel saved resource metadata versus local NEU template NBT; NEU is not a live player instance"
+    },
+    {
+      "itemId": "WIZARDMAN_LEGGINGS",
+      "canonicalRGB": null,
+      "neuDisplayPacked": 10040115,
+      "neuDisplayRGB": "153,51,51",
+      "displayEvidence": "Name:\"§dWizardman Leggings\",color:10040115}}",
+      "canonicalMatchesDisplay": null,
+      "rawLore": [
+        "§6Ability: Friendship is Power ",
+        "§7Gain §5+1❁ Rift Damage §7and §b+2⚡ Mana",
+        "§bRegen §7for each other wearer within",
+        "§a65 §7blocks.",
+        "§8Max of 3 players!",
+        "",
+        "§dSame color = 2x stats!",
+        "§eLeft-click to pick color!",
+        "",
+        "§8This item can be reforged!",
+        "§d§lMYTHIC LEGGINGS"
+      ],
+      "selectable": true,
+      "gameplayColor": true,
+      "provenance": "Hypixel saved resource metadata versus local NEU template NBT; NEU is not a live player instance"
+    },
+    {
+      "itemId": "WARM_WIZARD_FACE_2",
+      "canonicalRGB": null,
+      "neuDisplayPacked": null,
+      "neuDisplayRGB": null,
+      "displayEvidence": null,
+      "canonicalMatchesDisplay": null,
+      "rawLore": [
+        "§7Rift Time: §a+130s",
+        "§7Hearts: §c+1",
+        "§7Intelligence: §b+26",
+        "",
+        "§6Ability: Wizards All The Way Around ",
+        "§7Regain §a+2ф §7when killing a monster.",
+        "",
+        "§7If you would take §c❤ §7damage, take",
+        "§c0.5❤ §7less.",
+        "",
+        "§eLeft-click to pick color!",
+        "",
+        "§4☠ §cRequires §5Vampire Slayer 4§c.",
+        "§d§lMYTHIC HELMET"
+      ],
+      "selectable": true,
+      "gameplayColor": false,
+      "provenance": "Hypixel saved resource metadata versus local NEU template NBT; NEU is not a live player instance"
+    },
+    {
+      "itemId": "ANTI_BITE_SCARF_2",
+      "canonicalRGB": null,
+      "neuDisplayPacked": null,
+      "neuDisplayRGB": null,
+      "displayEvidence": null,
+      "canonicalMatchesDisplay": null,
+      "rawLore": [
+        "§7Rift Time: §a+110s",
+        "§7Hearts: §c+1",
+        "§7Intelligence: §b+22",
+        "",
+        "§6Ability: Helmets All The Way Around ",
+        "§7Regain §a+2ф §7when killing a monster.",
+        "",
+        "§7If you would take §c❤ §7damage, take",
+        "§c0.5❤ §7less.",
+        "",
+        "§eLeft-click to pick color!",
+        "",
+        "§4☠ §cRequires §5Vampire Slayer 4§c.",
+        "§d§lMYTHIC HELMET"
+      ],
+      "selectable": true,
+      "gameplayColor": false,
+      "provenance": "Hypixel saved resource metadata versus local NEU template NBT; NEU is not a live player instance"
+    }
+  ],
+  "counterexamples": [],
+  "ingestion": {
+    "decoder": "decodeHypixelNbt recursively preserves display.color in decoded NBT",
+    "normalizer": "normalizeDecodedItems copies display.Name/Lore and ExtraAttributes; display.color is not projected into ItemInstance",
+    "auction": "normalizeAuction shares normalizeDecodedItems; persisted extraAttributes do not include display.color",
+    "syntheticDisplayOnlyChangeHasEqualNormalizedResult": true,
+    "syntheticExtraAttributes": {
+      "id": "SYNTHETIC",
+      "color_marker": "preserved"
+    }
+  },
+  "conclusion": "Canonical resource default appearance and instance NBT are separate inputs. Selectable mechanics are evidenced without canonical color. Exact selectable game storage is not established; no instance-color semantics or support is authorized.",
+  "scope": "Only static Hypixel item.metadata.color in Dungeon Armor gross acquisition comparison; no NBT/display/color-marker field covered"
+}
