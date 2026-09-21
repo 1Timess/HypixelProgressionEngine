@@ -457,3 +457,38 @@ test("metadata classifications are stable under key order and arbitrary item ren
   assert.deepEqual(classifyArmorMetadata(item,intent),a);assert.ok(a.every(x=>x.comparisonInert));
  }
 });
+
+import {classifyArmorStatLine,ARMOR_STAT_LABEL_VOCABULARY} from "../src/engine/armor/stat-labels";
+test("canonical stat vocabulary normalizes all keys and validates matching numeric lines",()=>{
+ for(const entry of ARMOR_STAT_LABEL_VOCABULARY.entries){
+  assert.equal(entry.expectedLabel,entry.canonicalStatKey.toLowerCase().split("_").map(s=>s[0].toUpperCase()+s.slice(1)).join(" "));
+  assert.equal(classifyArmorStatLine(entry.expectedLabel+": +3.5",{[entry.canonicalStatKey]:3.5}).status,"KNOWN_LABEL_VALUE_MATCH");
+  for(const alias of entry.aliases)assert.equal(classifyArmorStatLine(alias+": -5",{[entry.canonicalStatKey]:-5}).status,"KNOWN_LABEL_VALUE_MATCH");
+ }
+});
+test("stat identity never uses unrelated equal values or resolves conflicting namespaces by value",()=>{
+ assert.equal(classifyArmorStatLine("Mining Fortune: +5",{MINING_FORTUNE:5,DEFENSE:5}).status,"KNOWN_LABEL_VALUE_MATCH");
+ assert.equal(classifyArmorStatLine("Speed: +5",{WALK_SPEED:5,RIFT_WALK_SPEED:9}).status,"AMBIGUOUS_STAT_LABEL");
+ assert.equal(classifyArmorStatLine("Intelligence: +5",{RIFT_INTELLIGENCE:5}).status,"KNOWN_LABEL_VALUE_MATCH");
+});
+test("known mismatches missing canonical keys unknown counters and non-simple syntax remain blocked",()=>{
+ assert.equal(classifyArmorStatLine("Mining Speed: 0",{MINING_SPEED:25}).status,"KNOWN_LABEL_VALUE_MISMATCH");
+ assert.equal(classifyArmorStatLine("Defense: +52.5",{DEFENSE:35}).status,"KNOWN_LABEL_VALUE_MISMATCH");
+ assert.equal(classifyArmorStatLine("Health: +60",{}).status,"KNOWN_LABEL_CANONICAL_MISSING");
+ for(const line of ["Gear Score: +10","Foo: +10","Mining Speed: +10%","Mining Speed: +10 (20)"])
+  assert.equal(classifyArmorStatLine(line,{MINING_SPEED:10,HEALTH:10}).status,"UNKNOWN_NUMERIC_LABEL");
+});
+test("new source stat recognition does not broaden dominance and is order independent",async()=>{
+ const f=await scenario();f.stats("a",150);
+ for(const item of f.catalog.getAll()){item.stats.MINING_SPEED=10;item.knowledge.rawLore.push("Mining Speed: +10");}
+ assert.equal(f.run().audit.pairLocal!.comparablePairs,1);
+ f.a.stats.MINING_SPEED=20;f.a.knowledge.rawLore[f.a.knowledge.rawLore.length-1]="Mining Speed: +20";
+ const forward=f.run();assert.equal(forward.audit.deferred.length,0);assert.equal(forward.audit.pairLocal!.comparablePairs,0);
+ f.e.candidates.reverse();assert.deepEqual(f.run().audit.deferred,forward.audit.deferred);
+});
+test("source guard distinguishes unknown label missing key and mismatched value on arbitrary items",async()=>{
+ for(const [line,reason] of [["Mining Speed: +99","RETAINED_SOURCE_STAT_VALUE_MISMATCH"],["Mining Fortune: +10","RETAINED_SOURCE_STAT_MISSING"],["Foo: +10","RETAINED_SOURCE_UNPARSED_LORE"]] as const){
+  const f=await scenario(),helmet=f.catalog.getById("OLD_HELMET")!;helmet.stats.MINING_SPEED=10;helmet.knowledge.rawLore.push(line);
+  assert.equal(f.run().audit.mechanicTrace!.pairCounts[reason],1);
+ }
+});

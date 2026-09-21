@@ -1,0 +1,925 @@
+{
+  "policy": "ARMOR_STAT_LABEL_VOCABULARY_V1",
+  "sources": {
+    "hypixel": {
+      "lastUpdated": 1789686143064
+    },
+    "neu": {
+      "repository": "NotEnoughUpdates/NotEnoughUpdates-REPO",
+      "branch": "master",
+      "etag": "W/\"e15b1f16adb21761becd756cfca0d6bf3106f2fefca612adfc58e81b4fb8d2fe\"",
+      "downloadedAt": "2026-09-17T13:35:10.975Z",
+      "itemCount": 8828
+    }
+  },
+  "inputSha256": "b017007e68bf39e8e3b795be78b1e2d56433beb631cc03b5782f46bf3f67219c",
+  "qualification": "Identity from canonical-key normalization and catalog-reviewed aliases; numeric values never infer identity. Shared labels require exactly one candidate key present, otherwise fail closed. Simple-number syntax only.",
+  "entries": [
+    {
+      "canonicalStatKey": "ABILITY_DAMAGE_PERCENT",
+      "expectedLabel": "Ability Damage Percent",
+      "aliases": [
+        "Ability Damage"
+      ],
+      "observedLabels": [
+        "Ability Damage"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "AURORA_HELMET",
+          "label": "Ability Damage",
+          "raw": "§7Ability Damage: §c+16%"
+        },
+        {
+          "itemId": "BURNING_AURORA_HELMET",
+          "label": "Ability Damage",
+          "raw": "§7Ability Damage: §c+25%"
+        },
+        {
+          "itemId": "DARK_GOGGLES",
+          "label": "Ability Damage",
+          "raw": "§7Ability Damage: §c+25%"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "ATTACK_SPEED",
+      "expectedLabel": "Attack Speed",
+      "aliases": [],
+      "observedLabels": [
+        "Attack Speed"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "THERMODYNAMIC_BOOTS",
+          "label": "Attack Speed",
+          "raw": "§7Attack Speed: §e+5%"
+        },
+        {
+          "itemId": "THERMODYNAMIC_CHESTPLATE",
+          "label": "Attack Speed",
+          "raw": "§7Attack Speed: §e+5%"
+        },
+        {
+          "itemId": "THERMODYNAMIC_HELMET",
+          "label": "Attack Speed",
+          "raw": "§7Attack Speed: §e+5%"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "BLOCK_FORTUNE",
+      "expectedLabel": "Block Fortune",
+      "aliases": [],
+      "observedLabels": [
+        "Block Fortune"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "GLOSSY_MINERAL_BOOTS",
+          "label": "Block Fortune",
+          "raw": "§7Block Fortune: §6+50"
+        },
+        {
+          "itemId": "GLOSSY_MINERAL_CHESTPLATE",
+          "label": "Block Fortune",
+          "raw": "§7Block Fortune: §6+50"
+        },
+        {
+          "itemId": "GLOSSY_MINERAL_HELMET",
+          "label": "Block Fortune",
+          "raw": "§7Block Fortune: §6+50"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "BONUS_PEST_CHANCE",
+      "expectedLabel": "Bonus Pest Chance",
+      "aliases": [],
+      "observedLabels": [
+        "Bonus Pest Chance"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "BIOHAZARD_BOOTS",
+          "label": "Bonus Pest Chance",
+          "raw": "§7Bonus Pest Chance: §2+16.5%"
+        },
+        {
+          "itemId": "BIOHAZARD_HELMET",
+          "label": "Bonus Pest Chance",
+          "raw": "§7Bonus Pest Chance: §2+16.5%"
+        },
+        {
+          "itemId": "BIOHAZARD_LEGGINGS",
+          "label": "Bonus Pest Chance",
+          "raw": "§7Bonus Pest Chance: §2+16.5%"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "COLD_RESISTANCE",
+      "expectedLabel": "Cold Resistance",
+      "aliases": [],
+      "observedLabels": [],
+      "identityAuthorized": true,
+      "examples": []
+    },
+    {
+      "canonicalStatKey": "CRITICAL_CHANCE",
+      "expectedLabel": "Critical Chance",
+      "aliases": [
+        "Crit Chance"
+      ],
+      "observedLabels": [
+        "Crit Chance"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "CREEPER_HAT",
+          "label": "Crit Chance",
+          "raw": "§7Crit Chance: §9+5%"
+        },
+        {
+          "itemId": "SPIDER_HAT",
+          "label": "Crit Chance",
+          "raw": "§7Crit Chance: §9+25%"
+        },
+        {
+          "itemId": "SUPERIOR_DRAGON_BOOTS",
+          "label": "Crit Chance",
+          "raw": "§7Crit Chance: §9+2%"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "CRITICAL_DAMAGE",
+      "expectedLabel": "Critical Damage",
+      "aliases": [
+        "Crit Damage"
+      ],
+      "observedLabels": [
+        "Crit Damage"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "BERSERKER_BOOTS",
+          "label": "Crit Damage",
+          "raw": "§7Crit Damage: §9+25%"
+        },
+        {
+          "itemId": "BERSERKER_CHESTPLATE",
+          "label": "Crit Damage",
+          "raw": "§7Crit Damage: §9+60%"
+        },
+        {
+          "itemId": "BERSERKER_HELMET",
+          "label": "Crit Damage",
+          "raw": "§7Crit Damage: §9+35%"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "DEFENSE",
+      "expectedLabel": "Defense",
+      "aliases": [],
+      "observedLabels": [
+        "Defense"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "ABYSSAL_BOOTS",
+          "label": "Defense",
+          "raw": "§7Defense: §a+110"
+        },
+        {
+          "itemId": "ABYSSAL_CHESTPLATE",
+          "label": "Defense",
+          "raw": "§7Defense: §a+200"
+        },
+        {
+          "itemId": "ABYSSAL_HELMET",
+          "label": "Defense",
+          "raw": "§7Defense: §a+120"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "FARMING_FORTUNE",
+      "expectedLabel": "Farming Fortune",
+      "aliases": [],
+      "observedLabels": [
+        "Farming Fortune"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "CROPIE_BOOTS",
+          "label": "Farming Fortune",
+          "raw": "§7Farming Fortune: §6+20"
+        },
+        {
+          "itemId": "CROPIE_CHESTPLATE",
+          "label": "Farming Fortune",
+          "raw": "§7Farming Fortune: §6+25"
+        },
+        {
+          "itemId": "CROPIE_HELMET",
+          "label": "Farming Fortune",
+          "raw": "§7Farming Fortune: §6+20"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "FEAR",
+      "expectedLabel": "Fear",
+      "aliases": [],
+      "observedLabels": [
+        "Fear"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "GREAT_SPOOK_BOOTS",
+          "label": "Fear",
+          "raw": "§7Fear: §5+5"
+        },
+        {
+          "itemId": "GREAT_SPOOK_CHESTPLATE",
+          "label": "Fear",
+          "raw": "§7Fear: §5+5"
+        },
+        {
+          "itemId": "GREAT_SPOOK_HELMET",
+          "label": "Fear",
+          "raw": "§7Fear: §5+5"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "FEROCITY",
+      "expectedLabel": "Ferocity",
+      "aliases": [],
+      "observedLabels": [
+        "Ferocity"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "WEREWOLF_BOOTS",
+          "label": "Ferocity",
+          "raw": "§7Ferocity: §c+10"
+        },
+        {
+          "itemId": "WEREWOLF_CHESTPLATE",
+          "label": "Ferocity",
+          "raw": "§7Ferocity: §c+10"
+        },
+        {
+          "itemId": "WEREWOLF_HELMET",
+          "label": "Ferocity",
+          "raw": "§7Ferocity: §c+10"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "FISHING_SPEED",
+      "expectedLabel": "Fishing Speed",
+      "aliases": [],
+      "observedLabels": [
+        "Fishing Speed"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "FROGGLES",
+          "label": "Fishing Speed",
+          "raw": "§7Fishing Speed: §b+1"
+        },
+        {
+          "itemId": "FROGGLES_DIAMOND",
+          "label": "Fishing Speed",
+          "raw": "§7Fishing Speed: §b+4"
+        },
+        {
+          "itemId": "FROGGLES_GOLD",
+          "label": "Fishing Speed",
+          "raw": "§7Fishing Speed: §b+3"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "FORAGING_FORTUNE",
+      "expectedLabel": "Foraging Fortune",
+      "aliases": [],
+      "observedLabels": [
+        "Foraging Fortune"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "CHARLIE_TROUSERS",
+          "label": "Foraging Fortune",
+          "raw": "§7Foraging Fortune: §6+6"
+        },
+        {
+          "itemId": "FIG_BOOTS",
+          "label": "Foraging Fortune",
+          "raw": "§7Foraging Fortune: §6+30"
+        },
+        {
+          "itemId": "FIG_CHESTPLATE",
+          "label": "Foraging Fortune",
+          "raw": "§7Foraging Fortune: §6+30"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "HEALTH",
+      "expectedLabel": "Health",
+      "aliases": [],
+      "observedLabels": [
+        "Health"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "ABYSSAL_BOOTS",
+          "label": "Health",
+          "raw": "§7Health: §c+120"
+        },
+        {
+          "itemId": "ABYSSAL_CHESTPLATE",
+          "label": "Health",
+          "raw": "§7Health: §c+200"
+        },
+        {
+          "itemId": "ABYSSAL_HELMET",
+          "label": "Health",
+          "raw": "§7Health: §c+130"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "HEAT_RESISTANCE",
+      "expectedLabel": "Heat Resistance",
+      "aliases": [],
+      "observedLabels": [
+        "Heat Resistance"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "ARMOR_OF_YOG_BOOTS",
+          "label": "Heat Resistance",
+          "raw": "§7Heat Resistance: §c+10"
+        },
+        {
+          "itemId": "ARMOR_OF_YOG_CHESTPLATE",
+          "label": "Heat Resistance",
+          "raw": "§7Heat Resistance: §c+10"
+        },
+        {
+          "itemId": "ARMOR_OF_YOG_HELMET",
+          "label": "Heat Resistance",
+          "raw": "§7Heat Resistance: §c+10"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "INTELLIGENCE",
+      "expectedLabel": "Intelligence",
+      "aliases": [],
+      "observedLabels": [
+        "Intelligence"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "ADAPTIVE_BOOTS",
+          "label": "Intelligence",
+          "raw": "§7Intelligence: §b+15"
+        },
+        {
+          "itemId": "ADAPTIVE_CHESTPLATE",
+          "label": "Intelligence",
+          "raw": "§7Intelligence: §b+15"
+        },
+        {
+          "itemId": "ADAPTIVE_HELMET",
+          "label": "Intelligence",
+          "raw": "§7Intelligence: §b+15"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "MAGIC_FIND",
+      "expectedLabel": "Magic Find",
+      "aliases": [],
+      "observedLabels": [
+        "Magic Find"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "SORROW_BOOTS",
+          "label": "Magic Find",
+          "raw": "§7Magic Find: §b+5"
+        },
+        {
+          "itemId": "SORROW_CHESTPLATE",
+          "label": "Magic Find",
+          "raw": "§7Magic Find: §b+5"
+        },
+        {
+          "itemId": "SORROW_HELMET",
+          "label": "Magic Find",
+          "raw": "§7Magic Find: §b+5"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "MENDING",
+      "expectedLabel": "Mending",
+      "aliases": [],
+      "observedLabels": [
+        "Mending"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "BURNING_HOLLOW_BOOTS",
+          "label": "Mending",
+          "raw": "§7Mending: §a+8"
+        },
+        {
+          "itemId": "BURNING_HOLLOW_CHESTPLATE",
+          "label": "Mending",
+          "raw": "§7Mending: §a+8"
+        },
+        {
+          "itemId": "BURNING_HOLLOW_HELMET",
+          "label": "Mending",
+          "raw": "§7Mending: §a+8"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "MINING_FORTUNE",
+      "expectedLabel": "Mining Fortune",
+      "aliases": [],
+      "observedLabels": [
+        "Mining Fortune"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "ARMOR_OF_YOG_BOOTS",
+          "label": "Mining Fortune",
+          "raw": "§7Mining Fortune: §6+20"
+        },
+        {
+          "itemId": "ARMOR_OF_YOG_CHESTPLATE",
+          "label": "Mining Fortune",
+          "raw": "§7Mining Fortune: §6+20"
+        },
+        {
+          "itemId": "ARMOR_OF_YOG_HELMET",
+          "label": "Mining Fortune",
+          "raw": "§7Mining Fortune: §6+20"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "MINING_SPEED",
+      "expectedLabel": "Mining Speed",
+      "aliases": [],
+      "observedLabels": [
+        "Mining Speed"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "ARMOR_OF_YOG_BOOTS",
+          "label": "Mining Speed",
+          "raw": "§7Mining Speed: §6+25"
+        },
+        {
+          "itemId": "ARMOR_OF_YOG_BOOTS",
+          "label": "Mining Speed",
+          "raw": "§7Mining Speed: §a0"
+        },
+        {
+          "itemId": "ARMOR_OF_YOG_CHESTPLATE",
+          "label": "Mining Speed",
+          "raw": "§7Mining Speed: §6+25"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "PRESSURE_RESISTANCE",
+      "expectedLabel": "Pressure Resistance",
+      "aliases": [],
+      "observedLabels": [
+        "Pressure Resistance"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "ABYSSAL_BOOTS",
+          "label": "Pressure Resistance",
+          "raw": "§7Pressure Resistance: §9+20"
+        },
+        {
+          "itemId": "ABYSSAL_CHESTPLATE",
+          "label": "Pressure Resistance",
+          "raw": "§7Pressure Resistance: §9+20"
+        },
+        {
+          "itemId": "ABYSSAL_HELMET",
+          "label": "Pressure Resistance",
+          "raw": "§7Pressure Resistance: §9+20"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "RESPIRATION",
+      "expectedLabel": "Respiration",
+      "aliases": [],
+      "observedLabels": [
+        "Respiration"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "ABYSSAL_BOOTS",
+          "label": "Respiration",
+          "raw": "§7Respiration: §3+5"
+        },
+        {
+          "itemId": "ABYSSAL_CHESTPLATE",
+          "label": "Respiration",
+          "raw": "§7Respiration: §3+5"
+        },
+        {
+          "itemId": "ABYSSAL_HELMET",
+          "label": "Respiration",
+          "raw": "§7Respiration: §3+5"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "RIFT_DAMAGE",
+      "expectedLabel": "Rift Damage",
+      "aliases": [],
+      "observedLabels": [],
+      "identityAuthorized": true,
+      "examples": []
+    },
+    {
+      "canonicalStatKey": "RIFT_HEALTH",
+      "expectedLabel": "Rift Health",
+      "aliases": [
+        "Hearts"
+      ],
+      "observedLabels": [
+        "Hearts"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "ANTI_BITE_SCARF",
+          "label": "Hearts",
+          "raw": "§7Hearts: §c+1"
+        },
+        {
+          "itemId": "ANTI_BITE_SCARF_2",
+          "label": "Hearts",
+          "raw": "§7Hearts: §c+1"
+        },
+        {
+          "itemId": "LEGGINGS_OF_THE_COVEN",
+          "label": "Hearts",
+          "raw": "§7Hearts: §c+1"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "RIFT_INTELLIGENCE",
+      "expectedLabel": "Rift Intelligence",
+      "aliases": [
+        "Intelligence"
+      ],
+      "observedLabels": [
+        "Intelligence"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "AGARICUS_CAP_CAP",
+          "label": "Intelligence",
+          "raw": "§7Intelligence: §b+15"
+        },
+        {
+          "itemId": "ANTI_BITE_SCARF",
+          "label": "Intelligence",
+          "raw": "§7Intelligence: §b+20"
+        },
+        {
+          "itemId": "ANTI_BITE_SCARF_2",
+          "label": "Intelligence",
+          "raw": "§7Intelligence: §b+22"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "RIFT_MANA_REGEN",
+      "expectedLabel": "Rift Mana Regen",
+      "aliases": [
+        "Mana Regen"
+      ],
+      "observedLabels": [
+        "Mana Regen"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "FEMURGROWTH_LEGGINGS",
+          "label": "Mana Regen",
+          "raw": "§7Mana Regen: §b+5%"
+        },
+        {
+          "itemId": "LEGGINGS_OF_THE_COVEN",
+          "label": "Mana Regen",
+          "raw": "§7Mana Regen: §b+6%"
+        },
+        {
+          "itemId": "LIVELY_SEPULTURE_CHESTPLATE",
+          "label": "Mana Regen",
+          "raw": "§7Mana Regen: §b+25%"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "RIFT_TIME",
+      "expectedLabel": "Rift Time",
+      "aliases": [],
+      "observedLabels": [
+        "Rift Time"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "AGARICUS_CAP_CAP",
+          "label": "Rift Time",
+          "raw": "§7Rift Time: §a+50s"
+        },
+        {
+          "itemId": "ANTI_BITE_SCARF",
+          "label": "Rift Time",
+          "raw": "§7Rift Time: §a+100s"
+        },
+        {
+          "itemId": "ANTI_BITE_SCARF_2",
+          "label": "Rift Time",
+          "raw": "§7Rift Time: §a+110s"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "RIFT_WALK_SPEED",
+      "expectedLabel": "Rift Walk Speed",
+      "aliases": [
+        "Speed"
+      ],
+      "observedLabels": [
+        "Speed"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "EXCEEDINGLY_COMFY_SNEAKERS",
+          "label": "Speed",
+          "raw": "§7Speed: §f+5"
+        },
+        {
+          "itemId": "FEMURGROWTH_LEGGINGS",
+          "label": "Speed",
+          "raw": "§7Speed: §f-4"
+        },
+        {
+          "itemId": "GUNTHER_SNEAKERS",
+          "label": "Speed",
+          "raw": "§7Speed: §f+4"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "SEA_CREATURE_CHANCE",
+      "expectedLabel": "Sea Creature Chance",
+      "aliases": [],
+      "observedLabels": [
+        "Sea Creature Chance"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "ABYSSAL_BOOTS",
+          "label": "Sea Creature Chance",
+          "raw": "§7Sea Creature Chance: §3+2%"
+        },
+        {
+          "itemId": "ABYSSAL_CHESTPLATE",
+          "label": "Sea Creature Chance",
+          "raw": "§7Sea Creature Chance: §3+2%"
+        },
+        {
+          "itemId": "ABYSSAL_HELMET",
+          "label": "Sea Creature Chance",
+          "raw": "§7Sea Creature Chance: §3+2%"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "STRENGTH",
+      "expectedLabel": "Strength",
+      "aliases": [],
+      "observedLabels": [
+        "Strength"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "ADAPTIVE_BOOTS",
+          "label": "Strength",
+          "raw": "§7Strength: §c+15"
+        },
+        {
+          "itemId": "ADAPTIVE_CHESTPLATE",
+          "label": "Strength",
+          "raw": "§7Strength: §c+15"
+        },
+        {
+          "itemId": "ADAPTIVE_HELMET",
+          "label": "Strength",
+          "raw": "§7Strength: §c+15"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "SWEEP",
+      "expectedLabel": "Sweep",
+      "aliases": [],
+      "observedLabels": [
+        "Sweep"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "CANOPY_BOOTS",
+          "label": "Sweep",
+          "raw": "§7Sweep: §2+6"
+        },
+        {
+          "itemId": "CANOPY_CHESTPLATE",
+          "label": "Sweep",
+          "raw": "§7Sweep: §2+6"
+        },
+        {
+          "itemId": "CANOPY_HELMET",
+          "label": "Sweep",
+          "raw": "§7Sweep: §2+6"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "TREASURE_CHANCE",
+      "expectedLabel": "Treasure Chance",
+      "aliases": [],
+      "observedLabels": [
+        "Treasure Chance"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "BACKWATER_BOOTS",
+          "label": "Treasure Chance",
+          "raw": "§7Treasure Chance: §6+0.1%"
+        },
+        {
+          "itemId": "BACKWATER_CHESTPLATE",
+          "label": "Treasure Chance",
+          "raw": "§7Treasure Chance: §6+0.1%"
+        },
+        {
+          "itemId": "BACKWATER_HELMET",
+          "label": "Treasure Chance",
+          "raw": "§7Treasure Chance: §6+0.1%"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "TROPHY_FISH_CHANCE",
+      "expectedLabel": "Trophy Fish Chance",
+      "aliases": [],
+      "observedLabels": [],
+      "identityAuthorized": true,
+      "examples": []
+    },
+    {
+      "canonicalStatKey": "TRUE_DEFENSE",
+      "expectedLabel": "True Defense",
+      "aliases": [],
+      "observedLabels": [
+        "True Defense"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "BURNING_FERVOR_BOOTS",
+          "label": "True Defense",
+          "raw": "§7True Defense: §f+8"
+        },
+        {
+          "itemId": "BURNING_FERVOR_CHESTPLATE",
+          "label": "True Defense",
+          "raw": "§7True Defense: §f+8"
+        },
+        {
+          "itemId": "BURNING_FERVOR_HELMET",
+          "label": "True Defense",
+          "raw": "§7True Defense: §f+8"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "VITALITY",
+      "expectedLabel": "Vitality",
+      "aliases": [],
+      "observedLabels": [
+        "Vitality"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "CRYSTALLIZED_HEART",
+          "label": "Vitality",
+          "raw": "§7Vitality: §4+40"
+        },
+        {
+          "itemId": "REAPER_MASK",
+          "label": "Vitality",
+          "raw": "§7Vitality: §4+60"
+        },
+        {
+          "itemId": "REVIVED_HEART",
+          "label": "Vitality",
+          "raw": "§7Vitality: §4+50"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "WALK_SPEED",
+      "expectedLabel": "Walk Speed",
+      "aliases": [
+        "Speed"
+      ],
+      "observedLabels": [
+        "Speed"
+      ],
+      "identityAuthorized": true,
+      "examples": [
+        {
+          "itemId": "BLAZE_BOOTS",
+          "label": "Speed",
+          "raw": "§7Speed: §f+2"
+        },
+        {
+          "itemId": "BLAZE_CHESTPLATE",
+          "label": "Speed",
+          "raw": "§7Speed: §f+2"
+        },
+        {
+          "itemId": "BLAZE_HELMET",
+          "label": "Speed",
+          "raw": "§7Speed: §f+2"
+        }
+      ]
+    },
+    {
+      "canonicalStatKey": "WEAPON_ABILITY_DAMAGE",
+      "expectedLabel": "Weapon Ability Damage",
+      "aliases": [],
+      "observedLabels": [],
+      "identityAuthorized": true,
+      "examples": []
+    }
+  ]
+}

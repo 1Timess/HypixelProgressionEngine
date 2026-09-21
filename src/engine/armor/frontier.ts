@@ -1,3 +1,4 @@
+import {classifyArmorStatLine} from "./stat-labels";
 import {classifyArmorMetadata,armorComparisonMetadata,ARMOR_METADATA_POLICY} from "./metadata";
 import {equipmentDependencyState} from "./effects";
 import { auditArmorComparability } from "./comparability-audit";
@@ -30,11 +31,6 @@ export interface ArmorFrontierAudit {
 }
 
 // This is a closed proof grammar, not a general lore parser. Any remaining clause blocks pruning.
-const labels: Record<string,string> = {
-  defense:"DEFENSE", health:"HEALTH", "true defense":"TRUE_DEFENSE",
-  strength:"STRENGTH", "crit chance":"CRITICAL_CHANCE", "crit damage":"CRITICAL_DAMAGE",
-  intelligence:"INTELLIGENCE", speed:"WALK_SPEED",
-};
 const monotone = new Set(["DEFENSE","HEALTH","TRUE_DEFENSE"]);
 function sourceClosed(item: ItemDefinition, intent:ArmorEvidence["intent"], allowIndependentOpaque = false, inactive: string[] = [], onFailure?:(failure:ArmorGuardFailure)=>void): boolean {
   const initial:ArmorGuardFailure[]=[];
@@ -57,10 +53,10 @@ function sourceClosed(item: ItemDefinition, intent:ArmorEvidence["intent"], allo
     const line = raw.replace(/§[0-9a-fk-or]/gi,"").trim();
     if (!line || line === "This item can be reforged!") continue;
     if (item.rarity && line === item.rarity + " " + (item.dungeon.isDungeonItem ? "DUNGEON " : "") + item.category) continue;
-    const match = line.match(/^([A-Za-z ]+): ([+-]?\d+(?:\.\d+)?)$/);
-    const key = match && labels[match[1].toLowerCase()];
-    if (!match || !key || !Object.hasOwn(item.stats,key) || item.stats[key] !== Number(match[2])) {
-      onFailure?.({reason:!match||!key?"SOURCE_UNPARSED_LORE":!Object.hasOwn(item.stats,key)?"SOURCE_STAT_MISSING":"SOURCE_STAT_VALUE_MISMATCH",itemId:item.id,line});return false;
+    const stat=classifyArmorStatLine(line,item.stats);
+    if(stat.status!=="KNOWN_LABEL_VALUE_MATCH"){
+      const reason=stat.status==="KNOWN_LABEL_VALUE_MISMATCH"?"SOURCE_STAT_VALUE_MISMATCH":stat.status==="KNOWN_LABEL_CANONICAL_MISSING"?"SOURCE_STAT_MISSING":stat.status==="AMBIGUOUS_STAT_LABEL"?"SOURCE_STAT_LABEL_AMBIGUOUS":"SOURCE_UNPARSED_LORE";
+      onFailure?.({reason,itemId:item.id,line});return false;
     }
     statSeen = true;
   }
