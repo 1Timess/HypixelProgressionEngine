@@ -1,0 +1,5239 @@
+{
+  "snapshot": {
+    "id": "14",
+    "hypixel_last_updated": "1789914403689",
+    "status": "COMPLETE"
+  },
+  "inputs": {
+    "077af093e777022ea257cdfac6d200ac2d1f756e05f038b162f0ac682a7ba78b": {
+      "itemId": "ZOMBIE_COMMANDER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 7,
+        "baseStatBoostPercentage": 1,
+        "modifier": "clean",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1088825785
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d490 §8(1768)",
+        "§7Health: §c+204 §9(+15) §8(+813.96)",
+        "§7Defense: §a+101 §9(+15) §8(+402.99)",
+        "§7Strength: §c+17 §8(+67.83)",
+        "§7Crit Chance: §9+8% §9(+8%) §8(+8.32%)",
+        "§7Intelligence: §b+9 §8(+35.91)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Training §7(0/4)",
+        "§7Every §950 Zombies killed§7 gives the",
+        "§7wearer §a+5 §c Health§7 while wearing",
+        "§7the set. Max 500.",
+        "",
+        "§7Zombies Killed: §a0",
+        "§7Bonus HP: §a0",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "c7c33e9440252a8e33b0cfd1fbda2f931a510443b65ee700b6e3cb0fc15c5a88": {
+      "itemId": "ZOMBIE_KNIGHT_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 6,
+        "baseStatBoostPercentage": 37,
+        "modifier": "smart",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1087685357
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d656 §8(2314)",
+        "§7Health: §c+87 §9(+12) §8(+312.33)",
+        "§7Defense: §a+235 §9(+12) §8(+843.65)",
+        "§7Strength: §c+43 §8(+154.37)",
+        "§7Intelligence: §b+80 §9(+80) §8(+287.2)",
+        "§7Speed: §f+9 §8(+32.31)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Zombie Knight §7(0/4)",
+        "§7Gains §a+50 Defense §7when used with",
+        "§7the Zombie Knight Sword",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "928414cb1618afd6a447a641a5a0a9981b0dfda5cc28469a8dec2d1da3c58157": {
+      "itemId": "ZOMBIE_COMMANDER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 7,
+        "baseStatBoostPercentage": 34,
+        "modifier": "mythic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1087931696
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d576 §8(2292)",
+        "§7Health: §c+234 §9(+8) §8(+1,003.86)",
+        "§7Defense: §a+116 §9(+8) §8(+497.64)",
+        "§7Strength: §c+30 §9(+8) §8(+128.7)",
+        "§7Crit Chance: §9+4% §9(+4%) §8(+4.16%)",
+        "§7Intelligence: §b+51 §9(+40) §8(+218.79)",
+        "§7Speed: §f+2 §9(+2) §8(+8.58)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Training §7(0/4)",
+        "§7Every §950 Zombies killed§7 gives the",
+        "§7wearer §a+5 §c Health§7 while wearing",
+        "§7the set. Max 500.",
+        "",
+        "§7Zombies Killed: §a0",
+        "§7Bonus HP: §a0",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "2366298678eed07e9e6781ed4bf362cdb698d4bfc6186fe06377d0c5b516d916": {
+      "itemId": "SKELETON_GRUNT_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 2,
+        "baseStatBoostPercentage": 33,
+        "modifier": "heavy",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1088016910
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d429 §8(1537)",
+        "§7Health: §c+123 §8(+448.95)",
+        "§7Defense: §a+140 §9(+65) §8(+511)",
+        "§7Crit Damage: §9+19% §9(-3%) §8(+69.35%)",
+        "§7Speed: §f-1 §9(-1)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "a9b7522b7c08e70fe2d70cd5529751ee2af8c52b178bb057fb9a750d5e16397f": {
+      "itemId": "SUPER_HEAVY_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 4,
+        "baseStatBoostPercentage": 28,
+        "modifier": "fierce",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1088432411
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d556 §8(1288)",
+        "§7Health: §c+75 §8(+178.5)",
+        "§7Defense: §a+218 §8(+518.84)",
+        "§7Strength: §c+8 §9(+8) §8(+19.04)",
+        "§7Crit Chance: §9+5% §9(+5%) §8(+5.15%)",
+        "§7Crit Damage: §9+14% §9(+14%) §8(+33.32%)",
+        "§7Speed: §f-10",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Each piece of this armor reduces",
+        "§7the cooldown of §9Seismic Wave §7by §a1s§7.",
+        "",
+        "§6Full Set Bonus: Vindicate §7(0/4)",
+        "§7Grants §f+1 walk speed §7for every §a50",
+        "§a§7defense that you have.",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "b95f58921d8945e8db10ceadc025be96222743dca3a3b54a3c791c7cadd40b52": {
+      "itemId": "ZOMBIE_COMMANDER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 7,
+        "baseStatBoostPercentage": 19,
+        "modifier": "mythic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1089568380
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d536 §8(1978)",
+        "§7Health: §c+217 §9(+8) §8(+865.83)",
+        "§7Defense: §a+106 §9(+8) §8(+422.94)",
+        "§7Strength: §c+28 §9(+8) §8(+111.72)",
+        "§7Crit Chance: §9+4% §9(+4%) §8(+4.16%)",
+        "§7Intelligence: §b+50 §9(+40) §8(+199.5)",
+        "§7Speed: §f+2 §9(+2) §8(+7.98)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Training §7(0/4)",
+        "§7Every §950 Zombies killed§7 gives the",
+        "§7wearer §a+5 §c Health§7 while wearing",
+        "§7the set. Max 500.",
+        "",
+        "§7Zombies Killed: §a0",
+        "§7Bonus HP: §a0",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "2a553f150d92176466e147d0b22137663e10f7d8351d9f194651d7874e88dcbd": {
+      "itemId": "ROTTEN_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 2,
+        "baseStatBoostPercentage": 43,
+        "modifier": "titanic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1090321486
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d413 §8(715)",
+        "§7Health: §c+290 §9(+20) §8(+507.5)",
+        "§7Defense: §a+40 §9(+20) §8(+70)",
+        "§7Strength: §c+32 §8(+56)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7This rotten piece of armor grants",
+        "§7§e15% §7knockback resistance to arrows",
+        "§7per piece worn.",
+        "",
+        "§6Full Set Bonus: Sieve Body §7(0/4)",
+        "§7Gain an additional §e20% §7knockback",
+        "§7resistance to arrows.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§9§lRARE DUNGEON CHESTPLATE"
+      ]
+    },
+    "5214a63f0eb144b196b0e867d66339ebdc34b99a883387e9b94495b0a6448b27": {
+      "itemId": "ZOMBIE_KNIGHT_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 7,
+        "baseStatBoostPercentage": 50,
+        "modifier": "heavy",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1521660728
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d821 §8(4202)",
+        "§7Health: §c+75 §8(+390)",
+        "§7Defense: §a+342 §9(+80) §8(+1,778.4)",
+        "§7Strength: §c+50 §8(+260)",
+        "§7Crit Damage: §9-5% §9(-5%)",
+        "§7Speed: §f+10 §9(-1) §8(+52)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Zombie Knight §7(0/4)",
+        "§7Gains §a+50 Defense §7when used with",
+        "§7the Zombie Knight Sword",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§6§lLEGENDARY DUNGEON CHESTPLATE"
+      ]
+    },
+    "5f394ea561fb27c346488b35bd2ed00883136b669f79f9dab917816983aa1c41": {
+      "itemId": "SKELETON_GRUNT_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 6,
+        "baseStatBoostPercentage": 50,
+        "modifier": "smart",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1343767155
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d490 §8(2305)",
+        "§7Health: §c+159 §9(+15) §8(+761.61)",
+        "§7Defense: §a+121 §9(+15) §8(+579.59)",
+        "§7Crit Damage: §9+35% §8(+167.65%)",
+        "§7Intelligence: §b+100 §9(+100) §8(+479)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§6§lLEGENDARY DUNGEON CHESTPLATE"
+      ]
+    },
+    "f96eaea1a70ebd620f1801bd4b0a3f0cf89f05cd4097c8ad82dd28daadfa176e": {
+      "itemId": "ZOMBIE_COMMANDER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 7,
+        "baseStatBoostPercentage": 2,
+        "modifier": "fierce",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1140276781
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d461 §8(2161)",
+        "§7Health: §c+190 §8(+988)",
+        "§7Defense: §a+87 §8(+452.4)",
+        "§7Strength: §c+25 §9(+8) §8(+130)",
+        "§7Crit Chance: §9+5% §9(+5%) §8(+5.25%)",
+        "§7Crit Damage: §9+14% §9(+14%) §8(+72.8%)",
+        "§7Intelligence: §b+9 §8(+46.8)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Training §7(0/4)",
+        "§7Every §950 Zombies killed§7 gives the",
+        "§7wearer §a+5 §c Health§7 while wearing",
+        "§7the set. Max 500.",
+        "",
+        "§7Zombies Killed: §a0",
+        "§7Bonus HP: §a0",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "e6e7be15290bea8f9399548865b590fa6703aa7476292499523bf17873cc20c3": {
+      "itemId": "HEAVY_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 2,
+        "baseStatBoostPercentage": 30,
+        "modifier": "pure",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1089619255
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d484 §8(1185)",
+        "§7Health: §c+79 §9(+4) §8(+201.45)",
+        "§7Defense: §a+182 §9(+4) §8(+464.1)",
+        "§7Strength: §c+4 §9(+4) §8(+10.2)",
+        "§7Crit Chance: §9+6% §9(+6%) §8(+6%)",
+        "§7Crit Damage: §9+4% §9(+4%) §8(+10.2%)",
+        "§7Attack Speed: §e+2% §9(+2%) §8(+2%)",
+        "§7Intelligence: §b+4 §9(+4) §8(+10.2)",
+        "§7Speed: §f-4 §9(+1)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Vindicate §7(0/4)",
+        "§7Grants §f+1 walk speed §7for every §a50",
+        "§a§7defense that you have.",
+        "",
+        "§9§lRARE DUNGEON CHESTPLATE"
+      ]
+    },
+    "9cf90adccc3bf2a203458346a373d9192e809c6ac9c69685d03633974c15eff1": {
+      "itemId": "SKELETOR_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 6,
+        "baseStatBoostPercentage": 16,
+        "modifier": "mythic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1089023029
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d407 §8(1299)",
+        "§7Health: §c+126 §9(+8) §8(+425.88)",
+        "§7Defense: §a+96 §9(+8) §8(+324.48)",
+        "§7Strength: §c+8 §9(+8) §8(+27.04)",
+        "§7Crit Chance: §9+8% §9(+4%) §8(+8.24%)",
+        "§7Crit Damage: §9+36% §8(+121.68%)",
+        "§7Intelligence: §b+40 §9(+40) §8(+135.2)",
+        "§7Speed: §f+2 §9(+2) §8(+6.76)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Skeletor §7(0/4)",
+        "§7Grants §c+1 Strength §7and §9+1 Crit",
+        "§9Damage §7for every §b10 §7Skeletor kills",
+        "",
+        "§7Skeletor Kills: §a0",
+        "§7Bonus Strength: §a0",
+        "§7Bonus Critical Damage: §a0",
+        "",
+        "§7Each piece grants a §a1 §7second",
+        "§7cooldown reduction on bone plating!",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "e4917fe5554b98bdfc662540c48acb4fd2d32136db299dd8d9b87867a9b30aaf": {
+      "itemId": "ROTTEN_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 2,
+        "baseStatBoostPercentage": 24,
+        "modifier": "clean",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1136189490
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d365 §8(622)",
+        "§7Health: §c+254 §9(+10) §8(+444.5)",
+        "§7Defense: §a+30 §9(+10) §8(+52.5)",
+        "§7Strength: §c+28 §8(+49)",
+        "§7Crit Chance: §9+6% §9(+6%) §8(+6%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7This rotten piece of armor grants",
+        "§7§e15% §7knockback resistance to arrows",
+        "§7per piece worn.",
+        "",
+        "§6Full Set Bonus: Sieve Body §7(0/4)",
+        "§7Gain an additional §e20% §7knockback",
+        "§7resistance to arrows.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§9§lRARE DUNGEON CHESTPLATE"
+      ]
+    },
+    "e54a19d0b2fbcbccd23004d8b77f92c852c56d99f75c4086c4fb0e9f852143d7": {
+      "itemId": "SKELETOR_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 6,
+        "baseStatBoostPercentage": 35,
+        "modifier": "pure",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1090091002
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d436 §8(1194)",
+        "§7Health: §c+131 §9(+6) §8(+386.45)",
+        "§7Defense: §a+105 §9(+6) §8(+309.75)",
+        "§7Strength: §c+6 §9(+6) §8(+17.7)",
+        "§7Crit Chance: §9+13% §9(+8%) §8(+13%)",
+        "§7Crit Damage: §9+48% §9(+6%) §8(+141.6%)",
+        "§7Attack Speed: §e+3% §9(+3%) §8(+3%)",
+        "§7Intelligence: §b+6 §9(+6) §8(+17.7)",
+        "§7Speed: §f+1 §9(+1) §8(+2.95)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Skeletor §7(0/4)",
+        "§7Grants §c+1 Strength §7and §9+1 Crit",
+        "§9Damage §7for every §b10 §7Skeletor kills",
+        "",
+        "§7Skeletor Kills: §a0",
+        "§7Bonus Strength: §a0",
+        "§7Bonus Critical Damage: §a0",
+        "",
+        "§7Each piece grants a §a1 §7second",
+        "§7cooldown reduction on bone plating!",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "d54d549429c771151776446b0aaaf9aee651a6bb50add94a39ef86d0caa9493f": {
+      "itemId": "BOUNCY_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 7,
+        "baseStatBoostPercentage": 21,
+        "modifier": "fierce",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1090117125
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d459 §8(1517)",
+        "§7Health: §c+361 §8(+1,281.55)",
+        "§7Defense: §a+20 §8(+71)",
+        "§7Strength: §c+6 §9(+6) §8(+21.3)",
+        "§7Crit Chance: §9+14% §9(+4%) §8(+14%)",
+        "§7Crit Damage: §9+10% §9(+10%) §8(+35.5%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Bouncing Arrow §7(0/4)",
+        "§7Your arrows have a §e25% §7chance to",
+        "§7bounce to another target after it",
+        "§7hits something.",
+        "",
+        "§9§lRARE DUNGEON CHESTPLATE"
+      ]
+    },
+    "db0738de34c42fc380bcf58d9f43050bcf2a1d8c3f6cf25b4734984619a3a941": {
+      "itemId": "ROTTEN_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 2,
+        "baseStatBoostPercentage": 50,
+        "modifier": "clean",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1092815471
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d424 §8(1373)",
+        "§7Health: §c+294 §9(+15) §8(+996.66)",
+        "§7Defense: §a+35 §9(+15) §8(+118.65)",
+        "§7Strength: §c+33 §8(+111.87)",
+        "§7Crit Chance: §9+8% §9(+8%) §8(+8.32%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7This rotten piece of armor grants",
+        "§7§e15% §7knockback resistance to arrows",
+        "§7per piece worn.",
+        "",
+        "§6Full Set Bonus: Sieve Body §7(0/4)",
+        "§7Gain an additional §e20% §7knockback",
+        "§7resistance to arrows.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "ff76dd7356197cc526f5eec49157ba6fc4b76326d4d9bad00c6357fc5b3bc117": {
+      "itemId": "SKELETON_GRUNT_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 2,
+        "baseStatBoostPercentage": 50,
+        "modifier": "smart",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1879884097
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d418 §8(1391)",
+        "§7Health: §c+144 §9(+15) §8(+488.16)",
+        "§7Defense: §a+97 §9(+15) §8(+328.83)",
+        "§7Crit Damage: §9+24% §8(+81.36%)",
+        "§7Intelligence: §b+100 §9(+100) §8(+339)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§6§lLEGENDARY DUNGEON CHESTPLATE"
+      ]
+    },
+    "a3aad1e7f72ee8869a75b116806c7fd009d113ec9bea8f2ff59c31c2cdb0cbda": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 8,
+        "baseStatBoostPercentage": 42,
+        "modifier": "mythic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1089459834
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d523 §8(2329)",
+        "§7Health: §c+150 §9(+8) §8(+703.5)",
+        "§7Defense: §a+134 §9(+8) §8(+628.46)",
+        "§7Strength: §c+8 §9(+8) §8(+37.52)",
+        "§7Crit Chance: §9+9% §9(+4%) §8(+9.36%)",
+        "§7Crit Damage: §9+54% §8(+253.26%)",
+        "§7Intelligence: §b+40 §9(+40) §8(+187.6)",
+        "§7Speed: §f+2 §9(+2) §8(+9.38)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "cdd6799ff140beca88aa6236a5feae4885878f68ccb36aa2ab4e5add89a33e72": {
+      "itemId": "ZOMBIE_KNIGHT_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 7,
+        "baseStatBoostPercentage": 17,
+        "modifier": "wise",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1090268442
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d610 §8(2208)",
+        "§7Health: §c+87 §9(+12) §8(+321.03)",
+        "§7Defense: §a+209 §8(+771.21)",
+        "§7Strength: §c+39 §8(+143.91)",
+        "§7Intelligence: §b+100 §9(+100) §8(+369)",
+        "§7Speed: §f+11 §9(+2) §8(+40.59)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Zombie Knight §7(0/4)",
+        "§7Gains §a+50 Defense §7when used with",
+        "§7the Zombie Knight Sword",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "6c71c7c7635af3f8b7885b907016af846947747c7e19bfcad0dd6aa7e68fa747": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 7,
+        "baseStatBoostPercentage": 29,
+        "modifier": "heavy",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1090511636
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d540 §8(2240)",
+        "§7Health: §c+132 §8(+566.28)",
+        "§7Defense: §a+175 §9(+65) §8(+750.75)",
+        "§7Crit Chance: §9+4% §8(+4.16%)",
+        "§7Crit Damage: §9+43% §9(-3%) §8(+184.47%)",
+        "§7Speed: §f-1 §9(-1)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "ad750903c2fed812c1a63ba06e652b4b650dadfc0e6948eeb7d032467c787d19": {
+      "itemId": "BOUNCY_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 6,
+        "baseStatBoostPercentage": 30,
+        "modifier": "fierce",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1089886146
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d448 §8(1495)",
+        "§7Health: §c+350 §8(+1,256.5)",
+        "§7Defense: §a+20 §8(+71.8)",
+        "§7Strength: §c+6 §9(+6) §8(+21.54)",
+        "§7Crit Chance: §9+14% §9(+4%) §8(+14.56%)",
+        "§7Crit Damage: §9+10% §9(+10%) §8(+35.9%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Bouncing Arrow §7(0/4)",
+        "§7Your arrows have a §e25% §7chance to",
+        "§7bounce to another target after it",
+        "§7hits something.",
+        "",
+        "§9§lRARE DUNGEON CHESTPLATE"
+      ]
+    },
+    "57a9674489abfca9df11bcedd595a5d5b2843d5229a5e388f68d9e9262ef707c": {
+      "itemId": "SKELETON_SOLDIER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 3,
+        "baseStatBoostPercentage": 44,
+        "modifier": "mythic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1101660669
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d407 §8(1030)",
+        "§7Health: §c+128 §9(+8) §8(+339.2)",
+        "§7Defense: §a+99 §9(+8) §8(+262.35)",
+        "§7Strength: §c+8 §9(+8) §8(+21.2)",
+        "§7Crit Chance: §9+7% §9(+4%) §8(+7%)",
+        "§7Crit Damage: §9+29% §8(+76.85%)",
+        "§7Intelligence: §b+40 §9(+40) §8(+106)",
+        "§7Speed: §f+2 §9(+2) §8(+5.3)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "",
+        "§6Full Set Bonus: Skeleton Soldier §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by an extra §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "ab7516bf3ee114a96fc6ffa5f647f731fd96946ca1a5471c2aa9d2e582371111": {
+      "itemId": "ZOMBIE_KNIGHT_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 6,
+        "baseStatBoostPercentage": 50,
+        "modifier": "mythic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1091257929
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d697 §8(2905)",
+        "§7Health: §c+85 §9(+10) §8(+364.65)",
+        "§7Defense: §a+252 §9(+10) §8(+1,081.08)",
+        "§7Strength: §c+57 §9(+10) §8(+244.53)",
+        "§7Crit Chance: §9+5% §9(+5%) §8(+5.2%)",
+        "§7Intelligence: §b+50 §9(+50) §8(+214.5)",
+        "§7Speed: §f+11 §9(+2) §8(+47.19)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Zombie Knight §7(0/4)",
+        "§7Gains §a+50 Defense §7when used with",
+        "§7the Zombie Knight Sword",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§6§lLEGENDARY DUNGEON CHESTPLATE"
+      ]
+    },
+    "e925686c064ce06e93e4049264d50bee15b96de70ee61dcb7975ae04e0d7257a": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 3,
+        "baseStatBoostPercentage": 15,
+        "modifier": "wise",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1101801611
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d372 §8(950)",
+        "§7Health: §c+123 §9(+12) §8(+325.95)",
+        "§7Defense: §a+77 §8(+204.05)",
+        "§7Crit Chance: §9+3% §8(+3%)",
+        "§7Crit Damage: §9+29% §8(+76.85%)",
+        "§7Intelligence: §b+100 §9(+100) §8(+265)",
+        "§7Speed: §f+2 §9(+2) §8(+5.3)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "f8b196b2124610ce7421a72528884383414151736bb908f32fa5a07683957c20": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 4,
+        "baseStatBoostPercentage": 36,
+        "modifier": "mythic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1102059432
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d422 §8(1068)",
+        "§7Health: §c+130 §9(+8) §8(+344.5)",
+        "§7Defense: §a+102 §9(+8) §8(+270.3)",
+        "§7Strength: §c+8 §9(+8) §8(+21.2)",
+        "§7Crit Chance: §9+7% §9(+4%) §8(+7%)",
+        "§7Crit Damage: §9+37% §8(+98.05%)",
+        "§7Intelligence: §b+40 §9(+40) §8(+106)",
+        "§7Speed: §f+2 §9(+2) §8(+5.3)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "f5ef2198a081fbf11389cc880a642415d8b6306135eb469b7a47cf8b3d2947e6": {
+      "itemId": "ZOMBIE_KNIGHT_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 7,
+        "baseStatBoostPercentage": 2,
+        "modifier": "titanic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1090649541
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d570 §8(2337)",
+        "§7Health: §c+100 §9(+25) §8(+419)",
+        "§7Defense: §a+210 §9(+25) §8(+879.9)",
+        "§7Strength: §c+34 §8(+142.46)",
+        "§7Speed: §f+8 §8(+33.52)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Zombie Knight §7(0/4)",
+        "§7Gains §a+50 Defense §7when used with",
+        "§7the Zombie Knight Sword",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "ede82a05a4751c98a3d77d5444916ed6b6d26273fc7739fcc3e690f25beb48f1": {
+      "itemId": "SUPER_HEAVY_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 6,
+        "baseStatBoostPercentage": 2,
+        "modifier": "smart",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1090530519
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d595 §8(1857)",
+        "§7Health: §c+87 §9(+12) §8(+276.66)",
+        "§7Defense: §a+226 §9(+12) §8(+718.68)",
+        "§7Intelligence: §b+80 §9(+80) §8(+254.4)",
+        "§7Speed: §f-10",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Each piece of this armor reduces",
+        "§7the cooldown of §9Seismic Wave §7by §a1s§7.",
+        "",
+        "§6Full Set Bonus: Vindicate §7(0/4)",
+        "§7Grants §f+1 walk speed §7for every §a50",
+        "§a§7defense that you have.",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "d84ca9c07b11f4d93289d21f56c71d861c707e6e18d13fc092a9d5516a58a3d4": {
+      "itemId": "ZOMBIE_KNIGHT_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 6,
+        "baseStatBoostPercentage": 38,
+        "modifier": "heavy",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1091128485
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d712 §8(2228)",
+        "§7Health: §c+75 §8(+238.5)",
+        "§7Defense: §a+290 §9(+65) §8(+922.2)",
+        "§7Strength: §c+43 §8(+136.74)",
+        "§7Crit Damage: §9-3% §9(-3%)",
+        "§7Speed: §f+8 §9(-1) §8(+25.44)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Zombie Knight §7(0/4)",
+        "§7Gains §a+50 Defense §7when used with",
+        "§7the Zombie Knight Sword",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "cd3aade4b6b4b658e6f4e9ce32309fc37f66db591b410a472b61cd5ffb48751d": {
+      "itemId": "BOUNCY_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 7,
+        "baseStatBoostPercentage": 27,
+        "modifier": "smart",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1122251983
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d510 §8(1714)",
+        "§7Health: §c+384 §9(+9) §8(+1,363.2)",
+        "§7Defense: §a+29 §9(+9) §8(+102.95)",
+        "§7Crit Chance: §9+11% §8(+11%)",
+        "§7Intelligence: §b+60 §9(+60) §8(+213)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Bouncing Arrow §7(0/4)",
+        "§7Your arrows have a §e25% §7chance to",
+        "§7bounce to another target after it",
+        "§7hits something.",
+        "",
+        "§9§lRARE DUNGEON CHESTPLATE"
+      ]
+    },
+    "e722111f5222e282cc7eb20a2dde87e4df992ccb24f8ab5f44405c4c4653b6e4": {
+      "itemId": "BOUNCY_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 7,
+        "baseStatBoostPercentage": 20,
+        "modifier": "fierce",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1122243491
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d457 §8(1510)",
+        "§7Health: §c+359 §8(+1,274.45)",
+        "§7Defense: §a+20 §8(+71)",
+        "§7Strength: §c+6 §9(+6) §8(+21.3)",
+        "§7Crit Chance: §9+14% §9(+4%) §8(+14%)",
+        "§7Crit Damage: §9+10% §9(+10%) §8(+35.5%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Bouncing Arrow §7(0/4)",
+        "§7Your arrows have a §e25% §7chance to",
+        "§7bounce to another target after it",
+        "§7hits something.",
+        "",
+        "§9§lRARE DUNGEON CHESTPLATE"
+      ]
+    },
+    "b8a8601cd8d014023b899ced3f3bc29fcd51b59bf27b9688695ad386eeb2f5a8": {
+      "itemId": "SUPER_HEAVY_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 6,
+        "baseStatBoostPercentage": 31,
+        "modifier": "light",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1090996037
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d667 §8(1786)",
+        "§7Health: §c+90 §9(+15) §8(+247.5)",
+        "§7Defense: §a+273 §9(+4) §8(+750.75)",
+        "§7Crit Chance: §9+2% §9(+2%) §8(+2%)",
+        "§7Crit Damage: §9+4% §9(+4%) §8(+11%)",
+        "§7Attack Speed: §e+4% §9(+4%) §8(+4%)",
+        "§7Speed: §f-6 §9(+4)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Each piece of this armor reduces",
+        "§7the cooldown of §9Seismic Wave §7by §a1s§7.",
+        "",
+        "§6Full Set Bonus: Vindicate §7(0/4)",
+        "§7Grants §f+1 walk speed §7for every §a50",
+        "§a§7defense that you have.",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "14bb24898cf996ef7c4bcd95dac6e8c34328172723e39204a1710e61f7708b38": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 6,
+        "baseStatBoostPercentage": 35,
+        "modifier": "heavy",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1091079534
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d530 §8(1830)",
+        "§7Health: §c+129 §8(+461.82)",
+        "§7Defense: §a+171 §9(+65) §8(+612.18)",
+        "§7Crit Chance: §9+5% §8(+5.15%)",
+        "§7Crit Damage: §9+41% §9(-3%) §8(+146.78%)",
+        "§7Speed: §f-1 §9(-1)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "0824fe070526232e7a600f82385b63750a9f6a79822c733d56662c9d12dea0e7": {
+      "itemId": "SKELETON_SOLDIER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 1,
+        "baseStatBoostPercentage": 23,
+        "modifier": "heavy",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1104910132
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d417 §8(1070)",
+        "§7Health: §c+107 §8(+283.55)",
+        "§7Defense: §a+137 §9(+65) §8(+363.05)",
+        "§7Crit Chance: §9+3% §8(+3%)",
+        "§7Crit Damage: §9+18% §9(-3%) §8(+47.7%)",
+        "§7Speed: §f-1 §9(-1)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "",
+        "§6Full Set Bonus: Skeleton Soldier §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by an extra §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "373ab60c242b5b2c7799feebe92a5ce9b52ad196a255ce97489c785ffc2385b9": {
+      "itemId": "SKELETON_SOLDIER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 1,
+        "baseStatBoostPercentage": 11,
+        "modifier": "fierce",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1103376237
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d304 §8(754)",
+        "§7Health: §c+104 §8(+275.6)",
+        "§7Defense: §a+67 §8(+177.55)",
+        "§7Strength: §c+8 §9(+8) §8(+21.2)",
+        "§7Crit Chance: §9+8% §9(+5%) §8(+8%)",
+        "§7Crit Damage: §9+33% §9(+14%) §8(+87.45%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "",
+        "§6Full Set Bonus: Skeleton Soldier §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by an extra §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "d1cdcf94a822e6fff0966d0a9b77322b298513bb4365efa7bffe6d473ba43f59": {
+      "itemId": "ZOMBIE_KNIGHT_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 3,
+        "baseStatBoostPercentage": 5,
+        "modifier": "smart",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1091631381
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d474 §8(863)",
+        "§7Health: §c+87 §9(+12) §8(+160.95)",
+        "§7Defense: §a+153 §9(+12) §8(+283.05)",
+        "§7Strength: §c+25 §8(+46.25)",
+        "§7Intelligence: §b+80 §9(+80) §8(+148)",
+        "§7Speed: §f+6 §8(+11.1)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Zombie Knight §7(0/4)",
+        "§7Gains §a+50 Defense §7when used with",
+        "§7the Zombie Knight Sword",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§7§4❣ §cRequires §cCatacombs Skill 14§c.",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "cf236cdac3b886f14457311cd9d0d8894e8e8bfecad81ba56ec7b22ba19035b2": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 2,
+        "baseStatBoostPercentage": 13,
+        "modifier": "mythic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1093272866
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d353 §8(982)",
+        "§7Health: §c+116 §9(+8) §8(+342.2)",
+        "§7Defense: §a+79 §9(+8) §8(+233.05)",
+        "§7Strength: §c+8 §9(+8) §8(+23.6)",
+        "§7Crit Chance: §9+7% §9(+4%) §8(+7%)",
+        "§7Crit Damage: §9+26% §8(+76.7%)",
+        "§7Intelligence: §b+40 §9(+40) §8(+118)",
+        "§7Speed: §f+2 §9(+2) §8(+5.9)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "37503b2858a126637b5b2dc8cab8e497a0e9c3b5682423aff5d6ddf12547797b": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 7,
+        "baseStatBoostPercentage": 50,
+        "modifier": "titanic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1091024434
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d562 §8(2655)",
+        "§7Health: §c+176 §9(+35) §8(+862.4)",
+        "§7Defense: §a+159 §9(+35) §8(+779.1)",
+        "§7Crit Chance: §9+5% §8(+5.25%)",
+        "§7Crit Damage: §9+53% §8(+259.7%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§6§lLEGENDARY DUNGEON CHESTPLATE"
+      ]
+    },
+    "def15a13a94ffab4c306d2419dda6f99f596d648c8ea80e5c1a0a8bf085c31e8": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 8,
+        "baseStatBoostPercentage": 50,
+        "modifier": "titanic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          1985122421
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d585 §8(3043)",
+        "§7Health: §c+181 §9(+35) §8(+977.4)",
+        "§7Defense: §a+166 §9(+35) §8(+896.4)",
+        "§7Crit Chance: §9+5% §8(+5.25%)",
+        "§7Crit Damage: §9+57% §8(+307.8%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§6§lLEGENDARY DUNGEON CHESTPLATE"
+      ]
+    },
+    "7760b6d0d653ce68407b9ce4beba6e98c82b09cd5ba4f5d491af7f40d5897569": {
+      "itemId": "ZOMBIE_KNIGHT_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 6,
+        "baseStatBoostPercentage": 33,
+        "modifier": "pure",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1092602444
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d621 §8(2539)",
+        "§7Health: §c+81 §9(+6) §8(+347.49)",
+        "§7Defense: §a+223 §9(+6) §8(+956.67)",
+        "§7Strength: §c+48 §9(+6) §8(+205.92)",
+        "§7Crit Chance: §9+8% §9(+8%) §8(+8.32%)",
+        "§7Crit Damage: §9+6% §9(+6%) §8(+25.74%)",
+        "§7Attack Speed: §e+3% §9(+3%) §8(+3.12%)",
+        "§7Intelligence: §b+6 §9(+6) §8(+25.74)",
+        "§7Speed: §f+9 §9(+1) §8(+38.61)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Zombie Knight §7(0/4)",
+        "§7Gains §a+50 Defense §7when used with",
+        "§7the Zombie Knight Sword",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "7cd74bedbe3b4875241d555979f1b9b174dd8d14efb0f66677c76bc800692a70": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 9,
+        "baseStatBoostPercentage": 50,
+        "modifier": "titanic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1092931310
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d619 §8(2745)",
+        "§7Health: §c+187 §9(+35) §8(+860.2)",
+        "§7Defense: §a+177 §9(+35) §8(+814.2)",
+        "§7Crit Chance: §9+6% §8(+6.3%)",
+        "§7Crit Damage: §9+62% §8(+285.2%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(1/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§6§lLEGENDARY DUNGEON CHESTPLATE"
+      ]
+    },
+    "9c83dedf76a5ed6f115c7374e07e3432c92af67a75c71029414cd08a29c1224c": {
+      "itemId": "SKELETOR_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 6,
+        "baseStatBoostPercentage": 21,
+        "modifier": "wise",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1092695146
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d418 §8(1187)",
+        "§7Health: §c+132 §9(+12) §8(+389.4)",
+        "§7Defense: §a+91 §8(+268.45)",
+        "§7Crit Chance: §9+4% §8(+4%)",
+        "§7Crit Damage: §9+38% §8(+112.1%)",
+        "§7Intelligence: §b+100 §9(+100) §8(+295)",
+        "§7Speed: §f+2 §9(+2) §8(+5.9)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Skeletor §7(0/4)",
+        "§7Grants §c+1 Strength §7and §9+1 Crit",
+        "§9Damage §7for every §b10 §7Skeletor kills",
+        "",
+        "§7Skeletor Kills: §a0",
+        "§7Bonus Strength: §a0",
+        "§7Bonus Critical Damage: §a0",
+        "",
+        "§7Each piece grants a §a1 §7second",
+        "§7cooldown reduction on bone plating!",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "443dce06939cd78169ff09125fb4128be257180fed6bf20f49ec80d1308c2206": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 9,
+        "baseStatBoostPercentage": 50,
+        "modifier": "pure",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1093125607
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d584 §8(3173)",
+        "§7Health: §c+160 §9(+8) §8(+944)",
+        "§7Defense: §a+150 §9(+8) §8(+885)",
+        "§7Strength: §c+8 §9(+8) §8(+47.2)",
+        "§7Crit Chance: §9+16% §9(+10%) §8(+16.8%)",
+        "§7Crit Damage: §9+70% §9(+8%) §8(+413%)",
+        "§7Attack Speed: §e+4% §9(+4%) §8(+4.2%)",
+        "§7Intelligence: §b+8 §9(+8) §8(+47.2)",
+        "§7Speed: §f+1 §9(+1) §8(+5.9)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(1/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§6§lLEGENDARY DUNGEON CHESTPLATE"
+      ]
+    },
+    "7789103d5f92b6cd76bf42805983b148e492ef0b15e5e5e7beb89b42beccedc3": {
+      "itemId": "BOUNCY_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 7,
+        "baseStatBoostPercentage": 13,
+        "modifier": "titanic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1094014288
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d478 §8(1756)",
+        "§7Health: §c+362 §9(+20) §8(+1,408.18)",
+        "§7Defense: §a+40 §9(+20) §8(+155.6)",
+        "§7Crit Chance: §9+10% §8(+10.4%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Bouncing Arrow §7(0/4)",
+        "§7Your arrows have a §e25% §7chance to",
+        "§7bounce to another target after it",
+        "§7hits something.",
+        "",
+        "§9§lRARE DUNGEON CHESTPLATE"
+      ]
+    },
+    "ff1d0d6ed492451a06caa129ad97ed7acc416a70d53070d0178ffa737d23a912": {
+      "itemId": "BOUNCY_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 7,
+        "baseStatBoostPercentage": 15,
+        "modifier": "pure",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          515172948
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d460 §8(1891)",
+        "§7Health: §c+351 §9(+4) §8(+1,579.5)",
+        "§7Defense: §a+24 §9(+4) §8(+108)",
+        "§7Strength: §c+4 §9(+4) §8(+18)",
+        "§7Crit Chance: §9+16% §9(+6%) §8(+16.8%)",
+        "§7Crit Damage: §9+4% §9(+4%) §8(+18%)",
+        "§7Attack Speed: §e+2% §9(+2%) §8(+2.1%)",
+        "§7Intelligence: §b+4 §9(+4) §8(+18)",
+        "§7Speed: §f+1 §9(+1) §8(+4.5)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Bouncing Arrow §7(0/4)",
+        "§7Your arrows have a §e25% §7chance to",
+        "§7bounce to another target after it",
+        "§7hits something.",
+        "",
+        "§9§lRARE DUNGEON CHESTPLATE"
+      ]
+    },
+    "388b5ab4a0bf0adfd391f77341f00c2f75d131e1669c51dfc51c475da314765c": {
+      "itemId": "ROTTEN_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 1,
+        "baseStatBoostPercentage": 26,
+        "modifier": "smart",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1226409832
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d367 §8(741)",
+        "§7Health: §c+242 §9(+9) §8(+496.1)",
+        "§7Defense: §a+29 §9(+9) §8(+59.45)",
+        "§7Strength: §c+26 §8(+53.3)",
+        "§7Intelligence: §b+60 §9(+60) §8(+123)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7This rotten piece of armor grants",
+        "§7§e15% §7knockback resistance to arrows",
+        "§7per piece worn.",
+        "",
+        "§6Full Set Bonus: Sieve Body §7(0/4)",
+        "§7Gain an additional §e20% §7knockback",
+        "§7resistance to arrows.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§9§lRARE DUNGEON CHESTPLATE"
+      ]
+    },
+    "b6c37c0291dded3f47c80861eb7c935223095a25cbc17610d8a73ea6a6f5e426": {
+      "itemId": "ROTTEN_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 2,
+        "baseStatBoostPercentage": 17,
+        "modifier": "titanic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1107440304
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d372 §8(607)",
+        "§7Health: §c+255 §9(+20) §8(+420.75)",
+        "§7Defense: §a+40 §9(+20) §8(+66)",
+        "§7Strength: §c+26 §8(+42.9)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7This rotten piece of armor grants",
+        "§7§e15% §7knockback resistance to arrows",
+        "§7per piece worn.",
+        "",
+        "§6Full Set Bonus: Sieve Body §7(0/4)",
+        "§7Gain an additional §e20% §7knockback",
+        "§7resistance to arrows.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§9§lRARE DUNGEON CHESTPLATE"
+      ]
+    },
+    "3978c3e1ff00625fb8f3d602599407dfea67537e17e6dda75f9876b8461920d3": {
+      "itemId": "ROTTEN_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 2,
+        "baseStatBoostPercentage": 20,
+        "modifier": "heavy",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1094447315
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d415 §8(840)",
+        "§7Health: §c+239 §8(+489.95)",
+        "§7Defense: §a+70 §9(+50) §8(+143.5)",
+        "§7Strength: §c+27 §8(+55.35)",
+        "§7Crit Damage: §9-2% §9(-2%)",
+        "§7Speed: §f-1 §9(-1)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7This rotten piece of armor grants",
+        "§7§e15% §7knockback resistance to arrows",
+        "§7per piece worn.",
+        "",
+        "§6Full Set Bonus: Sieve Body §7(0/4)",
+        "§7Gain an additional §e20% §7knockback",
+        "§7resistance to arrows.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§9§lRARE DUNGEON CHESTPLATE"
+      ]
+    },
+    "a52377334ca43624620d50f0e0a9dd9ee4fb5e88470851dde149f5c6d3872eb2": {
+      "itemId": "SKELETON_GRUNT_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 1,
+        "baseStatBoostPercentage": 32,
+        "modifier": "wise",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1773411557
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d350 §8(909)",
+        "§7Health: §c+131 §9(+12) §8(+347.15)",
+        "§7Defense: §a+71 §8(+188.15)",
+        "§7Crit Damage: §9+20% §8(+53%)",
+        "§7Intelligence: §b+100 §9(+100) §8(+265)",
+        "§7Speed: §f+2 §9(+2) §8(+5.3)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "8d75c7da995ac2275bd50fd6640a097e17fe02bf2678e722026b6049cc3b16df": {
+      "itemId": "SKELETON_GRUNT_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 1,
+        "baseStatBoostPercentage": 35,
+        "modifier": "clean",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1772140959
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d353 §8(890)",
+        "§7Health: §c+135 §9(+15) §8(+357.75)",
+        "§7Defense: §a+87 §9(+15) §8(+230.55)",
+        "§7Crit Chance: §9+8% §9(+8%) §8(+8%)",
+        "§7Crit Damage: §9+21% §8(+55.65%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "5d589fd8f7cdd855718a0e7526dcc6bfa2996efae54a1b48098d33e790906451": {
+      "itemId": "SKELETON_GRUNT_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 1,
+        "baseStatBoostPercentage": 14,
+        "modifier": "wise",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1774288557
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d328 §8(852)",
+        "§7Health: §c+125 §9(+12) §8(+331.25)",
+        "§7Defense: §a+64 §8(+169.6)",
+        "§7Crit Damage: §9+18% §8(+47.7%)",
+        "§7Intelligence: §b+100 §9(+100) §8(+265)",
+        "§7Speed: §f+2 §9(+2) §8(+5.3)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "00c13666083035b72bc01cf44dd50d9e868bf475cb3affc89854b088202e235a": {
+      "itemId": "ROTTEN_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 4,
+        "baseStatBoostPercentage": 22,
+        "modifier": "wise",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1095987804
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d404 §8(1416)",
+        "§7Health: §c+283 §9(+10) §8(+1,013.14)",
+        "§7Defense: §a+20 §8(+71.6)",
+        "§7Strength: §c+32 §8(+114.56)",
+        "§7Intelligence: §b+75 §9(+75) §8(+268.5)",
+        "§7Speed: §f+1 §9(+1) §8(+3.58)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7This rotten piece of armor grants",
+        "§7§e15% §7knockback resistance to arrows",
+        "§7per piece worn.",
+        "",
+        "§6Full Set Bonus: Sieve Body §7(0/4)",
+        "§7Gain an additional §e20% §7knockback",
+        "§7resistance to arrows.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§9§lRARE DUNGEON CHESTPLATE"
+      ]
+    },
+    "ba3ce4cb25170c90cb744502cbc90afe0f76a251d144e26d02933e4e4ddc80de": {
+      "itemId": "ZOMBIE_COMMANDER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 6,
+        "baseStatBoostPercentage": 47,
+        "modifier": "mythic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1101059082
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d571 §8(1645)",
+        "§7Health: §c+232 §9(+8) §8(+714.56)",
+        "§7Defense: §a+115 §9(+8) §8(+354.2)",
+        "§7Strength: §c+29 §9(+8) §8(+89.32)",
+        "§7Crit Chance: §9+4% §9(+4%) §8(+4.12%)",
+        "§7Intelligence: §b+51 §9(+40) §8(+157.08)",
+        "§7Speed: §f+2 §9(+2) §8(+6.16)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Training §7(0/4)",
+        "§7Every §950 Zombies killed§7 gives the",
+        "§7wearer §a+5 §c Health§7 while wearing",
+        "§7the set. Max 500.",
+        "",
+        "§7Zombies Killed: §a0",
+        "§7Bonus HP: §a0",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "68104e21e575ad8a97ef3e84dd98c94462ebf349f3f0da1423029771e0bf9248": {
+      "itemId": "HEAVY_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 1,
+        "baseStatBoostPercentage": 9,
+        "modifier": "clean",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1097227876
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d419 §8(947)",
+        "§7Health: §c+85 §9(+10) §8(+199.75)",
+        "§7Defense: §a+153 §9(+10) §8(+359.55)",
+        "§7Crit Chance: §9+6% §9(+6%) §8(+6%)",
+        "§7Speed: §f-5",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Vindicate §7(0/4)",
+        "§7Grants §f+1 walk speed §7for every §a50",
+        "§a§7defense that you have.",
+        "",
+        "§9§lRARE DUNGEON CHESTPLATE"
+      ]
+    },
+    "78556d0232ee0f350b4d9dd0e0d18826b61eb96bd653f5af39c9f015b475802c": {
+      "itemId": "ZOMBIE_COMMANDER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 10,
+        "baseStatBoostPercentage": 34,
+        "modifier": "mythic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1097059977
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d708 §8(2989)",
+        "§7Health: §c+290 §9(+8) §8(+1,302.1)",
+        "§7Defense: §a+149 §9(+8) §8(+669.01)",
+        "§7Strength: §c+38 §9(+8) §8(+170.62)",
+        "§7Crit Chance: §9+4% §9(+4%) §8(+4.16%)",
+        "§7Intelligence: §b+55 §9(+40) §8(+246.95)",
+        "§7Speed: §f+2 §9(+2) §8(+8.98)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Training §7(0/4)",
+        "§7Every §950 Zombies killed§7 gives the",
+        "§7wearer §a+5 §c Health§7 while wearing",
+        "§7the set. Max 500.",
+        "",
+        "§7Zombies Killed: §a0",
+        "§7Bonus HP: §a0",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "f8cca3285f07ed128078b279a91193f0abfe8aa24494429f59b6e9606904d97d": {
+      "itemId": "SKELETOR_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 5,
+        "baseStatBoostPercentage": 29,
+        "modifier": "titanic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1111478934
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d426 §8(1068)",
+        "§7Health: §c+144 §9(+25) §8(+372.96)",
+        "§7Defense: §a+115 §9(+25) §8(+297.85)",
+        "§7Crit Chance: §9+3% §8(+3.12%)",
+        "§7Crit Damage: §9+37% §8(+95.83%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Skeletor §7(0/4)",
+        "§7Grants §c+1 Strength §7and §9+1 Crit",
+        "§9Damage §7for every §b10 §7Skeletor kills",
+        "",
+        "§7Skeletor Kills: §a0",
+        "§7Bonus Strength: §a0",
+        "§7Bonus Critical Damage: §a0",
+        "",
+        "§7Each piece grants a §a1 §7second",
+        "§7cooldown reduction on bone plating!",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "d0076193af8fb61f186fe73736673d2fc9d3fad8d5418078dbf28774a4cd5407": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 10,
+        "baseStatBoostPercentage": 48,
+        "modifier": "pure",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1147634281
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d595 §8(1676)",
+        "§7Health: §c+164 §9(+6) §8(+488.72)",
+        "§7Defense: §a+157 §9(+6) §8(+467.86)",
+        "§7Strength: §c+6 §9(+6) §8(+17.88)",
+        "§7Crit Chance: §9+14% §9(+8%) §8(+14.42%)",
+        "§7Crit Damage: §9+73% §9(+6%) §8(+217.54%)",
+        "§7Attack Speed: §e+3% §9(+3%) §8(+3.09%)",
+        "§7Intelligence: §b+6 §9(+6) §8(+17.88)",
+        "§7Speed: §f+1 §9(+1) §8(+2.98)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§7§4❣ §cRequires §cCatacombs Skill 36 §cwhile in The Catacombs§c.",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "3aaa6a8393c84c1134e2285e29422ff5c40e7b3c1cf1731c206191fd8e02917f": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 10,
+        "baseStatBoostPercentage": 2,
+        "modifier": "mythic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          415,
+          -1073333794
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d476 §8(2200)",
+        "§7Health: §c+141 §9(+8) §8(+690.9)",
+        "§7Defense: §a+118 §9(+8) §8(+578.2)",
+        "§7Strength: §c+8 §9(+8) §8(+39.2)",
+        "§7Crit Chance: §9+9% §9(+4%) §8(+9.45%)",
+        "§7Crit Damage: §9+46% §8(+225.4%)",
+        "§7Intelligence: §b+40 §9(+40) §8(+196)",
+        "§7Speed: §f+2 §9(+2) §8(+9.8)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "872e7ae756c9848a1b721f4bb19d93537ef4f065681767d95596f99a1f1c6b15": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 10,
+        "baseStatBoostPercentage": 36,
+        "modifier": "titanic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1552735960
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d585 §8(2756)",
+        "§7Health: §c+177 §9(+25) §8(+867.3)",
+        "§7Defense: §a+165 §9(+25) §8(+808.5)",
+        "§7Crit Chance: §9+6% §8(+6.3%)",
+        "§7Crit Damage: §9+62% §8(+303.8%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "9e48c095512c9bc5afccdb3628edab443f674525faed5df90fe32e28717824a8": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 9,
+        "baseStatBoostPercentage": 50,
+        "modifier": "smart",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          414,
+          -2088117300
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d609 §8(3454)",
+        "§7Health: §c+167 §9(+15) §8(+985.3)",
+        "§7Defense: §a+157 §9(+15) §8(+926.3)",
+        "§7Crit Chance: §9+6% §8(+6.3%)",
+        "§7Crit Damage: §9+62% §8(+365.8%)",
+        "§7Intelligence: §b+100 §9(+100) §8(+590)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§6§lLEGENDARY DUNGEON CHESTPLATE"
+      ]
+    },
+    "ad6acd1492a80a58b1b588ecbbfb77b550e7b414599cd20ec58bdc5f3bba6b76": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 9,
+        "baseStatBoostPercentage": 50,
+        "modifier": "light",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          413,
+          -1260273071
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d564 §8(3111)",
+        "§7Health: §c+172 §9(+20) §8(+1,014.8)",
+        "§7Defense: §a+147 §9(+5) §8(+867.3)",
+        "§7Crit Chance: §9+9% §9(+3%) §8(+9.45%)",
+        "§7Crit Damage: §9+67% §9(+5%) §8(+395.3%)",
+        "§7Attack Speed: §e+5% §9(+5%) §8(+5.25%)",
+        "§7Speed: §f+5 §9(+5) §8(+29.5)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§6§lLEGENDARY DUNGEON CHESTPLATE"
+      ]
+    },
+    "f91f22fd2e243c8aefa7b4e058d3367340dba4bd00dc19a716adb88185869d20": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 6,
+        "baseStatBoostPercentage": 50,
+        "modifier": "clean",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1305176543
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d509 §8(685)",
+        "§7Health: §c+155 §9(+20) §8(+213.9)",
+        "§7Defense: §a+135 §9(+20) §8(+186.3)",
+        "§7Crit Chance: §9+15% §9(+10%) §8(+15%)",
+        "§7Crit Damage: §9+48% §8(+66.24%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§7§4❣ §cRequires §cCatacombs Skill 12§c.",
+        "§7§4❣ §cRequires §cCatacombs Skill 28 §cwhile in The Catacombs§c.",
+        "§6§lLEGENDARY DUNGEON CHESTPLATE"
+      ]
+    },
+    "0d785d664ac02b2dc6523df37b5a89bf10ec016cd021f13ed207daaa963c8a2f": {
+      "itemId": "SKELETOR_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 5,
+        "baseStatBoostPercentage": 17,
+        "modifier": "heavy",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1104205097
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d459 §8(1180)",
+        "§7Health: §c+115 §8(+304.75)",
+        "§7Defense: §a+149 §9(+65) §8(+394.85)",
+        "§7Crit Chance: §9+3% §8(+3%)",
+        "§7Crit Damage: §9+30% §9(-3%) §8(+79.5%)",
+        "§7Speed: §f-1 §9(-1)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Skeletor §7(0/4)",
+        "§7Grants §c+1 Strength §7and §9+1 Crit",
+        "§9Damage §7for every §b10 §7Skeletor kills",
+        "",
+        "§7Skeletor Kills: §a0",
+        "§7Bonus Strength: §a0",
+        "§7Bonus Critical Damage: §a0",
+        "",
+        "§7Each piece grants a §a1 §7second",
+        "§7cooldown reduction on bone plating!",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "f3e72178d99048687eed8e03ee97771ddc9248b8f8dca648f832c146fea73ef1": {
+      "itemId": "HEAVY_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 2,
+        "baseStatBoostPercentage": 4,
+        "modifier": "clean",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1144883449
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d425 §8(723)",
+        "§7Health: §c+85 §9(+10) §8(+148.75)",
+        "§7Defense: §a+156 §9(+10) §8(+273)",
+        "§7Crit Chance: §9+6% §9(+6%) §8(+6%)",
+        "§7Speed: §f-5",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Vindicate §7(0/4)",
+        "§7Grants §f+1 walk speed §7for every §a50",
+        "§a§7defense that you have.",
+        "",
+        "§9§lRARE DUNGEON CHESTPLATE"
+      ]
+    },
+    "dc895b5758bd0838fa9bd7654d1bb8718222ffedd9cbf7cfae48cb252455d23f": {
+      "itemId": "ZOMBIE_COMMANDER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 7,
+        "baseStatBoostPercentage": 42,
+        "modifier": "clean",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1160875378
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d597 §8(2197)",
+        "§7Health: §c+250 §9(+15) §8(+997.5)",
+        "§7Defense: §a+128 §9(+15) §8(+510.72)",
+        "§7Strength: §c+23 §8(+91.77)",
+        "§7Crit Chance: §9+8% §9(+8%) §8(+8.32%)",
+        "§7Intelligence: §b+12 §8(+47.88)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Training §7(0/4)",
+        "§7Every §950 Zombies killed§7 gives the",
+        "§7wearer §a+5 §c Health§7 while wearing",
+        "§7the set. Max 500.",
+        "",
+        "§7Zombies Killed: §a0",
+        "§7Bonus HP: §a0",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "7b3f33ca275e638410998a553866e05f8431330132183cce0fa08c533ed63a7b": {
+      "itemId": "SKELETON_SOLDIER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 10,
+        "baseStatBoostPercentage": 50,
+        "modifier": "pure",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          679070736
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d604 §8(3016)",
+        "§7Health: §c+167 §9(+8) §8(+901.8)",
+        "§7Defense: §a+160 §9(+8) §8(+864)",
+        "§7Strength: §c+8 §9(+8) §8(+43.2)",
+        "§7Crit Chance: §9+16% §9(+10%) §8(+16.8%)",
+        "§7Crit Damage: §9+61% §9(+8%) §8(+329.4%)",
+        "§7Attack Speed: §e+4% §9(+4%) §8(+4.2%)",
+        "§7Intelligence: §b+8 §9(+8) §8(+43.2)",
+        "§7Speed: §f+1 §9(+1) §8(+5.4)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "",
+        "§6Full Set Bonus: Skeleton Soldier §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by an extra §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§6§lLEGENDARY DUNGEON CHESTPLATE"
+      ]
+    },
+    "9c8114832ee1aec8eb86013cf2d26c1e4701fbc3d42317c11d13355a9f2e6d69": {
+      "itemId": "BOUNCY_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 6,
+        "baseStatBoostPercentage": 36,
+        "modifier": "smart",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1108060518
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d495 §8(1731)",
+        "§7Health: §c+371 §9(+9) §8(+1,368.99)",
+        "§7Defense: §a+29 §9(+9) §8(+107.01)",
+        "§7Crit Chance: §9+10% §8(+10.4%)",
+        "§7Intelligence: §b+60 §9(+60) §8(+221.4)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Bouncing Arrow §7(0/4)",
+        "§7Your arrows have a §e25% §7chance to",
+        "§7bounce to another target after it",
+        "§7hits something.",
+        "",
+        "§9§lRARE DUNGEON CHESTPLATE"
+      ]
+    },
+    "b45352e94a314aa84265880f6fef0f10fcdf9cf8eb9fd091db1c84adb8fc3b7b": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 4,
+        "baseStatBoostPercentage": 23,
+        "modifier": "titanic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1111172852
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d415 §8(455)",
+        "§7Health: §c+142 §9(+25) §8(+156.2)",
+        "§7Defense: §a+112 §9(+25) §8(+123.2)",
+        "§7Crit Chance: §9+3% §8(+3%)",
+        "§7Crit Damage: §9+34% §8(+37.4%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§7§4❣ §cRequires §cCatacombs Skill 12§c.",
+        "§7§4❣ §cRequires §cCatacombs Skill 9 §cwhile in The Catacombs§c.",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "6a4418c5270f1de087f421e32f750b7c51a21d50a4e3427871c4ebc50d25afbf": {
+      "itemId": "ZOMBIE_COMMANDER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 10,
+        "baseStatBoostPercentage": 33,
+        "modifier": "wise",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1111097169
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d706 §8(3007)",
+        "§7Health: §c+292 §9(+12) §8(+1,311.08)",
+        "§7Defense: §a+140 §8(+628.6)",
+        "§7Strength: §c+30 §8(+134.7)",
+        "§7Intelligence: §b+115 §9(+100) §8(+516.35)",
+        "§7Speed: §f+2 §9(+2) §8(+8.98)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Training §7(0/4)",
+        "§7Every §950 Zombies killed§7 gives the",
+        "§7wearer §a+5 §c Health§7 while wearing",
+        "§7the set. Max 500.",
+        "",
+        "§7Zombies Killed: §a0",
+        "§7Bonus HP: §a0",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "9307c5505f659f45be51f5aeeea88f864fb3eef1a494bf5b5fc484dbf4b85953": {
+      "itemId": "ZOMBIE_COMMANDER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 10,
+        "baseStatBoostPercentage": 29,
+        "modifier": "pure",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1111007135
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d684 §8(2836)",
+        "§7Health: §c+280 §9(+6) §8(+1,257.2)",
+        "§7Defense: §a+143 §9(+6) §8(+642.07)",
+        "§7Strength: §c+35 §9(+6) §8(+157.15)",
+        "§7Crit Chance: §9+8% §9(+8%) §8(+8.32%)",
+        "§7Crit Damage: §9+6% §9(+6%) §8(+26.94%)",
+        "§7Attack Speed: §e+3% §9(+3%) §8(+3.12%)",
+        "§7Intelligence: §b+21 §9(+6) §8(+94.29)",
+        "§7Speed: §f+1 §9(+1) §8(+4.49)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Training §7(0/4)",
+        "§7Every §950 Zombies killed§7 gives the",
+        "§7wearer §a+5 §c Health§7 while wearing",
+        "§7the set. Max 500.",
+        "",
+        "§7Zombies Killed: §a0",
+        "§7Bonus HP: §a0",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "4dabe82ea91ec1ca8cf87535823ae2d62e91b8063a5e8afe203e48968222fe1d": {
+      "itemId": "ZOMBIE_COMMANDER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 7,
+        "baseStatBoostPercentage": 36,
+        "modifier": "mythic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1118441199
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d580 §8(2892)",
+        "§7Health: §c+236 §9(+8) §8(+1,274.4)",
+        "§7Defense: §a+117 §9(+8) §8(+631.8)",
+        "§7Strength: §c+30 §9(+8) §8(+162)",
+        "§7Crit Chance: §9+4% §9(+4%) §8(+4.2%)",
+        "§7Intelligence: §b+51 §9(+40) §8(+275.4)",
+        "§7Speed: §f+2 §9(+2) §8(+10.8)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Training §7(0/4)",
+        "§7Every §950 Zombies killed§7 gives the",
+        "§7wearer §a+5 §c Health§7 while wearing",
+        "§7the set. Max 500.",
+        "",
+        "§7Zombies Killed: §a0",
+        "§7Bonus HP: §a0",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "1c6b1fc2e03f376ed58214f96074d17bc92f6a899fa3eac5c1b6ad92bcde31a6": {
+      "itemId": "SKELETON_SOLDIER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 1,
+        "baseStatBoostPercentage": 9,
+        "modifier": "pure",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1118469407
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d327 §8(511)",
+        "§7Health: §c+110 §9(+6) §8(+181.5)",
+        "§7Defense: §a+72 §9(+6) §8(+118.8)",
+        "§7Strength: §c+6 §9(+6) §8(+9.9)",
+        "§7Crit Chance: §9+11% §9(+8%) §8(+11%)",
+        "§7Crit Damage: §9+25% §9(+6%) §8(+41.25%)",
+        "§7Attack Speed: §e+3% §9(+3%) §8(+3%)",
+        "§7Intelligence: §b+6 §9(+6) §8(+9.9)",
+        "§7Speed: §f+1 §9(+1) §8(+1.65)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "",
+        "§6Full Set Bonus: Skeleton Soldier §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by an extra §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§7§4❣ §cRequires §cCatacombs Skill 9§c.",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "797f0e28023356278c4e784dfa29ac943245edb3c07b3ee89ec19391ab8ff26e": {
+      "itemId": "SKELETON_SOLDIER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 5,
+        "baseStatBoostPercentage": 28,
+        "modifier": "wise",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1120055444
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d423 §8(1457)",
+        "§7Health: §c+135 §9(+12) §8(+484.65)",
+        "§7Defense: §a+95 §8(+341.05)",
+        "§7Crit Chance: §9+4% §8(+4.16%)",
+        "§7Crit Damage: §9+30% §8(+107.7%)",
+        "§7Intelligence: §b+100 §9(+100) §8(+359)",
+        "§7Speed: §f+2 §9(+2) §8(+7.18)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "",
+        "§6Full Set Bonus: Skeleton Soldier §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by an extra §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "ff00e2e405f4f17086b3b7f1f1285c92faca392ff793a46845c0cf5e75244806": {
+      "itemId": "SKELETON_SOLDIER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 5,
+        "baseStatBoostPercentage": 1,
+        "modifier": "mythic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1119977884
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d374 §8(1261)",
+        "§7Health: §c+121 §9(+8) §8(+434.39)",
+        "§7Defense: §a+87 §9(+8) §8(+312.33)",
+        "§7Strength: §c+8 §9(+8) §8(+28.72)",
+        "§7Crit Chance: §9+8% §9(+4%) §8(+8.32%)",
+        "§7Crit Damage: §9+24% §8(+86.16%)",
+        "§7Intelligence: §b+40 §9(+40) §8(+143.6)",
+        "§7Speed: §f+2 §9(+2) §8(+7.18)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "",
+        "§6Full Set Bonus: Skeleton Soldier §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by an extra §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "c070c23f8ca8f8f4f287e3eed1f53405a2460a8d6c6dee4248f9f89a4d104c04": {
+      "itemId": "SKELETOR_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 6,
+        "baseStatBoostPercentage": 21,
+        "modifier": "fierce",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1120785409
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d386 §8(1001)",
+        "§7Health: §c+120 §8(+330)",
+        "§7Defense: §a+91 §8(+250.25)",
+        "§7Strength: §c+8 §9(+8) §8(+22)",
+        "§7Crit Chance: §9+9% §9(+5%) §8(+9%)",
+        "§7Crit Damage: §9+52% §9(+14%) §8(+143%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Skeletor §7(0/4)",
+        "§7Grants §c+1 Strength §7and §9+1 Crit",
+        "§9Damage §7for every §b10 §7Skeletor kills",
+        "",
+        "§7Skeletor Kills: §a0",
+        "§7Bonus Strength: §a0",
+        "§7Bonus Critical Damage: §a0",
+        "",
+        "§7Each piece grants a §a1 §7second",
+        "§7cooldown reduction on bone plating!",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "d25e3a1de0aa4a8e9a22b1ce77f8fa2cd905a54fed9dd2d872340ca793d826e0": {
+      "itemId": "ZOMBIE_COMMANDER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 10,
+        "baseStatBoostPercentage": 24,
+        "modifier": "wise",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1415194353
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d673 §8(3745)",
+        "§7Health: §c+278 §9(+12) §8(+1,640.2)",
+        "§7Defense: §a+132 §8(+778.8)",
+        "§7Strength: §c+28 §8(+165.2)",
+        "§7Intelligence: §b+114 §9(+100) §8(+672.6)",
+        "§7Speed: §f+2 §9(+2) §8(+11.8)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Training §7(0/4)",
+        "§7Every §950 Zombies killed§7 gives the",
+        "§7wearer §a+5 §c Health§7 while wearing",
+        "§7the set. Max 500.",
+        "",
+        "§7Zombies Killed: §a0",
+        "§7Bonus HP: §a0",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "6988cb0987e1a5b0d580e79a4e354e976ddbde2a1c3039c78ac73522b2a45b01": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 10,
+        "baseStatBoostPercentage": 45,
+        "modifier": "smart",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1122595915
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d610 §8(3112)",
+        "§7Health: §c+169 §9(+12) §8(+895.7)",
+        "§7Defense: §a+160 §9(+12) §8(+848)",
+        "§7Crit Chance: §9+6% §8(+6.3%)",
+        "§7Crit Damage: §9+66% §8(+349.8%)",
+        "§7Intelligence: §b+80 §9(+80) §8(+424)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "bdabcf3ce010d8eb4787f199ac69cf4571bdb81c100232388d79c09d2b541b76": {
+      "itemId": "SKELETON_GRUNT_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 1,
+        "baseStatBoostPercentage": 36,
+        "modifier": "wise",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1122886586
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d354 §8(542)",
+        "§7Health: §c+132 §9(+12) §8(+204.6)",
+        "§7Defense: §a+72 §8(+111.6)",
+        "§7Crit Damage: §9+21% §8(+32.55%)",
+        "§7Intelligence: §b+100 §9(+100) §8(+155)",
+        "§7Speed: §f+2 §9(+2) §8(+3.1)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "d7b070755c429701673917872525fd3e1b94227352c053c094d431bb5f50d5b7": {
+      "itemId": "SKELETOR_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 7,
+        "baseStatBoostPercentage": 50,
+        "modifier": "pure",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1126065176
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d501 §8(2064)",
+        "§7Health: §c+143 §9(+8) §8(+642.07)",
+        "§7Defense: §a+123 §9(+8) §8(+552.27)",
+        "§7Strength: §c+8 §9(+8) §8(+35.92)",
+        "§7Crit Chance: §9+15% §9(+10%) §8(+15.6%)",
+        "§7Crit Damage: §9+58% §9(+8%) §8(+260.42%)",
+        "§7Attack Speed: §e+4% §9(+4%) §8(+4.16%)",
+        "§7Intelligence: §b+8 §9(+8) §8(+35.92)",
+        "§7Speed: §f+1 §9(+1) §8(+4.49)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Skeletor §7(0/4)",
+        "§7Grants §c+1 Strength §7and §9+1 Crit",
+        "§9Damage §7for every §b10 §7Skeletor kills",
+        "",
+        "§7Skeletor Kills: §a0",
+        "§7Bonus Strength: §a0",
+        "§7Bonus Critical Damage: §a0",
+        "",
+        "§7Each piece grants a §a1 §7second",
+        "§7cooldown reduction on bone plating!",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§6§lLEGENDARY DUNGEON CHESTPLATE"
+      ]
+    },
+    "8dcbf0db6ce6cb4ae041ac03286231c612100d791f0795296ecf3d4b5dc4b85e": {
+      "itemId": "ZOMBIE_COMMANDER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 7,
+        "baseStatBoostPercentage": 24,
+        "modifier": "smart",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1124542865
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d563 §8(2890)",
+        "§7Health: §c+226 §9(+12) §8(+1,243)",
+        "§7Defense: §a+113 §9(+12) §8(+621.5)",
+        "§7Strength: §c+20 §8(+110)",
+        "§7Intelligence: §b+90 §9(+80) §8(+495)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Training §7(0/4)",
+        "§7Every §950 Zombies killed§7 gives the",
+        "§7wearer §a+5 §c Health§7 while wearing",
+        "§7the set. Max 500.",
+        "",
+        "§7Zombies Killed: §a0",
+        "§7Bonus HP: §a0",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "23ebcb202802b02852136d0a49dd89fcf17a8a80787894d7fe8f4d90f9afef62": {
+      "itemId": "ZOMBIE_COMMANDER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 7,
+        "baseStatBoostPercentage": 29,
+        "modifier": "pure",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1124601326
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d554 §8(1907)",
+        "§7Health: §c+226 §9(+6) §8(+854.28)",
+        "§7Defense: §a+110 §9(+6) §8(+415.8)",
+        "§7Strength: §c+27 §9(+6) §8(+102.06)",
+        "§7Crit Chance: §9+8% §9(+8%) §8(+8.24%)",
+        "§7Crit Damage: §9+6% §9(+6%) §8(+22.68%)",
+        "§7Attack Speed: §e+3% §9(+3%) §8(+3.09%)",
+        "§7Intelligence: §b+17 §9(+6) §8(+64.26)",
+        "§7Speed: §f+1 §9(+1) §8(+3.78)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Training §7(0/4)",
+        "§7Every §950 Zombies killed§7 gives the",
+        "§7wearer §a+5 §c Health§7 while wearing",
+        "§7the set. Max 500.",
+        "",
+        "§7Zombies Killed: §a0",
+        "§7Bonus HP: §a0",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "e3960716598ec0a4763c70d0e13e8880ac0e0dfacc62edad2b7dd54cd8571eae": {
+      "itemId": "SKELETON_GRUNT_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 6,
+        "baseStatBoostPercentage": 42,
+        "modifier": "smart",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1128913256
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d456 §8(1922)",
+        "§7Health: §c+153 §9(+12) §8(+656.37)",
+        "§7Defense: §a+113 §9(+12) §8(+484.77)",
+        "§7Crit Damage: §9+33% §8(+141.57%)",
+        "§7Intelligence: §b+80 §9(+80) §8(+343.2)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "526de9623c6fd5cb79215fc3398a7f01edd9a2673641d74c97993f4b24982abf": {
+      "itemId": "SKELETON_SOLDIER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 1,
+        "baseStatBoostPercentage": 50,
+        "modifier": "fierce",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1216890390
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d359 §8(766)",
+        "§7Health: §c+114 §8(+256.5)",
+        "§7Defense: §a+83 §8(+186.75)",
+        "§7Strength: §c+10 §9(+10) §8(+22.5)",
+        "§7Crit Chance: §9+9% §9(+6%) §8(+9%)",
+        "§7Crit Damage: §9+44% §9(+18%) §8(+99%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "",
+        "§6Full Set Bonus: Skeleton Soldier §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by an extra §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§6§lLEGENDARY DUNGEON CHESTPLATE"
+      ]
+    },
+    "81bab355ed0b1a00db3738e5fab27926dd6aa8d2b0bf4e0cb44189c173e4c80a": {
+      "itemId": "SKELETON_GRUNT_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 1,
+        "baseStatBoostPercentage": 49,
+        "modifier": "wise",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          404,
+          -2077803143
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d370 §8(1697)",
+        "§7Health: §c+137 §9(+12) §8(+642.53)",
+        "§7Defense: §a+77 §8(+361.13)",
+        "§7Crit Damage: §9+23% §8(+107.87%)",
+        "§7Intelligence: §b+100 §9(+100) §8(+469)",
+        "§7Speed: §f+2 §9(+2) §8(+9.38)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "89e26846b209e91567396ec93ab4465bef6f0ae25ea674442b26d0ca68ebf131": {
+      "itemId": "SKELETON_GRUNT_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 2,
+        "baseStatBoostPercentage": 34,
+        "modifier": "mythic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1134877160
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d363 §8(758)",
+        "§7Health: §c+132 §9(+8) §8(+283.8)",
+        "§7Defense: §a+83 §9(+8) §8(+178.45)",
+        "§7Strength: §c+8 §9(+8) §8(+17.2)",
+        "§7Crit Chance: §9+4% §9(+4%) §8(+4%)",
+        "§7Crit Damage: §9+22% §8(+47.3%)",
+        "§7Intelligence: §b+40 §9(+40) §8(+86)",
+        "§7Speed: §f+2 §9(+2) §8(+4.3)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "3d50f71a6ada28369f70994db9f78ce62a7e25e6daf270fb7fc6d42a656acc17": {
+      "itemId": "SKELETON_SOLDIER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 1,
+        "baseStatBoostPercentage": 50,
+        "modifier": "pure",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1134971270
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d393 §8(582)",
+        "§7Health: §c+122 §9(+8) §8(+189.1)",
+        "§7Defense: §a+91 §9(+8) §8(+141.05)",
+        "§7Strength: §c+8 §9(+8) §8(+12.4)",
+        "§7Crit Chance: §9+13% §9(+10%) §8(+13%)",
+        "§7Crit Damage: §9+34% §9(+8%) §8(+52.7%)",
+        "§7Attack Speed: §e+4% §9(+4%) §8(+4%)",
+        "§7Intelligence: §b+8 §9(+8) §8(+12.4)",
+        "§7Speed: §f+1 §9(+1) §8(+1.55)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "",
+        "§6Full Set Bonus: Skeleton Soldier §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by an extra §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§7§4❣ §cRequires §cCatacombs Skill 9§c.",
+        "§6§lLEGENDARY DUNGEON CHESTPLATE"
+      ]
+    },
+    "5614155e080bd8a36c9a19272ff3c797ebb94de41f809a42e2dac41404a6b233": {
+      "itemId": "SKELETON_SOLDIER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 6,
+        "baseStatBoostPercentage": 44,
+        "modifier": "pure",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1133932883
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d464 §8(1371)",
+        "§7Health: §c+139 §9(+6) §8(+442.02)",
+        "§7Defense: §a+117 §9(+6) §8(+372.06)",
+        "§7Strength: §c+6 §9(+6) §8(+19.08)",
+        "§7Crit Chance: §9+13% §9(+8%) §8(+13.39%)",
+        "§7Crit Damage: §9+42% §9(+6%) §8(+133.56%)",
+        "§7Attack Speed: §e+3% §9(+3%) §8(+3.09%)",
+        "§7Intelligence: §b+6 §9(+6) §8(+19.08)",
+        "§7Speed: §f+1 §9(+1) §8(+3.18)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "",
+        "§6Full Set Bonus: Skeleton Soldier §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by an extra §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "2b2408b80fe5349d2ab384aca0ee9656ecebfb1bb51032cf987e3f193599ca98": {
+      "itemId": "SUPER_HEAVY_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 7,
+        "baseStatBoostPercentage": 50,
+        "modifier": "pure",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1134381305
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d835 §8(2886)",
+        "§7Health: §c+83 §9(+8) §8(+297.97)",
+        "§7Defense: §a+345 §9(+8) §8(+1,238.55)",
+        "§7Strength: §c+8 §9(+8) §8(+28.72)",
+        "§7Crit Chance: §9+10% §9(+10%) §8(+10.4%)",
+        "§7Crit Damage: §9+8% §9(+8%) §8(+28.72%)",
+        "§7Attack Speed: §e+4% §9(+4%) §8(+4.16%)",
+        "§7Intelligence: §b+8 §9(+8) §8(+28.72)",
+        "§7Speed: §f-9 §9(+1)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Each piece of this armor reduces",
+        "§7the cooldown of §9Seismic Wave §7by §a1s§7.",
+        "",
+        "§6Full Set Bonus: Vindicate §7(0/4)",
+        "§7Grants §f+1 walk speed §7for every §a50",
+        "§a§7defense that you have.",
+        "",
+        "§6§lLEGENDARY DUNGEON CHESTPLATE"
+      ]
+    },
+    "60ebadd7b16282b6055afa11eeea607c28dad63a096941d32a546141d10f8c7c": {
+      "itemId": "SUPER_HEAVY_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 7,
+        "baseStatBoostPercentage": 47,
+        "modifier": "fierce",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1137350604
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d782 §8(2590)",
+        "§7Health: §c+75 §8(+254.25)",
+        "§7Defense: §a+331 §8(+1,122.09)",
+        "§7Strength: §c+8 §9(+8) §8(+27.12)",
+        "§7Crit Chance: §9+5% §9(+5%) §8(+5.2%)",
+        "§7Crit Damage: §9+14% §9(+14%) §8(+47.46%)",
+        "§7Speed: §f-10",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Each piece of this armor reduces",
+        "§7the cooldown of §9Seismic Wave §7by §a1s§7.",
+        "",
+        "§6Full Set Bonus: Vindicate §7(0/4)",
+        "§7Grants §f+1 walk speed §7for every §a50",
+        "§a§7defense that you have.",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "917e0c49eec788dd204fde3a63840e56f17ae3983440ac527a8dddaeafda5e75": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 9,
+        "baseStatBoostPercentage": 24,
+        "modifier": "fierce",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1138770914
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d477 §8(2193)",
+        "§7Health: §c+139 §8(+679.71)",
+        "§7Defense: §a+121 §8(+591.69)",
+        "§7Strength: §c+8 §9(+8) §8(+39.12)",
+        "§7Crit Chance: §9+10% §9(+5%) §8(+10.4%)",
+        "§7Crit Damage: §9+65% §9(+14%) §8(+317.85%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(1/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "10bd44ced017d30caf8a34bf5fd059ccd80dc290016186fec7c72185c1463253": {
+      "itemId": "HEAVY_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 3,
+        "baseStatBoostPercentage": 22,
+        "modifier": "heavy",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1150804243
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d553 §8(1333)",
+        "§7Health: §c+75 §8(+183.75)",
+        "§7Defense: §a+232 §9(+50) §8(+568.4)",
+        "§7Crit Damage: §9-2% §9(-2%)",
+        "§7Speed: §f-6 §9(-1)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Vindicate §7(0/4)",
+        "§7Grants §f+1 walk speed §7for every §a50",
+        "§a§7defense that you have.",
+        "",
+        "§9§lRARE DUNGEON CHESTPLATE"
+      ]
+    },
+    "d733e5b92d25a60baf30a834f3066f74135a92466e5179e0546992ca69a27c43": {
+      "itemId": "ZOMBIE_COMMANDER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 7,
+        "baseStatBoostPercentage": 43,
+        "modifier": "mythic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          1296021635
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d597 §8(2058)",
+        "§7Health: §c+244 §9(+8) §8(+900.36)",
+        "§7Defense: §a+121 §9(+8) §8(+446.49)",
+        "§7Strength: §c+31 §9(+8) §8(+114.39)",
+        "§7Crit Chance: §9+4% §9(+4%) §8(+4.16%)",
+        "§7Intelligence: §b+52 §9(+40) §8(+191.88)",
+        "§7Speed: §f+2 §9(+2) §8(+7.38)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Training §7(0/4)",
+        "§7Every §950 Zombies killed§7 gives the",
+        "§7wearer §a+5 §c Health§7 while wearing",
+        "§7the set. Max 500.",
+        "",
+        "§7Zombies Killed: §a0",
+        "§7Bonus HP: §a0",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "2fb84051769dc505754586366a8a65e36be0ec157b0db8e1bca67ade93d9627a": {
+      "itemId": "ZOMBIE_COMMANDER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 7,
+        "baseStatBoostPercentage": 14,
+        "modifier": "clean",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1148426201
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d524 §8(1763)",
+        "§7Health: §c+218 §9(+15) §8(+802.24)",
+        "§7Defense: §a+110 §9(+15) §8(+404.8)",
+        "§7Strength: §c+19 §8(+69.92)",
+        "§7Crit Chance: §9+8% §9(+8%) §8(+8.24%)",
+        "§7Intelligence: §b+10 §8(+36.8)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Training §7(0/4)",
+        "§7Every §950 Zombies killed§7 gives the",
+        "§7wearer §a+5 §c Health§7 while wearing",
+        "§7the set. Max 500.",
+        "",
+        "§7Zombies Killed: §a0",
+        "§7Bonus HP: §a0",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "d15a641c67b74633ab65e9bae4047b632f7368d6afc93397036ed4e7356d3b73": {
+      "itemId": "SUPER_HEAVY_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 9,
+        "baseStatBoostPercentage": 50,
+        "modifier": "heavy",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1749955854
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d1071 §8(1556)",
+        "§7Health: §c+75 §8(+109.5)",
+        "§7Defense: §a+492 §9(+80) §8(+718.32)",
+        "§7Crit Damage: §9-5% §9(-5%)",
+        "§7Speed: §f-11 §9(-1)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§8DARN BOI",
+        "",
+        "§7Each piece of this armor reduces",
+        "§7the cooldown of §9Seismic Wave §7by §a1s§7.",
+        "",
+        "§6Full Set Bonus: Vindicate §7(0/4)",
+        "§7Grants §f+1 walk speed §7for every §a50",
+        "§a§7defense that you have.",
+        "",
+        "§7§4❣ §cRequires §cCatacombs Skill 15§c.",
+        "§7§4❣ §cRequires §cCatacombs Skill 34 §cwhile in The Catacombs§c.",
+        "§6§lLEGENDARY DUNGEON CHESTPLATE"
+      ]
+    },
+    "97a4fa18842b1c12fd94ba82164c45f68381b2094dd407ce3d14c63ac995f2ea": {
+      "itemId": "SKELETOR_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 7,
+        "baseStatBoostPercentage": 38,
+        "modifier": "titanic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1150133599
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d483 §8(1986)",
+        "§7Health: §c+156 §9(+25) §8(+669.24)",
+        "§7Defense: §a+132 §9(+25) §8(+566.28)",
+        "§7Crit Chance: §9+5% §8(+5.2%)",
+        "§7Crit Damage: §9+46% §8(+197.34%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Skeletor §7(0/4)",
+        "§7Grants §c+1 Strength §7and §9+1 Crit",
+        "§9Damage §7for every §b10 §7Skeletor kills",
+        "",
+        "§7Skeletor Kills: §a0",
+        "§7Bonus Strength: §a0",
+        "§7Bonus Critical Damage: §a0",
+        "",
+        "§7Each piece grants a §a1 §7second",
+        "§7cooldown reduction on bone plating!",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "3c980eee1f9da337c2bf35d5688760db85167ff0d96a6166a587861d3717fd56": {
+      "itemId": "SKELETOR_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 5,
+        "baseStatBoostPercentage": 10,
+        "modifier": "fierce",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1155897791
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d349 §8(910)",
+        "§7Health: §c+113 §8(+313.01)",
+        "§7Defense: §a+80 §8(+221.6)",
+        "§7Strength: §c+8 §9(+8) §8(+22.16)",
+        "§7Crit Chance: §9+8% §9(+5%) §8(+8.16%)",
+        "§7Crit Damage: §9+45% §9(+14%) §8(+124.65%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Skeletor §7(0/4)",
+        "§7Grants §c+1 Strength §7and §9+1 Crit",
+        "§9Damage §7for every §b10 §7Skeletor kills",
+        "",
+        "§7Skeletor Kills: §a0",
+        "§7Bonus Strength: §a0",
+        "§7Bonus Critical Damage: §a0",
+        "",
+        "§7Each piece grants a §a1 §7second",
+        "§7cooldown reduction on bone plating!",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "033de474b4792d750ba7a3abc7ce37db93aa3d4e786e0b5c19d0a9f40f3f25eb": {
+      "itemId": "SKELETOR_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 5,
+        "baseStatBoostPercentage": 21,
+        "modifier": "mythic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1155052250
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d398 §8(1017)",
+        "§7Health: §c+125 §9(+8) §8(+335)",
+        "§7Defense: §a+94 §9(+8) §8(+251.92)",
+        "§7Strength: §c+8 §9(+8) §8(+21.44)",
+        "§7Crit Chance: §9+7% §9(+4%) §8(+7.21%)",
+        "§7Crit Damage: §9+34% §8(+91.12%)",
+        "§7Intelligence: §b+40 §9(+40) §8(+107.2)",
+        "§7Speed: §f+2 §9(+2) §8(+5.36)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Skeletor §7(0/4)",
+        "§7Grants §c+1 Strength §7and §9+1 Crit",
+        "§9Damage §7for every §b10 §7Skeletor kills",
+        "",
+        "§7Skeletor Kills: §a0",
+        "§7Bonus Strength: §a0",
+        "§7Bonus Critical Damage: §a0",
+        "",
+        "§7Each piece grants a §a1 §7second",
+        "§7cooldown reduction on bone plating!",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "ff31c0aa687bab6bb5a2609b79c95f841cecc45e91a84bd614fa63ff76ba2979": {
+      "itemId": "SKELETOR_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 7,
+        "baseStatBoostPercentage": 7,
+        "modifier": "mythic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1155362736
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d407 §8(1566)",
+        "§7Health: §c+126 §9(+8) §8(+515.34)",
+        "§7Defense: §a+96 §9(+8) §8(+392.64)",
+        "§7Strength: §c+8 §9(+8) §8(+32.72)",
+        "§7Crit Chance: §9+8% §9(+4%) §8(+8.32%)",
+        "§7Crit Damage: §9+36% §8(+147.24%)",
+        "§7Intelligence: §b+40 §9(+40) §8(+163.6)",
+        "§7Speed: §f+2 §9(+2) §8(+8.18)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Skeletor §7(0/4)",
+        "§7Grants §c+1 Strength §7and §9+1 Crit",
+        "§9Damage §7for every §b10 §7Skeletor kills",
+        "",
+        "§7Skeletor Kills: §a0",
+        "§7Bonus Strength: §a0",
+        "§7Bonus Critical Damage: §a0",
+        "",
+        "§7Each piece grants a §a1 §7second",
+        "§7cooldown reduction on bone plating!",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "172c17974abb4924689dd5c09d53ad9251c08e419461ac271bc2be29fa62ab60": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 10,
+        "baseStatBoostPercentage": 16,
+        "modifier": "wise",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1157997216
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d516 §8(2331)",
+        "§7Health: §c+152 §9(+12) §8(+714.4)",
+        "§7Defense: §a+123 §8(+578.1)",
+        "§7Crit Chance: §9+5% §8(+5.25%)",
+        "§7Crit Damage: §9+53% §8(+249.1%)",
+        "§7Intelligence: §b+100 §9(+100) §8(+470)",
+        "§7Speed: §f+2 §9(+2) §8(+9.4)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(1/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "62ce8914bea038ddf4f717d53bb0058cb7e7b9be1eaa8c91b241461b139bc5eb": {
+      "itemId": "ZOMBIE_COMMANDER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 7,
+        "baseStatBoostPercentage": 49,
+        "modifier": "smart",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1512311885
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d628 §8(2135)",
+        "§7Health: §c+254 §9(+12) §8(+911.86)",
+        "§7Defense: §a+129 §9(+12) §8(+463.11)",
+        "§7Strength: §c+24 §8(+86.16)",
+        "§7Intelligence: §b+92 §9(+80) §8(+330.28)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Training §7(0/4)",
+        "§7Every §950 Zombies killed§7 gives the",
+        "§7wearer §a+5 §c Health§7 while wearing",
+        "§7the set. Max 500.",
+        "",
+        "§7Zombies Killed: §a0",
+        "§7Bonus HP: §a0",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "1fe380bf1189f6a81b4d3df7b71e0440bc3080a95968c072356a2d853d0cb4fd": {
+      "itemId": "ZOMBIE_COMMANDER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 10,
+        "baseStatBoostPercentage": 46,
+        "modifier": "wise",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1175812446
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d754 §8(4220)",
+        "§7Health: §c+312 §9(+12) §8(+1,840.8)",
+        "§7Defense: §a+152 §8(+896.8)",
+        "§7Strength: §c+33 §8(+194.7)",
+        "§7Intelligence: §b+117 §9(+100) §8(+690.3)",
+        "§7Speed: §f+2 §9(+2) §8(+11.8)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Training §7(0/4)",
+        "§7Every §950 Zombies killed§7 gives the",
+        "§7wearer §a+5 §c Health§7 while wearing",
+        "§7the set. Max 500.",
+        "",
+        "§7Zombies Killed: §a0",
+        "§7Bonus HP: §a0",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "f2d2f28d3505e885145870c784e0987428ea152c6a5d9d78e5d3dce51b100c12": {
+      "itemId": "HEAVY_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 6,
+        "baseStatBoostPercentage": 9,
+        "modifier": "titanic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          414,
+          -1211080365
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d559 §8(3057)",
+        "§7Health: §c+95 §9(+20) §8(+532)",
+        "§7Defense: §a+224 §9(+20) §8(+1,254.4)",
+        "§7Speed: §f-5",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Vindicate §7(0/4)",
+        "§7Grants §f+1 walk speed §7for every §a50",
+        "§a§7defense that you have.",
+        "",
+        "§9§lRARE DUNGEON CHESTPLATE"
+      ]
+    },
+    "e2ba7cf93b133db279f8fe9aabe2a5338b86bc900204a0a41da4507906db5d9b": {
+      "itemId": "HEAVY_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 6,
+        "baseStatBoostPercentage": 21,
+        "modifier": "clean",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          414,
+          -1304910625
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d581 §8(3125)",
+        "§7Health: §c+85 §9(+10) §8(+476)",
+        "§7Defense: §a+234 §9(+10) §8(+1,310.4)",
+        "§7Crit Chance: §9+6% §9(+6%) §8(+6.3%)",
+        "§7Speed: §f-5",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Vindicate §7(0/4)",
+        "§7Grants §f+1 walk speed §7for every §a50",
+        "§a§7defense that you have.",
+        "",
+        "§9§lRARE DUNGEON CHESTPLATE"
+      ]
+    },
+    "509daa4c7ff56c35a079a9d20d8f98dabba57050df41fcda861236975dd04bff": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 10,
+        "baseStatBoostPercentage": 49,
+        "modifier": "heavy",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1174170542
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d673 §8(3576)",
+        "§7Health: §c+159 §8(+874.5)",
+        "§7Defense: §a+217 §9(+65) §8(+1,193.5)",
+        "§7Crit Chance: §9+6% §8(+6.3%)",
+        "§7Crit Damage: §9+65% §9(-3%) §8(+357.5%)",
+        "§7Speed: §f-1 §9(-1)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "b588fdb5dfc7f79261afd8f3b647f84f6ee4e22b99e4a9d095b97e921975bb47": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 6,
+        "baseStatBoostPercentage": 49,
+        "modifier": "clean",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1174706025
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d488 §8(1780)",
+        "§7Health: §c+150 §9(+15) §8(+583.5)",
+        "§7Defense: §a+129 §9(+15) §8(+501.81)",
+        "§7Crit Chance: §9+13% §9(+8%) §8(+13.52%)",
+        "§7Crit Damage: §9+48% §8(+186.72%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(1/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "1855633e861bd2ee6ed0a1e3812c465711a5f64e24f293e146c6bcbce5cd6855": {
+      "itemId": "SKELETON_SOLDIER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 6,
+        "baseStatBoostPercentage": 50,
+        "modifier": "fierce",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1188496168
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d458 §8(1924)",
+        "§7Health: §c+135 §8(+606.15)",
+        "§7Defense: §a+115 §8(+516.35)",
+        "§7Strength: §c+10 §9(+10) §8(+44.9)",
+        "§7Crit Chance: §9+11% §9(+6%) §8(+11.44%)",
+        "§7Crit Damage: §9+56% §9(+18%) §8(+251.44%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "",
+        "§6Full Set Bonus: Skeleton Soldier §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by an extra §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§6§lLEGENDARY DUNGEON CHESTPLATE"
+      ]
+    },
+    "dddc9a09a2f0bea98f82c2f8671ab01029b121f6cd39713fb9de5b4b0aa883aa": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 9,
+        "baseStatBoostPercentage": 49,
+        "modifier": "pure",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          415,
+          -2044824899
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d564 §8(2773)",
+        "§7Health: §c+157 §9(+6) §8(+830.53)",
+        "§7Defense: §a+147 §9(+6) §8(+777.63)",
+        "§7Strength: §c+6 §9(+6) §8(+31.74)",
+        "§7Crit Chance: §9+14% §9(+8%) §8(+14.56%)",
+        "§7Crit Damage: §9+68% §9(+6%) §8(+359.72%)",
+        "§7Attack Speed: §e+3% §9(+3%) §8(+3.12%)",
+        "§7Intelligence: §b+6 §9(+6) §8(+31.74)",
+        "§7Speed: §f+1 §9(+1) §8(+5.29)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "466e0aae1d33f25c87919a0a6c3f8f89364a60447bf7bd5db8e9283583fa9b92": {
+      "itemId": "HEAVY_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 3,
+        "baseStatBoostPercentage": 10,
+        "modifier": "heavy",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1227475913
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d521 §8(1153)",
+        "§7Health: §c+75 §8(+168.75)",
+        "§7Defense: §a+216 §9(+50) §8(+486)",
+        "§7Crit Damage: §9-2% §9(-2%)",
+        "§7Speed: §f-6 §9(-1)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Vindicate §7(0/4)",
+        "§7Grants §f+1 walk speed §7for every §a50",
+        "§a§7defense that you have.",
+        "",
+        "§9§lRARE DUNGEON CHESTPLATE"
+      ]
+    },
+    "3a5a6ac93fd2bd3da23b215995349daeba5ec143b1f904cfbb90326666f2f366": {
+      "itemId": "ZOMBIE_KNIGHT_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 7,
+        "baseStatBoostPercentage": 45,
+        "modifier": "clean",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1221517344
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d708 §8(2797)",
+        "§7Health: §c+90 §9(+15) §8(+368.1)",
+        "§7Defense: §a+269 §9(+15) §8(+1,100.21)",
+        "§7Strength: §c+48 §8(+196.32)",
+        "§7Crit Chance: §9+8% §9(+8%) §8(+8.32%)",
+        "§7Speed: §f+11 §8(+44.99)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Zombie Knight §7(0/4)",
+        "§7Gains §a+50 Defense §7when used with",
+        "§7the Zombie Knight Sword",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "bc9c5460bdd64e7ee0790127aae92d1aed0b5581029231147a23cde4e4c338fe": {
+      "itemId": "BOUNCY_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 6,
+        "baseStatBoostPercentage": 9,
+        "modifier": "pure",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1681776120
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d414 §8(1177)",
+        "§7Health: §c+309 §9(+4) §8(+951.72)",
+        "§7Defense: §a+24 §9(+4) §8(+73.92)",
+        "§7Strength: §c+4 §9(+4) §8(+12.32)",
+        "§7Crit Chance: §9+14% §9(+6%) §8(+14.42%)",
+        "§7Crit Damage: §9+4% §9(+4%) §8(+12.32%)",
+        "§7Attack Speed: §e+2% §9(+2%) §8(+2.06%)",
+        "§7Intelligence: §b+4 §9(+4) §8(+12.32)",
+        "§7Speed: §f+1 §9(+1) §8(+3.08)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Bouncing Arrow §7(0/4)",
+        "§7Your arrows have a §e25% §7chance to",
+        "§7bounce to another target after it",
+        "§7hits something.",
+        "",
+        "§9§lRARE DUNGEON CHESTPLATE"
+      ]
+    },
+    "f16cef37b4e9405ca8b53640d2e79854b640564a78d7e2d6e2a7a7c93a95485c": {
+      "itemId": "SKELETON_SOLDIER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 9,
+        "baseStatBoostPercentage": 50,
+        "modifier": "clean",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1206338589
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d582 §8(2662)",
+        "§7Health: §c+172 §9(+20) §8(+841.08)",
+        "§7Defense: §a+162 §9(+20) §8(+792.18)",
+        "§7Crit Chance: §9+16% §9(+10%) §8(+16.64%)",
+        "§7Crit Damage: §9+48% §8(+234.72%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "",
+        "§6Full Set Bonus: Skeleton Soldier §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by an extra §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§6§lLEGENDARY DUNGEON CHESTPLATE"
+      ]
+    },
+    "9adb7bd1e3f0e8c77556dd22cc168a76b6f4e1d765dc2d9efdaf1318eeea5b14": {
+      "itemId": "SUPER_HEAVY_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 7,
+        "baseStatBoostPercentage": 50,
+        "modifier": "fierce",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1208321097
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d801 §8(3006)",
+        "§7Health: §c+75 §8(+288.75)",
+        "§7Defense: §a+337 §8(+1,297.45)",
+        "§7Strength: §c+10 §9(+10) §8(+38.5)",
+        "§7Crit Chance: §9+6% §9(+6%) §8(+6%)",
+        "§7Crit Damage: §9+18% §9(+18%) §8(+69.3%)",
+        "§7Speed: §f-10",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Each piece of this armor reduces",
+        "§7the cooldown of §9Seismic Wave §7by §a1s§7.",
+        "",
+        "§6Full Set Bonus: Vindicate §7(1/4)",
+        "§7Grants §f+1 walk speed §7for every §a50",
+        "§a§7defense that you have.",
+        "",
+        "§6§lLEGENDARY DUNGEON CHESTPLATE"
+      ]
+    },
+    "f452702629a55850645f91714bd148c390d9722c01a31edcbac383aa00e2b833": {
+      "itemId": "ROTTEN_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 1,
+        "baseStatBoostPercentage": 5,
+        "modifier": "mythic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1211101745
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d325 §8(587)",
+        "§7Health: §c+213 §9(+6) §8(+394.05)",
+        "§7Defense: §a+26 §9(+6) §8(+48.1)",
+        "§7Strength: §c+28 §9(+6) §8(+51.8)",
+        "§7Crit Chance: §9+3% §9(+3%) §8(+3%)",
+        "§7Intelligence: §b+30 §9(+30) §8(+55.5)",
+        "§7Speed: §f+2 §9(+2) §8(+3.7)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7This rotten piece of armor grants",
+        "§7§e15% §7knockback resistance to arrows",
+        "§7per piece worn.",
+        "",
+        "§6Full Set Bonus: Sieve Body §7(0/4)",
+        "§7Gain an additional §e20% §7knockback",
+        "§7resistance to arrows.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§9§lRARE DUNGEON CHESTPLATE"
+      ]
+    },
+    "235447c0b860b781777a55baceddcef7581be511a57b058eecfbe88d2dfe963f": {
+      "itemId": "ROTTEN_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 1,
+        "baseStatBoostPercentage": 27,
+        "modifier": "pure",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1211007512
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d348 §8(621)",
+        "§7Health: §c+238 §9(+4) §8(+440.3)",
+        "§7Defense: §a+24 §9(+4) §8(+44.4)",
+        "§7Strength: §c+30 §9(+4) §8(+55.5)",
+        "§7Crit Chance: §9+6% §9(+6%) §8(+6%)",
+        "§7Crit Damage: §9+4% §9(+4%) §8(+7.4%)",
+        "§7Attack Speed: §e+2% §9(+2%) §8(+2%)",
+        "§7Intelligence: §b+4 §9(+4) §8(+7.4)",
+        "§7Speed: §f+1 §9(+1) §8(+1.85)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7This rotten piece of armor grants",
+        "§7§e15% §7knockback resistance to arrows",
+        "§7per piece worn.",
+        "",
+        "§6Full Set Bonus: Sieve Body §7(0/4)",
+        "§7Gain an additional §e20% §7knockback",
+        "§7resistance to arrows.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§9§lRARE DUNGEON CHESTPLATE"
+      ]
+    },
+    "8ec0dbfde72d9dec1ff03263512b8a91b9c083387eecc25e4b4ec339c9fb5684": {
+      "itemId": "SUPER_HEAVY_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 9,
+        "baseStatBoostPercentage": 50,
+        "modifier": "titanic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          409,
+          -1831331145
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d1020 §8(5000)",
+        "§7Health: §c+110 §9(+35) §8(+649)",
+        "§7Defense: §a+447 §9(+35) §8(+2,637.3)",
+        "§7Speed: §f-10",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Each piece of this armor reduces",
+        "§7the cooldown of §9Seismic Wave §7by §a1s§7.",
+        "",
+        "§6Full Set Bonus: Vindicate §7(0/4)",
+        "§7Grants §f+1 walk speed §7for every §a50",
+        "§a§7defense that you have.",
+        "",
+        "§6§lLEGENDARY DUNGEON CHESTPLATE"
+      ]
+    },
+    "40dba3c2d6d1c60c4113a3babb624e9ae1f71622c4f930d687e1c07be381dd30": {
+      "itemId": "ZOMBIE_KNIGHT_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 8,
+        "baseStatBoostPercentage": 50,
+        "modifier": "wise",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          409,
+          -2104597322
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d791 §8(4586)",
+        "§7Health: §c+90 §9(+15) §8(+531)",
+        "§7Defense: §a+284 §8(+1,675.6)",
+        "§7Strength: §c+54 §8(+318.6)",
+        "§7Intelligence: §b+125 §9(+125) §8(+737.5)",
+        "§7Speed: §f+13 §9(+2) §8(+76.7)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Zombie Knight §7(0/4)",
+        "§7Gains §a+50 Defense §7when used with",
+        "§7the Zombie Knight Sword",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§6§lLEGENDARY DUNGEON CHESTPLATE"
+      ]
+    },
+    "e329148dca18ead2d086bcef6101d14188edf4eddac69bc1c4a588bdae4f4067": {
+      "itemId": "HEAVY_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 2,
+        "baseStatBoostPercentage": 18,
+        "modifier": "heavy",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1221556350
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d515 §8(1140)",
+        "§7Health: §c+75 §8(+168.75)",
+        "§7Defense: §a+213 §9(+50) §8(+479.25)",
+        "§7Crit Damage: §9-2% §9(-2%)",
+        "§7Speed: §f-6 §9(-1)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Vindicate §7(0/4)",
+        "§7Grants §f+1 walk speed §7for every §a50",
+        "§a§7defense that you have.",
+        "",
+        "§9§lRARE DUNGEON CHESTPLATE"
+      ]
+    },
+    "028de5fc997f337f9ffd595c934a9fef87ee54a054d007392d838018a5eef616": {
+      "itemId": "ROTTEN_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 1,
+        "baseStatBoostPercentage": 32,
+        "modifier": "fierce",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1225572591
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d340 §8(677)",
+        "§7Health: §c+240 §8(+492)",
+        "§7Defense: §a+20 §8(+41)",
+        "§7Strength: §c+33 §9(+6) §8(+67.65)",
+        "§7Crit Chance: §9+4% §9(+4%) §8(+4%)",
+        "§7Crit Damage: §9+10% §9(+10%) §8(+20.5%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7This rotten piece of armor grants",
+        "§7§e15% §7knockback resistance to arrows",
+        "§7per piece worn.",
+        "",
+        "§6Full Set Bonus: Sieve Body §7(0/4)",
+        "§7Gain an additional §e20% §7knockback",
+        "§7resistance to arrows.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§9§lRARE DUNGEON CHESTPLATE"
+      ]
+    },
+    "8784d10645a9e093517ad7fac3e5002cdca4e8e272296ae328fb54b700911f93": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 4,
+        "baseStatBoostPercentage": 22,
+        "modifier": "fierce",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          1575647721
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d367 §8(785)",
+        "§7Health: §c+117 §8(+263.25)",
+        "§7Defense: §a+86 §8(+193.5)",
+        "§7Strength: §c+8 §9(+8) §8(+18)",
+        "§7Crit Chance: §9+8% §9(+5%) §8(+8%)",
+        "§7Crit Damage: §9+47% §9(+14%) §8(+105.75%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "9772c984b0ecf313c30b7b618337362538b2a5babdd3354d8e3067bb1ce098f0": {
+      "itemId": "SKELETON_SOLDIER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 4,
+        "baseStatBoostPercentage": 50,
+        "modifier": "titanic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1247121796
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d481 §8(2081)",
+        "§7Health: §c+161 §9(+35) §8(+722.89)",
+        "§7Defense: §a+136 §9(+35) §8(+610.64)",
+        "§7Crit Chance: §9+3% §8(+3.12%)",
+        "§7Crit Damage: §9+32% §8(+143.68%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "",
+        "§6Full Set Bonus: Skeleton Soldier §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by an extra §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§6§lLEGENDARY DUNGEON CHESTPLATE"
+      ]
+    },
+    "95ebdf3929adc4d5481f23c0cea183fdc021d1ecf2507b15a3493d60a852cb3a": {
+      "itemId": "SKELETOR_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 5,
+        "baseStatBoostPercentage": 50,
+        "modifier": "clean",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1249892610
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d464 §8(1075)",
+        "§7Health: §c+146 §9(+20) §8(+357.7)",
+        "§7Defense: §a+121 §9(+20) §8(+296.45)",
+        "§7Crit Chance: §9+13% §9(+10%) §8(+13%)",
+        "§7Crit Damage: §9+42% §8(+102.9%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Skeletor §7(0/4)",
+        "§7Grants §c+1 Strength §7and §9+1 Crit",
+        "§9Damage §7for every §b10 §7Skeletor kills",
+        "",
+        "§7Skeletor Kills: §a0",
+        "§7Bonus Strength: §a0",
+        "§7Bonus Critical Damage: §a0",
+        "",
+        "§7Each piece grants a §a1 §7second",
+        "§7cooldown reduction on bone plating!",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§6§lLEGENDARY DUNGEON CHESTPLATE"
+      ]
+    },
+    "427078c6b27fafc185f166950d0946323aff8b3ffd846b3cbf96234ece73ddb2": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 10,
+        "baseStatBoostPercentage": 42,
+        "modifier": "clean",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1250163092
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d585 §8(3238)",
+        "§7Health: §c+170 §9(+15) §8(+1,003)",
+        "§7Defense: §a+160 §9(+15) §8(+944)",
+        "§7Crit Chance: §9+14% §9(+8%) §8(+14.7%)",
+        "§7Crit Damage: §9+64% §8(+377.6%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(1/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "2fe39205282d3d8ff804d0fdfe1db5763fd28175385cc97d3c94468417e394e4": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 10,
+        "baseStatBoostPercentage": 49,
+        "modifier": "pure",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          415,
+          -604796812
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d599 §8(3292)",
+        "§7Health: §c+165 §9(+6) §8(+973.5)",
+        "§7Defense: §a+158 §9(+6) §8(+932.2)",
+        "§7Strength: §c+6 §9(+6) §8(+35.4)",
+        "§7Crit Chance: §9+14% §9(+8%) §8(+14.7%)",
+        "§7Crit Damage: §9+74% §9(+6%) §8(+436.6%)",
+        "§7Attack Speed: §e+3% §9(+3%) §8(+3.15%)",
+        "§7Intelligence: §b+6 §9(+6) §8(+35.4)",
+        "§7Speed: §f+1 §9(+1) §8(+5.9)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(1/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "57c75288a16be1346c933ddde00f23f897f59150ed0c1fd9036207464159ded6": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 10,
+        "baseStatBoostPercentage": 48,
+        "modifier": "fierce",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          1740883300
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d571 §8(3183)",
+        "§7Health: §c+158 §8(+932.2)",
+        "§7Defense: §a+151 §8(+890.9)",
+        "§7Strength: §c+8 §9(+8) §8(+47.2)",
+        "§7Crit Chance: §9+11% §9(+5%) §8(+11.55%)",
+        "§7Crit Damage: §9+81% §9(+14%) §8(+477.9%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(1/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "5cb75980ce454ed7288921e449a24a12a69f3dbc39ed3fc4a59fa5e0b52ce50b": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 10,
+        "baseStatBoostPercentage": 49,
+        "modifier": "heavy",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          1728300782
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d673 §8(3705)",
+        "§7Health: §c+159 §8(+906.3)",
+        "§7Defense: §a+217 §9(+65) §8(+1,236.9)",
+        "§7Crit Chance: §9+6% §8(+6.3%)",
+        "§7Crit Damage: §9+65% §9(-3%) §8(+370.5%)",
+        "§7Speed: §f-1 §9(-1)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(1/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "f7a2e340696fcedd8239ca06f9b534d3e85acf73c85f4f2719e1bf006d847707": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 10,
+        "baseStatBoostPercentage": 43,
+        "modifier": "clean",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1548428321
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d589 §8(2547)",
+        "§7Health: §c+171 §9(+15) §8(+784.89)",
+        "§7Defense: §a+161 §9(+15) §8(+738.99)",
+        "§7Crit Chance: §9+14% §9(+8%) §8(+14.56%)",
+        "§7Crit Damage: §9+65% §8(+298.35%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(1/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "038e08299e8993b9c84fb4ff19c83ce4597444f60d2f636301e8c63cf6111edc": {
+      "itemId": "SKELETOR_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 10,
+        "baseStatBoostPercentage": 50,
+        "modifier": "wise",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          1398018426
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d594 §8(3365)",
+        "§7Health: §c+167 §9(+15) §8(+985.3)",
+        "§7Defense: §a+142 §8(+837.8)",
+        "§7Crit Chance: §9+6% §8(+6.3%)",
+        "§7Crit Damage: §9+65% §8(+383.5%)",
+        "§7Intelligence: §b+125 §9(+125) §8(+737.5)",
+        "§7Speed: §f+2 §9(+2) §8(+11.8)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Skeletor §7(0/4)",
+        "§7Grants §c+1 Strength §7and §9+1 Crit",
+        "§9Damage §7for every §b10 §7Skeletor kills",
+        "",
+        "§7Skeletor Kills: §a0",
+        "§7Bonus Strength: §a0",
+        "§7Bonus Critical Damage: §a0",
+        "",
+        "§7Each piece grants a §a1 §7second",
+        "§7cooldown reduction on bone plating!",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§6§lLEGENDARY DUNGEON CHESTPLATE"
+      ]
+    },
+    "9e2f0ac85e9a7c816358feb93bb28383b017a378dea577937b1c411035515361": {
+      "itemId": "BOUNCY_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 10,
+        "baseStatBoostPercentage": 50,
+        "modifier": "pure",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1425735795
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d715 §8(3556)",
+        "§7Health: §c+581 §9(+6) §8(+3,131.59)",
+        "§7Defense: §a+26 §9(+6) §8(+140.14)",
+        "§7Strength: §c+6 §9(+6) §8(+32.34)",
+        "§7Crit Chance: §9+23% §9(+8%) §8(+23.92%)",
+        "§7Crit Damage: §9+6% §9(+6%) §8(+32.34%)",
+        "§7Attack Speed: §e+3% §9(+3%) §8(+3.12%)",
+        "§7Intelligence: §b+6 §9(+6) §8(+32.34)",
+        "§7Speed: §f+1 §9(+1) §8(+5.39)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§6Full Set Bonus: Bouncing Arrow §7(0/4)",
+        "§7Your arrows have a §e25% §7chance to",
+        "§7bounce to another target after it",
+        "§7hits something.",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "7dad07b79db489fee0ad7ecea96d91e6320b6bbab7a2085e64c32644b97c7dc7": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 10,
+        "baseStatBoostPercentage": 49,
+        "modifier": "titanic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1522262134
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d620 §8(3524)",
+        "§7Health: §c+184 §9(+25) §8(+1,085.6)",
+        "§7Defense: §a+177 §9(+25) §8(+1,044.3)",
+        "§7Crit Chance: §9+6% §8(+6.3%)",
+        "§7Crit Damage: §9+68% §8(+401.2%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(1/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "1961deed72bcc346f07db5569832f24d9a4d87f0b5fe9ce753887779d7c469d9": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 10,
+        "baseStatBoostPercentage": 48,
+        "modifier": "smart",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          1446484543
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d618 §8(3507)",
+        "§7Health: §c+170 §9(+12) §8(+1,003)",
+        "§7Defense: §a+163 §9(+12) §8(+961.7)",
+        "§7Crit Chance: §9+6% §8(+6.3%)",
+        "§7Crit Damage: §9+67% §8(+395.3%)",
+        "§7Intelligence: §b+80 §9(+80) §8(+472)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "511f4153c61234b923190e670a193b02564b25fb888d4ef3ffc2fc20edf772df": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 10,
+        "baseStatBoostPercentage": 48,
+        "modifier": "fierce",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          415,
+          -1000987422
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d571 §8(2863)",
+        "§7Health: §c+158 §8(+837.4)",
+        "§7Defense: §a+151 §8(+800.3)",
+        "§7Strength: §c+8 §9(+8) §8(+42.4)",
+        "§7Crit Chance: §9+11% §9(+5%) §8(+11.55%)",
+        "§7Crit Damage: §9+81% §9(+14%) §8(+429.3%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "c8bd2c966503c45f2d9575066ee89bea50e77be1fec33e3d5a942a41e7e2bbcc": {
+      "itemId": "SKELETON_SOLDIER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 9,
+        "baseStatBoostPercentage": 50,
+        "modifier": "titanic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1841939201
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d607 §8(3447)",
+        "§7Health: §c+187 §9(+35) §8(+1,103.3)",
+        "§7Defense: §a+177 §9(+35) §8(+1,044.3)",
+        "§7Crit Chance: §9+6% §8(+6.3%)",
+        "§7Crit Damage: §9+48% §8(+283.2%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "",
+        "§6Full Set Bonus: Skeleton Soldier §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by an extra §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§6§lLEGENDARY DUNGEON CHESTPLATE"
+      ]
+    },
+    "d3d4e9ec4e5de2263efed2eb90f880fc34c99ae7d6b282b828e9dc813912d99f": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 10,
+        "baseStatBoostPercentage": 40,
+        "modifier": "wise",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -1919923664
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d583 §8(2688)",
+        "§7Health: §c+166 §9(+12) §8(+795.14)",
+        "§7Defense: §a+144 §8(+689.76)",
+        "§7Crit Chance: §9+6% §8(+6.24%)",
+        "§7Crit Damage: §9+64% §8(+306.56%)",
+        "§7Intelligence: §b+100 §9(+100) §8(+479)",
+        "§7Speed: §f+2 §9(+2) §8(+9.58)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "72837904f8cf55d4d3aaebea8df9597951cfa12890f21c4354f17a134bbc39f3": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 10,
+        "baseStatBoostPercentage": 24,
+        "modifier": "mythic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -2015872389
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d536 §8(2288)",
+        "§7Health: §c+153 §9(+8) §8(+686.97)",
+        "§7Defense: §a+138 §9(+8) §8(+619.62)",
+        "§7Strength: §c+8 §9(+8) §8(+35.92)",
+        "§7Crit Chance: §9+9% §9(+4%) §8(+9.36%)",
+        "§7Crit Damage: §9+56% §8(+251.44%)",
+        "§7Intelligence: §b+40 §9(+40) §8(+179.6)",
+        "§7Speed: §f+2 §9(+2) §8(+8.98)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "611f3defc3097239026cf89b04432c0749fabf41b668aa8b6d9ec53180f28318": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 10,
+        "baseStatBoostPercentage": 18,
+        "modifier": "fierce",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -2015949419
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d488 §8(2068)",
+        "§7Health: §c+142 §8(+637.58)",
+        "§7Defense: §a+124 §8(+556.76)",
+        "§7Strength: §c+8 §9(+8) §8(+35.92)",
+        "§7Crit Chance: §9+10% §9(+5%) §8(+10.4%)",
+        "§7Crit Damage: §9+68% §9(+14%) §8(+305.32%)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "26af23794c2360ae2a3c622a5dc5159e3681bb4ea06efe8fe25aac0a0d274e54": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 10,
+        "baseStatBoostPercentage": 41,
+        "modifier": "light",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          -2041557167
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d561 §8(2700)",
+        "§7Health: §c+169 §9(+15) §8(+861.9)",
+        "§7Defense: §a+149 §9(+4) §8(+759.9)",
+        "§7Crit Chance: §9+8% §9(+2%) §8(+8.4%)",
+        "§7Crit Damage: §9+68% §9(+4%) §8(+346.8%)",
+        "§7Attack Speed: §e+4% §9(+4%) §8(+4.2%)",
+        "§7Speed: §f+4 §9(+4) §8(+20.4)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(1/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§5§lEPIC DUNGEON CHESTPLATE"
+      ]
+    },
+    "ec53cfae45d96ab4debe05c0396eacc4774b660dc4916668b3818dcd11641f74": {
+      "itemId": "SKELETON_MASTER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 8,
+        "baseStatBoostPercentage": 50,
+        "modifier": "mythic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          415,
+          1108192481
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d555 §8(2941)",
+        "§7Health: §c+156 §9(+10) §8(+873.6)",
+        "§7Defense: §a+141 §9(+10) §8(+789.6)",
+        "§7Strength: §c+10 §9(+10) §8(+56)",
+        "§7Crit Chance: §9+10% §9(+5%) §8(+10.5%)",
+        "§7Crit Damage: §9+57% §8(+319.2%)",
+        "§7Intelligence: §b+50 §9(+50) §8(+280)",
+        "§7Speed: §f+2 §9(+2) §8(+11.2)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "§7Your bows don't consume arrows.",
+        "§6Full Set Bonus: Skeleton Master §7(1/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§6§lLEGENDARY DUNGEON CHESTPLATE"
+      ]
+    },
+    "0df1c02b67671b204ee7b5cbc6bb73af827817a89e2f3d6fc72f0ff6636f237f": {
+      "itemId": "SUPER_HEAVY_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 7,
+        "baseStatBoostPercentage": 50,
+        "modifier": "mythic",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          1997540207
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d840 §8(3437)",
+        "§7Health: §c+85 §9(+10) §8(+356.15)",
+        "§7Defense: §a+347 §9(+10) §8(+1,453.93)",
+        "§7Strength: §c+10 §9(+10) §8(+41.9)",
+        "§7Crit Chance: §9+5% §9(+5%) §8(+5.2%)",
+        "§7Intelligence: §b+50 §9(+50) §8(+209.5)",
+        "§7Speed: §f-8 §9(+2)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Each piece of this armor reduces",
+        "§7the cooldown of §9Seismic Wave §7by §a1s§7.",
+        "",
+        "§6Full Set Bonus: Vindicate §7(0/4)",
+        "§7Grants §f+1 walk speed §7for every §a50",
+        "§a§7defense that you have.",
+        "",
+        "§6§lLEGENDARY DUNGEON CHESTPLATE"
+      ]
+    },
+    "193a35986a58dd69a1b5e4a3b87c11b1b23fc0258838dedc6a743251b61bce91": {
+      "itemId": "SKELETON_SOLDIER_CHESTPLATE",
+      "extraAttributes": {
+        "item_tier": 9,
+        "baseStatBoostPercentage": 50,
+        "modifier": "pure",
+        "enchantments": {
+          "growth": 5,
+          "thorns": 3,
+          "protection": 5
+        },
+        "timestamp": [
+          416,
+          2046544699
+        ]
+      },
+      "rawLore": [
+        "§7Gear Score: §d573 §8(3107)",
+        "§7Health: §c+160 §9(+8) §8(+944)",
+        "§7Defense: §a+150 §9(+8) §8(+885)",
+        "§7Strength: §c+8 §9(+8) §8(+47.2)",
+        "§7Crit Chance: §9+16% §9(+10%) §8(+16.8%)",
+        "§7Crit Damage: §9+56% §9(+8%) §8(+330.4%)",
+        "§7Attack Speed: §e+4% §9(+4%) §8(+4.2%)",
+        "§7Intelligence: §b+8 §9(+8) §8(+47.2)",
+        "§7Speed: §f+1 §9(+1) §8(+5.9)",
+        "",
+        "§9Growth V, §9Protection V, §9Thorns III",
+        "",
+        "§7Increase the damage you deal with",
+        "§7arrows by §c5%§7.",
+        "",
+        "§6Full Set Bonus: Skeleton Soldier §7(0/4)",
+        "§7Increase the damage you deal with",
+        "§7arrows by an extra §c25%§7.",
+        "",
+        "§2This item is Undead !",
+        "",
+        "§6§lLEGENDARY DUNGEON CHESTPLATE"
+      ]
+    }
+  }
+}

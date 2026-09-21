@@ -386,3 +386,15 @@ test("comparable-pair metrics do not call different opaque resulting identities 
  refreshCanonicalEffects(f);
  assert.equal(f.run().audit.pairLocal?.comparablePairs,0);
 });
+
+test("guard traces distinguish observed early failures from independent probes without changing decisions",async()=>{
+ const f=await scenario();f.stats("a",150);const helmet=f.catalog.getById("OLD_HELMET")!;
+ helmet.metadata={salvages:[{type:"ESSENCE"}]};helmet.knowledge.metadata={internalName:helmet.id};
+ const r=f.run(),trace=r.audit.mechanicTrace!;
+ assert.equal(r.candidates.length,2);
+ assert.deepEqual(trace.pairCounts,{RETAINED_SOURCE_ITEM_METADATA:1,RETAINED_SOURCE_KNOWLEDGE_METADATA:1});
+ assert.deepEqual(trace.onlyReasonPairs,{});
+ assert.ok(trace.candidates.every(c=>c.failures.every(f=>f.itemId===helmet.id)));
+ assert.ok(trace.independentSourceChecks.some(c=>c.role==="RETAINED"&&c.itemId===helmet.id));
+ f.e.candidates.reverse();assert.deepEqual(f.run().audit.mechanicTrace!.pairCounts,trace.pairCounts);
+});

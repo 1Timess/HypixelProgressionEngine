@@ -1,3 +1,5 @@
+Latest checkpoint: [V2 promotion and measured mechanic guards](armor-v2-mechanic-handoff.md). Health/Defense now have a narrower qualified V2 contract; Armor remains unfrozen.
+
 # Independent render-context audit
 
 Starting HEAD: e0cda7f24671a276d41efc74839683cef1aff128. Diagnostic only; no Health/Defense production promotion.

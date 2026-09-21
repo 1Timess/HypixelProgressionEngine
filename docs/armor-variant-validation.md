@@ -1,3 +1,5 @@
+Latest checkpoint: [V2 promotion and measured mechanic guards](armor-v2-mechanic-handoff.md). Health/Defense now have a narrower qualified V2 contract; Armor remains unfrozen.
+
 > Latest: [Empirical binding and local closure](armor-empirical-local-handoff.md). Scoped contract promoted; listing-backed evidence added; real deferrals remain zero. Armor is NOT FROZEN.
 
 # Dungeon Armor variant validation — Path C handoff

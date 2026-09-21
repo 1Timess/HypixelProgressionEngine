@@ -1,3 +1,5 @@
+Latest checkpoint: [V2 promotion and measured mechanic guards](armor-v2-mechanic-handoff.md). Health/Defense now have a narrower qualified V2 contract; Armor remains unfrozen.
+
 # Resumed generic full-set proof
 
 Resumes the saved experiment after the user's explicit request. The old deferred-set-proof.patch is superseded by this implementation and must not be reapplied.
