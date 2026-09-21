@@ -15,3 +15,9 @@ Baseline retained-source behavior, all set corroboration rules, stat/monotone po
 Validation: Armor 257/257, Weapons 114/114, TypeScript and targeted ESLint pass. Seven new tests cover exact closure, preserved evidence, asserted active/unknown states, reconstructed active sets, forged identity/provenance/text/dependency, non-executable serialized proofs, source mutation, duplicate paragraphs, incomplete builds, changed slots, extra effects, all 13 exact cases, five explicit exclusions, order invariance and arbitrary renamed IDs. No paid calls.
 
 The frozen rerun follows this committed implementation; no next blocker will be fixed.
+
+## Scope correction checkpoint
+
+The first rerun showed that the generic builder could issue proofs before unrelated earlier guards, producing 46 audit certificates although those guards still blocked source closure. Propagation is now limited to the currently reached SOURCE_UNPARSED_LORE line exactly matching the certified effect heading. This selects the 13 approved cases without item-ID rules, leaves earlier tiered metadata/percentage guards untouched, and does not change any next-blocker semantics. Added regression verifies the restriction.
+
+Final validation after correction: Armor 258/258, Weapons 114/114, TypeScript and targeted ESLint pass.

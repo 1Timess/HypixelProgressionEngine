@@ -149,7 +149,16 @@ export function narrowArmorFrontier(evidence: ArmorEvidence, catalog: ItemCatalo
   });
   const failures=new Map<string,ArmorGuardFailure[]>();
   const mechanicCertificates=new Map(evidence.candidates.map(c=>{const trace:ArmorGuardFailure[]=[];failures.set(c.id,trace);return [c.id,mechanicKey(c,evidence,catalog,verified,trace)] as const;}));
-  const replacementProofs=new Map(evidence.candidates.map(c=>[c.id,mechanicCertificates.get(c.id)?proveInactiveReplacements(c,evidence,catalog,verified):[]]));
+  // Propagate only for the currently reached exact effect heading; earlier source guards
+  // (including tiered metadata) remain outside this bounded change.
+  const replacementProofs=new Map(evidence.candidates.map(c=>{
+    const proofs=mechanicCertificates.get(c.id)?proveInactiveReplacements(c,evidence,catalog,verified):[];
+    return [c.id,proofs.filter(proof=>{
+      const failures:ArmorGuardFailure[]=[];
+      sourceClosed(catalog.getById(proof.itemId)!,evidence.intent,false,[],f=>failures.push(f));
+      return failures.length===1&&failures[0].reason==="SOURCE_UNPARSED_LORE"&&failures[0].line===proof.effectText.split("\n")[0];
+    })];
+  }));
   audit.inactiveReplacementProofs=[...replacementProofs.values()].flat();
   audit.mechanicTrace={candidates:evidence.candidates.map(c=>({candidateId:c.id,failures:failures.get(c.id)!})),pairCounts:{},onlyReasonPairs:{},overlapCounts:{},independentSourceChecks:[]};
   // Diagnostic probes call the same source predicate; they never authorize a certificate.

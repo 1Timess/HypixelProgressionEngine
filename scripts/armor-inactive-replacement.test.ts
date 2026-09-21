@@ -93,3 +93,11 @@ test("arbitrary renamed item identities retain proof behavior without item excep
  }
  assert.equal(proveInactiveReplacements(f.c,f.e,catalog,verified).length,1);
 });
+
+test("propagation is withheld behind earlier metadata or numeric guards outside the audited scope",()=>{
+ for(const id of ["BOUNCY_CHESTPLATE","UNSTABLE_DRAGON_CHESTPLATE"]){
+  const f=fixture(id);
+  const r=narrowArmorFrontier(f.e,f.catalog,Date.parse(capture.historicalEvaluationTime),f.verified);
+  assert.equal(r.audit.inactiveReplacementProofs!.length,0,id);
+ }
+});
