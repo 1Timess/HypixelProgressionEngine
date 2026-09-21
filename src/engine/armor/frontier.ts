@@ -1,3 +1,4 @@
+import {closeGemstoneSummary} from "./gemstone-summary";
 import {classifyArmorStatLine} from "./stat-labels";
 import {classifyArmorMetadata,armorComparisonMetadata,ARMOR_METADATA_POLICY} from "./metadata";
 import {equipmentDependencyState} from "./effects";
@@ -53,6 +54,11 @@ function sourceClosed(item: ItemDefinition, intent:ArmorEvidence["intent"], allo
     const line = raw.replace(/§[0-9a-fk-or]/gi,"").trim();
     if (!line || line === "This item can be reforged!") continue;
     if (item.rarity && line === item.rarity + " " + (item.dungeon.isDungeonItem ? "DUNGEON " : "") + item.category) continue;
+    if(line.startsWith("Gemstones:")){
+      const reason=closeGemstoneSummary(raw,item);
+      if(reason){onFailure?.({reason,itemId:item.id,line});return false;}
+      continue;
+    }
     const stat=classifyArmorStatLine(line,item.stats);
     if(stat.status!=="KNOWN_LABEL_VALUE_MATCH"){
       const reason=stat.status==="KNOWN_LABEL_VALUE_MISMATCH"?"SOURCE_STAT_VALUE_MISMATCH":stat.status==="KNOWN_LABEL_CANONICAL_MISSING"?"SOURCE_STAT_MISSING":stat.status==="AMBIGUOUS_STAT_LABEL"?"SOURCE_STAT_LABEL_AMBIGUOUS":"SOURCE_UNPARSED_LORE";

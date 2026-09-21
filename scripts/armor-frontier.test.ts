@@ -492,3 +492,17 @@ test("source guard distinguishes unknown label missing key and mismatched value 
   assert.equal(f.run().audit.mechanicTrace!.pairCounts[reason],1);
  }
 });
+
+test("gemstone source closure preserves slot grouping and does not rank slots or glyphs",async()=>{
+ const f=await scenario();f.stats("a",150);
+ for(const item of f.catalog.getAll()){
+  item.gemstoneSlots=[{slotType:"FUTURE",costs:[],requirements:[],metadata:{}}];
+  item.knowledge.rawLore.push("Gemstones: []");
+ }
+ assert.equal(f.run().audit.pairLocal!.comparablePairs,1);
+ f.b.knowledge.rawLore[f.b.knowledge.rawLore.length-1]="Gemstones: [arbitrary glyph]";
+ assert.equal(f.run().audit.pairLocal!.comparablePairs,1);
+ f.b.gemstoneSlots[0].slotType="DIFFERENT";
+ const forward=f.run();assert.equal(forward.audit.deferred.length,0);assert.equal(forward.audit.pairLocal!.comparablePairs,0);
+ f.e.candidates.reverse();assert.deepEqual(f.run().audit.deferred,forward.audit.deferred);
+});

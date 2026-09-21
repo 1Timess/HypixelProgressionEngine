@@ -17,3 +17,23 @@ test("gemstone audit distinguishes malformed empty nested trailing and mismatche
  const r=auditGemstoneSlots([a,b]);assert.equal(r.summary.countMismatch,2);assert.equal(r.summary.summaryWithoutSlots,1);
  assert.deepEqual(auditGemstoneSlots([b,a]),r);
 });
+
+import {closeGemstoneSummary} from "../src/engine/armor/gemstone-summary";
+test("slot closure accepts opaque tokens and new type strings without inferring socket state",()=>{
+ for(const token of ["❤","","arbitrary future token"]){
+  const i=ItemDefinitionSchema.parse({id:"SYNTHETIC",name:"Any",category:"HELMET",gemstoneSlots:[{slotType:"FUTURE_TYPE"}],knowledge:{rawLore:["Gemstones: ["+token+"]"]}});
+  const before=JSON.stringify(i);assert.equal(closeGemstoneSummary(i.knowledge.rawLore[0],i),null);assert.equal(JSON.stringify(i),before);
+ }
+});
+test("slot closure rejects malformed summaries counts missing records and unmodeled structures",()=>{
+ const i=ItemDefinitionSchema.parse({id:"ANY",name:"Any",gemstoneSlots:[{slotType:"NEW"}],knowledge:{rawLore:["Gemstones: [x]"]}});
+ for(const line of ["Gemstones: []","Gemstones: [[x]]","Gemstones: [x] tail","Gemstones: [x\ny]"]){
+  const copy=structuredClone(i);copy.knowledge.rawLore=[line];assert.equal(closeGemstoneSummary(line,copy),"SOURCE_GEMSTONE_SUMMARY_MALFORMED");
+ }
+ assert.equal(closeGemstoneSummary("Gemstones: [x] [y]",i),"SOURCE_GEMSTONE_SLOT_COUNT_MISMATCH");
+ assert.equal(closeGemstoneSummary("Gemstones: [x]",{...i,gemstoneSlots:[]}),"SOURCE_GEMSTONE_SLOTS_MISSING");
+ const malformed=structuredClone(i);malformed.gemstoneSlots[0].slotType="";assert.equal(closeGemstoneSummary("Gemstones: [x]",malformed),"SOURCE_GEMSTONE_SLOT_STRUCTURE_INVALID");
+ const unknown=structuredClone(i);unknown.gemstoneSlots[0].metadata={future:true};assert.equal(closeGemstoneSummary("Gemstones: [x]",unknown),"SOURCE_GEMSTONE_SLOT_STRUCTURE_UNRESOLVED");
+ const costs=structuredClone(i);costs.gemstoneSlots[0].costs=[{type:"UNKNOWN",sourceType:"new",metadata:{}}];assert.equal(closeGemstoneSummary("Gemstones: [x]",costs),"SOURCE_GEMSTONE_SLOT_STRUCTURE_UNRESOLVED");
+ const duplicate=structuredClone(i);duplicate.knowledge.rawLore.push("Gemstones: [x]");assert.equal(closeGemstoneSummary("Gemstones: [x]",duplicate),"SOURCE_GEMSTONE_SUMMARY_MALFORMED");
+});

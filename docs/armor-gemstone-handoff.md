@@ -9,3 +9,9 @@ Observed slot types (open strings, not a new enum): AQUAMARINE, CITRINE, DEFENSI
 Source versions and all ordered canonical slots, costs, requirements, metadata, raw/normalized summaries and counts are retained in data/armor-integration/armor-gemstone-slot-audit.json. Reproduce with node --import tsx scripts/armor-gemstone-capture.ts. Public item sources only, no market refresh or paid model calls.
 
 Focused audit tests cover opaque tokens, structure rejection, count mismatches, preserved unknown costs/metadata/new slot strings, input nonmutation and order invariance. Corpus supports proceeding with the bounded structural contract.
+
+## Checkpoint 2 — structural closure
+
+ARMOR_GEMSTONE_SLOT_SUMMARY_V1 accepts only one exact bracket-group summary, nonempty opaque tokens, a matching positive canonical slot count, and schema-valid canonical structures. Duplicate summaries, empty/nested/newline tokens, trailing text, malformed records, UNKNOWN costs/requirements, and unexplained structural metadata remain blocked with distinct diagnostics. New nonempty slotType strings are accepted without a registry or glyph mapping. Canonical slots remain unchanged and included in comparison grouping. No installed gem, quality, lock state or stat contribution is inferred.
+
+Validation: Armor 243/243; Weapons 114/114; TypeScript and targeted ESLint pass. Tests include opaque old/private-use/new tokens, structural rejection, unknown preservation, arbitrary IDs, order invariance, and different slot structures remaining incomparable. Dominance and NBT code are unchanged.
