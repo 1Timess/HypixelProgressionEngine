@@ -91,11 +91,11 @@ export async function prepareArmorUpgrade(
     for(const [index,instance] of [...snapshot.equipment.armor,...snapshot.inventory.relevantItems].entries()){
       if(instance.itemId!==item.id||instance.count!==1)continue;
       const variant=armorVariantInput(instance);
-      if(!Object.keys(bindArmorVariant(item,variant).exact).length)continue;
+      if(!Object.values(bindArmorVariant(item,variant).exact).some(stat=>stat.provenance.contract==="DUNGEON_VARIANT_EMPIRICAL_V1"))continue;
       options.push({...option,id:option.id+":owned:"+index,variant,reference:"owned:"+index});
     }
     for(const listing of listings){
-      if(!validArmorListing(listing,item.id,now)||!Object.keys(bindArmorVariant(item,listing).exact).length)continue;
+      if(!validArmorListing(listing,item.id,now)||!Object.values(bindArmorVariant(item,listing).exact).some(stat=>stat.provenance.contract==="DUNGEON_VARIANT_EMPIRICAL_V1"))continue;
       options.push({...option,id:option.id+":listing:"+listing.reference,variant:listing,listing,reference:listing.reference});
     }
   }
@@ -248,6 +248,19 @@ export async function prepareArmorUpgrade(
   return { status: "READY", modelPayload: payload, review };
 }
 
+function validateDefensiveVariant(stat:ReturnType<typeof bindArmorVariant>["exact"][string],
+ evidence:ReturnType<typeof bindArmorVariant>["exact"],variant:{enhancements:string}|undefined,now:number){
+ const render=stat.provenance.defensiveRender;if(!render)return;
+ const enhancements=variant?JSON.parse(variant.enhancements):null;
+ if(!enhancements||typeof enhancements!=="object"||Array.isArray(enhancements)||render.createdAt>now||
+ enhancements.enchantments?.[render.enchantment.name]!==5||
+ ["upgrade_level","dungeon_item_level","hot_potato_count","rarity_upgrades"].some(k=>enhancements[k]!==undefined&&enhancements[k]!==0)||
+ ["attributes","gems"].some(k=>enhancements[k]!==undefined)||
+ render.anchors.some(a=>evidence[a.stat]?.provenance.contract!=="DUNGEON_VARIANT_EMPIRICAL_V1"||
+ evidence[a.stat]?.value!==a.value||evidence[a.stat]?.provenance.base!==a.base))
+ throw Error("Mismatched Armor defensive variant qualification.");
+}
+
 /** Independent freshness, shape and byte gate used by both preview and Armor execution. */
 export function serializeArmorModelInput(preparation: ArmorPreparation, now = Date.now()): string | null {
   if (preparation.status !== "READY" || !preparation.modelPayload) return null;
@@ -266,6 +279,7 @@ export function serializeArmorModelInput(preparation: ArmorPreparation, now = Da
       throw new Error("Inconsistent Armor mechanic context evidence.");
   }
   for(const item of payload.baseline)for(const [key,stat] of Object.entries(item.statEvidence??{})){
+    validateDefensiveVariant(stat,item.statEvidence??{},item.variant,now);
     if(stat.provenance.stat!==key||stat.provenance.itemId!==item.id||stat.value!==item.stats[key]||
        !item.variant||stat.provenance.tier!==item.variant.tier||stat.provenance.quality!==item.variant.quality)
       throw Error("Mismatched Armor baseline variant.");
@@ -277,6 +291,7 @@ export function serializeArmorModelInput(preparation: ArmorPreparation, now = Da
         (certificate.result === "USABLE") !== (replacement.contextUsability === "EVIDENCED")))
       throw Error("Mismatched Armor context certificate.");
     for(const [key,stat] of Object.entries(replacement.statEvidence??{})){
+      validateDefensiveVariant(stat,replacement.statEvidence??{},replacement.variant,now);
       if(stat.provenance.stat!==key||stat.provenance.itemId!==replacement.toId||!replacement.variant||
          stat.provenance.tier!==replacement.variant.tier||stat.provenance.quality!==replacement.variant.quality)
         throw Error("Mismatched Armor variant stat provenance.");

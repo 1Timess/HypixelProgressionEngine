@@ -1,3 +1,5 @@
+import type {ArmorExactStat} from "@/schemas/armor-variant";
+import {DEFENSIVE_VALIDATION_EPOCH,DEFENSIVE_RENDER_POLICY,itemCreatedAt,primaryStatLine} from "./defensive-render";
 import type { ItemDefinition } from "@/schemas/items";
 import type { ItemInstance } from "@/schemas/player";
 
@@ -6,12 +8,7 @@ export const DUNGEON_VARIANT_CONTRACT = "DUNGEON_VARIANT_EMPIRICAL_V1" as const;
 const observedStats = new Set(["STRENGTH","CRITICAL_DAMAGE","CRITICAL_CHANCE","WALK_SPEED"]);
 const labels:Record<string,string>={STRENGTH:"Strength",CRITICAL_DAMAGE:"Crit Damage",CRITICAL_CHANCE:"Crit Chance",WALK_SPEED:"Speed"};
 const simpleEnchants=new Set(["growth","protection","thorns","depth_strider","feather_falling","respiration","aqua_affinity"]);
-export interface ExactArmorStat {
- kind:"EXACT_VARIANT_VALUE"; value:number;
- provenance:{contract:typeof DUNGEON_VARIANT_CONTRACT;itemId:string;stat:string;base:number;index:number;
- tier:number;quality:number;qualityFraction:number;rounding:"CEIL_FLOAT32_FRACTION"|"UNSCALED_NEGATIVE_SPEED";
- source:"hypixel";validationCapture:"2026-09-20";qualityEvidence:"OBSERVED_RANGE"|"ZERO_BOUNDARY_ONLY"};
-}
+export type ExactArmorStat = ArmorExactStat;
 export interface ArmorVariantInput {
  itemId:string; extraAttributes:Record<string,unknown>; rawLore?:readonly string[];
 }
@@ -52,6 +49,31 @@ export function bindArmorVariant(item:ItemDefinition,input:ArmorVariantInput) {
    itemId:item.id,stat,base,index:tier-1,tier,quality,qualityFraction:Math.fround(quality/100),
    rounding:base<0?"UNSCALED_NEGATIVE_SPEED":"CEIL_FLOAT32_FRACTION",source:"hypixel",
    validationCapture:"2026-09-20",qualityEvidence:quality===0?"ZERO_BOUNDARY_ONLY":"OBSERVED_RANGE"}};
+ }
+ // V2 requires recent primary lore and all positive V1 table stats to corroborate.
+ // It never divides a render factor out, and missing anchors remain unknown.
+ const createdAt=itemCreatedAt(fields.timestamp),ench=fields.enchantments;
+ const positive=[...observedStats].filter(key=>Array.isArray((table as Record<string,unknown>)[key])&&((table as Record<string,number[]>)[key][tier-1]>0));
+ const anchors=positive.flatMap(stat=>{
+  const value=exact[stat],render=input.rawLore&&primaryStatLine(input.rawLore,labels[stat]);
+  return value&&render&&render.displayed===value.value+render.reforge?
+   [{stat:stat as "STRENGTH"|"CRITICAL_DAMAGE"|"CRITICAL_CHANCE"|"WALK_SPEED",base:value.provenance.base,value:value.value,...render}]:[];
+ });
+ if(input.rawLore&&quality>0&&createdAt!==null&&createdAt>=DEFENSIVE_VALIDATION_EPOCH&&
+ anchors.length>0&&anchors.length===positive.length&&
+ !input.rawLore.some(line=>/Some of your enchantments require|higher Enchanting level/i.test(line))&&
+ ench&&typeof ench==="object"&&!Array.isArray(ench)&&Object.values(ench).every(v=>typeof v==="number"&&Number.isInteger(v)&&v>=0)){
+  for(const [stat,label,name,contribution] of [["HEALTH","Health","growth",75],["DEFENSE","Defense","protection",20]] as const){
+   const values=(table as Record<string,number[]>)[stat],render=primaryStatLine(input.rawLore,label);
+   if(!values||Object.hasOwn(item.stats,stat)||values[tier-1]<=0||(ench as Record<string,unknown>)[name]!==5||!render)continue;
+   const base=values[tier-1],value=Math.ceil(base*(1+Math.fround(quality/100)));
+   if(!Number.isSafeInteger(value)||render.displayed!==value+contribution+render.reforge)continue;
+   exact[stat]={kind:"EXACT_VARIANT_VALUE",value,provenance:{contract:"DUNGEON_VARIANT_EMPIRICAL_V2",
+    itemId:item.id,stat,base,index:tier-1,tier,quality,qualityFraction:Math.fround(quality/100),
+    rounding:"CEIL_FLOAT32_FRACTION",source:"hypixel",validationCapture:"2026-09-20",qualityEvidence:"OBSERVED_RANGE",
+    defensiveRender:{policy:DEFENSIVE_RENDER_POLICY,resourceEpoch:DEFENSIVE_VALIDATION_EPOCH,createdAt,
+     ...render,enchantment:{name,level:5,contribution},anchors}}};
+  }
  }
  return {exact,reason:Object.keys(exact).length?null:"NO_SUPPORTED_CORROBORATED_STATS"};
 }
