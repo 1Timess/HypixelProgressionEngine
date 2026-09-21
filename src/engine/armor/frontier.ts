@@ -1,3 +1,4 @@
+import {classifyArmorRequirementLore,requirementLike} from "./requirement-lore";
 import {proveInactiveReplacements,matchesInactiveReplacementProof,type InactiveReplacementProof} from "./inactive-replacement-proof";
 import {closeGemstoneSummary} from "./gemstone-summary";
 import {classifyArmorStatLine} from "./stat-labels";
@@ -45,6 +46,10 @@ function sourceClosed(item: ItemDefinition, intent:ArmorEvidence["intent"], allo
   if(itemKeys.length)initial.push({reason:"SOURCE_ITEM_METADATA",itemId:item.id,keys:itemKeys});
   const knowledgeKeys=Object.keys(armorComparisonMetadata(item,intent,"knowledge"));
   if(knowledgeKeys.length)initial.push({reason:"SOURCE_KNOWLEDGE_METADATA",itemId:item.id,keys:knowledgeKeys});
+  // Unknown canonical semantics remain blocking even when no requirement footer is rendered.
+  const requirements=[...item.requirements,...item.dungeon.requirements];
+  if(requirements.some(r=>r.type==="UNKNOWN"))initial.push({reason:"SOURCE_REQUIREMENT_UNKNOWN",itemId:item.id});
+  else if(requirements.some(r=>r.metadata&&Object.keys(r.metadata).length))initial.push({reason:"SOURCE_REQUIREMENT_METADATA",itemId:item.id});
   if(initial.length){initial.forEach(f=>onFailure?.(f));return false;}
   let statSeen = false;
   const known = parseArmorEffects(item).filter(effect => effect.mechanic || allowIndependentOpaque && effect.dependency.kind==="INDEPENDENT");
@@ -59,6 +64,13 @@ function sourceClosed(item: ItemDefinition, intent:ArmorEvidence["intent"], allo
     if(line.startsWith("Gemstones:")){
       const reason=closeGemstoneSummary(raw,item);
       if(reason){onFailure?.({reason,itemId:item.id,line});return false;}
+      continue;
+    }
+    if(requirementLike(raw)){
+      const requirement=classifyArmorRequirementLore(raw,item.requirements,item.dungeon.requirements);
+      if(requirement.status!=="EXACT_CANONICAL_MATCH"){
+        onFailure?.({reason:"SOURCE_REQUIREMENT_"+requirement.status,itemId:item.id,line});return false;
+      }
       continue;
     }
     const stat=classifyArmorStatLine(line,item.stats);

@@ -538,3 +538,39 @@ test("NBT selectable and unknown mechanic facts remain outside the canonical col
  const f=await scenario();f.a.metadata.color="3,252,248";f.a.knowledge.rawLore.push("Same color = 2x stats!");
  assert.equal(f.run().audit.pairLocal!.comparablePairs,0);
 });
+
+test("exact requirement closure leaves canonical facts, eligibility payload and monotone comparison intact",async()=>{
+ const f=await scenario();f.stats("a",150);f.stats("b",120);
+ const before=f.run();
+ for(const item of [f.a,f.b]){
+  item.requirements=[{type:"SKILL",skill:"COMBAT",level:16}];
+  item.knowledge.rawLore.push("❣ Requires Combat Skill 16.");
+ }
+ const saved=structuredClone(f.catalog.getAll()),e=structuredClone(f.e);
+ const after=f.run();
+ assert.deepEqual(after.audit.deferred,before.audit.deferred);
+ assert.deepEqual(f.catalog.getAll(),saved);
+ // The helper never writes eligibility/progression data; only fixture lore interning changes here.
+ for(let i=0;i<e.candidates.length;i++){
+  const {replaces:old,...oldRest}=e.candidates[i],{replaces:current,...newRest}=f.e.candidates[i];
+  void old;void current;assert.deepEqual(newRest,oldRest);
+ }
+ f.a.stats.INTELLIGENCE=50;f.a.knowledge.rawLore.unshift("Intelligence: +50");
+ assert.equal(f.run().audit.deferred.length,0,"requirement closure cannot expand monotone stats");
+});
+test("requirement failure retains candidates with precise source diagnostics",async()=>{
+ for(const mode of ["missing","wrong","duplicate","unknown","metadata","extra"]){
+ const f=await scenario();f.stats("a",150);f.stats("b",120);
+ f.b.knowledge.rawLore.push(mode==="extra"?"Requires Combat Skill 16 while in Dungeons":"Requires Combat Skill 16");
+ const r={type:"SKILL" as const,skill:"COMBAT",level:16};
+ f.b.requirements=mode==="missing"?[]:mode==="wrong"?[{...r,skill:"MINING"}]:mode==="duplicate"?[r,r]:mode==="unknown"?[r,{type:"UNKNOWN",sourceType:"OTHER",metadata:{}}]:mode==="metadata"?[{...r,metadata:{unresolved:true}}]:[r];
+ const result=f.run();
+ assert.equal(result.audit.deferred.length,0,mode);
+ const probe=result.audit.mechanicTrace!.independentSourceChecks.find(p=>p.role==="REPLACEMENT"&&p.itemId===f.b.id)!;
+ assert.ok(probe.failures.some(p=>p.reason.startsWith("SOURCE_REQUIREMENT_")),mode);
+ }
+});
+test("unrendered canonical UNKNOWN requirement stays blocking",async()=>{
+ const f=await scenario();f.stats("a",150);f.b.requirements=[{type:"UNKNOWN",sourceType:"OTHER",metadata:{}}];
+ assert.equal(f.run().audit.deferred.length,0);
+});
