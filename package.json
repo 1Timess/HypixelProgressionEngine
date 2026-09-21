@@ -16,7 +16,7 @@
     "diagnose:capabilities": "tsx scripts/sync/capability-diagnostics.ts",
     "test:weapons": "node --import tsx --test scripts/weapon-evidence.test.ts scripts/recommendation-minimization.test.ts scripts/intent-parser.test.ts scripts/weapon-recommendation.test.ts scripts/weapon-shortlist.test.ts scripts/weapon-scenarios.test.ts scripts/weapon-hardening.test.ts",
     "typecheck": "tsc --noEmit --incremental false",
-    "test:armor": "node --import tsx --test scripts/armor-preparation.test.ts scripts/armor-knowledge.test.ts scripts/armor-intent.test.ts scripts/armor-recommendation.test.ts scripts/armor-hardening.test.ts scripts/armor-frontier.test.ts scripts/armor-stat-contract.test.ts scripts/armor-variant-validation.test.ts scripts/armor-variant-binding.test.ts scripts/armor-context.test.ts scripts/armor-defensive-validation.test.ts scripts/armor-render-context.test.ts scripts/armor-set-dependency.test.ts scripts/armor-variant-v2.test.ts scripts/armor-stat-vocabulary.test.ts scripts/armor-gemstone.test.ts"
+    "test:armor": "node --import tsx --test scripts/armor-preparation.test.ts scripts/armor-knowledge.test.ts scripts/armor-intent.test.ts scripts/armor-recommendation.test.ts scripts/armor-hardening.test.ts scripts/armor-frontier.test.ts scripts/armor-stat-contract.test.ts scripts/armor-variant-validation.test.ts scripts/armor-variant-binding.test.ts scripts/armor-context.test.ts scripts/armor-defensive-validation.test.ts scripts/armor-render-context.test.ts scripts/armor-set-dependency.test.ts scripts/armor-variant-v2.test.ts scripts/armor-stat-vocabulary.test.ts scripts/armor-gemstone.test.ts scripts/armor-color.test.ts"
   },
   "dependencies": {
     "adm-zip": "^0.6.1",
