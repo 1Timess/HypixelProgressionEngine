@@ -389,7 +389,7 @@ test("comparable-pair metrics do not call different opaque resulting identities 
 
 test("guard traces distinguish observed early failures from independent probes without changing decisions",async()=>{
  const f=await scenario();f.stats("a",150);const helmet=f.catalog.getById("OLD_HELMET")!;
- helmet.metadata={salvages:[{type:"ESSENCE"}]};helmet.knowledge.metadata={internalName:helmet.id};
+ helmet.metadata={salvages:[{type:"ESSENCE"}]};helmet.knowledge.metadata={unclassifiedSourceField:helmet.id};
  const r=f.run(),trace=r.audit.mechanicTrace!;
  assert.equal(r.candidates.length,2);
  assert.deepEqual(trace.pairCounts,{RETAINED_SOURCE_ITEM_METADATA:1,RETAINED_SOURCE_KNOWLEDGE_METADATA:1});
@@ -397,4 +397,63 @@ test("guard traces distinguish observed early failures from independent probes w
  assert.ok(trace.candidates.every(c=>c.failures.every(f=>f.itemId===helmet.id)));
  assert.ok(trace.independentSourceChecks.some(c=>c.role==="RETAINED"&&c.itemId===helmet.id));
  f.e.candidates.reverse();assert.deepEqual(f.run().audit.mechanicTrace!.pairCounts,trace.pairCounts);
+});
+
+import {classifyArmorMetadata} from "../src/engine/armor/metadata";
+
+test("retained presentation and differing source versions are comparison-inert without losing provenance",async()=>{
+ const f=await scenario();f.stats("a",150);
+ for(const item of f.catalog.getAll())item.knowledge.metadata={internalName:item.id,displayName:item.name,modVersion:item.id+"-version"};
+ const original=JSON.stringify(f.catalog.getAll());
+ const r=f.run();assert.equal(r.audit.pairLocal!.comparablePairs,1);assert.equal(r.audit.deferred.length,1);
+ assert.equal(JSON.stringify(f.catalog.getAll()),original);
+ assert.ok(r.audit.metadataSemantics!.items.every(i=>i.facts.every(x=>x.comparisonInert)));
+ f.e.candidates.reverse();assert.deepEqual(f.run().audit.deferred,r.audit.deferred);
+});
+
+test("salvage facts remain available but do not change gross Dungeon acquisition comparisons",async()=>{
+ const f=await scenario();f.stats("a",150);
+ for(const [index,item] of f.catalog.getAll().entries())item.metadata={rarity_salvageable:index%2===0,salvages:[{type:"ESSENCE",essence_type:"ICE",amount:index+1}]};
+ const original=JSON.stringify(f.catalog.getAll()),r=f.run();
+ assert.equal(r.audit.pairLocal!.comparablePairs,1);assert.equal(r.audit.deferred.length,1);
+ assert.equal(JSON.stringify(f.catalog.getAll()),original);
+ const item=f.a,disposal=classifyArmorMetadata(item,{...intent,objective:"DISPOSAL_VALUE"});
+ assert.ok(disposal.every(x=>x.category==="DISPOSAL_ECONOMICS"&&!x.comparisonInert));
+ assert.deepEqual(disposal.find(x=>x.key==="salvages")!.value,item.metadata.salvages);
+ assert.deepEqual(r.audit.metadataSemantics!.items.find(i=>i.itemId===item.id)!.facts.find(x=>x.key==="salvages")!.value,item.metadata.salvages);
+});
+
+test("unknown or genuinely mechanic-relevant metadata still prevents comparison",async()=>{
+ for(const key of ["mystery","tiered_stats"]) {
+  const f=await scenario();f.stats("a",150);
+  f.a.metadata={[key]:{DEFENSE:[10]}};f.b.metadata={[key]:{DEFENSE:[20]}};
+  assert.equal(f.run().audit.pairLocal!.comparablePairs,0);assert.equal(f.run().audit.deferred.length,0);
+ }
+ const f=await scenario();f.catalog.getById("OLD_HELMET")!.knowledge.metadata={slayerRequirement:"ZOMBIE_5"};
+ assert.equal(f.run().audit.pairLocal!.differentialMechanicBlockedPairs,1);
+});
+
+test("metadata semantics reject malformed shapes wrong providers misplaced fields and unsupported objectives",async()=>{
+ const f=await scenario(),item=f.a;
+ for(const value of [[{type:"ESSENCE"}],[{type:"ESSENCE",essence_type:"ICE",amount:1,combat:20}],[{type:"ITEM",amount:1}],null]) {
+  item.metadata={salvages:value};assert.equal(classifyArmorMetadata(item,intent)[0].comparisonInert,false);
+ }
+ item.metadata={rarity_salvageable:"true"};assert.equal(classifyArmorMetadata(item,intent)[0].comparisonInert,false);
+ item.metadata={displayName:"label"};assert.equal(classifyArmorMetadata(item,intent)[0].comparisonInert,false);
+ item.metadata={};item.knowledge.metadata={internalName:"WRONG"};
+ assert.equal(classifyArmorMetadata(item,intent)[0].comparisonInert,false);
+ item.knowledge.metadata={modVersion:{combat:1}};assert.equal(classifyArmorMetadata(item,intent)[0].comparisonInert,false);
+ item.knowledge.metadata={modVersion:"v1"};item.sources=["hypixel"];
+ assert.equal(classifyArmorMetadata(item,intent)[0].comparisonInert,false);
+ item.sources=["neu"];assert.equal(classifyArmorMetadata(item,{...intent,context:"general"})[0].comparisonInert,false);
+});
+
+test("metadata classifications are stable under key order and arbitrary item renaming",async()=>{
+ const f=await scenario();
+ for(const id of ["SYNTHETIC_A","SYNTHETIC_B"]) {
+  const item=structuredClone(f.a);item.id=id;
+  item.knowledge.metadata={modVersion:"one",internalName:id,displayName:"Label"};
+  const a=classifyArmorMetadata(item,intent);item.knowledge.metadata={displayName:"Label",internalName:id,modVersion:"one"};
+  assert.deepEqual(classifyArmorMetadata(item,intent),a);assert.ok(a.every(x=>x.comparisonInert));
+ }
 });

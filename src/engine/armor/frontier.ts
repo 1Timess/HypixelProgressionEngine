@@ -1,3 +1,4 @@
+import {classifyArmorMetadata,armorComparisonMetadata,ARMOR_METADATA_POLICY} from "./metadata";
 import {equipmentDependencyState} from "./effects";
 import { auditArmorComparability } from "./comparability-audit";
 import { parseArmorEffects, corroborateArmorSets } from "@/server/knowledge/items/armor";
@@ -25,6 +26,7 @@ export interface ArmorFrontierAudit {
   pairLocal?:{totalPairs:number;comparablePairs:number;differentialMechanicBlockedPairs:number;previousGlobalBlockedCandidates:number;globalOnlyBlockRemovedCandidates:number};
   comparability: ReturnType<typeof auditArmorComparability>;
   mechanicTrace?:ArmorMechanicTrace;
+  metadataSemantics?:{policy:typeof ARMOR_METADATA_POLICY;items:{itemId:string;facts:ReturnType<typeof classifyArmorMetadata>}[]};
 }
 
 // This is a closed proof grammar, not a general lore parser. Any remaining clause blocks pruning.
@@ -34,14 +36,16 @@ const labels: Record<string,string> = {
   intelligence:"INTELLIGENCE", speed:"WALK_SPEED",
 };
 const monotone = new Set(["DEFENSE","HEALTH","TRUE_DEFENSE"]);
-function sourceClosed(item: ItemDefinition, allowIndependentOpaque = false, inactive: string[] = [], onFailure?:(failure:ArmorGuardFailure)=>void): boolean {
+function sourceClosed(item: ItemDefinition, intent:ArmorEvidence["intent"], allowIndependentOpaque = false, inactive: string[] = [], onFailure?:(failure:ArmorGuardFailure)=>void): boolean {
   const initial:ArmorGuardFailure[]=[];
   if(!item.sources.includes("neu"))initial.push({reason:"SOURCE_NEU_MISSING",itemId:item.id});
   if(!item.knowledge.rawLore.length)initial.push({reason:"SOURCE_LORE_MISSING",itemId:item.id});
   if(item.knowledge.abilities.length)initial.push({reason:"SOURCE_ABILITIES_UNCLOSED",itemId:item.id});
   if(item.knowledge.capabilities.length)initial.push({reason:"SOURCE_CAPABILITIES_UNCLOSED",itemId:item.id});
-  if(Object.keys(item.metadata).length)initial.push({reason:"SOURCE_ITEM_METADATA",itemId:item.id,keys:Object.keys(item.metadata).sort()});
-  if(Object.keys(item.knowledge.metadata).length)initial.push({reason:"SOURCE_KNOWLEDGE_METADATA",itemId:item.id,keys:Object.keys(item.knowledge.metadata).sort()});
+  const itemKeys=Object.keys(armorComparisonMetadata(item,intent,"item"));
+  if(itemKeys.length)initial.push({reason:"SOURCE_ITEM_METADATA",itemId:item.id,keys:itemKeys});
+  const knowledgeKeys=Object.keys(armorComparisonMetadata(item,intent,"knowledge"));
+  if(knowledgeKeys.length)initial.push({reason:"SOURCE_KNOWLEDGE_METADATA",itemId:item.id,keys:knowledgeKeys});
   if(initial.length){initial.forEach(f=>onFailure?.(f));return false;}
   let statSeen = false;
   const known = parseArmorEffects(item).filter(effect => effect.mechanic || allowIndependentOpaque && effect.dependency.kind==="INDEPENDENT");
@@ -63,14 +67,15 @@ function sourceClosed(item: ItemDefinition, allowIndependentOpaque = false, inac
   if(!statSeen)onFailure?.({reason:"SOURCE_NO_STAT",itemId:item.id});
   return statSeen;
 }
-function facts(item: ItemDefinition): string {
+function facts(item: ItemDefinition, intent:ArmorEvidence["intent"]): string {
   // Identity is ignored only after the entire supplied lore passed the closed proof grammar.
-  // Keep rarity, tradeability, recipes, upgrades, metadata and provenance; none is a ranking.
+  // Keep rarity, tradeability, recipes, upgrades and source provenance. Only field-level
+  // inert metadata is omitted from this key; original values survive in the catalog/audit.
   const { id, name, stats, knowledge, ...rest } = item;
   void id; void name; void stats;
   const { rawLore, ...otherKnowledge } = knowledge;
   void rawLore;
-  return stableJson({ ...rest, knowledge:otherKnowledge });
+  return stableJson({ ...rest, metadata:armorComparisonMetadata(item,intent,"item"), knowledge:{...otherKnowledge,metadata:armorComparisonMetadata(item,intent,"knowledge")} });
 }
 /** Reconstruct source facts; equal UNKNOWN states or unverified sidecar assertions never prove equivalence. */
 function mechanicKey(candidate:Candidate,evidence:ArmorEvidence,catalog:ItemCatalog,verified:ArmorKnowledge,failures:ArmorGuardFailure[]):{key:string;opaqueInvariant:boolean}|null {
@@ -90,8 +95,8 @@ function mechanicKey(candidate:Candidate,evidence:ArmorEvidence,catalog:ItemCata
   for(const [slot,item] of afterBuild){
     if(replacedSlots.has(slot))continue;
     const inactive = (verified.items[item.id]?.effects??[]).filter(effect => effect.dependency.kind==="PIECES" && equipmentDependencyState(effect,afterBuild,new Set())==="NOT_SATISFIED").map(effect=>effect.text);
-    if(!sourceClosed(item,true,inactive,f=>failures.push({...f,reason:"RETAINED_"+f.reason})))return null;
-    if(!sourceClosed(item,false,inactive))opaqueInvariant=true;
+    if(!sourceClosed(item,evidence.intent,true,inactive,f=>failures.push({...f,reason:"RETAINED_"+f.reason})))return null;
+    if(!sourceClosed(item,evidence.intent,false,inactive))opaqueInvariant=true;
   }
   for(const record of candidate.effects) {
     const original=expected.find(entry=>entry.id===record.itemId&&entry.effect.id===record.id)?.effect;
@@ -132,10 +137,11 @@ export function narrowArmorFrontier(evidence: ArmorEvidence, catalog: ItemCatalo
   const verified = corroborateArmorSets(catalog,{items:Object.fromEntries(catalog.getAll().map(item=>[item.id,{effects:parseArmorEffects(item),usability:[]}])),packages:knowledge?.packages??[]});
   const audit: ArmorFrontierAudit = {policy:"COMPARISON_LOCAL_ARMOR_PARETO_V3",before:evidence.candidates.length,
     retained:evidence.candidates.length,deferred:[],blocked:{},comparability:auditArmorComparability(evidence,catalog)};
+  audit.metadataSemantics={policy:ARMOR_METADATA_POLICY,items:[...new Set([...evidence.baseline.map(p=>p.id),...evidence.candidates.flatMap(c=>c.replaces.map(p=>p.toId))])].sort().flatMap(id=>{const item=catalog.getById(id);return item?[{itemId:id,facts:classifyArmorMetadata(item,evidence.intent)}]:[];})};
   const block = (reason:Block) => { audit.blocked[reason]=(audit.blocked[reason]??0)+1; };
   // An unresolved retained/set dependency could distinguish otherwise plain replacement pieces.
   const baselineKnown = !evidence.unknownSlots.length && evidence.baseline.every(entry=>{
-    const item=catalog.getById(entry.id);return !!item&&sourceClosed(item);
+    const item=catalog.getById(entry.id);return !!item&&sourceClosed(item,evidence.intent);
   });
   const failures=new Map<string,ArmorGuardFailure[]>();
   const mechanicCertificates=new Map(evidence.candidates.map(c=>{const trace:ArmorGuardFailure[]=[];failures.set(c.id,trace);return [c.id,mechanicKey(c,evidence,catalog,verified,trace)] as const;}));
@@ -147,7 +153,7 @@ export function narrowArmorFrontier(evidence: ArmorEvidence, catalog: ItemCatalo
     for(const [slot,item] of after){
       const role=c.replaces.some(p=>p.slot===slot)?"REPLACEMENT" as const:"RETAINED" as const;
       const inactive=role==="RETAINED"?(verified.items[item.id]?.effects??[]).filter(f=>f.dependency.kind==="PIECES"&&equipmentDependencyState(f,after,new Set())==="NOT_SATISFIED").map(f=>f.text):[];
-      const trace:ArmorGuardFailure[]=[];sourceClosed(item,role==="RETAINED",inactive,f=>trace.push(f));
+      const trace:ArmorGuardFailure[]=[];sourceClosed(item,evidence.intent,role==="RETAINED",inactive,f=>trace.push(f));
       audit.mechanicTrace.independentSourceChecks.push({candidateId:c.id,role,itemId:item.id,failures:trace});
     }
   }
@@ -162,7 +168,7 @@ export function narrowArmorFrontier(evidence: ArmorEvidence, catalog: ItemCatalo
     if (pieces.some(p=>p.contextUsability!=="EVIDENCED")) {block("UNKNOWN_CONTEXT");continue;}
     const items=pieces.map(p=>catalog.getById(p.toId));
     const mechanics=mechanicCertificates.get(candidate.id)??null;
-    if (mechanics===null || items.some((item,i)=>!item||!sourceClosed(item)||item.category!==pieces[i].slot)) {
+    if (mechanics===null || items.some((item,i)=>!item||!sourceClosed(item,evidence.intent)||item.category!==pieces[i].slot)) {
       block("UNKNOWN_ITEM_MECHANICS");continue;
     }
     const snapshots=new Set<string>();let cost=0,known=Number.isFinite(now);
@@ -179,7 +185,7 @@ export function narrowArmorFrontier(evidence: ArmorEvidence, catalog: ItemCatalo
     // Packages and individual pieces, ownership modes and per-slot identities remain distinct.
     const group=stableJson({mechanics:mechanics.key,kind:candidate.id.startsWith("package:")?"package":"piece",
       pieces:pieces.map((p,i)=>({slot:p.slot,from:p.fromId,acquisition:p.acquisition,
-        dungeon:p.dungeon,context:p.contextUsability,facts:facts(items[i]!)})),snapshot:[...snapshots]});
+        dungeon:p.dungeon,context:p.contextUsability,facts:facts(items[i]!,evidence.intent)})),snapshot:[...snapshots]});
     certificates.set(candidate.id,{candidate,group,items:items as ItemDefinition[],cost,opaqueInvariant:mechanics.opaqueInvariant});
   }
   function dominates(a:Certificate,b:Certificate): boolean {
