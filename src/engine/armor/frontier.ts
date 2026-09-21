@@ -1,3 +1,4 @@
+import {proveInactiveReplacements,matchesInactiveReplacementProof,type InactiveReplacementProof} from "./inactive-replacement-proof";
 import {closeGemstoneSummary} from "./gemstone-summary";
 import {classifyArmorStatLine} from "./stat-labels";
 import {classifyArmorMetadata,armorComparisonMetadata,ARMOR_METADATA_POLICY} from "./metadata";
@@ -28,12 +29,13 @@ export interface ArmorFrontierAudit {
   pairLocal?:{totalPairs:number;comparablePairs:number;differentialMechanicBlockedPairs:number;previousGlobalBlockedCandidates:number;globalOnlyBlockRemovedCandidates:number};
   comparability: ReturnType<typeof auditArmorComparability>;
   mechanicTrace?:ArmorMechanicTrace;
+  inactiveReplacementProofs?:InactiveReplacementProof[];
   metadataSemantics?:{policy:typeof ARMOR_METADATA_POLICY;items:{itemId:string;facts:ReturnType<typeof classifyArmorMetadata>}[]};
 }
 
 // This is a closed proof grammar, not a general lore parser. Any remaining clause blocks pruning.
 const monotone = new Set(["DEFENSE","HEALTH","TRUE_DEFENSE"]);
-function sourceClosed(item: ItemDefinition, intent:ArmorEvidence["intent"], allowIndependentOpaque = false, inactive: string[] = [], onFailure?:(failure:ArmorGuardFailure)=>void): boolean {
+function sourceClosed(item: ItemDefinition, intent:ArmorEvidence["intent"], allowIndependentOpaque = false, inactive: string[] = [], onFailure?:(failure:ArmorGuardFailure)=>void, proofs:readonly InactiveReplacementProof[]=[]): boolean {
   const initial:ArmorGuardFailure[]=[];
   if(!item.sources.includes("neu"))initial.push({reason:"SOURCE_NEU_MISSING",itemId:item.id});
   if(!item.knowledge.rawLore.length)initial.push({reason:"SOURCE_LORE_MISSING",itemId:item.id});
@@ -48,7 +50,7 @@ function sourceClosed(item: ItemDefinition, intent:ArmorEvidence["intent"], allo
   const known = parseArmorEffects(item).filter(effect => effect.mechanic || allowIndependentOpaque && effect.dependency.kind==="INDEPENDENT");
   // Remove only complete paragraphs proved by the closed flat-clause grammar.
   const paragraphs = item.knowledge.rawLore.join("\n").split(/\n\s*\n/);
-  const remaining = paragraphs.filter(paragraph => !inactive.some(text => paragraph.split("\n").map(line=>line.replace(/§[0-9a-fk-or]/gi,"").trim()).join(" ").trim() === text.replace(/\s+/g," ")) && !known.some(effect =>
+  const remaining = paragraphs.filter(paragraph => !proofs.some(proof=>matchesInactiveReplacementProof(proof,item,paragraph)) && !inactive.some(text => paragraph.split("\n").map(line=>line.replace(/§[0-9a-fk-or]/gi,"").trim()).join(" ").trim() === text.replace(/\s+/g," ")) && !known.some(effect =>
     paragraph.split("\n").map(line=>line.replace(/§[0-9a-fk-or]/gi,"").trim()).join(" ").trim() === effect.text.replace(/\s+/g," ")));
   for (const raw of remaining.join("\n").split("\n")) {
     const line = raw.replace(/§[0-9a-fk-or]/gi,"").trim();
@@ -147,6 +149,8 @@ export function narrowArmorFrontier(evidence: ArmorEvidence, catalog: ItemCatalo
   });
   const failures=new Map<string,ArmorGuardFailure[]>();
   const mechanicCertificates=new Map(evidence.candidates.map(c=>{const trace:ArmorGuardFailure[]=[];failures.set(c.id,trace);return [c.id,mechanicKey(c,evidence,catalog,verified,trace)] as const;}));
+  const replacementProofs=new Map(evidence.candidates.map(c=>[c.id,mechanicCertificates.get(c.id)?proveInactiveReplacements(c,evidence,catalog,verified):[]]));
+  audit.inactiveReplacementProofs=[...replacementProofs.values()].flat();
   audit.mechanicTrace={candidates:evidence.candidates.map(c=>({candidateId:c.id,failures:failures.get(c.id)!})),pairCounts:{},onlyReasonPairs:{},overlapCounts:{},independentSourceChecks:[]};
   // Diagnostic probes call the same source predicate; they never authorize a certificate.
   for(const c of evidence.candidates){
@@ -155,7 +159,7 @@ export function narrowArmorFrontier(evidence: ArmorEvidence, catalog: ItemCatalo
     for(const [slot,item] of after){
       const role=c.replaces.some(p=>p.slot===slot)?"REPLACEMENT" as const:"RETAINED" as const;
       const inactive=role==="RETAINED"?(verified.items[item.id]?.effects??[]).filter(f=>f.dependency.kind==="PIECES"&&equipmentDependencyState(f,after,new Set())==="NOT_SATISFIED").map(f=>f.text):[];
-      const trace:ArmorGuardFailure[]=[];sourceClosed(item,evidence.intent,role==="RETAINED",inactive,f=>trace.push(f));
+      const trace:ArmorGuardFailure[]=[];sourceClosed(item,evidence.intent,role==="RETAINED",inactive,f=>trace.push(f),role==="REPLACEMENT"?replacementProofs.get(c.id):[]);
       audit.mechanicTrace.independentSourceChecks.push({candidateId:c.id,role,itemId:item.id,failures:trace});
     }
   }
@@ -170,7 +174,7 @@ export function narrowArmorFrontier(evidence: ArmorEvidence, catalog: ItemCatalo
     if (pieces.some(p=>p.contextUsability!=="EVIDENCED")) {block("UNKNOWN_CONTEXT");continue;}
     const items=pieces.map(p=>catalog.getById(p.toId));
     const mechanics=mechanicCertificates.get(candidate.id)??null;
-    if (mechanics===null || items.some((item,i)=>!item||!sourceClosed(item,evidence.intent)||item.category!==pieces[i].slot)) {
+    if (mechanics===null || items.some((item,i)=>!item||!sourceClosed(item,evidence.intent,false,[],undefined,replacementProofs.get(candidate.id))||item.category!==pieces[i].slot)) {
       block("UNKNOWN_ITEM_MECHANICS");continue;
     }
     const snapshots=new Set<string>();let cost=0,known=Number.isFinite(now);
