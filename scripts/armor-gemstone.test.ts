@@ -37,3 +37,16 @@ test("slot closure rejects malformed summaries counts missing records and unmode
  const costs=structuredClone(i);costs.gemstoneSlots[0].costs=[{type:"UNKNOWN",sourceType:"new",metadata:{}}];assert.equal(closeGemstoneSummary("Gemstones: [x]",costs),"SOURCE_GEMSTONE_SLOT_STRUCTURE_UNRESOLVED");
  const duplicate=structuredClone(i);duplicate.knowledge.rawLore.push("Gemstones: [x]");assert.equal(closeGemstoneSummary("Gemstones: [x]",duplicate),"SOURCE_GEMSTONE_SUMMARY_MALFORMED");
 });
+
+import {readFileSync} from "node:fs";
+test("saved corpus summaries all close with canonical slots preserved",()=>{
+ const report=JSON.parse(readFileSync("data/armor-integration/armor-gemstone-slot-audit.json","utf8"));
+ let count=0;
+ for(const row of report.rows)if(row.lore.length){
+  const item=ItemDefinitionSchema.parse({id:row.itemId,name:row.itemId,gemstoneSlots:row.slots,knowledge:{rawLore:row.lore.map((l:{raw:string})=>l.raw)}});
+  const before=JSON.stringify(item);
+  for(const line of item.knowledge.rawLore)assert.equal(closeGemstoneSummary(line,item),null,row.itemId);
+  assert.equal(JSON.stringify(item),before);count++;
+ }
+ assert.equal(count,368);
+});
