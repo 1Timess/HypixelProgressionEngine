@@ -1,3 +1,5 @@
+Latest checkpoint: [narrow metadata closure and next reached guard](armor-metadata-handoff.md).
+
 # Armor V2 promotion and remaining mechanic guard — 2026-09-21
 
 Starting HEAD: 78e2330dd6814e1b87c672e9583b44ca43282fb5. Armor remains unfrozen; Weapons v1 remains frozen. This checkpoint stops before any mechanic relaxation. No paid model calls.
