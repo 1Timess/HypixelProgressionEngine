@@ -1,0 +1,10 @@
+import {readFileSync,writeFileSync} from "node:fs";
+import {blockerImpact} from "./armor-blocker-impact-lib";
+const inventory=JSON.parse(readFileSync("data/armor-integration/armor-blocker-inventory.json","utf8"));
+const families=blockerImpact(inventory.candidates);
+const capture=JSON.parse(readFileSync("data/armor-integration/closure-cohort.json","utf8"));
+const unresolvedIds=[...new Set(inventory.candidates.flatMap((c:{blockers:{family:string;itemId:string}[]})=>c.blockers.filter(b=>b.family.startsWith("UNRESOLVED_DEPENDENCY")).map(b=>b.itemId)))];
+const sourceMembership=unresolvedIds.map(itemId=>({itemId,packages:capture.knowledge.packages.filter((p:{itemIds:string[]})=>p.itemIds.includes(String(itemId))),interpretation:"Museum package presence is source knowledge, not a combat membership proof. No package here means absent from saved package evidence, not absent from the game."}));
+const grouped=blockerImpact(inventory.candidates.map((c:{candidateId:string;blockers:{family:string;stage:string;itemId:string}[]})=>({...c,blockers:c.blockers.map(b=>({...b,family:b.family.startsWith("PERCENT_STAT:")||b.family==="GEAR_SCORE"?"STRUCTURED_NUMERIC_LORE":b.family}))}))).filter(f=>f.family==="STRUCTURED_NUMERIC_LORE");
+writeFileSync("data/armor-integration/armor-blocker-impact.json",JSON.stringify({policy:"RECORDED_BLOCKER_CLEARANCE_V1",productionSuppression:false,families,grouped,sourceMembership},null,2)+"\n");
+console.log(JSON.stringify(families.filter(f=>!f.family.includes("{")).map(({overlap,reason,reportingOnlyClearanceCandidateIds,...f})=>{void overlap;void reason;void reportingOnlyClearanceCandidateIds;return f;})));
