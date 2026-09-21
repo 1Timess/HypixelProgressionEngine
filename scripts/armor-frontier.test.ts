@@ -506,3 +506,35 @@ test("gemstone source closure preserves slot grouping and does not rank slots or
  const forward=f.run();assert.equal(forward.audit.deferred.length,0);assert.equal(forward.audit.pairLocal!.comparablePairs,0);
  f.e.candidates.reverse();assert.deepEqual(f.run().audit.deferred,forward.audit.deferred);
 });
+
+test("canonical Hypixel RGB colors are scoped inert facts and remain preserved",async()=>{
+ const f=await scenario();f.stats("a",150);
+ for(const [index,item] of f.catalog.getAll().entries())item.metadata.color=index%2?"255,0,0":"3,252,248";
+ const before=JSON.stringify(f.catalog.getAll()),r=f.run();
+ assert.equal(r.audit.pairLocal!.comparablePairs,1);assert.equal(r.audit.deferred.length,1);
+ assert.equal(JSON.stringify(f.catalog.getAll()),before);
+ assert.ok(r.audit.metadataSemantics!.items.every(i=>i.facts.find(x=>x.key==="color")?.comparisonInert));
+ assert.equal(r.audit.metadataSemantics!.items.find(i=>i.itemId===f.a.id)!.facts.find(x=>x.key==="color")!.value,f.a.metadata.color);
+ f.e.candidates.reverse();assert.deepEqual(f.run().audit.deferred,r.audit.deferred);
+});
+test("color classification rejects malformed values wrong location provider and unsupported scopes",async()=>{
+ const f=await scenario(),i=f.a;
+ for(const value of ["256,0,0","-1,0,0","01,2,3","1, 2,3","#ffffff",123,null]){
+  i.metadata={color:value};assert.equal(classifyArmorMetadata(i,intent)[0].comparisonInert,false);
+ }
+ i.metadata={color:"3,252,248"};
+ for(const scope of [{...intent,context:"general"},{...intent,context:"rift"},{...intent,objective:"DISPOSAL_VALUE"},{...intent,domain:"weapon"}])
+  assert.equal(classifyArmorMetadata(i,scope)[0].comparisonInert,false);
+ i.sources=["neu"];assert.equal(classifyArmorMetadata(i,intent)[0].comparisonInert,false);
+ i.sources=["hypixel"];i.metadata={};i.knowledge.metadata={color:"3,252,248"};
+ assert.equal(classifyArmorMetadata(i,intent)[0].comparisonInert,false);
+});
+test("NBT selectable and unknown mechanic facts remain outside the canonical color contract",async()=>{
+ for(const extra of [{display:{color:261368}},{"display.color":261368},{dye:"red"},{selectableColor:"red"},{mystery:1},{tiered_stats:{DEFENSE:[10]}}]){
+  const f=await scenario();f.a.metadata={color:"3,252,248",...extra};
+  assert.equal(f.run().audit.pairLocal!.comparablePairs,0);
+  assert.ok(classifyArmorMetadata(f.a,intent).filter(x=>x.key!=="color").every(x=>!x.comparisonInert));
+ }
+ const f=await scenario();f.a.metadata.color="3,252,248";f.a.knowledge.rawLore.push("Same color = 2x stats!");
+ assert.equal(f.run().audit.pairLocal!.comparablePairs,0);
+});
