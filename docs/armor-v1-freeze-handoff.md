@@ -1,3 +1,5 @@
+> Historical audit at d2782d3. The current architecture changes and breadth rerun are documented in [armor-architecture-handoff.md](armor-architecture-handoff.md). The support JSON now contains the current rerun; the original artifact remains in Git at d2782d3.
+
 # Armor v1 freeze-readiness handoff
 
 **Decision: NOT_READY_SYSTEMIC_GAP. Armor remains unfrozen; Weapons v1 remains frozen.**

@@ -1,3 +1,5 @@
+import {execFileSync} from "node:child_process";
+import {armorComparisonSemanticFacts,ARMOR_COMPARISON_IDENTITY_POLICY} from "../src/engine/armor/comparison-identity";
 import assert from "node:assert/strict";
 import {readFileSync,writeFileSync} from "node:fs";
 import {createHash} from "node:crypto";
@@ -11,10 +13,13 @@ import {evaluateItemScope} from "../src/engine/candidates/scope";
 import {corroborateArmorSets,parseArmorEffects} from "../src/server/knowledge/items/armor";
 import {stableJson} from "../src/engine/build/weapon-comparison";
 import type {MarketPrice} from "../src/server/market/types";
-import {classifyArmorMetadata,armorComparisonMetadata} from "../src/engine/armor/metadata";
+import {classifyArmorMetadata} from "../src/engine/armor/metadata";
 import {ARMOR_STAT_LABEL_VOCABULARY} from "../src/engine/armor/stat-labels";
 import {renderArmorRecommendation} from "../src/engine/armor/output-validation";
 import type {ArmorGuardFailure} from "../src/engine/armor/frontier";
+const baselineHead="d2782d34daa365e1a758006a715b2c4370248f0f";
+const before=JSON.parse(execFileSync("git",["show",baselineHead+":data/armor-integration/armor-v1-support-audit.json"],{encoding:"utf8",maxBuffer:20_000_000}));
+const currentHead=execFileSync("git",["rev-parse","HEAD"],{encoding:"utf8"}).trim();
 const root="data/armor-integration/",read=(name:string)=>JSON.parse(readFileSync(root+name,"utf8"));
 const capture=read("closure-cohort.json"),frozen=read("informational-tiered-mechanic-audit.json"),tiered=read("armor-tiered-stats-audit.json");
 const items=capture.catalog.map((i:unknown)=>ItemDefinitionSchema.parse(i)) as ReturnType<typeof ItemDefinitionSchema.parse>[];
@@ -50,7 +55,7 @@ for(const context of ["dungeon","general"] as const)for(const baseline of ["CHAI
   observations.set(piece.toId,[...(observations.get(piece.toId)??[]),o]);
  }
  runs.push({context,baseline,status:plan.status,bytes:plan.review.bytes,generated:plan.review.generated,generation:plan.review.generation,
-  pairLocal:audit.pairLocal,blocked:audit.blocked,retained:audit.retained,deferred:audit.deferred,sourcePassing:audit.mechanicTrace!.independentSourceChecks.filter(p=>p.role==="REPLACEMENT"&&!p.failures.length).length});
+  directRetainedWitnesses:new Set(audit.deferred.map(d=>d.witnessId)).size,dominanceDeferred:audit.deferred.length,pairLocal:audit.pairLocal,blocked:audit.blocked,retained:audit.retained,deferred:audit.deferred,sourcePassing:audit.mechanicTrace!.independentSourceChecks.filter(p=>p.role==="REPLACEMENT"&&!p.failures.length).length});
  console.log(JSON.stringify(runs.at(-1)));
 }
 const rows=items.map(item=>{
@@ -120,23 +125,20 @@ for(const kind of ["OWNED_COMPARISONS","SAVED_GENERIC_BUY","UNSUPPORTED_COMPARIS
  narrowing:plan.review.narrowing?{blocked:plan.review.narrowing.blocked,pairs:plan.review.narrowing.pairLocal,deferred:plan.review.narrowing.deferred}:null,
  payload,rendered,qualification:"Deterministic preparation/validation/render path, no model selection or paid call. CONSIDER is not dominance or best-build ranking."});
 }
-// Exact copy of the current facts() field selection for diagnosis only. No modified facts authorize production comparison.
+// Use the production semantic builder, not a stale copied facts projection.
 const fingerprints=rows.filter(r=>r.category==="FULLY_SUPPORTED_DEFINITION").map(r=>{
  const item=catalog.getById(r.itemId)!;
- const {id,name,stats,knowledge:ik,...rest}=item;void id;void name;void stats;
- const {rawLore,...other}=ik;void rawLore;
- const scope={domain:"armor",objective:"UPGRADE_CURRENT_BUILD",context:"dungeon"};
- const facts=stableJson({...rest,metadata:armorComparisonMetadata(item,scope,"item"),knowledge:{...other,metadata:armorComparisonMetadata(item,scope,"knowledge")}});
- return {itemId:item.id,slot:item.category,hash:createHash("sha256").update(facts).digest("hex"),wikiUrl:ik.wikiUrl??null,recipeCount:ik.recipes.length,npcSellPrice:item.npcSellPrice??null};
+ const facts=stableJson(armorComparisonSemanticFacts(item,{domain:"armor",objective:"UPGRADE_CURRENT_BUILD",context:"dungeon"}));
+ return {itemId:item.id,slot:item.category,hash:createHash("sha256").update(facts).digest("hex"),wikiUrl:item.knowledge.wikiUrl??null,recipeCount:item.knowledge.recipes.length,npcSellPrice:item.npcSellPrice??null};
 });
 const duplicateFactGroups=[...new Set(fingerprints.map(f=>f.hash))].map(hash=>fingerprints.filter(f=>f.hash===hash)).filter(g=>g.length>1);
 const generalInitialBlocks=items.map(item=>({itemId:item.id,keys:classifyArmorMetadata(item,{domain:"armor",objective:"UPGRADE_CURRENT_BUILD",context:"general"}).filter(f=>!f.comparisonInert).map(f=>f.location+":"+f.key),missingLore:!item.knowledge.rawLore.length}));
 const systemicGaps=[
- {name:"GENERAL_CONTEXT_METADATA_SCOPE",itemIds:generalInitialBlocks.filter(r=>r.keys.length).map(r=>r.itemId),explanation:"Metadata inertness contracts apply only in Dungeon context; general retains canonical identity/source-version fields as unresolved metadata."},
- {name:"DISTINCT_SOURCE_FACT_FINGERPRINTS",itemIds:fingerprints.map(r=>r.itemId),explanation:"All source/mechanic-supported items have distinct unmodified facts keys; NPC prices, recipes, wiki links and other provenance stay in comparison groups. Same-slot different-item comparison needs equal full facts before stat comparison."},
+ {name:"GENERAL_CONTEXT_METADATA_RESIDUAL",itemIds:generalInitialBlocks.filter(r=>r.keys.length).map(r=>r.itemId),explanation:"After base policy extension, these definitions still have at least one metadata field not proven inert. Exact keys/values remain in generalInitialBlocks."},
+ {name:"RESIDUAL_DISTINCT_SEMANTIC_FACTS",itemIds:fingerprints.filter(r=>!duplicateFactGroups.some(g=>g.some(p=>p.itemId===r.itemId))).map(r=>r.itemId),explanation:"Definitions outside duplicated semantic-key groups remain distinct under conservative retained facts. Duplicate keys alone do not establish comparable stat vectors or candidate mechanics."},
  {name:"GLOBAL_PAYLOAD_CANNOT_FIT",itemIds:items.map(i=>i.id),explanation:"Broad production requests retain unsupported comparisons and no actual pairs narrow; all six full-catalog probes exceed 8192 bytes. Scope count is queried definitions, not individually faulty items."}
 ].map(g=>({...g,count:g.itemIds.length,percent:g.itemIds.length/834*100,gapClass:"SYSTEMIC_ARCHITECTURE_GAP",requiredForBroadV1:true,implementationScope:"MEDIUM"}));
-assert.equal(duplicateFactGroups.length,0);
+assert.equal(new Set(rows.map(r=>r.itemId)).size,834);
 assert.equal(pathProbes.filter(p=>p.kind!=="UNSUPPORTED_COMPARISON_CONTROL"&&p.status==="READY"&&p.serializedBytes!==null).length,2);
 assert.ok(pathProbes.filter(p=>p.kind!=="UNSUPPORTED_COMPARISON_CONTROL").every(p=>p.source?.every(s=>!s.failures.length)));
 assert.equal(rows.length,834);assert.equal(Object.values(summary.counts).reduce((a,b)=>a+b,0),834);
@@ -147,10 +149,14 @@ const boundaryDetails={unconditionalSourcePass:rows.filter(r=>r.category==="FULL
  unparsedLines:rows.flatMap(r=>(r.observations.find(o=>o.context==="dungeon")?.sourceFailures??[]).filter(f=>f.line).map(f=>({itemId:r.itemId,...f})))};
 const unsupportedRows=rows.filter(r=>r.category!=="FULLY_SUPPORTED_DEFINITION");
 const unsupportedBoundaryCounts={SYSTEMIC_ARCHITECTURE_GAP:unsupportedRows.filter(r=>(r as typeof r&{unsupportedBoundary:string}).unsupportedBoundary==="SYSTEMIC_ARCHITECTURE_GAP").length,BOUNDED_V1_EXCLUSION:unsupportedRows.filter(r=>(r as typeof r&{unsupportedBoundary:string}).unsupportedBoundary==="BOUNDED_V1_EXCLUSION").length};
-const report={policy:"ARMOR_V1_SUPPORT_AUDIT_V1",startingHead:"309a97a69d725eb4a5dac393cbd675388ea60286",scope:"834 saved enriched Armor definitions; general and dungeon single-piece replacement; source/mechanic existential support, not guaranteed application readiness",
+const report={policy:"ARMOR_V1_SUPPORT_AUDIT_V1",startingHead:baselineHead,evaluatedProductionHead:currentHead,comparisonIdentityPolicy:ARMOR_COMPARISON_IDENTITY_POLICY,scope:"834 saved enriched Armor definitions; general and dungeon single-piece replacement; source/mechanic existential support, not guaranteed application readiness",
  categoryPrecedence:["OUTSIDE_ARMOR_V1_SCOPE","CURRENTLY_UNSUPPORTED_ELIGIBILITY_OR_REQUIREMENT","WITNESSED_SUPPORTED_STATE","CURRENTLY_UNSUPPORTED_MECHANIC","CURRENTLY_UNSUPPORTED_SOURCE_SEMANTICS"],classificationRule:"Scope exclusion, then inability to evaluate requirements in either context, then witnessed source/mechanic pass, then mechanic guard, then source guard. Market absence is not invented from missing saved quotes. No partial tier proof counts as supported.",
  assumptions:{syntheticPlayer:true,allModeledRequirementsSatisfied:true,ownedUnmodifiedDefinitions:true,baselineItems:["CHAINMAIL","DIAMOND","IRON"],candidateSourceModified:false,pricesInvented:false,modelCalls:0,resourceRefreshes:0},
  inputHashes:Object.fromEntries(["closure-cohort.json","informational-tiered-mechanic-audit.json","armor-tiered-stats-audit.json"].map(n=>[n,createHash("sha256").update(readFileSync(root+n)).digest("hex")])),decision:"NOT_READY_SYSTEMIC_GAP",summary:{...summary,variantCoverage:{examined:variants.length,supported:variants.filter((v:{supported:boolean})=>v.supported).length,blocked:variants.filter((v:{supported:boolean})=>!v.supported).length,sourceReasonCounts:Object.fromEntries([...new Set<string>(variants.flatMap((v:{sourceFailures:ArmorGuardFailure[]})=>v.sourceFailures.map(f=>f.reason)))].map(reason=>[reason,variants.filter((v:{sourceFailures:ArmorGuardFailure[]})=>v.sourceFailures.some(f=>f.reason===reason)).length]))},categoryCounts,supportPercent:summary.supportable/834*100,unsupported:834-summary.supportable,unsupportedBoundaryCounts},boundaryDetails,systemicGaps,fingerprints,duplicateFactGroups,generalInitialBlocks,pathProbes,families,runs,variants,rows};
+const comparison={baselineHead,evaluatedProductionHead:currentHead,methodology:"Same saved 834 definitions, historical time, synthetic eligibility/ownership, six baselines and three path probes; fingerprints now call production builder; old exact-listing audit remains blocked by unchanged Dungeon source guards.",
+ inputHashesUnchanged:stableJson(before.inputHashes)===stableJson(report.inputHashes),before:{summary:before.summary,runs:before.runs},after:{summary:report.summary,runs:report.runs},decision:report.decision};
+assert.ok(comparison.inputHashesUnchanged);
+writeFileSync(root+"armor-architecture-breadth-comparison.json",JSON.stringify(comparison,null,2)+"\n");
 writeFileSync(root+"armor-v1-support-audit.json",JSON.stringify(report,null,2)+"\n");
 console.log(JSON.stringify({summary,topBlockers:families.slice(0,14).map(({itemIds,...f})=>({...f,exampleIds:itemIds.slice(0,3)})),pathProbes:pathProbes.map(p=>({kind:p.kind,status:p.status,bytes:p.bytes})),systemicGaps:systemicGaps.map(({itemIds,...g})=>({...g,exampleIds:itemIds.slice(0,3)}))},null,2));
 

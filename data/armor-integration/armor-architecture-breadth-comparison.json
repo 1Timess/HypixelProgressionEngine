@@ -1,0 +1,787 @@
+{
+  "baselineHead": "d2782d34daa365e1a758006a715b2c4370248f0f",
+  "evaluatedProductionHead": "0dd9e3bd7604086e3086409308cda0ed567e2c9e",
+  "methodology": "Same saved 834 definitions, historical time, synthetic eligibility/ownership, six baselines and three path probes; fingerprints now call production builder; old exact-listing audit remains blocked by unchanged Dungeon source guards.",
+  "inputHashesUnchanged": true,
+  "before": {
+    "summary": {
+      "total": 834,
+      "counts": {
+        "FULLY_SUPPORTED_DEFINITION": 91,
+        "VARIANT_DEPENDENT_SUPPORTED": 0,
+        "CURRENTLY_UNSUPPORTED_SOURCE_SEMANTICS": 344,
+        "CURRENTLY_UNSUPPORTED_MECHANIC": 241,
+        "CURRENTLY_UNSUPPORTED_ELIGIBILITY_OR_REQUIREMENT": 143,
+        "MARKET_OR_VARIANT_UNAVAILABLE": 0,
+        "OUTSIDE_ARMOR_V1_SCOPE": 15
+      },
+      "supportable": 91,
+      "bySlot": [
+        {
+          "slot": "HELMET",
+          "total": 269,
+          "counts": {
+            "FULLY_SUPPORTED_DEFINITION": 16,
+            "VARIANT_DEPENDENT_SUPPORTED": 0,
+            "CURRENTLY_UNSUPPORTED_SOURCE_SEMANTICS": 125,
+            "CURRENTLY_UNSUPPORTED_MECHANIC": 79,
+            "CURRENTLY_UNSUPPORTED_ELIGIBILITY_OR_REQUIREMENT": 41,
+            "MARKET_OR_VARIANT_UNAVAILABLE": 0,
+            "OUTSIDE_ARMOR_V1_SCOPE": 8
+          }
+        },
+        {
+          "slot": "CHESTPLATE",
+          "total": 191,
+          "counts": {
+            "FULLY_SUPPORTED_DEFINITION": 25,
+            "VARIANT_DEPENDENT_SUPPORTED": 0,
+            "CURRENTLY_UNSUPPORTED_SOURCE_SEMANTICS": 77,
+            "CURRENTLY_UNSUPPORTED_MECHANIC": 52,
+            "CURRENTLY_UNSUPPORTED_ELIGIBILITY_OR_REQUIREMENT": 34,
+            "MARKET_OR_VARIANT_UNAVAILABLE": 0,
+            "OUTSIDE_ARMOR_V1_SCOPE": 3
+          }
+        },
+        {
+          "slot": "LEGGINGS",
+          "total": 183,
+          "counts": {
+            "FULLY_SUPPORTED_DEFINITION": 25,
+            "VARIANT_DEPENDENT_SUPPORTED": 0,
+            "CURRENTLY_UNSUPPORTED_SOURCE_SEMANTICS": 68,
+            "CURRENTLY_UNSUPPORTED_MECHANIC": 54,
+            "CURRENTLY_UNSUPPORTED_ELIGIBILITY_OR_REQUIREMENT": 34,
+            "MARKET_OR_VARIANT_UNAVAILABLE": 0,
+            "OUTSIDE_ARMOR_V1_SCOPE": 2
+          }
+        },
+        {
+          "slot": "BOOTS",
+          "total": 191,
+          "counts": {
+            "FULLY_SUPPORTED_DEFINITION": 25,
+            "VARIANT_DEPENDENT_SUPPORTED": 0,
+            "CURRENTLY_UNSUPPORTED_SOURCE_SEMANTICS": 74,
+            "CURRENTLY_UNSUPPORTED_MECHANIC": 56,
+            "CURRENTLY_UNSUPPORTED_ELIGIBILITY_OR_REQUIREMENT": 34,
+            "MARKET_OR_VARIANT_UNAVAILABLE": 0,
+            "OUTSIDE_ARMOR_V1_SCOPE": 2
+          }
+        }
+      ],
+      "byContext": [
+        {
+          "context": "general",
+          "supported": 0
+        },
+        {
+          "context": "dungeon",
+          "supported": 91
+        }
+      ],
+      "byClass": [
+        {
+          "name": "TIERED",
+          "total": 54,
+          "counts": {
+            "FULLY_SUPPORTED_DEFINITION": 0,
+            "VARIANT_DEPENDENT_SUPPORTED": 0,
+            "CURRENTLY_UNSUPPORTED_SOURCE_SEMANTICS": 42,
+            "CURRENTLY_UNSUPPORTED_MECHANIC": 12,
+            "CURRENTLY_UNSUPPORTED_ELIGIBILITY_OR_REQUIREMENT": 0,
+            "MARKET_OR_VARIANT_UNAVAILABLE": 0,
+            "OUTSIDE_ARMOR_V1_SCOPE": 0
+          }
+        },
+        {
+          "name": "NATIVE_DUNGEON",
+          "total": 128,
+          "counts": {
+            "FULLY_SUPPORTED_DEFINITION": 0,
+            "VARIANT_DEPENDENT_SUPPORTED": 0,
+            "CURRENTLY_UNSUPPORTED_SOURCE_SEMANTICS": 90,
+            "CURRENTLY_UNSUPPORTED_MECHANIC": 31,
+            "CURRENTLY_UNSUPPORTED_ELIGIBILITY_OR_REQUIREMENT": 7,
+            "MARKET_OR_VARIANT_UNAVAILABLE": 0,
+            "OUTSIDE_ARMOR_V1_SCOPE": 0
+          }
+        },
+        {
+          "name": "NON_NATIVE_NON_TIERED",
+          "total": 705,
+          "counts": {
+            "FULLY_SUPPORTED_DEFINITION": 91,
+            "VARIANT_DEPENDENT_SUPPORTED": 0,
+            "CURRENTLY_UNSUPPORTED_SOURCE_SEMANTICS": 253,
+            "CURRENTLY_UNSUPPORTED_MECHANIC": 210,
+            "CURRENTLY_UNSUPPORTED_ELIGIBILITY_OR_REQUIREMENT": 136,
+            "MARKET_OR_VARIANT_UNAVAILABLE": 0,
+            "OUTSIDE_ARMOR_V1_SCOPE": 15
+          }
+        }
+      ],
+      "variantCoverage": {
+        "examined": 138,
+        "supported": 0,
+        "blocked": 138,
+        "sourceReasonCounts": {
+          "SOURCE_STAT_MISSING": 70,
+          "SOURCE_ITEM_METADATA": 68
+        }
+      },
+      "categoryCounts": [
+        {
+          "category": "FULLY_SUPPORTED_DEFINITION",
+          "count": 91,
+          "percent": 10.911270983213429
+        },
+        {
+          "category": "VARIANT_DEPENDENT_SUPPORTED",
+          "count": 0,
+          "percent": 0
+        },
+        {
+          "category": "CURRENTLY_UNSUPPORTED_SOURCE_SEMANTICS",
+          "count": 344,
+          "percent": 41.247002398081534
+        },
+        {
+          "category": "CURRENTLY_UNSUPPORTED_MECHANIC",
+          "count": 241,
+          "percent": 28.896882494004792
+        },
+        {
+          "category": "CURRENTLY_UNSUPPORTED_ELIGIBILITY_OR_REQUIREMENT",
+          "count": 143,
+          "percent": 17.1462829736211
+        },
+        {
+          "category": "MARKET_OR_VARIANT_UNAVAILABLE",
+          "count": 0,
+          "percent": 0
+        },
+        {
+          "category": "OUTSIDE_ARMOR_V1_SCOPE",
+          "count": 15,
+          "percent": 1.7985611510791366
+        }
+      ],
+      "supportPercent": 10.911270983213429,
+      "unsupported": 743,
+      "unsupportedBoundaryCounts": {
+        "SYSTEMIC_ARCHITECTURE_GAP": 482,
+        "BOUNDED_V1_EXCLUSION": 261
+      }
+    },
+    "runs": [
+      {
+        "context": "dungeon",
+        "baseline": "CHAINMAIL",
+        "status": "NEEDS_KNOWLEDGE",
+        "bytes": 784961,
+        "generated": 782,
+        "generation": {
+          "catalogSize": 834,
+          "domainMatches": 834,
+          "scopeEligible": 819,
+          "scopeExcluded": 15,
+          "scopeExclusions": {
+            "UNOBTAINABLE": 15,
+            "RIFT_ONLY": 1
+          },
+          "eligible": 676,
+          "ineligible": 0,
+          "unknownEligibility": 143,
+          "ownedExcluded": 0,
+          "candidateCount": 676
+        },
+        "pairLocal": {
+          "totalPairs": 203841,
+          "comparablePairs": 0,
+          "differentialMechanicBlockedPairs": 98271,
+          "previousGlobalBlockedCandidates": 0,
+          "globalOnlyBlockRemovedCandidates": 0
+        },
+        "blocked": {
+          "UNKNOWN_ITEM_MECHANICS": 552
+        },
+        "retained": 639,
+        "deferred": [],
+        "sourcePassing": 87
+      },
+      {
+        "context": "dungeon",
+        "baseline": "DIAMOND",
+        "status": "NEEDS_KNOWLEDGE",
+        "bytes": 783295,
+        "generated": 782,
+        "generation": {
+          "catalogSize": 834,
+          "domainMatches": 834,
+          "scopeEligible": 819,
+          "scopeExcluded": 15,
+          "scopeExclusions": {
+            "UNOBTAINABLE": 15,
+            "RIFT_ONLY": 1
+          },
+          "eligible": 676,
+          "ineligible": 0,
+          "unknownEligibility": 143,
+          "ownedExcluded": 0,
+          "candidateCount": 676
+        },
+        "pairLocal": {
+          "totalPairs": 203841,
+          "comparablePairs": 0,
+          "differentialMechanicBlockedPairs": 98271,
+          "previousGlobalBlockedCandidates": 0,
+          "globalOnlyBlockRemovedCandidates": 0
+        },
+        "blocked": {
+          "UNKNOWN_ITEM_MECHANICS": 552
+        },
+        "retained": 639,
+        "deferred": [],
+        "sourcePassing": 87
+      },
+      {
+        "context": "dungeon",
+        "baseline": "IRON",
+        "status": "NEEDS_KNOWLEDGE",
+        "bytes": 781900,
+        "generated": 782,
+        "generation": {
+          "catalogSize": 834,
+          "domainMatches": 834,
+          "scopeEligible": 819,
+          "scopeExcluded": 15,
+          "scopeExclusions": {
+            "UNOBTAINABLE": 15,
+            "RIFT_ONLY": 1
+          },
+          "eligible": 676,
+          "ineligible": 0,
+          "unknownEligibility": 143,
+          "ownedExcluded": 0,
+          "candidateCount": 676
+        },
+        "pairLocal": {
+          "totalPairs": 203841,
+          "comparablePairs": 0,
+          "differentialMechanicBlockedPairs": 203841,
+          "previousGlobalBlockedCandidates": 639,
+          "globalOnlyBlockRemovedCandidates": 0
+        },
+        "blocked": {
+          "UNKNOWN_ITEM_MECHANICS": 639
+        },
+        "retained": 639,
+        "deferred": [],
+        "sourcePassing": 38
+      },
+      {
+        "context": "general",
+        "baseline": "CHAINMAIL",
+        "status": "NEEDS_KNOWLEDGE",
+        "bytes": 772661,
+        "generated": 782,
+        "generation": {
+          "catalogSize": 834,
+          "domainMatches": 834,
+          "scopeEligible": 819,
+          "scopeExcluded": 15,
+          "scopeExclusions": {
+            "UNOBTAINABLE": 15,
+            "RIFT_ONLY": 1
+          },
+          "eligible": 676,
+          "ineligible": 0,
+          "unknownEligibility": 143,
+          "ownedExcluded": 0,
+          "candidateCount": 676
+        },
+        "pairLocal": {
+          "totalPairs": 203841,
+          "comparablePairs": 0,
+          "differentialMechanicBlockedPairs": 203841,
+          "previousGlobalBlockedCandidates": 639,
+          "globalOnlyBlockRemovedCandidates": 0
+        },
+        "blocked": {
+          "UNKNOWN_ITEM_MECHANICS": 639
+        },
+        "retained": 639,
+        "deferred": [],
+        "sourcePassing": 0
+      },
+      {
+        "context": "general",
+        "baseline": "DIAMOND",
+        "status": "NEEDS_KNOWLEDGE",
+        "bytes": 770995,
+        "generated": 782,
+        "generation": {
+          "catalogSize": 834,
+          "domainMatches": 834,
+          "scopeEligible": 819,
+          "scopeExcluded": 15,
+          "scopeExclusions": {
+            "UNOBTAINABLE": 15,
+            "RIFT_ONLY": 1
+          },
+          "eligible": 676,
+          "ineligible": 0,
+          "unknownEligibility": 143,
+          "ownedExcluded": 0,
+          "candidateCount": 676
+        },
+        "pairLocal": {
+          "totalPairs": 203841,
+          "comparablePairs": 0,
+          "differentialMechanicBlockedPairs": 203841,
+          "previousGlobalBlockedCandidates": 639,
+          "globalOnlyBlockRemovedCandidates": 0
+        },
+        "blocked": {
+          "UNKNOWN_ITEM_MECHANICS": 639
+        },
+        "retained": 639,
+        "deferred": [],
+        "sourcePassing": 0
+      },
+      {
+        "context": "general",
+        "baseline": "IRON",
+        "status": "NEEDS_KNOWLEDGE",
+        "bytes": 769600,
+        "generated": 782,
+        "generation": {
+          "catalogSize": 834,
+          "domainMatches": 834,
+          "scopeEligible": 819,
+          "scopeExcluded": 15,
+          "scopeExclusions": {
+            "UNOBTAINABLE": 15,
+            "RIFT_ONLY": 1
+          },
+          "eligible": 676,
+          "ineligible": 0,
+          "unknownEligibility": 143,
+          "ownedExcluded": 0,
+          "candidateCount": 676
+        },
+        "pairLocal": {
+          "totalPairs": 203841,
+          "comparablePairs": 0,
+          "differentialMechanicBlockedPairs": 203841,
+          "previousGlobalBlockedCandidates": 639,
+          "globalOnlyBlockRemovedCandidates": 0
+        },
+        "blocked": {
+          "UNKNOWN_ITEM_MECHANICS": 639
+        },
+        "retained": 639,
+        "deferred": [],
+        "sourcePassing": 0
+      }
+    ]
+  },
+  "after": {
+    "summary": {
+      "total": 834,
+      "counts": {
+        "FULLY_SUPPORTED_DEFINITION": 88,
+        "VARIANT_DEPENDENT_SUPPORTED": 0,
+        "CURRENTLY_UNSUPPORTED_SOURCE_SEMANTICS": 347,
+        "CURRENTLY_UNSUPPORTED_MECHANIC": 241,
+        "CURRENTLY_UNSUPPORTED_ELIGIBILITY_OR_REQUIREMENT": 143,
+        "MARKET_OR_VARIANT_UNAVAILABLE": 0,
+        "OUTSIDE_ARMOR_V1_SCOPE": 15
+      },
+      "supportable": 88,
+      "bySlot": [
+        {
+          "slot": "HELMET",
+          "total": 269,
+          "counts": {
+            "FULLY_SUPPORTED_DEFINITION": 16,
+            "VARIANT_DEPENDENT_SUPPORTED": 0,
+            "CURRENTLY_UNSUPPORTED_SOURCE_SEMANTICS": 125,
+            "CURRENTLY_UNSUPPORTED_MECHANIC": 79,
+            "CURRENTLY_UNSUPPORTED_ELIGIBILITY_OR_REQUIREMENT": 41,
+            "MARKET_OR_VARIANT_UNAVAILABLE": 0,
+            "OUTSIDE_ARMOR_V1_SCOPE": 8
+          }
+        },
+        {
+          "slot": "CHESTPLATE",
+          "total": 191,
+          "counts": {
+            "FULLY_SUPPORTED_DEFINITION": 24,
+            "VARIANT_DEPENDENT_SUPPORTED": 0,
+            "CURRENTLY_UNSUPPORTED_SOURCE_SEMANTICS": 78,
+            "CURRENTLY_UNSUPPORTED_MECHANIC": 52,
+            "CURRENTLY_UNSUPPORTED_ELIGIBILITY_OR_REQUIREMENT": 34,
+            "MARKET_OR_VARIANT_UNAVAILABLE": 0,
+            "OUTSIDE_ARMOR_V1_SCOPE": 3
+          }
+        },
+        {
+          "slot": "LEGGINGS",
+          "total": 183,
+          "counts": {
+            "FULLY_SUPPORTED_DEFINITION": 24,
+            "VARIANT_DEPENDENT_SUPPORTED": 0,
+            "CURRENTLY_UNSUPPORTED_SOURCE_SEMANTICS": 69,
+            "CURRENTLY_UNSUPPORTED_MECHANIC": 54,
+            "CURRENTLY_UNSUPPORTED_ELIGIBILITY_OR_REQUIREMENT": 34,
+            "MARKET_OR_VARIANT_UNAVAILABLE": 0,
+            "OUTSIDE_ARMOR_V1_SCOPE": 2
+          }
+        },
+        {
+          "slot": "BOOTS",
+          "total": 191,
+          "counts": {
+            "FULLY_SUPPORTED_DEFINITION": 24,
+            "VARIANT_DEPENDENT_SUPPORTED": 0,
+            "CURRENTLY_UNSUPPORTED_SOURCE_SEMANTICS": 75,
+            "CURRENTLY_UNSUPPORTED_MECHANIC": 56,
+            "CURRENTLY_UNSUPPORTED_ELIGIBILITY_OR_REQUIREMENT": 34,
+            "MARKET_OR_VARIANT_UNAVAILABLE": 0,
+            "OUTSIDE_ARMOR_V1_SCOPE": 2
+          }
+        }
+      ],
+      "byContext": [
+        {
+          "context": "general",
+          "supported": 88
+        },
+        {
+          "context": "dungeon",
+          "supported": 88
+        }
+      ],
+      "byClass": [
+        {
+          "name": "TIERED",
+          "total": 54,
+          "counts": {
+            "FULLY_SUPPORTED_DEFINITION": 0,
+            "VARIANT_DEPENDENT_SUPPORTED": 0,
+            "CURRENTLY_UNSUPPORTED_SOURCE_SEMANTICS": 42,
+            "CURRENTLY_UNSUPPORTED_MECHANIC": 12,
+            "CURRENTLY_UNSUPPORTED_ELIGIBILITY_OR_REQUIREMENT": 0,
+            "MARKET_OR_VARIANT_UNAVAILABLE": 0,
+            "OUTSIDE_ARMOR_V1_SCOPE": 0
+          }
+        },
+        {
+          "name": "NATIVE_DUNGEON",
+          "total": 128,
+          "counts": {
+            "FULLY_SUPPORTED_DEFINITION": 0,
+            "VARIANT_DEPENDENT_SUPPORTED": 0,
+            "CURRENTLY_UNSUPPORTED_SOURCE_SEMANTICS": 90,
+            "CURRENTLY_UNSUPPORTED_MECHANIC": 31,
+            "CURRENTLY_UNSUPPORTED_ELIGIBILITY_OR_REQUIREMENT": 7,
+            "MARKET_OR_VARIANT_UNAVAILABLE": 0,
+            "OUTSIDE_ARMOR_V1_SCOPE": 0
+          }
+        },
+        {
+          "name": "NON_NATIVE_NON_TIERED",
+          "total": 705,
+          "counts": {
+            "FULLY_SUPPORTED_DEFINITION": 88,
+            "VARIANT_DEPENDENT_SUPPORTED": 0,
+            "CURRENTLY_UNSUPPORTED_SOURCE_SEMANTICS": 256,
+            "CURRENTLY_UNSUPPORTED_MECHANIC": 210,
+            "CURRENTLY_UNSUPPORTED_ELIGIBILITY_OR_REQUIREMENT": 136,
+            "MARKET_OR_VARIANT_UNAVAILABLE": 0,
+            "OUTSIDE_ARMOR_V1_SCOPE": 15
+          }
+        }
+      ],
+      "variantCoverage": {
+        "examined": 138,
+        "supported": 0,
+        "blocked": 138,
+        "sourceReasonCounts": {
+          "SOURCE_STAT_MISSING": 70,
+          "SOURCE_ITEM_METADATA": 68
+        }
+      },
+      "categoryCounts": [
+        {
+          "category": "FULLY_SUPPORTED_DEFINITION",
+          "count": 88,
+          "percent": 10.551558752997602
+        },
+        {
+          "category": "VARIANT_DEPENDENT_SUPPORTED",
+          "count": 0,
+          "percent": 0
+        },
+        {
+          "category": "CURRENTLY_UNSUPPORTED_SOURCE_SEMANTICS",
+          "count": 347,
+          "percent": 41.60671462829736
+        },
+        {
+          "category": "CURRENTLY_UNSUPPORTED_MECHANIC",
+          "count": 241,
+          "percent": 28.896882494004792
+        },
+        {
+          "category": "CURRENTLY_UNSUPPORTED_ELIGIBILITY_OR_REQUIREMENT",
+          "count": 143,
+          "percent": 17.1462829736211
+        },
+        {
+          "category": "MARKET_OR_VARIANT_UNAVAILABLE",
+          "count": 0,
+          "percent": 0
+        },
+        {
+          "category": "OUTSIDE_ARMOR_V1_SCOPE",
+          "count": 15,
+          "percent": 1.7985611510791366
+        }
+      ],
+      "supportPercent": 10.551558752997602,
+      "unsupported": 746,
+      "unsupportedBoundaryCounts": {
+        "SYSTEMIC_ARCHITECTURE_GAP": 482,
+        "BOUNDED_V1_EXCLUSION": 264
+      }
+    },
+    "runs": [
+      {
+        "context": "dungeon",
+        "baseline": "CHAINMAIL",
+        "status": "NEEDS_KNOWLEDGE",
+        "bytes": 784961,
+        "generated": 782,
+        "generation": {
+          "catalogSize": 834,
+          "domainMatches": 834,
+          "scopeEligible": 819,
+          "scopeExcluded": 15,
+          "scopeExclusions": {
+            "UNOBTAINABLE": 15,
+            "RIFT_ONLY": 1
+          },
+          "eligible": 676,
+          "ineligible": 0,
+          "unknownEligibility": 143,
+          "ownedExcluded": 0,
+          "candidateCount": 676
+        },
+        "directRetainedWitnesses": 0,
+        "dominanceDeferred": 0,
+        "pairLocal": {
+          "totalPairs": 203841,
+          "comparablePairs": 0,
+          "differentialMechanicBlockedPairs": 98271,
+          "previousGlobalBlockedCandidates": 0,
+          "globalOnlyBlockRemovedCandidates": 0
+        },
+        "blocked": {
+          "UNKNOWN_ITEM_MECHANICS": 555
+        },
+        "retained": 639,
+        "deferred": [],
+        "sourcePassing": 84
+      },
+      {
+        "context": "dungeon",
+        "baseline": "DIAMOND",
+        "status": "NEEDS_KNOWLEDGE",
+        "bytes": 783295,
+        "generated": 782,
+        "generation": {
+          "catalogSize": 834,
+          "domainMatches": 834,
+          "scopeEligible": 819,
+          "scopeExcluded": 15,
+          "scopeExclusions": {
+            "UNOBTAINABLE": 15,
+            "RIFT_ONLY": 1
+          },
+          "eligible": 676,
+          "ineligible": 0,
+          "unknownEligibility": 143,
+          "ownedExcluded": 0,
+          "candidateCount": 676
+        },
+        "directRetainedWitnesses": 0,
+        "dominanceDeferred": 0,
+        "pairLocal": {
+          "totalPairs": 203841,
+          "comparablePairs": 0,
+          "differentialMechanicBlockedPairs": 98271,
+          "previousGlobalBlockedCandidates": 0,
+          "globalOnlyBlockRemovedCandidates": 0
+        },
+        "blocked": {
+          "UNKNOWN_ITEM_MECHANICS": 555
+        },
+        "retained": 639,
+        "deferred": [],
+        "sourcePassing": 84
+      },
+      {
+        "context": "dungeon",
+        "baseline": "IRON",
+        "status": "NEEDS_KNOWLEDGE",
+        "bytes": 781900,
+        "generated": 782,
+        "generation": {
+          "catalogSize": 834,
+          "domainMatches": 834,
+          "scopeEligible": 819,
+          "scopeExcluded": 15,
+          "scopeExclusions": {
+            "UNOBTAINABLE": 15,
+            "RIFT_ONLY": 1
+          },
+          "eligible": 676,
+          "ineligible": 0,
+          "unknownEligibility": 143,
+          "ownedExcluded": 0,
+          "candidateCount": 676
+        },
+        "directRetainedWitnesses": 0,
+        "dominanceDeferred": 0,
+        "pairLocal": {
+          "totalPairs": 203841,
+          "comparablePairs": 0,
+          "differentialMechanicBlockedPairs": 203841,
+          "previousGlobalBlockedCandidates": 639,
+          "globalOnlyBlockRemovedCandidates": 0
+        },
+        "blocked": {
+          "UNKNOWN_ITEM_MECHANICS": 639
+        },
+        "retained": 639,
+        "deferred": [],
+        "sourcePassing": 35
+      },
+      {
+        "context": "general",
+        "baseline": "CHAINMAIL",
+        "status": "NEEDS_KNOWLEDGE",
+        "bytes": 772661,
+        "generated": 782,
+        "generation": {
+          "catalogSize": 834,
+          "domainMatches": 834,
+          "scopeEligible": 819,
+          "scopeExcluded": 15,
+          "scopeExclusions": {
+            "UNOBTAINABLE": 15,
+            "RIFT_ONLY": 1
+          },
+          "eligible": 676,
+          "ineligible": 0,
+          "unknownEligibility": 143,
+          "ownedExcluded": 0,
+          "candidateCount": 676
+        },
+        "directRetainedWitnesses": 0,
+        "dominanceDeferred": 0,
+        "pairLocal": {
+          "totalPairs": 203841,
+          "comparablePairs": 0,
+          "differentialMechanicBlockedPairs": 98730,
+          "previousGlobalBlockedCandidates": 0,
+          "globalOnlyBlockRemovedCandidates": 0
+        },
+        "blocked": {
+          "UNKNOWN_ITEM_MECHANICS": 555
+        },
+        "retained": 639,
+        "deferred": [],
+        "sourcePassing": 84
+      },
+      {
+        "context": "general",
+        "baseline": "DIAMOND",
+        "status": "NEEDS_KNOWLEDGE",
+        "bytes": 770995,
+        "generated": 782,
+        "generation": {
+          "catalogSize": 834,
+          "domainMatches": 834,
+          "scopeEligible": 819,
+          "scopeExcluded": 15,
+          "scopeExclusions": {
+            "UNOBTAINABLE": 15,
+            "RIFT_ONLY": 1
+          },
+          "eligible": 676,
+          "ineligible": 0,
+          "unknownEligibility": 143,
+          "ownedExcluded": 0,
+          "candidateCount": 676
+        },
+        "directRetainedWitnesses": 0,
+        "dominanceDeferred": 0,
+        "pairLocal": {
+          "totalPairs": 203841,
+          "comparablePairs": 0,
+          "differentialMechanicBlockedPairs": 98730,
+          "previousGlobalBlockedCandidates": 0,
+          "globalOnlyBlockRemovedCandidates": 0
+        },
+        "blocked": {
+          "UNKNOWN_ITEM_MECHANICS": 555
+        },
+        "retained": 639,
+        "deferred": [],
+        "sourcePassing": 84
+      },
+      {
+        "context": "general",
+        "baseline": "IRON",
+        "status": "NEEDS_KNOWLEDGE",
+        "bytes": 769600,
+        "generated": 782,
+        "generation": {
+          "catalogSize": 834,
+          "domainMatches": 834,
+          "scopeEligible": 819,
+          "scopeExcluded": 15,
+          "scopeExclusions": {
+            "UNOBTAINABLE": 15,
+            "RIFT_ONLY": 1
+          },
+          "eligible": 676,
+          "ineligible": 0,
+          "unknownEligibility": 143,
+          "ownedExcluded": 0,
+          "candidateCount": 676
+        },
+        "directRetainedWitnesses": 0,
+        "dominanceDeferred": 0,
+        "pairLocal": {
+          "totalPairs": 203841,
+          "comparablePairs": 0,
+          "differentialMechanicBlockedPairs": 203841,
+          "previousGlobalBlockedCandidates": 639,
+          "globalOnlyBlockRemovedCandidates": 0
+        },
+        "blocked": {
+          "UNKNOWN_ITEM_MECHANICS": 639
+        },
+        "retained": 639,
+        "deferred": [],
+        "sourcePassing": 35
+      }
+    ]
+  },
+  "decision": "NOT_READY_SYSTEMIC_GAP"
+}
