@@ -2,7 +2,7 @@
 
 **Decision: NOT_READY_SYSTEMIC_GAP. Armor remains unfrozen; Weapons v1 remains frozen.**
 
-Starting HEAD: `309a97a69d725eb4a5dac393cbd675388ea60286`. Audit commit: recorded below after committing the reproducible audit. No Armor v1 freeze SHA exists.
+Starting HEAD: `309a97a69d725eb4a5dac393cbd675388ea60286`. Audit commit: `45964e5ab4dd512740f8d6d517461fd0f3962869` (script, artifact and handoff). The subsequent documentation-only commit records this immutable audit SHA. No Armor v1 freeze SHA exists.
 
 ## Method and meaning of support
 
