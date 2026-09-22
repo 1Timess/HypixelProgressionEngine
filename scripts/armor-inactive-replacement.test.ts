@@ -95,9 +95,17 @@ test("arbitrary renamed item identities retain proof behavior without item excep
 });
 
 test("propagation is withheld behind earlier metadata or numeric guards outside the audited scope",()=>{
- for(const id of ["BOUNCY_CHESTPLATE","UNSTABLE_DRAGON_CHESTPLATE"]){
+ for(const id of ["BOUNCY_CHESTPLATE"]){
   const f=fixture(id);
   const r=narrowArmorFrontier(f.e,f.catalog,Date.parse(capture.historicalEvaluationTime),f.verified);
   assert.equal(r.audit.inactiveReplacementProofs!.length,0,id);
  }
+});
+
+test("proved percent syntax releases an existing inactive proof but a value mismatch still withholds it",()=>{
+ const f=fixture("UNSTABLE_DRAGON_CHESTPLATE");
+ const run=()=>narrowArmorFrontier(f.e,f.catalog,Date.parse(capture.historicalEvaluationTime),f.verified);
+ assert.equal(run().audit.inactiveReplacementProofs!.length,1);
+ f.catalog.getById("UNSTABLE_DRAGON_CHESTPLATE")!.stats.CRITICAL_CHANCE+=1;
+ assert.equal(run().audit.inactiveReplacementProofs!.length,0);
 });

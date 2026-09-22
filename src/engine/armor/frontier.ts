@@ -5,7 +5,7 @@ import {classifyArmorGearScoreLore} from "./gear-score";
 import {classifyArmorRequirementLore,requirementLike} from "./requirement-lore";
 import {proveInactiveReplacements,matchesInactiveReplacementProof,type InactiveReplacementProof} from "./inactive-replacement-proof";
 import {closeGemstoneSummary} from "./gemstone-summary";
-import {classifyArmorStatLine} from "./stat-labels";
+import {classifyArmorRepresentedStatLine,isArmorRecipePromptRepresented} from "./lore-representation";
 import {classifyArmorMetadata,armorComparisonMetadata,ARMOR_METADATA_POLICY} from "./metadata";
 import {equipmentDependencyState} from "./effects";
 import { auditArmorComparability } from "./comparability-audit";
@@ -64,7 +64,7 @@ function sourceClosed(item: ItemDefinition, intent:ArmorEvidence["intent"], allo
   const paragraphs = item.knowledge.rawLore.join("\n").split(/\n\s*\n/);
   const remaining = paragraphs.filter(paragraph => !proofs.some(proof=>matchesInactiveReplacementProof(proof,item,paragraph)) && !inactive.some(text => paragraph.split("\n").map(line=>line.replace(/§[0-9a-fk-or]/gi,"").trim()).join(" ").trim() === text.replace(/\s+/g," ")) && !known.some(effect =>
     paragraph.split("\n").map(line=>line.replace(/§[0-9a-fk-or]/gi,"").trim()).join(" ").trim() === effect.text.replace(/\s+/g," ")));
-  for (const raw of remaining.join("\n").split("\n")) {
+  for (const {raw,paragraph} of remaining.flatMap(paragraph=>paragraph.split("\n").map(raw=>({raw,paragraph})))) {
     const line = raw.replace(/§[0-9a-fk-or]/gi,"").trim();
     if (!line || line === "This item can be reforged!") continue;
     if (item.rarity && line === item.rarity + " " + (item.dungeon.isDungeonItem ? "DUNGEON " : "") + item.category) continue;
@@ -81,8 +81,8 @@ function sourceClosed(item: ItemDefinition, intent:ArmorEvidence["intent"], allo
       continue;
     }
     // Recognition discharges only this display line; it cannot establish statSeen or bypass any guard.
-    if(classifyArmorGearScoreLore(raw).recognized)continue;
-    const stat=classifyArmorStatLine(line,item.stats);
+    if(classifyArmorGearScoreLore(raw).recognized||isArmorRecipePromptRepresented(raw,paragraph,item))continue;
+    const stat=classifyArmorRepresentedStatLine(line,item.stats);
     if(stat.status!=="KNOWN_LABEL_VALUE_MATCH"){
       const reason=stat.status==="KNOWN_LABEL_VALUE_MISMATCH"?"SOURCE_STAT_VALUE_MISMATCH":stat.status==="KNOWN_LABEL_CANONICAL_MISSING"?"SOURCE_STAT_MISSING":stat.status==="AMBIGUOUS_STAT_LABEL"?"SOURCE_STAT_LABEL_AMBIGUOUS":"SOURCE_UNPARSED_LORE";
       onFailure?.({reason,itemId:item.id,line});return false;

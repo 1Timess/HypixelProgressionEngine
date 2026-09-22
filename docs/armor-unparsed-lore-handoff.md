@@ -79,3 +79,14 @@ Six representation families account for 116/224 first failures, but many conceal
 Both changes must require existing canonical evidence, arbitrary item IDs, strict syntax/value agreement and preserved source objects. Do not accept generic percent-bearing labels, missing canonical keys, malformed suffixes, wrapped recipe prompts, absent/opaque/Forge acquisition data, missing rarity or new effects.
 
 The taxonomy artifact is the pre-implementation checkpoint. Reproduce its 224 assertion at the taxonomy checkpoint commit; after syntax changes use the breadth script for current support rather than overwriting this baseline taxonomy.
+
+## Implemented representation contract
+
+Taxonomy checkpoint: `9c5e6c3` (production still at the starting boundary). `ARMOR_LORE_REPRESENTATION_V1` recognizes only:
+
+1. The exact standalone `Right-click to view recipes!` paragraph, with NEU provenance and a nonempty recipe collection consisting entirely of independently validated crafting-grid acquisition records. It establishes neither a stat nor craft availability/cost. Forge and unknown recipe guards remain unchanged.
+2. A terminal percent sign on an otherwise exact authorized stat-label/value line for SEA_CREATURE_CHANCE, CRITICAL_DAMAGE, BONUS_PEST_CHANCE, CRITICAL_CHANCE and ATTACK_SPEED. Identity comes from the existing vocabulary; canonical key presence and exact value agreement remain mandatory. No scaling or label inference occurs. Other labels and suffixes remain blocked.
+
+No arbitrary line joining, missing-rarity closure, new effect, metadata, tier proof or dependency logic was added. Frontier uses existing blank-delimited paragraphs only to prove the recipe prompt stands alone. The non-percent stat parser remains unchanged. Percent fields do not become monotone dominance dimensions.
+
+Validation: 293 Armor tests, 114 Weapons tests, typecheck and targeted ESLint passed. One prior regression intentionally expected percent syntax to block UNSTABLE_DRAGON_CHESTPLATE; it now asserts that the existing inactive proof is released, while a canonical numeric mismatch still withholds it. The Bouncy metadata guard remains covered.

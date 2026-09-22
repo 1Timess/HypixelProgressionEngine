@@ -663,3 +663,52 @@ test("general metadata requires the same provider location identity and nested-s
  item.metadata={};item.knowledge.metadata={internalName:"NOT_THE_ITEM"};assert.ok(classifyArmorMetadata(item,scope).every(m=>!m.comparisonInert));
  item.knowledge.metadata={modVersion:"version"};item.sources=["hypixel"];assert.ok(classifyArmorMetadata(item,scope).every(m=>!m.comparisonInert));
 });
+
+import {classifyArmorRepresentedStatLine,isArmorRecipePromptRepresented} from "../src/engine/armor/lore-representation";
+const closedRecipe=()=>({source:"neu:recipe",data:Object.fromEntries(["A1","A2","A3","B1","B2","B3","C1","C2","C3"].map(k=>[k,k==="A1"?"STONE:1":""]))});
+test("percent representation requires an authorized identity and equal independent canonical value",()=>{
+ for(const [label,key] of [["Sea Creature Chance","SEA_CREATURE_CHANCE"],["Crit Damage","CRITICAL_DAMAGE"],["Bonus Pest Chance","BONUS_PEST_CHANCE"],["Crit Chance","CRITICAL_CHANCE"],["Attack Speed","ATTACK_SPEED"]]){
+  for(const value of [0,1,1.5,2.5,17.5,-1])assert.equal(classifyArmorRepresentedStatLine(label+": "+(value>=0?"+":"")+value+"%",{[key]:value}).status,"KNOWN_LABEL_VALUE_MATCH");
+  assert.equal(classifyArmorRepresentedStatLine(label+": +2%",{[key]:3}).status,"KNOWN_LABEL_VALUE_MISMATCH");
+  assert.equal(classifyArmorRepresentedStatLine(label+": +2%",{}).status,"KNOWN_LABEL_CANONICAL_MISSING");
+ }
+ for(const raw of ["Health: +2%","Mystery: +2%","Sea Creature Chance: +2% while fishing","Sea Creature Chance: +2%%","Sea Creature Chance: +2 %","Sea Creature Chance: +2e0%","Sea Creature Chance: +2%\nGain damage"])
+  assert.notEqual(classifyArmorRepresentedStatLine(raw,{SEA_CREATURE_CHANCE:2,HEALTH:2}).status,"KNOWN_LABEL_VALUE_MATCH",raw);
+});
+test("recipe representation is standalone source-backed acquisition, never arbitrary wrapped prose",async()=>{
+ const f=await scenario(),item=f.a;item.id="ANY_RANDOM_ARMOR_ID";item.knowledge.recipes=[closedRecipe()];
+ const line="Right-click to view recipes!";
+ assert.equal(isArmorRecipePromptRepresented(line,line,item),true);
+ for(const text of ["Right-click to view recipes! Gain damage", "Right-click to view\nrecipes!", "Right-click to view recipes!\nOnly while equipped", "Other\nRight-click to view recipes!"])
+  assert.equal(isArmorRecipePromptRepresented(line,text,item),false);
+ item.knowledge.recipes=[];assert.equal(isArmorRecipePromptRepresented(line,line,item),false);
+ item.knowledge.recipes=[{source:"neu:recipes",data:{type:"forge",inputs:["STONE:1"]}}];assert.equal(isArmorRecipePromptRepresented(line,line,item),false);
+ item.knowledge.recipes=[closedRecipe(),{source:"future",data:{}}];assert.equal(isArmorRecipePromptRepresented(line,line,item),false);
+ item.knowledge.recipes=[closedRecipe()];item.sources=["hypixel"];assert.equal(isArmorRecipePromptRepresented(line,line,item),false);
+});
+test("source-backed recipe prompt permits only newly closed dominance and preserves source",async()=>{
+ const f=await scenario();f.stats("a",150);f.stats("b",120);
+ f.b.knowledge.rawLore.push("","Right-click to view recipes!");
+ assert.equal(f.run().audit.deferred.length,0);
+ f.b.knowledge.recipes=[closedRecipe()];const before=armorSourceEvidenceIdentity(f.b);
+ assert.equal(f.run().audit.deferred.length,1);
+ assert.equal(armorSourceEvidenceIdentity(f.b),before);
+ f.b.knowledge.rawLore.push("Unmodeled bonus");assert.equal(f.run().audit.deferred.length,0);
+});
+test("percent closure does not broaden monotonicity, ignore missing facts or silence later lore",async()=>{
+ const f=await scenario();f.stats("a",150);f.stats("b",120);
+ for(const item of [f.a,f.b]){item.stats.SEA_CREATURE_CHANCE=2;item.knowledge.rawLore.push("Sea Creature Chance: +2%");}
+ assert.equal(f.run().audit.deferred.length,1);
+ f.b.stats.SEA_CREATURE_CHANCE=3;f.b.knowledge.rawLore[f.b.knowledge.rawLore.length-1]="Sea Creature Chance: +3%";
+ assert.equal(f.run().audit.deferred.length,0);
+ delete f.b.stats.SEA_CREATURE_CHANCE;assert.equal(f.run().audit.deferred.length,0);
+ f.b.stats.SEA_CREATURE_CHANCE=2;f.b.knowledge.rawLore[f.b.knowledge.rawLore.length-1]="Sea Creature Chance: +2%";
+ f.b.knowledge.rawLore.push("Unmodeled bonus");assert.equal(f.run().audit.deferred.length,0);
+});
+test("recipe prompt cannot supply a missing stat or defeat explicit Forge closure",async()=>{
+ const f=await scenario();f.stats("a",150);f.b.knowledge.recipes=[closedRecipe()];f.b.knowledge.rawLore=["Right-click to view recipes!"];
+ assert.equal(f.run().audit.deferred.length,0);
+ f.stats("b",120);f.b.knowledge.rawLore.push("","Right-click to view recipes!");
+ f.b.knowledge.recipes.push({source:"neu:recipes",data:{type:"forge"}} as ReturnType<typeof closedRecipe>);
+ assert.equal(f.run().audit.deferred.length,0);
+});
