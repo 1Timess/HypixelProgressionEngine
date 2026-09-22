@@ -90,3 +90,54 @@ Taxonomy checkpoint: `9c5e6c3` (production still at the starting boundary). `ARM
 No arbitrary line joining, missing-rarity closure, new effect, metadata, tier proof or dependency logic was added. Frontier uses existing blank-delimited paragraphs only to prove the recipe prompt stands alone. The non-percent stat parser remains unchanged. Percent fields do not become monotone dominance dimensions.
 
 Validation: 293 Armor tests, 114 Weapons tests, typecheck and targeted ESLint passed. One prior regression intentionally expected percent syntax to block UNSTABLE_DRAGON_CHESTPLATE; it now asserts that the existing inactive proof is released, while a canonical numeric mismatch still withholds it. The Bouncy metadata guard remains covered.
+
+## Final breadth result and stop
+
+Syntax implementation commit: `b521b85`. Final audit/report commit: recorded after committing. The exact breadth rerun used baseline `80fd3fb`, production `b521b85`, unchanged inputs and the same historical time. Input hashes match. This was the only post-implementation full breadth rerun.
+
+**Support rises 88 -> 152 (10.55% -> 18.23%), a gain of 64 definitions / 7.67 percentage points. SOURCE_UNPARSED_LORE falls 224 -> 160. Armor remains NOT_READY_SYSTEMIC_GAP and unfrozen.**
+
+| Support category | Before | After |
+| --- | ---: | ---: |
+| FULLY_SUPPORTED_DEFINITION | 88 | 152 |
+| VARIANT_DEPENDENT_SUPPORTED | 0 | 0 |
+| CURRENTLY_UNSUPPORTED_SOURCE_SEMANTICS | 347 | 283 |
+| CURRENTLY_UNSUPPORTED_MECHANIC | 241 | 241 |
+| CURRENTLY_UNSUPPORTED_ELIGIBILITY_OR_REQUIREMENT | 143 | 143 |
+| MARKET_OR_VARIANT_UNAVAILABLE | 0 | 0 |
+| OUTSIDE_ARMOR_V1_SCOPE | 15 | 15 |
+
+| Slot / class / context | Before | After |
+| --- | ---: | ---: |
+| HELMET | 16 | 29 / 269 |
+| CHESTPLATE | 24 | 41 / 191 |
+| LEGGINGS | 24 | 41 / 183 |
+| BOOTS | 24 | 41 / 191 |
+| TIERED | 0 | 0 / 54 |
+| NATIVE_DUNGEON | 0 | 0 / 128 |
+| NON_NATIVE_NON_TIERED | 88 | 152 / 705 |
+| general | 88 | 152 |
+| dungeon | 88 | 152 |
+
+| Context / baseline | Retained before -> after | Comparable pairs | Direct witnesses / deferrals | Bytes before -> after | Gate |
+| --- | ---: | ---: | ---: | ---: | --- |
+| dungeon / CHAINMAIL | 639 -> 639 | 0 -> 0 | 0 / 0 -> 0 / 0 | 784961 -> 784961 | NEEDS_KNOWLEDGE |
+| dungeon / DIAMOND | 639 -> 639 | 0 -> 0 | 0 / 0 -> 0 / 0 | 783295 -> 783295 | NEEDS_KNOWLEDGE |
+| dungeon / IRON | 639 -> 639 | 0 -> 0 | 0 / 0 -> 0 / 0 | 781900 -> 781900 | NEEDS_KNOWLEDGE |
+| general / CHAINMAIL | 639 -> 639 | 0 -> 0 | 0 / 0 -> 0 / 0 | 772661 -> 772661 | NEEDS_KNOWLEDGE |
+| general / DIAMOND | 639 -> 639 | 0 -> 0 | 0 / 0 -> 0 / 0 | 770995 -> 770995 | NEEDS_KNOWLEDGE |
+| general / IRON | 639 -> 639 | 0 -> 0 | 0 / 0 -> 0 / 0 | 769600 -> 769600 | NEEDS_KNOWLEDGE |
+
+The 64 newly supported definitions are exactly 48 Perfect crafting-prompt cases, three Biohazard percentage-stat-only cases, and 13 additional existing inactive-proof states (four Sponge, six Unstable/Superior Dragon, three Thermodynamic). The conservative 51 estimate retained the original issued proof set; those 13 explain the additional gain. No Crit Damage first-failure definition became fully supported merely from its percent line.
+
+There are now 86 witnesses without an inactive-set proof and 66 dependent on one. All 152 remain conditional unmodified owned single-piece witnesses. Native Dungeon remains 0/128, tiered remains 0/54, and saved exact variants remain 0/138. The four equipped supported baseline pieces explain 148 replacement-source passes in clean runs versus 152 definitions.
+
+The previously unsupported PERFECT_CHESTPLATE_1 recipe control now passes source closure; its payload remains READY at 3171 bytes. The existing owned and saved-quote probes remain READY at 4022 and 3092 bytes. These are qualified comparisons, not proof of general supported admission or a best-build ranking.
+
+The largest remaining overlapping blockers are unresolved dependencies (163 definitions), unparsed lore (160), durability metadata (143), skin metadata (137), unknown Kuudra requirements (100), unclosed abilities (77), and museum metadata (61). The source/mechanic/eligibility category totals above remain distinct; family counts overlap.
+
+The strongest supported conclusion is that the original 224 first failures were **33 recurring families, not 224 independent mechanics**. Two bounded grammar contracts safely recovered 64 definitions. That does not establish that the whole engine is a dozen grammar contracts from useful v1 coverage: many percentage lines exposed later effects, absent rarity requires independent source evidence, other definitions never reached lore parsing, and broad narrowing still has zero witnesses.
+
+**Stop after the one batch.** No comparison-key, frontend/admission, tier-reference or new mechanic work followed. The smallest next investigative step is a read-only audit of the remaining corroborated full-set blocks against existing inactive-proof paragraph boundaries, separating representation failures from unknown activation/dependencies. Missing canonical rarity is a separate source-data question; do not infer it from the footer. Neither is permission for blanket lore closure.
+
+Validation: Armor 293/293, Weapons 114/114, typecheck, targeted ESLint and exact breadth assertions passed. Source evidence, semantic identity, metadata base, Forge guard, requirements, tiered/H-D, dependencies, market identity, UNKNOWN, direct witnesses and the 8192-byte limit remain unchanged.

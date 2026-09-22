@@ -17,7 +17,7 @@ import {classifyArmorMetadata} from "../src/engine/armor/metadata";
 import {ARMOR_STAT_LABEL_VOCABULARY} from "../src/engine/armor/stat-labels";
 import {renderArmorRecommendation} from "../src/engine/armor/output-validation";
 import type {ArmorGuardFailure} from "../src/engine/armor/frontier";
-const baselineHead="d2782d34daa365e1a758006a715b2c4370248f0f";
+const baselineHead="80fd3fb4282b62c11d33c66cd42c56e18e0c0f2c";
 const before=JSON.parse(execFileSync("git",["show",baselineHead+":data/armor-integration/armor-v1-support-audit.json"],{encoding:"utf8",maxBuffer:20_000_000}));
 const currentHead=execFileSync("git",["rev-parse","HEAD"],{encoding:"utf8"}).trim();
 const root="data/armor-integration/",read=(name:string)=>JSON.parse(readFileSync(root+name,"utf8"));
@@ -153,10 +153,10 @@ const report={policy:"ARMOR_V1_SUPPORT_AUDIT_V1",startingHead:baselineHead,evalu
  categoryPrecedence:["OUTSIDE_ARMOR_V1_SCOPE","CURRENTLY_UNSUPPORTED_ELIGIBILITY_OR_REQUIREMENT","WITNESSED_SUPPORTED_STATE","CURRENTLY_UNSUPPORTED_MECHANIC","CURRENTLY_UNSUPPORTED_SOURCE_SEMANTICS"],classificationRule:"Scope exclusion, then inability to evaluate requirements in either context, then witnessed source/mechanic pass, then mechanic guard, then source guard. Market absence is not invented from missing saved quotes. No partial tier proof counts as supported.",
  assumptions:{syntheticPlayer:true,allModeledRequirementsSatisfied:true,ownedUnmodifiedDefinitions:true,baselineItems:["CHAINMAIL","DIAMOND","IRON"],candidateSourceModified:false,pricesInvented:false,modelCalls:0,resourceRefreshes:0},
  inputHashes:Object.fromEntries(["closure-cohort.json","informational-tiered-mechanic-audit.json","armor-tiered-stats-audit.json"].map(n=>[n,createHash("sha256").update(readFileSync(root+n)).digest("hex")])),decision:"NOT_READY_SYSTEMIC_GAP",summary:{...summary,variantCoverage:{examined:variants.length,supported:variants.filter((v:{supported:boolean})=>v.supported).length,blocked:variants.filter((v:{supported:boolean})=>!v.supported).length,sourceReasonCounts:Object.fromEntries([...new Set<string>(variants.flatMap((v:{sourceFailures:ArmorGuardFailure[]})=>v.sourceFailures.map(f=>f.reason)))].map(reason=>[reason,variants.filter((v:{sourceFailures:ArmorGuardFailure[]})=>v.sourceFailures.some(f=>f.reason===reason)).length]))},categoryCounts,supportPercent:summary.supportable/834*100,unsupported:834-summary.supportable,unsupportedBoundaryCounts},boundaryDetails,systemicGaps,fingerprints,duplicateFactGroups,generalInitialBlocks,pathProbes,families,runs,variants,rows};
-const comparison={baselineHead,evaluatedProductionHead:currentHead,methodology:"Same saved 834 definitions, historical time, synthetic eligibility/ownership, six baselines and three path probes; fingerprints now call production builder; old exact-listing audit remains blocked by unchanged Dungeon source guards.",
+const comparison={baselineHead,evaluatedProductionHead:currentHead,methodology:"Same saved 834 definitions, historical time, synthetic eligibility/ownership, six baselines and three path probes; production semantic identity unchanged; saved exact-listing audit remains blocked by unchanged tier/metadata source guards. Former unsupported recipe-prompt control now measures the new representation contract.",
  inputHashesUnchanged:stableJson(before.inputHashes)===stableJson(report.inputHashes),before:{summary:before.summary,runs:before.runs},after:{summary:report.summary,runs:report.runs},decision:report.decision};
 assert.ok(comparison.inputHashesUnchanged);
-writeFileSync(root+"armor-architecture-breadth-comparison.json",JSON.stringify(comparison,null,2)+"\n");
+writeFileSync(root+"armor-lore-breadth-comparison.json",JSON.stringify(comparison,null,2)+"\n");
 writeFileSync(root+"armor-v1-support-audit.json",JSON.stringify(report,null,2)+"\n");
 console.log(JSON.stringify({summary,topBlockers:families.slice(0,14).map(({itemIds,...f})=>({...f,exampleIds:itemIds.slice(0,3)})),pathProbes:pathProbes.map(p=>({kind:p.kind,status:p.status,bytes:p.bytes})),systemicGaps:systemicGaps.map(({itemIds,...g})=>({...g,exampleIds:itemIds.slice(0,3)}))},null,2));
 

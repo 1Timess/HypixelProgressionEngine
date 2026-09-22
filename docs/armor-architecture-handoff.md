@@ -1,3 +1,5 @@
+> Historical architecture checkpoint. The current lore taxonomy, bounded syntax batch and breadth result are in [armor-unparsed-lore-handoff.md](armor-unparsed-lore-handoff.md). Its pre-syntax support artifact remains available at 80fd3fb.
+
 # Armor architecture checkpoint and breadth rerun
 
 **Final decision: NOT_READY_SYSTEMIC_GAP. Armor remains unfrozen; stop mechanic and admission implementation in this session.**
