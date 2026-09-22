@@ -1,3 +1,19 @@
+# General and Dungeon base metadata contract
+
+Current policy: `ARMOR_UPGRADE_GROSS_ACQUISITION_METADATA_BASE_V1`.
+
+The 834-definition pre-change audit is `data/armor-integration/armor-general-metadata-audit.json`. Every observed metadata key and value is recorded with both context classifications. This extension changes only the context gate for the six already shaped/provider-qualified fields: NEU displayName, exact internalName, modVersion; Hypixel boolean rarity_salvageable, strict ESSENCE salvages, and canonical default RGB color (Color V2).
+
+Their existing meaning is context-independent: display and version identify source records, default color presents the canonical item, and strict salvage data describes disposal. Armor general and Dungeon UPGRADE_CURRENT_BUILD both use gross acquisition without resale credit. No disposal objective, Rift scope, selected dye/NBT appearance or new provider is authorized. Unknown keys, malformed shapes, unknown nested keys, tiered_stats and slayerRequirement retain their blockers. Dungeon classifications are unchanged. All raw values remain in catalog and metadata audit.
+
+Source evidence: existing enrichment/normalization and gross acquisition use sites documented below, plus `docs/armor-color-contract.md` where present and the Color V2 regression suite. No external source inference or new gameplay mechanic was needed.
+
+Base checkpoint validation: Armor 287/287, Weapons 114/114, typecheck and targeted ESLint passed.
+
+The following text is the historical V1 checkpoint, retained as evidence; the current base policy and existing Color V2 supersede its Dungeon-only and color-unknown statements.
+
+---
+
 # Narrow Armor metadata semantic contract
 
 Policy: DUNGEON_UPGRADE_GROSS_ACQUISITION_METADATA_V1. Scope: Armor UPGRADE_CURRENT_BUILD in Dungeons. This is not a general metadata whitelist or a source-object exemption.

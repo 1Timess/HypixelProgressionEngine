@@ -445,7 +445,7 @@ test("metadata semantics reject malformed shapes wrong providers misplaced field
  item.knowledge.metadata={modVersion:{combat:1}};assert.equal(classifyArmorMetadata(item,intent)[0].comparisonInert,false);
  item.knowledge.metadata={modVersion:"v1"};item.sources=["hypixel"];
  assert.equal(classifyArmorMetadata(item,intent)[0].comparisonInert,false);
- item.sources=["neu"];assert.equal(classifyArmorMetadata(item,{...intent,context:"general"})[0].comparisonInert,false);
+ item.sources=["neu"];assert.equal(classifyArmorMetadata(item,{...intent,context:"general"})[0].comparisonInert,true);
 });
 
 test("metadata classifications are stable under key order and arbitrary item renaming",async()=>{
@@ -523,7 +523,7 @@ test("color classification rejects malformed values wrong location provider and 
   i.metadata={color:value};assert.equal(classifyArmorMetadata(i,intent)[0].comparisonInert,false);
  }
  i.metadata={color:"3,252,248"};
- for(const scope of [{...intent,context:"general"},{...intent,context:"rift"},{...intent,objective:"DISPOSAL_VALUE"},{...intent,domain:"weapon"}])
+ for(const scope of [{...intent,context:"rift"},{...intent,objective:"DISPOSAL_VALUE"},{...intent,domain:"weapon"}])
   assert.equal(classifyArmorMetadata(i,scope)[0].comparisonInert,false);
  i.sources=["neu"];assert.equal(classifyArmorMetadata(i,intent)[0].comparisonInert,false);
  i.sources=["hypixel"];i.metadata={};i.knowledge.metadata={color:"3,252,248"};
@@ -637,4 +637,29 @@ test("semantic key order independence does not mutate source evidence",async()=>
  f.a.requirements=[r1,r2];f.b.requirements=[r2,r1];
  assert.equal(stableJson(armorComparisonSemanticFacts(f.a,intent)),stableJson(armorComparisonSemanticFacts(f.b,intent)));
  assert.notEqual(armorSourceEvidenceIdentity(f.a),armorSourceEvidenceIdentity(f.b));
+});
+
+test("audited metadata closes general and Dungeon equally without changing raw values",async()=>{
+ for(const context of ["general","dungeon"] as const){
+  const f=await scenario();f.e.intent.context=context;f.stats("a",150);f.stats("b",120);
+  for(const item of f.catalog.getAll()){
+   item.sources=["hypixel","neu"];
+   item.metadata={color:"1,2,3",rarity_salvageable:true,salvages:[{type:"ESSENCE",essence_type:"ICE",amount:3}]};
+   item.knowledge.metadata={internalName:item.id,displayName:item.name,modVersion:"source-version"};
+  }
+  const before=f.catalog.getAll().map(armorSourceEvidenceIdentity);
+  assert.equal(f.run().audit.deferred.length,1);
+  assert.deepEqual(f.catalog.getAll().map(armorSourceEvidenceIdentity),before);
+  for(const item of f.catalog.getAll())assert.ok(classifyArmorMetadata(item,{...intent,context}).every(m=>m.comparisonInert));
+  for(const key of ["futureField","tiered_stats"]){f.b.metadata[key]={DEFENSE:[120]};assert.equal(f.run().audit.deferred.length,0);delete f.b.metadata[key];}
+  f.b.knowledge.metadata.slayerRequirement="ZOMBIE_5";assert.equal(f.run().audit.deferred.length,0);
+ }
+});
+test("general metadata requires the same provider location identity and nested-shape proofs",async()=>{
+ const f=await scenario(),item=f.b,scope={...intent,context:"general"};
+ for(const metadata of [{color:"01,2,3"},{salvages:[{type:"ESSENCE",essence_type:"ICE",amount:1,bonus:10}]},{rarity_salvageable:"yes"},{color:{r:1,g:2,b:3}}]){
+  item.metadata=metadata;assert.ok(classifyArmorMetadata(item,scope).every(m=>!m.comparisonInert));
+ }
+ item.metadata={};item.knowledge.metadata={internalName:"NOT_THE_ITEM"};assert.ok(classifyArmorMetadata(item,scope).every(m=>!m.comparisonInert));
+ item.knowledge.metadata={modVersion:"version"};item.sources=["hypixel"];assert.ok(classifyArmorMetadata(item,scope).every(m=>!m.comparisonInert));
 });

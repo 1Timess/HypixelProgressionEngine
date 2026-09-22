@@ -1,6 +1,6 @@
 import type { ItemDefinition } from "@/schemas/items";
 
-export const ARMOR_METADATA_POLICY = "DUNGEON_UPGRADE_GROSS_ACQUISITION_METADATA_V2";
+export const ARMOR_METADATA_POLICY = "ARMOR_UPGRADE_GROSS_ACQUISITION_METADATA_BASE_V1";
 type Scope = {domain:string;objective:string;context:string};
 export type MetadataCategory = "IDENTITY_PRESENTATION" | "SOURCE_VERSION" | "DISPOSAL_ECONOMICS" | "MECHANIC_RELEVANT" | "UNKNOWN";
 export interface MetadataFact {
@@ -20,12 +20,12 @@ function essenceSalvages(value:unknown):boolean {
 }
 /**
  * Field-level semantics only. Never edits source metadata.
- * Inertness is limited to equipped Dungeon upgrades with gross acquisition costs;
+ * Inertness is limited to equipped general/Dungeon upgrades with gross acquisition costs;
  * disposal/value objectives receive the original facts and no inertness permission.
  * See docs/armor-metadata-contract.md for the provider and objective evidence.
  */
 export function classifyArmorMetadata(item:ItemDefinition,scope:Scope):MetadataFact[] {
- const current=scope.domain==="armor"&&scope.objective==="UPGRADE_CURRENT_BUILD"&&scope.context==="dungeon";
+ const current=scope.domain==="armor"&&scope.objective==="UPGRADE_CURRENT_BUILD"&&["general","dungeon"].includes(scope.context);
  return (["item","knowledge"] as const).flatMap(location=>{
   const metadata=location==="item"?item.metadata:item.knowledge.metadata;
   return Object.keys(metadata).sort().map(key=>{
