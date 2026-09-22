@@ -2,7 +2,7 @@
 
 **Final decision: NOT_READY_SYSTEMIC_GAP. Armor remains unfrozen; stop mechanic and admission implementation in this session.**
 
-Starting HEAD: `d2782d34daa365e1a758006a715b2c4370248f0f`. Comparison identity checkpoint: `803aea3`. General metadata checkpoint / evaluated production HEAD: `0dd9e3b`. Audit/report commit is recorded below after committing. No Armor v1 freeze SHA exists.
+Starting HEAD: `d2782d34daa365e1a758006a715b2c4370248f0f`. Comparison identity checkpoint: `803aea3`. General metadata checkpoint / evaluated production HEAD: `0dd9e3b`. Audit/report commit: `28e2176633e4ff51fac7bd80ae5ef7c49e1748b4`. This documentation-only follow-up records that immutable checkpoint. No Armor v1 freeze SHA exists.
 
 ## What was proved and changed
 
