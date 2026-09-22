@@ -1,3 +1,4 @@
+import {armorComparisonSemanticFacts,armorComparisonIdentityUnknowns,ARMOR_COMPARISON_IDENTITY_POLICY} from "./comparison-identity";
 import {proveTieredVariant,matchesTieredVariantProof,type TieredProofContext} from "./tiered-variant-proof";
 import type {ArmorListing} from "./acquisition";
 import {classifyArmorGearScoreLore} from "./gear-score";
@@ -26,6 +27,7 @@ type Candidate = ArmorEvidence["candidates"][number];
 type Block = "UNKNOWN_BASELINE_MECHANICS" | "UNKNOWN_ITEM_MECHANICS" | "UNKNOWN_MARKET" | "UNKNOWN_CONTEXT" | "INVALID_SCOPE";
 export interface ArmorFrontierAudit {
   policy: "COMPARISON_LOCAL_ARMOR_PARETO_V3";
+  comparisonIdentityPolicy?:typeof ARMOR_COMPARISON_IDENTITY_POLICY;
   before: number;
   retained: number;
   deferred: { candidateId: string; reason: "CONTEXT_CLOSED_ARMOR_PARETO_DOMINATED"; witnessId: string }[];
@@ -41,7 +43,7 @@ export interface ArmorFrontierAudit {
 // This is a closed proof grammar, not a general lore parser. Any remaining clause blocks pruning.
 const monotone = new Set(["DEFENSE","HEALTH","TRUE_DEFENSE"]);
 function sourceClosed(item: ItemDefinition, intent:ArmorEvidence["intent"], allowIndependentOpaque = false, inactive: string[] = [], onFailure?:(failure:ArmorGuardFailure)=>void, proofs:readonly InactiveReplacementProof[]=[],tiered?:TieredProofContext): boolean {
-  const initial:ArmorGuardFailure[]=[];
+  const initial:ArmorGuardFailure[]=armorComparisonIdentityUnknowns(item).map(reason=>({reason,itemId:item.id}));
   if(!item.sources.includes("neu"))initial.push({reason:"SOURCE_NEU_MISSING",itemId:item.id});
   if(!item.knowledge.rawLore.length)initial.push({reason:"SOURCE_LORE_MISSING",itemId:item.id});
   if(item.knowledge.abilities.length)initial.push({reason:"SOURCE_ABILITIES_UNCLOSED",itemId:item.id});
@@ -89,16 +91,6 @@ function sourceClosed(item: ItemDefinition, intent:ArmorEvidence["intent"], allo
   }
   if(!statSeen)onFailure?.({reason:"SOURCE_NO_STAT",itemId:item.id});
   return statSeen;
-}
-function facts(item: ItemDefinition, intent:ArmorEvidence["intent"]): string {
-  // Identity is ignored only after the entire supplied lore passed the closed proof grammar.
-  // Keep rarity, tradeability, recipes, upgrades and source provenance. Only field-level
-  // inert metadata is omitted from this key; original values survive in the catalog/audit.
-  const { id, name, stats, knowledge, ...rest } = item;
-  void id; void name; void stats;
-  const { rawLore, ...otherKnowledge } = knowledge;
-  void rawLore;
-  return stableJson({ ...rest, metadata:armorComparisonMetadata(item,intent,"item"), knowledge:{...otherKnowledge,metadata:armorComparisonMetadata(item,intent,"knowledge")} });
 }
 /** Reconstruct source facts; equal UNKNOWN states or unverified sidecar assertions never prove equivalence. */
 function mechanicKey(candidate:Candidate,evidence:ArmorEvidence,catalog:ItemCatalog,verified:ArmorKnowledge,failures:ArmorGuardFailure[]):{key:string;opaqueInvariant:boolean}|null {
@@ -158,7 +150,7 @@ function sameResultIdentity(a:Certificate,b:Certificate):boolean {
 /** Narrow current-build proof only. An unknown condition is never a comparative disadvantage. */
 export function narrowArmorFrontier(evidence: ArmorEvidence, catalog: ItemCatalog, now: number, knowledge?: ArmorKnowledge, listings:readonly ArmorListing[]=[]) {
   const verified = corroborateArmorSets(catalog,{items:Object.fromEntries(catalog.getAll().map(item=>[item.id,{effects:parseArmorEffects(item),usability:[]}])),packages:knowledge?.packages??[]});
-  const audit: ArmorFrontierAudit = {policy:"COMPARISON_LOCAL_ARMOR_PARETO_V3",before:evidence.candidates.length,
+  const audit: ArmorFrontierAudit = {policy:"COMPARISON_LOCAL_ARMOR_PARETO_V3",comparisonIdentityPolicy:ARMOR_COMPARISON_IDENTITY_POLICY,before:evidence.candidates.length,
     retained:evidence.candidates.length,deferred:[],blocked:{},comparability:auditArmorComparability(evidence,catalog)};
   audit.metadataSemantics={policy:ARMOR_METADATA_POLICY,items:[...new Set([...evidence.baseline.map(p=>p.id),...evidence.candidates.flatMap(c=>c.replaces.map(p=>p.toId))])].sort().flatMap(id=>{const item=catalog.getById(id);return item?[{itemId:id,facts:classifyArmorMetadata(item,evidence.intent)}]:[];})};
   const block = (reason:Block) => { audit.blocked[reason]=(audit.blocked[reason]??0)+1; };
@@ -233,7 +225,7 @@ export function narrowArmorFrontier(evidence: ArmorEvidence, catalog: ItemCatalo
     // Packages and individual pieces, ownership modes and per-slot identities remain distinct.
     const group=stableJson({mechanics:mechanics.key,kind:candidate.id.startsWith("package:")?"package":"piece",
       pieces:pieces.map((p,i)=>({slot:p.slot,from:p.fromId,acquisition:p.acquisition,
-        dungeon:p.dungeon,context:p.contextUsability,facts:facts(items[i]!,evidence.intent)})),snapshot:[...snapshots]});
+        dungeon:p.dungeon,context:p.contextUsability,variant:p.variant??null,facts:armorComparisonSemanticFacts(items[i]!,evidence.intent)})),snapshot:[...snapshots]});
     certificates.set(candidate.id,{candidate,group,items:items as ItemDefinition[],cost,opaqueInvariant:mechanics.opaqueInvariant});
   }
   function dominates(a:Certificate,b:Certificate): boolean {

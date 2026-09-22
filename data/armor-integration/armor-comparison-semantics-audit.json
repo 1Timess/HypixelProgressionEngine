@@ -1,0 +1,708 @@
+{
+  "startingHead": "d2782d34daa365e1a758006a715b2c4370248f0f",
+  "total": 834,
+  "fields": [
+    {
+      "path": "category",
+      "currentInclusion": "RETAINED",
+      "observedDistinctValues": 4,
+      "affectsCurrentGrouping": true,
+      "classification": "GAMEPLAY_COMPARISON_RELEVANT",
+      "rationale": "Retain conservatively: no exclusion proven by this change.",
+      "contextChangesRelevance": false,
+      "safeToExclude": "NO_NEW_EXCLUSION",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "dungeon.conversionCost",
+      "currentInclusion": "RETAINED",
+      "observedDistinctValues": 27,
+      "affectsCurrentGrouping": true,
+      "classification": "GAMEPLAY_COMPARISON_RELEVANT",
+      "rationale": "Retain conservatively: no exclusion proven by this change.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "NO_NEW_EXCLUSION",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "dungeon.gearScore",
+      "currentInclusion": "RETAINED",
+      "observedDistinctValues": 10,
+      "affectsCurrentGrouping": true,
+      "classification": "GAMEPLAY_COMPARISON_RELEVANT",
+      "rationale": "Retain conservatively: no exclusion proven by this change.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "NO_NEW_EXCLUSION",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "dungeon.isDungeonItem",
+      "currentInclusion": "RETAINED",
+      "observedDistinctValues": 2,
+      "affectsCurrentGrouping": true,
+      "classification": "GAMEPLAY_COMPARISON_RELEVANT",
+      "rationale": "Retain conservatively: no exclusion proven by this change.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "NO_NEW_EXCLUSION",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "dungeon.requirements",
+      "currentInclusion": "RETAINED",
+      "observedDistinctValues": 16,
+      "affectsCurrentGrouping": true,
+      "classification": "ELIGIBILITY_RELEVANT",
+      "rationale": "Eligibility/context certificates consume requirements; metadata and UNKNOWN remain guarded.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "NO_NEW_EXCLUSION",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "dungeon.upgradeCosts",
+      "currentInclusion": "RETAINED",
+      "observedDistinctValues": 83,
+      "affectsCurrentGrouping": true,
+      "classification": "GAMEPLAY_COMPARISON_RELEVANT",
+      "rationale": "Retain conservatively: no exclusion proven by this change.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "NO_NEW_EXCLUSION",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "gemstoneSlots",
+      "currentInclusion": "RETAINED",
+      "observedDistinctValues": 43,
+      "affectsCurrentGrouping": true,
+      "classification": "GAMEPLAY_COMPARISON_RELEVANT",
+      "rationale": "Retain conservatively: no exclusion proven by this change.",
+      "contextChangesRelevance": false,
+      "safeToExclude": "NO_NEW_EXCLUSION",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "id",
+      "currentInclusion": "EXCLUDED",
+      "observedDistinctValues": 834,
+      "affectsCurrentGrouping": false,
+      "classification": "GAMEPLAY_COMPARISON_RELEVANT",
+      "rationale": "Retain conservatively: no exclusion proven by this change.",
+      "contextChangesRelevance": false,
+      "safeToExclude": "NO_NEW_EXCLUSION",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "knowledge.abilities",
+      "currentInclusion": "RETAINED",
+      "observedDistinctValues": 59,
+      "affectsCurrentGrouping": true,
+      "classification": "ACTIVATION_DEPENDENCY_RELEVANT",
+      "rationale": "sourceClosed and mechanicKey independently verify effects and dependencies.",
+      "contextChangesRelevance": false,
+      "safeToExclude": "NO_NEW_EXCLUSION",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "knowledge.capabilities",
+      "currentInclusion": "RETAINED",
+      "observedDistinctValues": 20,
+      "affectsCurrentGrouping": true,
+      "classification": "ACTIVATION_DEPENDENCY_RELEVANT",
+      "rationale": "sourceClosed and mechanicKey independently verify effects and dependencies.",
+      "contextChangesRelevance": false,
+      "safeToExclude": "NO_NEW_EXCLUSION",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "knowledge.metadata.displayName",
+      "currentInclusion": "PER_VALUE_METADATA_CONTRACT",
+      "observedDistinctValues": 780,
+      "affectsCurrentGrouping": true,
+      "classification": "SOURCE_REPRESENTATION_ONLY",
+      "rationale": "Per-value metadata contract; validated provider/location/shape only. See both-context metadata audit.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "ONLY_EXISTING_VALIDATED_VALUES",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "knowledge.metadata.internalName",
+      "currentInclusion": "PER_VALUE_METADATA_CONTRACT",
+      "observedDistinctValues": 787,
+      "affectsCurrentGrouping": true,
+      "classification": "SOURCE_REPRESENTATION_ONLY",
+      "rationale": "Per-value metadata contract; validated provider/location/shape only. See both-context metadata audit.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "ONLY_EXISTING_VALIDATED_VALUES",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "knowledge.metadata.modVersion",
+      "currentInclusion": "PER_VALUE_METADATA_CONTRACT",
+      "observedDistinctValues": 28,
+      "affectsCurrentGrouping": true,
+      "classification": "SOURCE_REPRESENTATION_ONLY",
+      "rationale": "Per-value metadata contract; validated provider/location/shape only. See both-context metadata audit.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "ONLY_EXISTING_VALIDATED_VALUES",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "knowledge.metadata.slayerRequirement",
+      "currentInclusion": "PER_VALUE_METADATA_CONTRACT",
+      "observedDistinctValues": 13,
+      "affectsCurrentGrouping": true,
+      "classification": "UNRESOLVED_MUST_BLOCK",
+      "rationale": "Per-value metadata contract; validated provider/location/shape only. See both-context metadata audit.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "ONLY_EXISTING_VALIDATED_VALUES",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "knowledge.rawLore",
+      "currentInclusion": "EXCLUDED",
+      "observedDistinctValues": 782,
+      "affectsCurrentGrouping": false,
+      "classification": "GAMEPLAY_COMPARISON_RELEVANT",
+      "rationale": "Retain conservatively: no exclusion proven by this change.",
+      "contextChangesRelevance": false,
+      "safeToExclude": "NO_NEW_EXCLUSION",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "knowledge.recipes",
+      "currentInclusion": "RETAINED",
+      "observedDistinctValues": 407,
+      "affectsCurrentGrouping": true,
+      "classification": "ACQUISITION_ONLY",
+      "rationale": "Only closed NEU crafting grids excluded for BUY/ALREADY_OWNED; no recipe execution in Armor. Unknown/trade/forge shapes remain unresolved and must block.",
+      "contextChangesRelevance": false,
+      "safeToExclude": "ONLY_AUDITED_SHAPES_IN_GROSS_UPGRADE_SCOPE",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "knowledge.sources",
+      "currentInclusion": "RETAINED",
+      "observedDistinctValues": 2,
+      "affectsCurrentGrouping": true,
+      "classification": "PROVENANCE_ONLY",
+      "rationale": "NEU enrichment extracts references and snapshot provenance. Snapshot identity remains in effect/inactive proofs before grouping. Unknown provider/source fields are not excluded.",
+      "contextChangesRelevance": false,
+      "safeToExclude": "ONLY_AUDITED_SHAPES_IN_GROSS_UPGRADE_SCOPE",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "knowledge.wikiUrl",
+      "currentInclusion": "RETAINED",
+      "observedDistinctValues": 703,
+      "affectsCurrentGrouping": true,
+      "classification": "PROVENANCE_ONLY",
+      "rationale": "NEU enrichment extracts references and snapshot provenance. Snapshot identity remains in effect/inactive proofs before grouping. Unknown provider/source fields are not excluded.",
+      "contextChangesRelevance": false,
+      "safeToExclude": "ONLY_AUDITED_SHAPES_IN_GROSS_UPGRADE_SCOPE",
+      "sourcePreserved": true,
+      "unknownMustBlock": false
+    },
+    {
+      "path": "material",
+      "currentInclusion": "RETAINED",
+      "observedDistinctValues": 29,
+      "affectsCurrentGrouping": true,
+      "classification": "GAMEPLAY_COMPARISON_RELEVANT",
+      "rationale": "Retain conservatively: no exclusion proven by this change.",
+      "contextChangesRelevance": false,
+      "safeToExclude": "NO_NEW_EXCLUSION",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "metadata.ability_damage_scaling",
+      "currentInclusion": "PER_VALUE_METADATA_CONTRACT",
+      "observedDistinctValues": 2,
+      "affectsCurrentGrouping": true,
+      "classification": "UNRESOLVED_MUST_BLOCK",
+      "rationale": "Per-value metadata contract; validated provider/location/shape only. See both-context metadata audit.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "ONLY_EXISTING_VALIDATED_VALUES",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "metadata.can_have_attributes",
+      "currentInclusion": "PER_VALUE_METADATA_CONTRACT",
+      "observedDistinctValues": 2,
+      "affectsCurrentGrouping": true,
+      "classification": "UNRESOLVED_MUST_BLOCK",
+      "rationale": "Per-value metadata contract; validated provider/location/shape only. See both-context metadata audit.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "ONLY_EXISTING_VALIDATED_VALUES",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "metadata.can_have_booster",
+      "currentInclusion": "PER_VALUE_METADATA_CONTRACT",
+      "observedDistinctValues": 2,
+      "affectsCurrentGrouping": true,
+      "classification": "UNRESOLVED_MUST_BLOCK",
+      "rationale": "Per-value metadata contract; validated provider/location/shape only. See both-context metadata audit.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "ONLY_EXISTING_VALIDATED_VALUES",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "metadata.can_place",
+      "currentInclusion": "PER_VALUE_METADATA_CONTRACT",
+      "observedDistinctValues": 2,
+      "affectsCurrentGrouping": true,
+      "classification": "UNRESOLVED_MUST_BLOCK",
+      "rationale": "Per-value metadata contract; validated provider/location/shape only. See both-context metadata audit.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "ONLY_EXISTING_VALIDATED_VALUES",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "metadata.can_recombobulate",
+      "currentInclusion": "PER_VALUE_METADATA_CONTRACT",
+      "observedDistinctValues": 2,
+      "affectsCurrentGrouping": true,
+      "classification": "UNRESOLVED_MUST_BLOCK",
+      "rationale": "Per-value metadata contract; validated provider/location/shape only. See both-context metadata audit.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "ONLY_EXISTING_VALIDATED_VALUES",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "metadata.color",
+      "currentInclusion": "PER_VALUE_METADATA_CONTRACT",
+      "observedDistinctValues": 177,
+      "affectsCurrentGrouping": true,
+      "classification": "SOURCE_REPRESENTATION_ONLY",
+      "rationale": "Per-value metadata contract; validated provider/location/shape only. See both-context metadata audit.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "ONLY_EXISTING_VALIDATED_VALUES",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "metadata.description",
+      "currentInclusion": "PER_VALUE_METADATA_CONTRACT",
+      "observedDistinctValues": 12,
+      "affectsCurrentGrouping": true,
+      "classification": "UNRESOLVED_MUST_BLOCK",
+      "rationale": "Per-value metadata contract; validated provider/location/shape only. See both-context metadata audit.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "ONLY_EXISTING_VALIDATED_VALUES",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "metadata.durability",
+      "currentInclusion": "PER_VALUE_METADATA_CONTRACT",
+      "observedDistinctValues": 5,
+      "affectsCurrentGrouping": true,
+      "classification": "UNRESOLVED_MUST_BLOCK",
+      "rationale": "Per-value metadata contract; validated provider/location/shape only. See both-context metadata audit.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "ONLY_EXISTING_VALIDATED_VALUES",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "metadata.enchantments",
+      "currentInclusion": "PER_VALUE_METADATA_CONTRACT",
+      "observedDistinctValues": 4,
+      "affectsCurrentGrouping": true,
+      "classification": "UNRESOLVED_MUST_BLOCK",
+      "rationale": "Per-value metadata contract; validated provider/location/shape only. See both-context metadata audit.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "ONLY_EXISTING_VALIDATED_VALUES",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "metadata.glowing",
+      "currentInclusion": "PER_VALUE_METADATA_CONTRACT",
+      "observedDistinctValues": 2,
+      "affectsCurrentGrouping": true,
+      "classification": "UNRESOLVED_MUST_BLOCK",
+      "rationale": "Per-value metadata contract; validated provider/location/shape only. See both-context metadata audit.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "ONLY_EXISTING_VALIDATED_VALUES",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "metadata.has_uuid",
+      "currentInclusion": "PER_VALUE_METADATA_CONTRACT",
+      "observedDistinctValues": 2,
+      "affectsCurrentGrouping": true,
+      "classification": "UNRESOLVED_MUST_BLOCK",
+      "rationale": "Per-value metadata contract; validated provider/location/shape only. See both-context metadata audit.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "ONLY_EXISTING_VALIDATED_VALUES",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "metadata.item_specific",
+      "currentInclusion": "PER_VALUE_METADATA_CONTRACT",
+      "observedDistinctValues": 9,
+      "affectsCurrentGrouping": true,
+      "classification": "UNRESOLVED_MUST_BLOCK",
+      "rationale": "Per-value metadata contract; validated provider/location/shape only. See both-context metadata audit.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "ONLY_EXISTING_VALIDATED_VALUES",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "metadata.motes_sell_price",
+      "currentInclusion": "PER_VALUE_METADATA_CONTRACT",
+      "observedDistinctValues": 2,
+      "affectsCurrentGrouping": true,
+      "classification": "UNRESOLVED_MUST_BLOCK",
+      "rationale": "Per-value metadata contract; validated provider/location/shape only. See both-context metadata audit.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "ONLY_EXISTING_VALIDATED_VALUES",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "metadata.museum",
+      "currentInclusion": "PER_VALUE_METADATA_CONTRACT",
+      "observedDistinctValues": 2,
+      "affectsCurrentGrouping": true,
+      "classification": "UNRESOLVED_MUST_BLOCK",
+      "rationale": "Per-value metadata contract; validated provider/location/shape only. See both-context metadata audit.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "ONLY_EXISTING_VALIDATED_VALUES",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "metadata.origin",
+      "currentInclusion": "PER_VALUE_METADATA_CONTRACT",
+      "observedDistinctValues": 2,
+      "affectsCurrentGrouping": true,
+      "classification": "UNRESOLVED_MUST_BLOCK",
+      "rationale": "Per-value metadata contract; validated provider/location/shape only. See both-context metadata audit.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "ONLY_EXISTING_VALIDATED_VALUES",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "metadata.prestige",
+      "currentInclusion": "PER_VALUE_METADATA_CONTRACT",
+      "observedDistinctValues": 81,
+      "affectsCurrentGrouping": true,
+      "classification": "UNRESOLVED_MUST_BLOCK",
+      "rationale": "Per-value metadata contract; validated provider/location/shape only. See both-context metadata audit.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "ONLY_EXISTING_VALIDATED_VALUES",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "metadata.rarity_salvageable",
+      "currentInclusion": "PER_VALUE_METADATA_CONTRACT",
+      "observedDistinctValues": 3,
+      "affectsCurrentGrouping": true,
+      "classification": "SOURCE_REPRESENTATION_ONLY",
+      "rationale": "Per-value metadata contract; validated provider/location/shape only. See both-context metadata audit.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "ONLY_EXISTING_VALIDATED_VALUES",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "metadata.rift_transferrable",
+      "currentInclusion": "PER_VALUE_METADATA_CONTRACT",
+      "observedDistinctValues": 2,
+      "affectsCurrentGrouping": true,
+      "classification": "UNRESOLVED_MUST_BLOCK",
+      "rationale": "Per-value metadata contract; validated provider/location/shape only. See both-context metadata audit.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "ONLY_EXISTING_VALIDATED_VALUES",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "metadata.salvage",
+      "currentInclusion": "PER_VALUE_METADATA_CONTRACT",
+      "observedDistinctValues": 2,
+      "affectsCurrentGrouping": true,
+      "classification": "UNRESOLVED_MUST_BLOCK",
+      "rationale": "Per-value metadata contract; validated provider/location/shape only. See both-context metadata audit.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "ONLY_EXISTING_VALIDATED_VALUES",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "metadata.salvageable_from_recipe",
+      "currentInclusion": "PER_VALUE_METADATA_CONTRACT",
+      "observedDistinctValues": 2,
+      "affectsCurrentGrouping": true,
+      "classification": "UNRESOLVED_MUST_BLOCK",
+      "rationale": "Per-value metadata contract; validated provider/location/shape only. See both-context metadata audit.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "ONLY_EXISTING_VALIDATED_VALUES",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "metadata.salvages",
+      "currentInclusion": "PER_VALUE_METADATA_CONTRACT",
+      "observedDistinctValues": 11,
+      "affectsCurrentGrouping": true,
+      "classification": "SOURCE_REPRESENTATION_ONLY",
+      "rationale": "Per-value metadata contract; validated provider/location/shape only. See both-context metadata audit.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "ONLY_EXISTING_VALIDATED_VALUES",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "metadata.skin",
+      "currentInclusion": "PER_VALUE_METADATA_CONTRACT",
+      "observedDistinctValues": 175,
+      "affectsCurrentGrouping": true,
+      "classification": "UNRESOLVED_MUST_BLOCK",
+      "rationale": "Per-value metadata contract; validated provider/location/shape only. See both-context metadata audit.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "ONLY_EXISTING_VALIDATED_VALUES",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "metadata.tiered_stats",
+      "currentInclusion": "PER_VALUE_METADATA_CONTRACT",
+      "observedDistinctValues": 55,
+      "affectsCurrentGrouping": true,
+      "classification": "UNRESOLVED_MUST_BLOCK",
+      "rationale": "Per-value metadata contract; validated provider/location/shape only. See both-context metadata audit.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "ONLY_EXISTING_VALIDATED_VALUES",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "metadata.unstackable",
+      "currentInclusion": "PER_VALUE_METADATA_CONTRACT",
+      "observedDistinctValues": 2,
+      "affectsCurrentGrouping": true,
+      "classification": "UNRESOLVED_MUST_BLOCK",
+      "rationale": "Per-value metadata contract; validated provider/location/shape only. See both-context metadata audit.",
+      "contextChangesRelevance": true,
+      "safeToExclude": "ONLY_EXISTING_VALIDATED_VALUES",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "museum",
+      "currentInclusion": "RETAINED",
+      "observedDistinctValues": 123,
+      "affectsCurrentGrouping": true,
+      "classification": "GAMEPLAY_COMPARISON_RELEVANT",
+      "rationale": "Retain conservatively: no exclusion proven by this change.",
+      "contextChangesRelevance": false,
+      "safeToExclude": "NO_NEW_EXCLUSION",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "name",
+      "currentInclusion": "EXCLUDED",
+      "observedDistinctValues": 811,
+      "affectsCurrentGrouping": false,
+      "classification": "DISPLAY_ONLY",
+      "rationale": "Already excluded; identity/lore independently verified.",
+      "contextChangesRelevance": false,
+      "safeToExclude": "NO_NEW_EXCLUSION",
+      "sourcePreserved": true,
+      "unknownMustBlock": false
+    },
+    {
+      "path": "npcSellPrice",
+      "currentInclusion": "RETAINED",
+      "observedDistinctValues": 153,
+      "affectsCurrentGrouping": true,
+      "classification": "ACQUISITION_ONLY",
+      "rationale": "Canonical disposal value. Preparation prices BUY from market asks and ALREADY_OWNED at zero; no resale credit or crafting objective.",
+      "contextChangesRelevance": false,
+      "safeToExclude": "ONLY_AUDITED_SHAPES_IN_GROSS_UPGRADE_SCOPE",
+      "sourcePreserved": true,
+      "unknownMustBlock": false
+    },
+    {
+      "path": "rarity",
+      "currentInclusion": "RETAINED",
+      "observedDistinctValues": 9,
+      "affectsCurrentGrouping": true,
+      "classification": "GAMEPLAY_COMPARISON_RELEVANT",
+      "rationale": "Retain conservatively: no exclusion proven by this change.",
+      "contextChangesRelevance": false,
+      "safeToExclude": "NO_NEW_EXCLUSION",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "requirements",
+      "currentInclusion": "RETAINED",
+      "observedDistinctValues": 95,
+      "affectsCurrentGrouping": true,
+      "classification": "ELIGIBILITY_RELEVANT",
+      "rationale": "Eligibility/context certificates consume requirements; metadata and UNKNOWN remain guarded.",
+      "contextChangesRelevance": false,
+      "safeToExclude": "NO_NEW_EXCLUSION",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "sources",
+      "currentInclusion": "RETAINED",
+      "observedDistinctValues": 2,
+      "affectsCurrentGrouping": true,
+      "classification": "PROVENANCE_ONLY",
+      "rationale": "NEU enrichment extracts references and snapshot provenance. Snapshot identity remains in effect/inactive proofs before grouping. Unknown provider/source fields are not excluded.",
+      "contextChangesRelevance": false,
+      "safeToExclude": "ONLY_AUDITED_SHAPES_IN_GROSS_UPGRADE_SCOPE",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "stats",
+      "currentInclusion": "EXCLUDED",
+      "observedDistinctValues": 602,
+      "affectsCurrentGrouping": false,
+      "classification": "GAMEPLAY_COMPARISON_RELEVANT",
+      "rationale": "Retain conservatively: no exclusion proven by this change.",
+      "contextChangesRelevance": false,
+      "safeToExclude": "NO_NEW_EXCLUSION",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    },
+    {
+      "path": "tradeability",
+      "currentInclusion": "RETAINED",
+      "observedDistinctValues": 1,
+      "affectsCurrentGrouping": true,
+      "classification": "GAMEPLAY_COMPARISON_RELEVANT",
+      "rationale": "Retain conservatively: no exclusion proven by this change.",
+      "contextChangesRelevance": false,
+      "safeToExclude": "NO_NEW_EXCLUSION",
+      "sourcePreserved": true,
+      "unknownMustBlock": true
+    }
+  ],
+  "groupCounts": [
+    {
+      "step": 0,
+      "exclusions": [],
+      "groups": 91,
+      "duplicateGroups": [],
+      "potentialPairs": 0,
+      "qualification": "Identity equality only; production source/mechanic/context/market/stat-vector gates still required"
+    },
+    {
+      "step": 1,
+      "exclusions": [
+        "wikiUrl"
+      ],
+      "groups": 90,
+      "duplicateGroups": [
+        [
+          "SQUIRE_BOOTS",
+          "CELESTE_BOOTS"
+        ]
+      ],
+      "potentialPairs": 1,
+      "qualification": "Identity equality only; production source/mechanic/context/market/stat-vector gates still required"
+    },
+    {
+      "step": 2,
+      "exclusions": [
+        "wikiUrl",
+        "npcSellPrice"
+      ],
+      "groups": 89,
+      "duplicateGroups": [
+        [
+          "SQUIRE_BOOTS",
+          "CELESTE_BOOTS"
+        ],
+        [
+          "MERCENARY_BOOTS",
+          "STARLIGHT_BOOTS"
+        ]
+      ],
+      "potentialPairs": 2,
+      "qualification": "Identity equality only; production source/mechanic/context/market/stat-vector gates still required"
+    },
+    {
+      "step": 3,
+      "exclusions": [
+        "wikiUrl",
+        "npcSellPrice",
+        "source snapshots/providers"
+      ],
+      "groups": 89,
+      "duplicateGroups": [
+        [
+          "SQUIRE_BOOTS",
+          "CELESTE_BOOTS"
+        ],
+        [
+          "MERCENARY_BOOTS",
+          "STARLIGHT_BOOTS"
+        ]
+      ],
+      "potentialPairs": 2,
+      "qualification": "Identity equality only; production source/mechanic/context/market/stat-vector gates still required"
+    },
+    {
+      "step": 4,
+      "exclusions": [
+        "wikiUrl",
+        "npcSellPrice",
+        "source snapshots/providers",
+        "closed crafting acquisition"
+      ],
+      "groups": 89,
+      "duplicateGroups": [
+        [
+          "SQUIRE_BOOTS",
+          "CELESTE_BOOTS"
+        ],
+        [
+          "MERCENARY_BOOTS",
+          "STARLIGHT_BOOTS"
+        ]
+      ],
+      "potentialPairs": 2,
+      "qualification": "Identity equality only; production source/mechanic/context/market/stat-vector gates still required"
+    }
+  ],
+  "decision": "SAFE_NARROW_SEPARATION_WITH_INDEPENDENT_CLOSURE_GATES",
+  "unsafeEquivalence": "Key equality alone grants no comparison. Requirements/rarity/dungeon/tradeability/material/gemstones/museum remain. Regression tests required."
+}

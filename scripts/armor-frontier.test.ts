@@ -602,3 +602,39 @@ test("informational Gear Score cannot discharge underlying guards",async()=>{
   assert.ok(result.candidates.some(c=>c.id===f.ca.id),kind);
  }
 });
+
+import {armorComparisonSemanticFacts,armorSourceEvidenceIdentity} from "../src/engine/armor/comparison-identity";
+import {stableJson} from "../src/engine/build/weapon-comparison";
+test("proven provenance and closed crafting acquisition do not partition Armor gameplay",async()=>{
+ for(const mode of ["wiki","snapshot","npc","crafting"]) {
+  const f=await scenario();f.stats("a",150);f.stats("b",120);
+  if(mode==="wiki"){f.a.knowledge.wikiUrl="https://example.test/a";f.b.knowledge.wikiUrl="https://example.test/b";}
+  if(mode==="npc"){f.a.npcSellPrice=1;f.b.npcSellPrice=999;}
+  if(mode==="snapshot")for(const [n,item] of [f.a,f.b].entries())item.knowledge.sources=[{provider:"neu",metadata:{repository:"repo",branch:"main",etag:String(n),downloadedAt:"2026-09-19T00:00:00.000Z"}}];
+  if(mode==="crafting")for(const [n,item] of [f.a,f.b].entries())item.knowledge.recipes=[{source:"neu:recipe",data:Object.fromEntries(["A1","A2","A3","B1","B2","B3","C1","C2","C3"].map(k=>[k,k==="A1"?"STONE:"+(n+1):""]))}];
+  const before=f.catalog.getAll().map(armorSourceEvidenceIdentity),evidence=structuredClone(f.e);
+  assert.equal(f.run().audit.deferred.length,1,mode);
+  assert.deepEqual(f.catalog.getAll().map(armorSourceEvidenceIdentity),before);
+  assert.deepEqual(f.e.candidates.map(c=>c.effects),evidence.candidates.map(c=>c.effects));
+ }
+});
+test("semantic identity preserves requirements rarity variants and unknown provenance",async()=>{
+ for(const mode of ["requirement","rarity","ability","metadata","recipe","snapshot","tier","context"]) {
+  const f=await scenario();f.stats("a",150);f.stats("b",120);
+  if(mode==="requirement")f.b.requirements=[{type:"SKILL",skill:"COMBAT",level:1}];
+  if(mode==="rarity")f.b.rarity="RARE";
+  if(mode==="ability")f.b.knowledge.abilities=[{name:"Unknown",kind:"ABILITY",activation:"PASSIVE",description:["Mystery"],source:{provider:"neu",evidence:["Mystery"]}}];
+  if(mode==="metadata")for(const item of [f.a,f.b])item.metadata.futureMechanic=1;
+  if(mode==="recipe")for(const item of [f.a,f.b])item.knowledge.recipes=[{source:"neu:recipes",data:{type:"crafting",futureMechanic:1}}];
+  if(mode==="snapshot")for(const item of [f.a,f.b])item.knowledge.sources=[{provider:"neu",metadata:{unknownMechanic:1}}];
+  if(mode==="tier")for(const item of [f.a,f.b])item.metadata.tiered_stats={DEFENSE:[120,150]};
+  if(mode==="context")f.cb.replaces[0].contextUsability="UNKNOWN";
+  assert.equal(f.run().audit.deferred.length,0,mode);
+ }
+});
+test("semantic key order independence does not mutate source evidence",async()=>{
+ const f=await scenario(),r1={type:"SKILL" as const,skill:"COMBAT",level:1},r2={type:"SKILL" as const,skill:"MINING",level:2};
+ f.a.requirements=[r1,r2];f.b.requirements=[r2,r1];
+ assert.equal(stableJson(armorComparisonSemanticFacts(f.a,intent)),stableJson(armorComparisonSemanticFacts(f.b,intent)));
+ assert.notEqual(armorSourceEvidenceIdentity(f.a),armorSourceEvidenceIdentity(f.b));
+});
