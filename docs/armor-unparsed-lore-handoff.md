@@ -93,7 +93,7 @@ Validation: 293 Armor tests, 114 Weapons tests, typecheck and targeted ESLint pa
 
 ## Final breadth result and stop
 
-Syntax implementation commit: `b521b85`. Final audit/report commit: recorded after committing. The exact breadth rerun used baseline `80fd3fb`, production `b521b85`, unchanged inputs and the same historical time. Input hashes match. This was the only post-implementation full breadth rerun.
+Syntax implementation commit: `b521b85`. Final audit/report commit: `1e0fb3f44786c2287b017621403169282a357f94`. This documentation-only follow-up records that immutable checkpoint. The exact breadth rerun used baseline `80fd3fb`, production `b521b85`, unchanged inputs and the same historical time. Input hashes match. This was the only post-implementation full breadth rerun.
 
 **Support rises 88 -> 152 (10.55% -> 18.23%), a gain of 64 definitions / 7.67 percentage points. SOURCE_UNPARSED_LORE falls 224 -> 160. Armor remains NOT_READY_SYSTEMIC_GAP and unfrozen.**
 
