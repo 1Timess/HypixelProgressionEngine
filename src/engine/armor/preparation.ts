@@ -226,7 +226,7 @@ export async function prepareArmorUpgrade(
     candidates,
   });
   observeEvidence?.(structuredClone(payload)); // Trusted diagnostic observer; never model execution or a production feature flag.
-  const narrowed = narrowArmorFrontier(payload, catalog, now, knowledge);
+  const narrowed = narrowArmorFrontier(payload, catalog, now, knowledge, listings);
   review.narrowing = narrowed.audit;
   payload.candidates = narrowed.candidates;
   // Failed/deferred options may have interned lore; remove it before the model gate.
