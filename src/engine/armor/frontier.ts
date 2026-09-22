@@ -1,3 +1,4 @@
+import {classifyArmorGearScoreLore} from "./gear-score";
 import {classifyArmorRequirementLore,requirementLike} from "./requirement-lore";
 import {proveInactiveReplacements,matchesInactiveReplacementProof,type InactiveReplacementProof} from "./inactive-replacement-proof";
 import {closeGemstoneSummary} from "./gemstone-summary";
@@ -73,6 +74,8 @@ function sourceClosed(item: ItemDefinition, intent:ArmorEvidence["intent"], allo
       }
       continue;
     }
+    // Recognition discharges only this display line; it cannot establish statSeen or bypass any guard.
+    if(classifyArmorGearScoreLore(raw).recognized)continue;
     const stat=classifyArmorStatLine(line,item.stats);
     if(stat.status!=="KNOWN_LABEL_VALUE_MATCH"){
       const reason=stat.status==="KNOWN_LABEL_VALUE_MISMATCH"?"SOURCE_STAT_VALUE_MISMATCH":stat.status==="KNOWN_LABEL_CANONICAL_MISSING"?"SOURCE_STAT_MISSING":stat.status==="AMBIGUOUS_STAT_LABEL"?"SOURCE_STAT_LABEL_AMBIGUOUS":"SOURCE_UNPARSED_LORE";

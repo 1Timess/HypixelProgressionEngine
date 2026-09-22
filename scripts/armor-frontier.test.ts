@@ -574,3 +574,31 @@ test("unrendered canonical UNKNOWN requirement stays blocking",async()=>{
  const f=await scenario();f.stats("a",150);f.b.requirements=[{type:"UNKNOWN",sourceType:"OTHER",metadata:{}}];
  assert.equal(f.run().audit.deferred.length,0);
 });
+
+
+test("Gear Score preserves evidence eligibility dominance and source",async()=>{
+ const f=await scenario();f.stats("a",150);f.stats("b",120);
+ f.a.dungeon.gearScore=10;f.b.dungeon.gearScore=10;
+ const before=f.run(),stats=structuredClone(f.a.stats),candidate=structuredClone(f.ca);
+ f.a.knowledge.rawLore.unshift("Gear Score: 509 (685)");f.a.dungeon.gearScore=10;
+ const original=structuredClone(f.a),after=f.run();
+ assert.deepEqual(after.audit.deferred,before.audit.deferred);assert.deepEqual(after.audit.pairLocal,before.audit.pairLocal);
+ assert.deepEqual(f.a,original);assert.deepEqual(f.a.stats,stats);
+ assert.deepEqual(f.ca.replaces[0].statEvidence,candidate.replaces[0].statEvidence);
+ assert.equal(f.ca.replaces[0].contextUsability,candidate.replaces[0].contextUsability);
+ f.a.knowledge.rawLore.reverse();assert.deepEqual(f.run().audit.deferred,after.audit.deferred);
+});
+test("informational Gear Score cannot discharge underlying guards",async()=>{
+ for(const kind of ["tiered","intelligence","health","defense","metadata","ability","lore","requirement","no-stat","dependency"]){
+  const f=await scenario();f.a.knowledge.rawLore.unshift("Gear Score: 509 (685)");
+  if(["tiered","intelligence","health","defense"].includes(kind))f.a.metadata.tiered_stats={[kind==="intelligence"?"INTELLIGENCE":kind==="defense"?"DEFENSE":"HEALTH"]:Array(10).fill(10)};
+  if(kind==="metadata")f.a.metadata.mystery={unknown:true};
+  if(kind==="ability")f.a.knowledge.abilities=[{name:"Unknown",kind:"ABILITY",activation:"UNKNOWN",description:["Unknown mechanic"],source:{provider:"test",evidence:[]}}];
+  if(kind==="lore")f.a.knowledge.rawLore.push("Unexplained gameplay mechanic");
+  if(kind==="requirement")f.a.requirements=[{type:"UNKNOWN",sourceType:"unknown",metadata:{}}];
+  if(kind==="no-stat")f.a.knowledge.rawLore=["Gear Score: 509 (685)"];
+  if(kind==="dependency")f.ca.effects=[{itemId:f.a.id,id:"unknown",text:0,before:"NOT_EQUIPPED",after:"UNKNOWN",dependency:{kind:"UNKNOWN",reason:"Unknown"},source:{provider:"test",evidence:[]}}];
+  const result=f.run();assert.ok(result.audit.blocked.UNKNOWN_ITEM_MECHANICS,kind);
+  assert.ok(result.candidates.some(c=>c.id===f.ca.id),kind);
+ }
+});
